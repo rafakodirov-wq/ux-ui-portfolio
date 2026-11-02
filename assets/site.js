@@ -7,6 +7,7 @@
   const label = () => document.documentElement.lang === 'en' ? 'Contact options' : 'Способы связи';
   trigger.setAttribute('aria-haspopup', 'dialog');
   trigger.setAttribute('aria-expanded', 'false');
+  trigger.setAttribute('aria-label', label());
 
   const panel = document.createElement('div');
   panel.className = 'contact-chooser';
@@ -27,6 +28,7 @@
     open = next;
     trigger.setAttribute('aria-expanded', String(next));
     panel.classList.toggle('is-open', next);
+    trigger.setAttribute('aria-label', label());
     if (next) { panel.setAttribute('aria-label', label()); position(); panel.querySelector('a')?.focus(); }
     else trigger.focus({ preventScroll: true });
   };
@@ -79,4 +81,22 @@
     navigationLinks.forEach(item => item.link.addEventListener('click', () => setTimeout(updateNavigation, 500)));
     updateNavigation();
   }
+})();
+
+// Якорные ссылки внутри кейса (#process, #design…) прокручивают страницу, но не добавляют
+// записей в историю браузера: иначе жест «назад» на трекпаде листает эти записи/другие кейсы.
+(() => {
+  document.addEventListener('click', event => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target.closest && event.target.closest('a[href^="#"]');
+    if (!link) return;
+    let id = link.getAttribute('href').slice(1);
+    try { id = decodeURIComponent(id); } catch (e) {}
+    if (!id) return;
+    const target = document.getElementById(id);
+    if (!target) return;
+    event.preventDefault();
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  });
 })();

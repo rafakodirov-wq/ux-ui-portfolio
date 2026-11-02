@@ -110,3 +110,29 @@ body { font-size: 16px; line-height: 1.5; text-rendering: optimizeLegibility; }
 .travel-navigation .travel-link.active { background: #244e48 !important; color: #fff !important; box-shadow: 0 3px 12px rgba(27,77,68,.15) !important; }.travel-navigation .travel-link.active:hover { background: #1c403a !important; color: #fff !important; }
 .travel-navigation .travel-lang { min-width: 52px !important; border: 1px solid rgba(67,103,93,.2) !important; background: rgba(255,255,255,.52) !important; }
 @media (max-width: 720px) { .travel-navigation { top: 10px !important; width: calc(100% - 20px) !important; gap: 8px !important; }.travel-navigation .travel-nav { min-height: 54px !important; gap: 5px !important; padding: 7px !important; }.travel-navigation .travel-back { width: 54px !important; height: 54px !important; min-width: 54px !important; min-height: 54px !important; }.travel-navigation > .travel-back { flex-basis: 54px !important; max-width: 54px !important; max-height: 54px !important; }.travel-navigation .travel-brand { font-size: 13px !important; padding-left: 5px !important; }.travel-navigation .travel-brand small { display: none !important; }.travel-navigation .travel-link, .travel-navigation .travel-lang { padding: 10px 7px !important; font-size: 10px !important; }.travel-navigation .travel-lang { min-width: 36px !important; } }
+
+/* Подпись "/ design practice" в верхней навигации кейсов: только на десктопе */
+@media (max-width: 720px) { .travel-navigation .travel-brand .brand-sub { display: none !important; } }
+
+/* Страница не должна «ездить» вбок при масштабировании и не должна пружинить/прокручивать фон */
+html, body { overflow-x: hidden; overflow-x: clip; max-width: 100%; overscroll-behavior: none; }
+
+/* Мобильная навигация кейсов: кнопка «Связаться» — только иконка, чтобы панель не вылезала за экран */
+@media (max-width: 560px) {
+  .travel-navigation .portfolio-contact { padding: 0 !important; width: 36px !important; height: 36px !important; min-width: 36px !important; gap: 0 !important; flex: 0 0 36px !important; }
+  .travel-navigation .portfolio-contact .portfolio-contact-label { display: none !important; }
+  .travel-navigation .portfolio-contact svg { width: 15px !important; height: 15px !important; }
+}
+
+@media (max-width: 560px) {
+  .travel-navigation .travel-links { gap: 2px !important; }
+  .travel-navigation .travel-links .travel-link { padding: 10px 8px !important; }
+  .travel-navigation .travel-lang { min-width: 34px !important; padding: 10px 6px !important; }
+}
+
+@media (max-width: 400px) {
+  .travel-navigation .travel-links { gap: 0 !important; }
+  .travel-navigation .travel-links .travel-link { padding: 10px 5px !important; }
+  .travel-navigation .travel-lang { min-width: 30px !important; padding: 10px 4px !important; }
+  .travel-navigation .travel-nav { gap: 3px !important; }
+}
