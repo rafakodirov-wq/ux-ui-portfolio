@@ -1,0 +1,138 @@
+/* Shared foundation for every portfolio page. Keep page-specific visual styles in each case file. */
+.portfolio-contact { cursor: pointer; }
+.portfolio-contact[aria-expanded="true"] { box-shadow: inset 0 1px 0 #fff, 0 9px 24px rgba(25, 73, 62, .15), 0 0 0 2px rgba(57, 145, 105, .12) !important; }
+.contact-chooser { position: fixed; z-index: 2147483000; width: min(316px, calc(100vw - 24px)); padding: 12px; border: 1px solid rgba(255, 255, 255, .82); border-radius: 24px; background: linear-gradient(150deg, rgba(255,255,255,.94), rgba(235,245,241,.89)); -webkit-backdrop-filter: blur(28px) saturate(180%); backdrop-filter: blur(28px) saturate(180%); box-shadow: 0 18px 55px rgba(13,41,37,.18), inset 0 1px 0 #fff; color: #19332e; opacity: 0; transform: translateY(-7px) scale(.975); pointer-events: none; transition: opacity .24s ease, transform .3s cubic-bezier(.22,1,.36,1); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.contact-chooser.is-open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.contact-chooser-heading { padding: 8px 12px 12px; font-size: 11px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: #68847a; }
+.contact-chooser a { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 15px; color: #1b3430; text-decoration: none !important; transition: background .2s, transform .2s; }
+.contact-chooser a:hover, .contact-chooser a:focus-visible { background: rgba(51,117,93,.1); transform: translateX(2px); outline: none; }
+.contact-chooser-icon { display: grid; place-items: center; width: 39px; height: 39px; border-radius: 12px; background: rgba(33,99,76,.09); font-size: 17px; font-weight: 700; flex: none; }
+.contact-chooser-label { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.contact-chooser-label strong { font-size: 14px; font-weight: 650; }
+.contact-chooser-label small { font-size: 12px; color: #647b74; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.contact-chooser-arrow { margin-left: auto; color: #7c9990; font-size: 18px; }
+.nav-actions .portfolio-contact::before { animation: greenGlassSweep 3.1s cubic-bezier(.35,.05,.22,1) infinite !important; }
+@keyframes greenGlassSweep { 0%, 7% { transform: translateX(-115%) skewX(-8deg); } 77%, 100% { transform: translateX(115%) skewX(-8deg); } }
+@media (prefers-reduced-motion: reduce) { .contact-chooser, .nav-actions .portfolio-contact::before { transition: none !important; animation: none !important; } }
+
+/* Shared accessibility and Liquid Glass baseline for every present and future case. */
+:root { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+html { scroll-padding-top: 104px; }
+body { font-size: 16px; line-height: 1.5; text-rendering: optimizeLegibility; }
+:where(p, li) { max-width: 72ch; line-height: 1.55; }
+:where(h1, h2, h3) { text-wrap: balance; }
+:where(button, a, [role="button"]) { -webkit-tap-highlight-color: transparent; }
+:where(button, a, [role="button"]):focus-visible { outline: 3px solid #168f85 !important; outline-offset: 3px; }
+
+:is(.case-nav, .travel-nav, .case-back, .travel-back, .case-lang, .travel-lang, .portfolio-top-btn, .round) {
+  border-color: rgba(255,255,255,.72) !important;
+  box-shadow: 0 10px 30px rgba(18,53,47,.12), inset 0 1px 0 rgba(255,255,255,.8) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(160%);
+}
+:is(.panel, .feature, .shot, .perf-grid article, .perf-final > div, .perf-results > div, .perf-cjm > div) {
+  border-color: rgba(255,255,255,.68) !important;
+  box-shadow: 0 14px 38px rgba(20,52,47,.09), inset 0 1px 0 rgba(255,255,255,.72) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+}
+:is(.case-links a, .travel-link, .portfolio-top-btn, .round, .case-back, .travel-back, .case-lang, .travel-lang) {
+  min-height: 44px;
+  transition-duration: .22s !important;
+  transition-timing-function: cubic-bezier(.2,.8,.2,1) !important;
+}
+@media (hover: hover) {
+  :is(.panel, .feature, .shot, .perf-grid article, .perf-final > div, .perf-results > div, .perf-cjm > div):hover { transform: translateY(-2px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+/* Consistent navigation feedback; hover never impersonates the selected state. */
+:is(.case-links a, .travel-link, .tabs a) { cursor: pointer; }
+:is(.case-links a, .travel-link, .tabs a):hover:not(.active) { background: rgba(22, 79, 73, .10) !important; color: inherit !important; box-shadow: none !important; }
+:is(.case-links a, .travel-link, .tabs a):active { transform: scale(.96) !important; }
+
+/* Bring the homepage's subtle green Liquid Glass sweep to every case CTA. */
+.portfolio-contact::before {
+  background: linear-gradient(105deg, transparent 32%, rgba(44,180,101,.06) 40%, rgba(67,207,117,.38) 47%, rgba(135,247,171,.68) 50%, rgba(54,195,108,.32) 54%, transparent 66%) !important;
+  animation: greenGlassSweep 3.1s cubic-bezier(.35,.05,.22,1) infinite !important;
+}
+.portfolio-contact:hover { box-shadow: inset 0 1px 0 #fff, 0 9px 26px rgba(24,65,59,.17), 0 0 17px rgba(67,207,117,.16) !important; }
+.hyundai-frame.is-loading { opacity: 0; pointer-events: none; }
+
+/* Navigation bars keep their back control precisely centred and equal in height. */
+.navrow { align-items: stretch !important; }
+.navrow > .back { width: auto !important; height: auto !important; min-height: 64px; aspect-ratio: 1; display: grid; place-items: center; }
+.navrow > .nav { min-height: 64px; }
+@media (max-width: 720px) { .navrow > .back, .navrow > .nav { min-height: 48px; } }
+
+/* The active LATO slide morphs from a dot into a pill. Flex basis must change
+   too; changing width alone is ignored by the original flex declaration. */
+.lato-dot { transition: flex-basis .42s cubic-bezier(.2,.8,.2,1), width .42s cubic-bezier(.2,.8,.2,1), background .28s, opacity .28s !important; }
+.lato-dot[aria-current="true"] { flex-basis: 68px !important; width: 68px !important; border-radius: 999px; }
+@media (max-width: 650px) { .lato-dot[aria-current="true"] { flex-basis: 38px !important; width: 38px !important; } }
+
+/* Prevent scroll chaining from an open case back into the portfolio page. */
+.detail, .hyundai-frame { overscroll-behavior: contain; }
+
+/* One Travel navigation system for every case: glass pill plus a smaller
+   centred circular back action. These selectors cover both navigation markup
+   variants used by the older case pages. */
+:is(.case-navigation, .travel-navigation, .navrow) { top: 18px !important; width: min(1036px, calc(100% - 32px)) !important; gap: 12px !important; align-items: center !important; }
+:is(.case-nav, .travel-nav, .navrow .nav) { min-height: 64px !important; padding: 9px 11px 9px 20px !important; border-radius: 24px !important; background: rgba(255,255,255,.56) !important; border: 1px solid rgba(255,255,255,.8) !important; box-shadow: 0 14px 60px rgba(32,51,44,.07), inset 0 1px 0 rgba(255,255,255,.93) !important; -webkit-backdrop-filter: blur(26px) saturate(170%); backdrop-filter: blur(26px) saturate(170%); }
+:is(.case-back, .travel-back, .navrow > .back) { width: 52px !important; height: 52px !important; min-height: 52px !important; min-width: 52px !important; aspect-ratio: auto !important; border-radius: 50% !important; background: rgba(255,255,255,.56) !important; border: 1px solid rgba(255,255,255,.8) !important; box-shadow: 0 14px 60px rgba(32,51,44,.07), inset 0 1px 0 rgba(255,255,255,.93) !important; -webkit-backdrop-filter: blur(26px) saturate(170%); backdrop-filter: blur(26px) saturate(170%); }
+:is(.case-links a, .travel-link, .navrow .tabs a) { border-radius: 15px !important; padding: 12px 15px !important; }
+
+/* LATO portal switch matches Travel's light/dark segmented control. */
+.lato-tabs { display: inline-flex; padding: 6px; gap: 4px; margin: 34px 0; border: 1px solid rgba(255,255,255,.86); border-radius: 25px; background: rgba(223,234,244,.67); box-shadow: inset 0 1px rgba(255,255,255,.9), 0 12px 35px rgba(22,53,82,.07); -webkit-backdrop-filter: blur(20px) saturate(160%); backdrop-filter: blur(20px) saturate(160%); }
+.lato-tab { min-height: 0; padding: 14px 30px; border-radius: 19px; color: #5b6d7d; font-weight: 650; }
+.lato-tab[aria-selected="true"] { color: #172b45; background: rgba(255,255,255,.85); box-shadow: 0 4px 20px rgba(39,71,106,.11), inset 0 1px #fff; transform: none; }
+.lato-tab:not([aria-selected="true"]):hover { background: rgba(255,255,255,.42); color: #172b45; }
+.lato-dot[aria-current="true"] { flex-basis: 32px !important; width: 32px !important; }
+@media (max-width: 650px) { .lato-dot[aria-current="true"] { flex-basis: 24px !important; width: 24px !important; } }
+
+/* Canonical Travel navigation, shared by every case via the travel-* classes. */
+.travel-navigation { position: fixed !important; top: 18px !important; left: 50% !important; transform: translateX(-50%) !important; z-index: 60 !important; width: min(1036px, calc(100% - 32px)) !important; display: flex !important; align-items: center !important; gap: 12px !important; }
+.travel-navigation .travel-nav { position: relative !important; top: auto !important; left: auto !important; transform: none !important; flex: 1 !important; min-width: 0 !important; min-height: 64px !important; display: flex !important; align-items: center !important; justify-content: space-between !important; gap: 12px !important; padding: 9px 11px 9px 20px !important; border-radius: 24px !important; background: rgba(255,255,255,.56) !important; border: 1px solid rgba(255,255,255,.8) !important; box-shadow: 0 14px 60px rgba(32,51,44,.07), inset 0 1px 0 rgba(255,255,255,.93) !important; -webkit-backdrop-filter: blur(26px) saturate(170%) !important; backdrop-filter: blur(26px) saturate(170%) !important; }
+.travel-navigation .travel-back { width: 64px !important; height: 64px !important; min-width: 64px !important; min-height: 64px !important; padding: 0 !important; display: grid !important; place-items: center !important; border-radius: 50% !important; border: 1px solid rgba(255,255,255,.8) !important; background: rgba(255,255,255,.56) !important; color: #172322 !important; box-shadow: 0 14px 60px rgba(32,51,44,.07), inset 0 1px 0 rgba(255,255,255,.93) !important; -webkit-backdrop-filter: blur(26px) saturate(170%) !important; backdrop-filter: blur(26px) saturate(170%) !important; }
+.travel-navigation > .travel-back { flex: 0 0 64px !important; max-width: 64px !important; max-height: 64px !important; line-height: 1 !important; }
+.travel-navigation .travel-back > svg { display: block !important; margin: 0 !important; transform: none !important; }
+.travel-navigation .travel-back { transition: transform .3s cubic-bezier(.22,1,.36,1), background .3s, box-shadow .3s !important; }
+.travel-navigation .travel-back:hover { transform: translateX(-2px) scale(1.045) !important; background: rgba(255,255,255,.93) !important; color: #172322 !important; box-shadow: 0 13px 32px rgba(25,74,93,.16) !important; }
+.travel-navigation .travel-back:hover > svg { opacity: 1 !important; color: currentColor !important; }
+.travel-navigation .travel-back:active { transform: scale(.94) !important; }
+.travel-navigation .travel-brand { font-size: 13px !important; font-weight: 800 !important; letter-spacing: -.04em !important; white-space: nowrap !important; color: #172322 !important; }
+.travel-navigation .travel-brand span { color: #78958c !important; }.travel-navigation .travel-brand small { font-size: inherit !important; font-weight: 500 !important; color: #67716f !important; }
+.travel-navigation .travel-links { display: flex !important; align-items: center !important; justify-content: center !important; flex: 1 !important; gap: 5px !important; }
+.travel-navigation .travel-link, .travel-navigation .travel-lang { min-height: 0 !important; border: 0 !important; border-radius: 15px !important; background: transparent !important; color: #172322 !important; padding: 12px 15px !important; font-size: 12px !important; font-weight: 400 !important; text-decoration: none !important; }
+.travel-navigation .travel-link:hover, .travel-navigation .travel-lang:hover { background: rgba(35,81,72,.105) !important; color: #164d46 !important; }.travel-navigation .travel-link:active, .travel-navigation .travel-lang:active { transform: scale(.96) !important; }
+.travel-navigation .travel-link.active { background: #244e48 !important; color: #fff !important; box-shadow: 0 3px 12px rgba(27,77,68,.15) !important; }.travel-navigation .travel-link.active:hover { background: #1c403a !important; color: #fff !important; }
+.travel-navigation .travel-lang { min-width: 52px !important; border: 1px solid rgba(67,103,93,.2) !important; background: rgba(255,255,255,.52) !important; }
+@media (max-width: 720px) { .travel-navigation { top: 10px !important; width: calc(100% - 20px) !important; gap: 8px !important; }.travel-navigation .travel-nav { min-height: 54px !important; gap: 5px !important; padding: 7px !important; }.travel-navigation .travel-back { width: 54px !important; height: 54px !important; min-width: 54px !important; min-height: 54px !important; }.travel-navigation > .travel-back { flex-basis: 54px !important; max-width: 54px !important; max-height: 54px !important; }.travel-navigation .travel-brand { font-size: 13px !important; padding-left: 5px !important; }.travel-navigation .travel-brand small { display: none !important; }.travel-navigation .travel-link, .travel-navigation .travel-lang { padding: 10px 7px !important; font-size: 10px !important; }.travel-navigation .travel-lang { min-width: 36px !important; } }
+
+/* Подпись "/ design practice" в верхней навигации кейсов: только на десктопе */
+@media (max-width: 720px) { .travel-navigation .travel-brand .brand-sub { display: none !important; } }
+
+/* Страница не должна «ездить» вбок при масштабировании и не должна пружинить/прокручивать фон */
+html, body { overflow-x: hidden; overflow-x: clip; max-width: 100%; overscroll-behavior: none; }
+
+/* Мобильная навигация кейсов: кнопка «Связаться» — только иконка, чтобы панель не вылезала за экран */
+@media (max-width: 560px) {
+  .travel-navigation .portfolio-contact { padding: 0 !important; width: 36px !important; height: 36px !important; min-width: 36px !important; gap: 0 !important; flex: 0 0 36px !important; }
+  .travel-navigation .portfolio-contact .portfolio-contact-label { display: none !important; }
+  .travel-navigation .portfolio-contact svg { width: 15px !important; height: 15px !important; }
+}
+
+@media (max-width: 560px) {
+  .travel-navigation .travel-links { gap: 2px !important; }
+  .travel-navigation .travel-links .travel-link { padding: 10px 8px !important; }
+  .travel-navigation .travel-lang { min-width: 34px !important; padding: 10px 6px !important; }
+}
+
+@media (max-width: 400px) {
+  .travel-navigation .travel-links { gap: 0 !important; }
+  .travel-navigation .travel-links .travel-link { padding: 10px 5px !important; }
+  .travel-navigation .travel-lang { min-width: 30px !important; padding: 10px 4px !important; }
+  .travel-navigation .travel-nav { gap: 3px !important; }
+}
