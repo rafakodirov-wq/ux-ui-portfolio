@@ -1,13 +1,436 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Whoosh — UX/UI кейс · RZ.</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><style>
-:root{--ink:#18322c;--muted:#63756e;--paper:#f5f7f4;--line:#dce6df;--gold:#ad8b58}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% 7%,#e0ebe2,transparent 38%),var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wrap{width:min(1260px,calc(100% - 80px));margin:auto}.case-navigation{position:fixed;z-index:40;top:18px;left:50%;transform:translateX(-50%);width:min(1036px,calc(100% - 32px));display:flex;gap:12px;align-items:center}.case-back,.case-nav{border:1px solid #ffffffdf;background:#ffffff91;box-shadow:0 14px 60px #20332c12,inset 0 1px #fff8;backdrop-filter:blur(26px) saturate(170%)}.case-back{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;padding:0;flex:none;color:#172322}.case-back svg{width:22px}.case-nav{min-width:0;flex:1;min-height:64px;border-radius:24px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 11px 9px 20px}.case-brand{color:#000;font-size:13px;font-weight:800;text-decoration:none;white-space:nowrap}.case-brand span{color:#000}.case-brand small{color:#67716f;font-weight:500}.case-links{display:flex;gap:5px;position:absolute;left:50%;transform:translateX(-50%)}.case-links a{text-decoration:none;font-size:12px;padding:12px 15px;border-radius:15px;white-space:nowrap;color:inherit}.case-links a.active,.case-links a:hover{background:#1d4f49;color:#fff}.case-actions{display:flex;align-items:center;gap:12px;margin-left:auto}.case-lang{min-width:52px;padding:12px 13px;border-radius:15px;border:1px solid #fff9;background:#ffffff75;color:#172322}.portfolio-contact{display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;text-decoration:none;padding:12px 19px;border-radius:999px;color:#19332e;background:linear-gradient(145deg,#ffffffeb,#e3f2ed9e);border:1px solid #ffffffdf;box-shadow:inset 0 1px #fff,0 5px 18px #18413b1a;font:600 13px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;position:relative;overflow:hidden;isolation:isolate;transition:transform .3s,box-shadow .3s}.portfolio-contact:before{content:"";position:absolute;inset:-30%;background:linear-gradient(110deg,transparent 35%,rgba(56,147,111,.78) 50%,transparent 65%);transform:translateX(-110%);z-index:0;pointer-events:none;animation:contact-sheen 4.8s 1.2s ease-in-out infinite}.portfolio-contact span,.portfolio-contact svg{position:relative;z-index:1}.portfolio-contact svg{width:15px;transition:transform .3s}.portfolio-contact:hover{transform:translateY(-2px);box-shadow:inset 0 1px #fff,0 9px 26px #18413b2b}.portfolio-contact:hover svg{transform:translate(2px,-2px)}@keyframes contact-sheen{0%,18%,100%{transform:translateX(-110%)}42%,58%{transform:translateX(110%)}}
-.hero{padding:166px 0 92px;overflow:hidden}.hero-grid{display:grid;grid-template-columns:minmax(0,.83fr) minmax(530px,1.17fr);gap:12px;align-items:center}.eyebrow,.number{color:#9a8059;font-size:11px;font-weight:750;letter-spacing:.19em;text-transform:uppercase}.hero h1{font-size:clamp(104px,11.3vw,178px);line-height:.84;letter-spacing:-.11em;margin:31px 0 42px}.dot{color:var(--gold)}.hero p{font-size:clamp(21px,2vw,29px);line-height:1.5;color:var(--muted);max-width:680px}.hero-img{display:block;width:98%;max-width:none;margin-right:0;filter:drop-shadow(0 28px 36px #0e392f29)}.tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:42px}.tag{border:1px solid #d6e1da;border-radius:30px;padding:10px 15px;color:#5e7169;font-size:12px}.section{padding:105px 0;border-top:1px solid var(--line)}.heading{display:flex;flex-direction:column;gap:8px;align-items:flex-start;margin-bottom:36px}.section h2{font-size:clamp(42px,5.2vw,70px);line-height:1.04;letter-spacing:-.065em;margin:0}.lead{font-size:clamp(18px,2.2vw,25px);line-height:1.55;max-width:860px;color:#52645d}.grid2,.grid3{display:grid;gap:16px}.grid2{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:repeat(3,1fr)}.card{padding:32px;border:1px solid #e0e9e2;border-radius:24px;background:#ffffffc7;box-shadow:0 12px 45px #2349360a}.label{font-size:11px;letter-spacing:.13em;color:#a48b63;font-weight:700}.card h3{font-size:22px;letter-spacing:-.035em;margin:14px 0}.card p{color:var(--muted);font-size:15px;line-height:1.65;margin-bottom:0}.flow{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:28px 0}.flow span{background:#e6eee8;padding:13px 17px;border-radius:12px;font-size:13px}.flow i{font-style:normal;color:var(--gold)}.wire{min-height:220px;padding:20px;border:1px solid #dbe5de;border-radius:20px;background:#fff}.wire-top{width:42%;height:12px;margin-bottom:35px;border-radius:5px;background:#d7e2db}.wire-main{height:60px;width:80%;border-radius:7px;background:#e5ece7}.wire-lines{height:9px;width:58%;border-radius:4px;background:#dce5de;margin-top:14px}.wire-cta{height:30px;width:42%;border-radius:9px;background:#9ab5a5;margin-top:22px}.wire-photo{height:90px;margin-top:17px;border-radius:12px;background:#b8cfc0}.preview{display:block;max-width:730px;margin:0 auto;overflow:hidden;border-radius:24px;background:#143d31;box-shadow:0 22px 65px #0e35272b}.preview img{display:block;width:100%}.footer{padding:32px 0 65px;display:flex;justify-content:space-between;color:#75857c;font-size:13px}.top{border:1px solid #dce8de;border-radius:50px;padding:12px 20px;background:#fff}.lightbox[hidden]{display:none}.lightbox{position:fixed;inset:0;z-index:100;background:#061710eb;display:flex;align-items:center;justify-content:center;padding:86px 18px 40px}.lightbox img{max-width:min(900px,100%);max-height:100%;border-radius:12px}.close{position:absolute;top:20px;right:22px;width:50px;height:50px;border:1px solid #fff9;border-radius:50%;background:#ffffffe3;font-size:24px}@media(max-width:950px){.hero-grid{grid-template-columns:1fr}.hero-img{width:100%;max-width:780px;margin:0 auto}.case-brand small{display:none}.case-links{position:static;transform:none}.case-links a{padding:11px 9px}}@media(max-width:720px){.wrap{width:min(100% - 40px,1260px)}.case-navigation{top:10px;width:calc(100% - 20px);gap:8px}.case-back{width:44px;height:44px}.case-nav{min-height:54px;padding:7px;gap:5px}.case-brand{font-size:13px}.case-links{gap:0}.case-links a{font-size:10px;padding:10px 7px}.case-lang{min-width:36px;padding:10px 8px;font-size:10px}.case-actions{gap:5px}.portfolio-contact{padding:11px 10px;font-size:11px}.hero{padding:128px 0 60px}.hero h1{font-size:clamp(78px,21vw,120px);margin:25px 0 28px}.hero p{font-size:18px}.tags{margin-top:28px}.section{padding:72px 0}.grid2,.grid3{grid-template-columns:1fr}.card{padding:24px}}@media(max-width:540px){.case-brand small,.portfolio-contact-label{display:none}.portfolio-contact{padding:10px}.case-links a{padding:10px 5px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-</style><script src="assets/whoosh-language.js" defer></script><link rel="stylesheet" href="assets/case-mobile-nav.css"></head><body>
-<div class="case-navigation"><button class="case-back" id="back" aria-label="Назад к проектам"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></svg></button><nav class="case-nav"><a class="case-brand" href="index.html#work">RZ<span>.</span> <small class="brand-sub">/ design practice</small></a><div class="case-links"><a class="active" href="#overview">Обзор</a><a href="#process">Процесс</a><a href="#design">Дизайн</a></div><div class="case-actions"><button class="case-lang" id="lang">RU</button><a class="portfolio-contact" href="mailto:rafakodirov@gmail.com?subject=Whoosh%20project"><span class="portfolio-contact-label">Связаться</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18 18 6M8 6h10v10"/></svg></a></div></nav></div>
-<main><section class="hero" id="overview"><div class="wrap hero-grid"><div><div class="eyebrow">WEB / PRODUCT LANDING / UI CONCEPT</div><h1>Whoosh<span class="dot">.</span></h1><p>Концепция лендинга профессионального фена. Продуктовая история, где форма, технологии и преимущества складываются в цельный визуальный опыт.</p><div class="tags"><span class="tag">UX/UI</span><span class="tag">Web design</span><span class="tag">Product storytelling</span><span class="tag">Concept · 2026</span></div></div><img class="hero-img" src="assets/whoosh/hero-cutout.png" alt="Whoosh — продуктовый лендинг в MacBook"></div></section>
-<section class="section"><div class="wrap"><div class="heading"><span class="number">01 / CONTEXT</span><h2>Проблема<span class="dot">.</span></h2></div><p class="lead">Технический продукт сложно представить так, чтобы посетитель одновременно почувствовал его характер и быстро понял, почему он ему нужен.</p><div class="grid2"><article class="card"><span class="label">USER NEED</span><h3>Понять за секунды</h3><p>Что это за устройство, чем оно отличается и какие преимущества важны лично мне?</p></article><article class="card"><span class="label">DESIGN CHALLENGE</span><h3>Показать, не перегрузить</h3><p>Сохранить премиальную подачу, не пряча технологические аргументы и действие «Оформить заказ».</p></article></div></div></section>
-<section class="section"><div class="wrap"><div class="heading"><span class="number">02 / OBJECTIVE</span><h2>Цель<span class="dot">.</span></h2></div><p class="lead">Создать последовательный продуктовый лендинг: вызвать интерес первым экраном, объяснить технологию воздушного потока и привести к оформлению заказа.</p><div class="grid3"><article class="card"><span class="label">01 / ATTENTION</span><h3>Выразительный hero</h3><p>Крупный рендер устройства и ясный заголовок.</p></article><article class="card"><span class="label">02 / CLARITY</span><h3>Аргументы по порядку</h3><p>Преимущества → технология → характеристики → дизайн.</p></article><article class="card"><span class="label">03 / ACTION</span><h3>Доступный CTA</h3><p>Повторяющееся действие «Оформить заказ».</p></article></div></div></section>
-<section class="section"><div class="wrap"><div class="heading"><span class="number">03 / ROLE</span><h2>Мой вклад<span class="dot">.</span></h2></div><div class="grid2"><article class="card"><span class="label">UX STRUCTURE</span><h3>Структура и сценарий</h3><p>Организация блоков лендинга, логика знакомства с продуктом и расположение CTA.</p></article><article class="card"><span class="label">VISUAL DESIGN</span><h3>UI и визуальная система</h3><p>Типографика, композиция, тёмно-зелёная палитра, продуктовые визуалы и карточки характеристик.</p></article></div></div></section>
-<section class="section" id="process"><div class="wrap"><div class="heading"><span class="number">04 / PROCESS</span><h2>Процесс<span class="dot">.</span></h2></div><div class="grid3"><article class="card"><span class="label">DISCOVER</span><h3>Гипотеза</h3><p>Сначала человек оценивает продукт визуально, затем ищет доказательства его полезности.</p></article><article class="card"><span class="label">MAP</span><h3>CJM</h3><p>Построение пути от первого впечатления до заказа.</p></article><article class="card"><span class="label">DESIGN</span><h3>Иерархия контента</h3><p>Крупные продуктовые изображения чередуются с объяснениями и короткими техническими блоками.</p></article></div><h3 style="margin-top:58px">CJM <span class="dot">/</span> путь к заказу</h3><div class="flow"><span>Увидел Whoosh</span><i>→</i><span>Оценил дизайн</span><i>→</i><span>Изучил технологию</span><i>→</i><span>Сравнил параметры</span><i>→</i><span>Решил заказать</span></div><h3 style="margin-top:60px">Low-fidelity / схема структуры</h3><div class="grid3"><div class="wire"><span class="label">01 / HERO</span><div class="wire-top"></div><div class="wire-main"></div><div class="wire-lines"></div><div class="wire-cta"></div></div><div class="wire"><span class="label">02 / FEATURES</span><div class="wire-top"></div><div class="wire-photo"></div><div class="wire-lines"></div></div><div class="wire"><span class="label">03 / ORDER</span><div class="wire-top"></div><div class="wire-main"></div><div class="wire-cta"></div></div></div></div></section>
-<section class="section" id="design"><div class="wrap"><div class="heading"><span class="number">05 / FINAL UI</span><h2>Результаты<span class="dot">.</span></h2></div><p class="lead">Разработана визуальная концепция продуктовой страницы: насыщенный зелёный фон, выразительный рендер фена, последовательная презентация технологии, параметров и преимуществ.</p><div class="grid2" style="margin:40px 0"><article class="card"><span class="label">UI / HERO</span><h3>Первый экран</h3><p>Продукт занимает основное пространство; заголовок и действие читаются с первого взгляда.</p></article><article class="card"><span class="label">UI / STORY</span><h3>Длинная продуктовая история</h3><p>Преимущества, воздушный поток, характеристики, материалы, сравнение и финальный CTA.</p></article></div><h3 style="margin:65px 0 25px">Полный макет</h3><a href="#lightbox" class="preview" id="open-full"><img src="assets/whoosh/full.jpeg" alt="Полный дизайн лендинга Whoosh"></a><div class="grid2" style="margin-top:60px"><article class="card"><span class="label">DESIGN REVIEW</span><h3>Самопроверка</h3><p>Сильные стороны: единая атмосфера, узнаваемая предметная подача и последовательность блоков.</p></article><article class="card"><span class="label">DESIGN PRINCIPLE</span><h3>Форма поддерживает смысл</h3><p>Визуальные акценты, крупный продуктовый рендер и короткие блоки ведут от впечатления к пониманию ключевых преимуществ.</p></article></div></div></section>
-<section class="section"><div class="wrap"><div class="heading"><span class="number">06 / REFLECTION</span><h2>Выводы<span class="dot">.</span></h2></div><p class="lead">Премиальный лендинг работает, когда эффектный визуал помогает объяснить продукт, а не конкурирует с информацией. Следующий шаг — адаптивная версия и проверка сценария заказа с пользователями.</p></div></section></main>
-<footer class="footer wrap"><span>RZ. / design practice</span><button class="top" id="top">Наверх ↑</button></footer><div class="lightbox" id="lightbox" hidden><button class="close" id="close">×</button><img src="assets/whoosh/full.jpeg" alt="Полный дизайн лендинга Whoosh"></div><script>const $=s=>document.querySelector(s),links=[...document.querySelectorAll('.case-links a')];$('#back').onclick=()=>parent!==window?parent.postMessage({type:'portfolio-case-back'},'*'):location.href='index.html#work';$('#top').onclick=()=>scrollTo({top:0,behavior:'smooth'});links.forEach(a=>a.onclick=()=>setTimeout(()=>links.forEach(x=>x.classList.toggle('active',x===a)),150));$('#open-full').onclick=e=>{e.preventDefault();$('#lightbox').hidden=false;document.body.style.overflow='hidden'};const close=()=>{$('#lightbox').hidden=true;document.body.style.overflow=''};$('#close').onclick=close;$('#lightbox').onclick=e=>{if(e.target===$('#lightbox'))close()};document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});$('#lang').onclick=()=>{const en=$('#lang').textContent==='RU';$('#lang').textContent=en?'EN':'RU';$('.portfolio-contact-label').textContent=en?'Contact':'Связаться'};</script></body></html>
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Whoosh — UX/UI кейс · RZ.</title><meta content="Whoosh — концепт продуктового лендинга профессионального фена." name="description"/><link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+
+<style>
+/* --- БАЗОВЫЕ СТИЛИ И СМЕШАННЫЙ ФОН --- */
+:root{--ink:#1c2d29;--muted:#697973;--gold:#ad8b58;--line:#dce6df;--bg:#f5f7f4;--green:#164c3c;--accent-gold:#d4a373}
+
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background: 
+    radial-gradient(ellipse at 85% 10%, rgba(22, 76, 60, 0.08), transparent 40%),
+    radial-gradient(ellipse at 10% 50%, rgba(173, 139, 88, 0.08), transparent 45%),
+    radial-gradient(ellipse at 50% 90%, rgba(22, 76, 60, 0.05), transparent 50%),
+    var(--bg);
+  background-attachment: fixed;
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}button{font:inherit}.wrap{max-width:1180px;margin:auto;padding:0 30px}
+
+/* --- ГЛАВНЫЙ ЭКРАН С АНИМАЦИЕЙ МАКБУКА --- */
+.hero{padding:172px 0 100px; overflow: hidden;}
+.eyebrow{color:#9a8059;font-size:11px;font-weight:700;letter-spacing:.19em;text-transform:uppercase}
+.hero-grid{display:grid;grid-template-columns:.85fr 1.15fr;align-items:center;gap:35px}
+.hero h1{font-size:clamp(70px,9vw,135px);letter-spacing:-.095em;line-height:.95;margin:23px 0 30px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{font-size:19px;line-height:1.6;color:#63736d;max-width:430px}
+
+/* КОНТЕЙНЕР ДЛЯ АНИМАЦИИ НОУТБУКА */
+.hero-img-wrapper {
+  width: 100%;
+  perspective: 1500px; /* Задает 3D-глубину для сцены */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-img{
+  width:100%;
+  filter:drop-shadow(0 26px 30px #0e392f1c);
+  border-radius:25px;
+  
+  /* Анимация вылета и раскрытия */
+  animation: macbookReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  transform-origin: bottom center; /* Точка вращения — низ ноутбука */
+  will-change: transform, opacity;
+}
+
+@keyframes macbookReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(100px) rotateX(-40deg) scale(0.8); /* Начинает снизу, наклонен назад */
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-10px) rotateX(10deg) scale(1.02); /* Легкий отскок вперед */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg) scale(1); /* Встает на место */
+  }
+}
+
+.tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:34px}.tag{border:1px solid #d6e1da;border-radius:30px;padding:9px 14px;color:#5e7169;font-size:12px}
+
+/* --- ЗАГОЛОВКИ СЕКЦИЙ --- */
+.section{padding:105px 0;border-top:1px solid var(--line)}
+.heading{display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
+.number{font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.section h2{font-size:clamp(40px,5.2vw,68px);letter-spacing:-.065em;line-height:1.08;margin:0;color:var(--green)}
+.dot{color:var(--gold)}
+
+.lead{font-size:clamp(18px,2.2vw,25px);line-height:1.55;max-width:850px;color:#52645d}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{padding:32px;border-radius:24px;background:#ffffffc7;border:1px solid #e0e9e2;box-shadow:0 12px 45px #2349360a}.card h3{font-size:22px;letter-spacing:-.035em;margin:14px 0;color:var(--green)}.card p{line-height:1.65;color:var(--muted);font-size:15px;margin-bottom:0}.label{font-size:11px;letter-spacing:.13em;color:#a48b63;font-weight:700}
+.flow{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:28px 0}.flow span{background:#e6eee8;padding:13px 17px;border-radius:12px;font-size:13px}.flow i{font-style:normal;color:var(--gold)}
+
+/* --- ВАЙРФРЕЙМЫ --- */
+.wire{background:#fff;border:1px solid #dbe5de;border-radius:20px;padding:25px;min-height:240px;display:flex;flex-direction:column;gap:15px;}
+.wire .label{display:block;margin-bottom:5px;flex-shrink:0;}
+.wire-top{height:12px;width:42%;border-radius:5px;background:#d7e2db;margin-bottom:15px;}
+.wire-main{height:60px;width:100%;border-radius:7px;background:#e5ece7;}
+.wire-lines{height:9px;width:58%;border-radius:4px;background:#dce5de;}
+.wire-cta{height:30px;width:42%;border-radius:9px;background:#9ab5a5;margin-top:auto;}
+.wire-photo{height:90px;border-radius:12px;background:#b8cfc0;margin-top:5px;}
+
+/* --- АНИМАЦИЯ ТОЛЬКО ПРИ НАВЕДЕНИИ (HOVER) --- */
+.panel, .card, .wire {
+  transition: transform .38s cubic-bezier(.22,1,.36,1), box-shadow .38s cubic-bezier(.22,1,.36,1), border-color .32s;
+}
+@media (hover:hover) and (pointer:fine){
+  .panel:hover, .card:hover, .wire:hover {
+    transform: translateY(-7px);
+    border-color: #287c76;
+    box-shadow: 0 22px 52px rgba(24,53,65,.12);
+  }
+}
+
+.preview{display:block;overflow:hidden;border-radius:24px;background:#143d31;box-shadow:0 22px 65px #0e35272b;cursor:zoom-in}.preview img{width:100%;height:auto;display:block}.full-preview{max-width:730px;margin:0 auto}.smallnote{font-size:13px;color:#829089;line-height:1.6}
+
+/* --- НАВИГАЦИЯ --- */
+.navrow{position:fixed;z-index:100;top:18px;left:50%;transform:translateX(-50%);width:min(960px,calc(100% - 32px));display:flex;align-items:center;gap:12px}
+.back{width:55px;height:55px;flex:none;border-radius:50%;border:1px solid #fff;background:rgba(255,255,255,.65);backdrop-filter:blur(20px);font-size:32px;cursor:pointer;color:#111e40;display:grid;place-items:center;box-shadow:0 14px 60px #20332c12; transition: transform .35s cubic-bezier(.22,1,.36,1), background .3s}
+.back:hover{transform:translateX(-4px);background:rgba(255,255,255,.85)}
+
+.nav{flex:1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 11px 9px 20px;background:rgba(255,255,255,.60);backdrop-filter:blur(26px) saturate(170%);-webkit-backdrop-filter:blur(26px) saturate(170%);border:1px solid rgba(255,255,255,.86);border-radius:24px;box-shadow:0 14px 60px #20332c12,inset 0 1px 0 #fff8;position:relative}
+.brand{font-size:13px;font-weight:800;white-space:nowrap;letter-spacing:-.04em}.brand span{font-weight:400;color:#67716f}
+.tabs{display:flex;gap:3px;position:absolute;left:50%;transform:translateX(-50%)}
+.tabs a{font-size:12px;padding:12px 15px;border-radius:15px;text-decoration:none;cursor:pointer;transition:background .3s,color .3s}
+.tabs a:hover{background:rgba(255,255,255,.85);color:#14213e}
+.tabs a.active{background:#111e40 !important;color:#fff !important;box-shadow:0 5px 17px rgba(17,30,64,.16) !important}
+
+.nav-actions{display:flex;align-items:center;gap:12px;margin-left:auto;flex:0 0 auto}
+.lang{border:1px solid #fff9;background:#ffffff75;border-radius:15px;padding:11px 14px;cursor:pointer;min-width:52px; transition:background .3s}
+.lang:hover{background:#fff}
+
+/* --- КНОПКА "СВЯЗАТЬСЯ" С БЕСКОНЕЧНОЙ ЗЕЛЁНОЙ АНИМАЦИЕЙ --- */
+.portfolio-contact{
+  display:inline-flex!important;align-items:center;justify-content:center;gap:8px;flex:0 0 auto;white-space:nowrap;text-decoration:none!important;padding:12px 19px;border-radius:999px;color:#19332e!important;background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(227,242,237,.62));border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 5px 18px rgba(24,65,59,.1);font:600 13px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;position:relative;overflow:hidden;isolation:isolate;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,background .3s;
+}
+.portfolio-contact::before{
+  content:'';position:absolute;inset:-30%;background:linear-gradient(110deg,transparent 35%,rgba(44,180,101,.2) 45%,rgba(67,207,117,.8) 50%,rgba(44,180,101,.2) 55%,transparent 65%);transform:translateX(-110%);animation: greenSweep 3s cubic-bezier(.35,.05,.22,1) infinite;z-index:-1;
+}
+@keyframes greenSweep {
+  0%, 15% { transform: translateX(-110%); }
+  55%, 100% { transform: translateX(110%); }
+}
+.portfolio-contact:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 #fff,0 9px 26px rgba(24,65,59,.17),0 0 17px rgba(67,207,117,.16)}
+.portfolio-contact svg{width:15px;height:15px;transition:transform .3s}
+.portfolio-contact:hover svg{transform:translate(2px,-2px)}
+
+/* --- ФУТЕР --- */
+.footer{padding:30px 0 65px;display:flex;justify-content:space-between;align-items:center;color:#75857c;font-size:13px}
+.portfolio-top-btn{display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:15px 25px;border-radius:999px;border:1px solid rgba(255,255,255,.9);background:linear-gradient(135deg,rgba(255,255,255,.75),rgba(255,255,255,.32));-webkit-backdrop-filter:blur(22px) saturate(160%);backdrop-filter:blur(22px) saturate(160%);box-shadow:0 12px 38px rgba(24,45,48,.09),inset 0 1px 1px rgba(255,255,255,.95);color:#203934;font:600 16px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;cursor:pointer;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s}
+.portfolio-top-btn:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(24,45,48,.14),inset 0 1px 1px #fff}
+.portfolio-top-btn:active{transform:scale(.97)}
+.portfolio-top-btn svg{width:18px;height:18px;transition:transform .3s;animation:topChevronFloat 2.1s ease-in-out infinite;transform-origin:center}
+.portfolio-top-btn:hover svg{animation-play-state:paused; transform:translateY(-3px)}
+@keyframes topChevronFloat{0%,100%{transform:translateY(2px)}50%{transform:translateY(-3px)}}
+
+/* --- МОБИЛЬНАЯ ВЕРСИЯ --- */
+@media(max-width:850px){
+  .navrow{top:10px;width:calc(100% - 20px);gap:6px}
+  .back{width:44px;height:44px}
+  .nav{padding:5px 6px 5px 10px;gap:4px;border-radius:16px}
+  .brand{font-size:12px;padding-left:4px}
+  .brand span{display:none}
+  .tabs{position:static;transform:none;margin:0 4px;flex:1;justify-content:center}
+  .tabs a{font-size:10px;padding:10px 7px}
+  .nav-actions{gap:5px}
+  .lang{font-size:11px;padding:9px;min-width:36px}
+  .portfolio-contact{padding:11px 13px;font-size:12px;gap:5px}
+  .portfolio-contact svg{width:13px;height:13px}
+  .footer{flex-direction:column;gap:20px;padding:40px 0}
+  .portfolio-top-btn{padding:12px 20px;min-height:48px;font-size:14px}
+  
+  /* На мобильных упрощаем анимацию, чтобы не было багов с 3D */
+  .hero-img-wrapper { perspective: none; }
+  .hero-img { animation: simpleFadeIn 1s ease 0.2s both; }
+}
+@keyframes simpleFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+@media(max-width:950px){.wrap{padding:0 20px}}
+@media(max-width:720px){.wrap{padding:0 20px}.hero{padding:125px 0 60px}.hero-grid,.grid2,.grid3{grid-template-columns:1fr}.hero h1{font-size:72px}.hero p{font-size:17px}.section{padding:70px 0}.heading{gap:12px}.card{padding:24px}.full-preview{max-width:100%}}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+  .portfolio-contact::before{animation:none!important;}
+  .card,.wire{transition:none!important;transform:none!important;}
+  .hero-img { animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ВЕРХНЯЯ ПАНЕЛЬ -->
+<div class="travel-navigation navrow">
+  <button aria-label="Назад" class="travel-back back" id="back">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="m14.5 5.5-6.5 6.5 6.5 6.5"/>
+    </svg>
+  </button>
+  
+  <nav class="travel-nav nav">
+    <div class="travel-brand brand">RZ. <span class="brand-sub">/ design practice</span></div>
+    
+    <div class="travel-links tabs">
+      <a class="travel-link" data-en="Overview" data-ru="Обзор" href="#overview">Обзор</a>
+      <a class="travel-link" data-en="Process" data-ru="Процесс" href="#process">Процесс</a>
+      <a class="travel-link" data-en="Design" data-ru="Дизайн" href="#design">Дизайн</a>
+    </div>
+    
+    <div class="nav-actions">
+      <button class="travel-lang lang" id="lang">RU</button>
+      <a class="portfolio-contact" href="mailto:rafakodirov@gmail.com?subject=Portfolio%20%E2%80%94%20UX%2FUI%20project" aria-label="Связаться">
+        <span class="portfolio-contact-label">Связаться</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 18 18 6M8 6h10v10"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<!-- ОСНОВНОЙ КОНТЕНТ -->
+<main>
+  <section class="hero" id="overview">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">WEB / PRODUCT LANDING / UI CONCEPT</div>
+        <h1>Whoosh<span class="dot">.</span></h1>
+        <p data-en="A professional hair dryer landing-page concept. A product story bringing form, technology and benefits into one visual experience." data-ru="Концепция лендинга профессионального фена. Продуктовая история, где форма, технологии и преимущества складываются в цельный визуальный опыт.">Концепция лендинга профессионального фена. Продуктовая история, где форма, технологии и преимущества складываются в цельный визуальный опыт.</p>
+        <div class="tags"><span class="tag">UX/UI</span><span class="tag">Web design</span><span class="tag">Product storytelling</span><span class="tag">Concept · 2026</span></div>
+      </div>
+      
+      <!-- ОБЕРНУЛИ КАРТИНКУ В ОБЕРТКУ ДЛЯ 3D-ЭФФЕКТА -->
+      <div class="hero-img-wrapper">
+        <img alt="Whoosh — продуктовый лендинг в макете MacBook" class="hero-img" src="assets/whoosh/macbook_cutout.png"/>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- 01 / CONTEXT -->
+  <section class="section">
+    <div class="wrap">
+      <div class="heading">
+        <span class="number">01 / CONTEXT</span>
+        <h2 data-en="Problem<span class='dot'>.</span>" data-ru="Проблема<span class='dot'>.</span>">Проблема<span class="dot">.</span></h2>
+      </div>
+      <p class="lead" data-en="Based on an analysis of competitors (Dyson, Dreame) and user reviews on marketplaces, I found that most premium hair dryer websites are overloaded with technical specs but fail to explain the product's value through user experience. Users get lost in numbers and don't understand what they are paying for." data-ru="На основе анализа конкурентов (Dyson, Dreame) и отзывов пользователей на маркетплейсах, я выявил, что большинство сайтов премиальных фенов перегружены техническими характеристиками, но не объясняют ценность продукта через пользовательский опыт. Пользователь теряется в цифрах и не понимает, за что платит.">На основе анализа конкурентов (Dyson, Dreame) и отзывов пользователей на маркетплейсах, я выявил, что большинство сайтов премиальных фенов перегружены техническими характеристиками, но не объясняют ценность продукта через пользовательский опыт. Пользователь теряется в цифрах и не понимает, за что платит.</p>
+      <div class="grid2">
+        <div class="card"><span class="label">USER NEED</span><h3 data-en="Understand the value" data-ru="Понять ценность">Понять ценность</h3><p data-en="The user needs to understand in 5 seconds why this hair dryer is better than a regular one, and how it fits into their daily hair care ritual." data-ru="Пользователю нужно за 5 секунд понять, почему этот фен лучше, чем обычный, и как он впишется в его ежедневный ритуал ухода.">Пользователю нужно за 5 секунд понять, почему этот фен лучше, чем обычный, и как он впишется в его ежедневный ритуал ухода.</p></div>
+        <div class="card"><span class="label">DESIGN CHALLENGE</span><h3 data-en="Sell through visuals" data-ru="Продать через визуал">Продать через визуал</h3><p data-en="Create a premium presentation that sells emotions and status, without hiding technological arguments and important specifications." data-ru="Создать премиальную подачу, которая продаёт эмоции и статус, не пряча при этом технологические аргументы и важные характеристики.">Создать премиальную подачу, которая продаёт эмоции и статус, не пряча при этом технологические аргументы и важные характеристики.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 / OBJECTIVE -->
+  <section class="section">
+    <div class="wrap">
+      <div class="heading">
+        <span class="number">02 / OBJECTIVE</span>
+        <h2 data-en="Goal<span class='dot'>.</span>" data-ru="Цель<span class='dot'>.</span>">Цель<span class="dot">.</span></h2>
+      </div>
+      <p class="lead" data-en="Design a coherent product landing page: spark interest with the hero, explain airflow technology, present comparable specifications and guide visitors toward ordering." data-ru="Создать последовательный продуктовый лендинг: вызвать интерес первым экраном, объяснить технологию воздушного потока, дать сравнимые характеристики и привести к оформлению заказа.">Создать последовательный продуктовый лендинг: вызвать интерес первым экраном, объяснить технологию воздушного потока, дать сравнимые характеристики и привести к оформлению заказа.</p>
+      <div class="grid3">
+        <div class="card"><span class="label">01 / ATTENTION</span><h3 data-en="Expressive hero" data-ru="Выразительный hero">Выразительный hero</h3><p data-en="Large product rendering and a clear headline." data-ru="Крупный рендер устройства и ясный заголовок.">Крупный рендер устройства и ясный заголовок.</p></div>
+        <div class="card"><span class="label">02 / CLARITY</span><h3 data-en="Progressive detail" data-ru="Аргументы по порядку">Аргументы по порядку</h3><p data-en="Benefits → technology → specifications → design." data-ru="Преимущества → технология → характеристики → дизайн.">Преимущества → технология → характеристики → дизайн.</p></div>
+        <div class="card"><span class="label">03 / ACTION</span><h3 data-en="Accessible CTA" data-ru="Доступный CTA">Доступный CTA</h3><p data-en="Repeated “Order now” action." data-ru="Повторяющееся действие «Оформить заказ».">Повторяющееся действие «Оформить заказ».</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 / ROLE -->
+  <section class="section">
+    <div class="wrap">
+      <div class="heading">
+        <span class="number">03 / ROLE</span>
+        <h2 data-en="My contribution<span class='dot'>.</span>" data-ru="Мой вклад<span class='dot'>.</span>">Мой вклад<span class="dot">.</span></h2>
+      </div>
+      <div class="grid2">
+        <div class="card"><span class="label">UX STRUCTURE</span><h3 data-en="Structure and journey" data-ru="Структура и сценарий">Структура и сценарий</h3><p data-en="Landing page sections, product discovery flow and CTA placement." data-ru="Организация блоков лендинга, логика знакомства с продуктом и расположение CTA.">Организация блоков лендинга, логика знакомства с продуктом и расположение CTA.</p></div>
+        <div class="card"><span class="label">VISUAL DESIGN</span><h3 data-en="UI and visual system" data-ru="UI и визуальная система">UI и визуальная система</h3><p data-en="Typography, composition, dark-green palette, product imagery and specification modules." data-ru="Типографика, композиция, тёмно-зелёная палитра, продуктовые визуалы, карточки характеристик.">Типографика, композиция, тёмно-зелёная палитра, продуктовые визуалы, карточки характеристик.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 / PROCESS -->
+  <section class="section" id="process">
+    <div class="wrap">
+      <div class="heading">
+        <span class="number">04 / PROCESS</span>
+        <h2 data-en="Process<span class='dot'>.</span>" data-ru="Процесс<span class='dot'>.</span>">Процесс<span class="dot">.</span></h2>
+      </div>
+      <div class="grid3">
+        <div class="card"><span class="label">DISCOVER</span><h3 data-en="Hypothesis" data-ru="Гипотеза">Гипотеза</h3><p data-en="If we show a large product visual and a short emotional headline on the first screen, the user will stay on the page longer. We chose this because premium brands (Apple, Dyson) sell emotions through imagery." data-ru="Если мы покажем крупный визуал продукта и короткий эмоциональный заголовок на первом экране, пользователь задержится на странице дольше. Выбрали это, так как премиальные бренды (Apple, Dyson) продают эмоции через картинку.">Если мы покажем крупный визуал продукта и короткий эмоциональный заголовок на первом экране, пользователь задержится на странице дольше. Выбрали это, так как премиальные бренды (Apple, Dyson) продают эмоции через картинку.</p></div>
+        <div class="card"><span class="label">MAP</span><h3>CJM</h3><p data-en="Mapping a hypothesized journey from first impression to order." data-ru="Построение предполагаемого пути от первого впечатления до заказа.">Построение предполагаемого пути от первого впечатления до заказа.</p></div>
+        <div class="card"><span class="label">DESIGN</span><h3 data-en="Content hierarchy" data-ru="Иерархия контента">Иерархия контента</h3><p data-en="If we break technical specs into 'Technology → Benefits' blocks, the user will better understand the value. Tested via heuristic evaluation: long spec lists are tiring, so we split them into semantic blocks." data-ru="Если мы разобьем технические характеристики на блоки «Технология → Преимущества», пользователь лучше поймет ценность. Проверяли через эвристическую оценку: длинный список характеристик утомляет, поэтому разбили его на смысловые блоки.">Если мы разобьем технические характеристики на блоки «Технология → Преимущества», пользователь лучше поймет ценность. Проверяли через эвристическую оценку: длинный список характеристик утомляет, поэтому разбили его на смысловые блоки.</p></div>
+      </div>
+      <h3 style="margin-top:58px; color:var(--green);">CJM <span class="dot">/</span> <span data-en="hypothesized journey" data-ru="гипотетический путь">гипотетический путь</span></h3>
+      <div class="flow"><span data-en="Discover Whoosh" data-ru="Увидел Whoosh">Увидел Whoosh</span><i>→</i><span data-en="Evaluate design" data-ru="Оценил дизайн">Оценил дизайн</span><i>→</i><span data-en="Explore technology" data-ru="Изучил технологию">Изучил технологию</span><i>→</i><span data-en="Review specs" data-ru="Сравнил параметры">Сравнил параметры</span><i>→</i><span data-en="Decide to order" data-ru="Решил заказать">Решил заказать</span></div>
+      <h3 data-en="Low-fidelity / layout structure" data-ru="Low-fidelity / схема структуры" style="margin-top:60px; color:var(--green);">Low-fidelity / схема структуры</h3>
+      
+      <div class="grid3">
+        <div class="wire">
+          <span class="label">01 / HERO</span>
+          <div class="wire-top"></div>
+          <div class="wire-main"></div>
+          <div class="wire-lines"></div>
+          <div class="wire-cta"></div>
+        </div>
+        <div class="wire">
+          <span class="label">02 / FEATURES</span>
+          <div class="wire-top"></div>
+          <div class="wire-photo"></div>
+          <div class="wire-lines"></div>
+        </div>
+        <div class="wire">
+          <span class="label">03 / ORDER</span>
+          <div class="wire-top"></div>
+          <div class="wire-main"></div>
+          <div class="wire-cta"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 / FINAL UI -->
+  <section class="section" id="design">
+    <div class="wrap">
+      <div class="heading">
+        <span class="number">05 / FINAL UI</span>
+        <h2 data-en="Results<span class='dot'>.</span>" data-ru="Результаты<span class='dot'>.</span>">Результаты<span class="dot">.</span></h2>
+      </div>
+      <p class="lead" data-en="A product page concept with a deep-green visual language, expressive dryer imagery and a structured presentation of technology, specifications and benefits." data-ru="Разработана визуальная концепция продуктовой страницы: насыщенный зелёный фон, выразительный рендер фена, последовательная презентация технологии, параметров и преимуществ.">Разработана визуальная концепция продуктовой страницы: насыщенный зелёный фон, выразительный рендер фена, последовательная презентация технологии, параметров и преимуществ.</p>
+      <div class="grid2" style="margin:40px 0">
+        <div class="card"><span class="label">UI / HERO</span><h3 data-en="Hero section" data-ru="Первый экран">Первый экран</h3><p data-en="The product takes center stage; the headline and action are immediately visible." data-ru="Продукт занимает основное пространство; заголовок и действие читаются с первого взгляда.">Продукт занимает основное пространство; заголовок и действие читаются с первого взгляда.</p></div>
+        <div class="card"><span class="label">UI / STORY</span><h3 data-en="Long-form product story" data-ru="Длинная продуктовая история">Длинная продуктовая история</h3><p data-en="Benefits, airflow, specifications, materials, comparison and final CTA." data-ru="Преимущества, воздушный поток, характеристики, материалы, сравнение и финальный CTA.">Преимущества, воздушный поток, характеристики, материалы, сравнение и финальный CTA.</p></div>
+      </div>
+      <a aria-label="Открыть полный макет" class="preview" href="#lightbox" id="open-preview"><img alt="Whoosh — финальный UI первого экрана" src="assets/whoosh/hero.jpeg"/></a>
+      <h3 data-en="Full page design" data-ru="Полный макет" style="margin:65px 0 25px; color:var(--green);">Полный макет</h3>
+      <a aria-label="Открыть полный макет целиком" class="preview full-preview" href="#lightbox" id="open-full"><img alt="Полный дизайн лендинга Whoosh" src="assets/whoosh/full.jpeg"/></a>
+      <p class="smallnote" data-en="Click the image to inspect the design." data-ru="Нажмите на изображение, чтобы рассмотреть макет." style="text-align:center">Нажмите на изображение, чтобы рассмотреть макет.</p>
+      <div class="grid2" style="margin-top:60px">
+        <div class="card"><span class="label">DESIGN REVIEW</span><h3 data-en="Self-review" data-ru="Самопроверка">Самопроверка</h3><p data-en="During testing (heuristic evaluation in Figma), I found: 1) Low contrast of technical renders on the green background — fixed with semi-transparent text overlays. 2) The CTA was lost among other content — made it contrasting (gold) and repeating. 3) It was unclear what each attachment was for — added icons and short captions." data-ru="На этапе тестирования (эвристическая оценка в Figma) я обнаружил: 1) Низкий контраст технических рендеров на зелёном фоне — исправил полупрозрачными подложками под текст. 2) Кнопка «Оформить заказ» терялась среди контента — сделал её контрастной (золотой) и повторяющейся. 3) Было непонятно, для чего нужна каждая насадка — добавил иконки и короткие подписи.">На этапе тестирования (эвристическая оценка в Figma) я обнаружил: 1) Низкий контраст технических рендеров на зелёном фоне — исправил полупрозрачными подложками под текст. 2) Кнопка «Оформить заказ» терялась среди контента — сделал её контрастной (золотой) и повторяющейся. 3) Было непонятно, для чего нужна каждая насадка — добавил иконки и короткие подписи.</p></div>
+        <div class="card"><span class="label">FEEDBACK STATUS</span><h3 data-en="Feedback / status" data-ru="Фидбэк / статус">Фидбэк / статус</h3><p data-en="No external feedback or user-test results were provided. Next, validate readability, CTA visibility and comprehension of benefits." data-ru="Внешние отзывы и результаты пользовательских тестов не предоставлены. Для следующей итерации стоит проверить читаемость, доступность CTA и понимание преимуществ.">Внешние отзывы и результаты пользовательских тестов не предоставлены. Для следующей итерации стоит проверить читаемость, доступность CTA и понимание преимуществ.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 / REFLECTION -->
+  <section class="section">
+    <div class="wrap">
+      <div class="heading">
+        <span class="number">06 / REFLECTION</span>
+        <h2 data-en="Takeaways<span class='dot'>.</span>" data-ru="Выводы<span class='dot'>.</span>">Выводы<span class="dot">.</span></h2>
+      </div>
+      <p class="lead" data-en="The result is a concept that demonstrates a premium approach to product presentation. To evaluate effectiveness after launch (if it were a real business), I would measure the following metrics:" data-ru="Результат проекта — концепт, который демонстрирует премиальный подход к подаче продукта. Для оценки эффективности после запуска (если бы это был реальный бизнес) я бы замерил следующие метрики:">Результат проекта — концепт, который демонстрирует премиальный подход к подаче продукта. Для оценки эффективности после запуска (если бы это был реальный бизнес) я бы замерил следующие метрики:</p>
+      
+      <div class="grid2" style="margin-top:30px">
+        <div class="card"><span class="label">ENGAGEMENT</span><h3>Время на странице</h3><p>Среднее время изучения визуалов. Цель: > 2 минут (пользователь вовлечён в историю продукта).</p></div>
+        <div class="card"><span class="label">SCROLL DEPTH</span><h3>Глубина прокрутки</h3><p>% пользователей, дошедших до блока «Характеристики» и финального CTA. Цель: > 60%.</p></div>
+        <div class="card"><span class="label">CONVERSION</span><h3>Конверсия (CR)</h3><p>% кликов по кнопке «Оформить заказ». Цель: > 3–5% (для премиум-сегмента).</p></div>
+        <div class="card"><span class="label">BOUNCE RATE</span><h3>Показатель отказов</h3><p>% пользователей, ушедших сразу. Цель: < 40% (если больше — значит, первый экран не заинтересовал).</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ФУТЕР -->
+<footer class="wrap footer">
+  <span>RZ. / design practice</span>
+  <div class="portfolio-top-end">
+    <button class="portfolio-top-btn" id="top" type="button">
+      <span data-ru="Наверх" data-en="Back to top">Наверх</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="m6 14 6-6 6 6"/>
+      </svg>
+    </button>
+  </div>
+</footer>
+
+<div aria-label="Whoosh full design" aria-modal="true" class="lightbox" hidden="" id="lightbox" role="dialog">
+  <button aria-label="Закрыть" class="close" id="close">✕</button>
+  <div class="lightbox-scroll"><img alt="Полный макет Whoosh" src="assets/whoosh/full.jpeg"/></div>
+</div>
+
+<script>
+  function goBack(){
+    if(window.parent !== window) { window.parent.postMessage({type:'portfolio-case-back'}, '*'); } 
+    else { location.href = 'index.html#work'; }
+  }
+  document.getElementById('back').onclick = goBack;
+
+  let language = new URLSearchParams(location.search).get('lang') || 'ru';
+  function setLang(l){
+    language = l;
+    document.documentElement.lang = l;
+    document.getElementById('lang').textContent = l.toUpperCase();
+    document.querySelectorAll('[data-ru]').forEach(e => e.innerHTML = e.dataset[l]);
+  }
+  setLang(language);
+  document.getElementById('lang').onclick = () => setLang(language === 'ru' ? 'en' : 'ru');
+  addEventListener('message', e => { if(e.data?.type === 'portfolio-language') setLang(e.data.lang); });
+
+  const caseTabs = [...document.querySelectorAll('.tabs a[href^="#"]')];
+  const caseSections = caseTabs.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  let scrollSpyFrame = 0;
+  
+  function syncCaseNav(){
+    scrollSpyFrame = 0;
+    const threshold = Math.min(250, innerHeight * .38);
+    let current = caseSections[0];
+    for(const section of caseSections){
+      if(section.getBoundingClientRect().top <= threshold) current = section;
+    }
+    caseTabs.forEach(a => {
+      const selected = a.getAttribute('href') === '#' + current.id;
+      a.classList.toggle('active', selected);
+      if(selected) a.setAttribute('aria-current', 'location');
+      else a.removeAttribute('aria-current');
+    });
+  }
+  function requestNavSync(){ if(!scrollSpyFrame) scrollSpyFrame = requestAnimationFrame(syncCaseNav); }
+  
+  addEventListener('scroll', requestNavSync, {passive:true});
+  addEventListener('resize', requestNavSync, {passive:true});
+  caseTabs.forEach(a => a.addEventListener('click', () => setTimeout(syncCaseNav, 500)));
+  syncCaseNav();
+
+  const modal = document.getElementById('lightbox');
+  const open = e => {
+    e.preventDefault();
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    document.getElementById('close').focus();
+  };
+  document.getElementById('open-preview').addEventListener('click', open);
+  document.getElementById('open-full').addEventListener('click', open);
+  
+  function close(){
+    modal.hidden = true;
+    document.body.style.overflow = '';
+  }
+  document.getElementById('close').addEventListener('click', close);
+  modal.addEventListener('click', e => { if(e.target === modal) close(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape' && !modal.hidden) close(); });
+
+  document.getElementById('top').addEventListener('click', () => {
+    window.scrollTo({top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+  });
+</script>
+
+</body></html>

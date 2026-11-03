@@ -68,84 +68,70 @@ body{background:radial-gradient(ellipse 75% 40% at 8% 0%,#e3eee7 0%,transparent 
 @media(max-width:670px){.mdr-topbar{top:12px;gap:8px;width:calc(100% - 20px)}.mdr-back{width:50px;min-width:50px;height:50px}.mdr-glass-nav{min-height:50px;padding:6px 9px 6px 13px;border-radius:19px}.mdr-logo{font-size:12px}.mdr-glass-nav .mdr-nav-link{font-size:11px;padding:9px 7px}.mdr-lang{font-size:11px;padding:9px}.mdr-contact{display:none}}
 @media(max-width:390px){.mdr-glass-nav .mdr-nav-link{font-size:10px;padding:8px 5px}}
 @media(prefers-reduced-motion:reduce){.portfolio-top-btn svg{animation:none}}
-</style><style id="mdr-shared-navigation-v149">
+</style><style id="mdr-v163-navigation-clean">
+/* MDR navigation: single authoritative implementation, no travel/legacy overrides */
 .case-navigation{position:fixed;z-index:95;top:18px;left:50%;transform:translateX(-50%);width:min(1036px,calc(100% - 32px));display:flex;align-items:center;gap:12px;pointer-events:none;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
-.case-navigation>*{pointer-events:auto}.case-back{width:64px;height:64px;flex:0 0 64px;display:grid;place-items:center;padding:0;border-radius:50%;background:rgba(255,255,255,.56);border:1px solid rgba(255,255,255,.8);box-shadow:0 14px 60px #20332c12,inset 0 1px 0 #fff8;backdrop-filter:blur(26px) saturate(170%);-webkit-backdrop-filter:blur(26px) saturate(170%);color:#172322;cursor:pointer;transition:transform .35s cubic-bezier(.22,1,.36,1),background .3s}.case-back:hover{transform:translateX(-3px);background:rgba(255,255,255,.85)}.case-back svg{width:22px;height:22px;display:block}
-.case-nav{min-width:0;flex:1;min-height:64px;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 11px 9px 20px;border-radius:24px;background:rgba(255,255,255,.56);border:1px solid rgba(255,255,255,.8);box-shadow:0 14px 60px #20332c12,inset 0 1px 0 #fff8;backdrop-filter:blur(26px) saturate(170%);-webkit-backdrop-filter:blur(26px) saturate(170%);color:#172322}
-.case-brand{font-weight:800;font-size:13px;letter-spacing:-.04em;white-space:nowrap;color:#172322;text-decoration:none}.case-brand span{color:#78958c}.case-brand small{font-weight:500;color:#67716f}.case-links{display:flex;align-items:center;gap:5px}.case-links a{display:block;border:0;text-decoration:none;background:transparent;color:#172322;font-size:12px;font-weight:500;padding:12px 15px;border-radius:15px;white-space:nowrap;transition:background .3s,transform .4s cubic-bezier(.22,1,.36,1)}.case-links a:hover{background:#fff9}.case-links a.active{background:#1d4f49;color:white;box-shadow:0 5px 16px #1d4f4930}.case-lang{border:1px solid #fff9;background:#ffffff75;color:#172322;min-width:52px;border-radius:15px;font-size:12px;padding:12px 13px;cursor:pointer;transition:background .3s}.case-lang:hover{background:#fff}.case-navigation :focus-visible{outline:3px solid #168f85;outline-offset:3px}
-@media(max-width:720px){.case-navigation{top:10px;width:calc(100% - 20px);gap:8px}.case-back{width:44px;height:44px;flex-basis:44px}.case-nav{min-height:54px;padding:7px;gap:5px}.case-brand{font-size:13px;padding-left:5px}.case-brand small{display:none}.case-links{gap:0}.case-links a{font-size:10px;padding:10px 7px}.case-lang{min-width:36px;padding:10px 8px;font-size:10px}}
-@media(max-width:390px){.case-brand{font-size:12px}.case-links a{padding:10px 5px}}
-@media(prefers-reduced-motion:reduce){.case-navigation *{transition:none!important}}
-
-
-.case-navigation{top:18px!important}
-.case-back{width:64px!important;height:64px!important;min-width:64px!important;min-height:64px!important;flex:0 0 64px!important;aspect-ratio:1!important;border-radius:50%!important;display:grid!important;place-items:center!important;box-sizing:border-box!important;background:rgba(255,255,255,.58)!important;border:1px solid rgba(255,255,255,.88)!important;box-shadow:0 14px 45px rgba(25,55,55,.08),inset 0 1px 0 rgba(255,255,255,.7)!important;backdrop-filter:blur(24px) saturate(160%)!important;-webkit-backdrop-filter:blur(24px) saturate(160%)!important}
-.case-back svg{display:block!important;width:22px!important;height:22px!important;margin:auto!important}
-@media(max-width:720px){.case-navigation{top:10px!important}.case-back{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;flex-basis:44px!important}}
-
-
-.portfolio-contact{display:inline-flex!important;align-items:center;justify-content:center;gap:8px;flex:0 0 auto;white-space:nowrap;text-decoration:none!important;padding:12px 19px;border-radius:999px;color:#19332e!important;background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(227,242,237,.62));border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 5px 18px rgba(24,65,59,.1);font:600 13px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;position:relative;overflow:hidden;isolation:isolate;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,background .3s}
-.portfolio-contact::before{content:'';position:absolute;inset:-30%;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.8) 50%,transparent 65%);transform:translateX(-110%);transition:transform .85s;z-index:-1}.portfolio-contact:hover::before{transform:translateX(110%)}.portfolio-contact:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 #fff,0 9px 26px rgba(24,65,59,.17)}.portfolio-contact svg{width:15px;height:15px;transition:transform .3s}.portfolio-contact:hover svg{transform:translate(2px,-2px)}
-.case-links a:active,.portfolio-contact:active{transform:scale(.96)}
-@media(max-width:720px){.portfolio-contact{padding:11px 12px;font-size:11px;gap:4px}.portfolio-contact svg{width:12px;height:12px}.case-nav{gap:4px}.case-links a{padding:10px 6px}}
-@media(max-width:430px){.portfolio-contact-label{display:none}.portfolio-contact{width:36px;height:36px;padding:0}.portfolio-contact svg{width:16px;height:16px}.case-links a{font-size:10px;padding:10px 5px}}
-
-/* v150 — exact action spacing and animated glass contact CTA */
-.case-actions{display:flex;align-items:center;justify-content:flex-end;gap:12px;flex:0 0 auto;margin-left:auto}
-.case-nav{justify-content:space-between}
-.case-actions .portfolio-contact{position:relative;isolation:isolate;overflow:hidden;transform:translateZ(0);will-change:transform}
-.case-actions .portfolio-contact::before{content:"";position:absolute;inset:-30%;z-index:0;pointer-events:none;background:linear-gradient(105deg,transparent 32%,rgba(44,180,101,.06) 40%,rgba(67,207,117,.38) 47%,rgba(135,247,171,.68) 50%,rgba(54,195,108,.32) 54%,transparent 66%);animation:mdrGreenGlassSweep 3.4s cubic-bezier(.35,.05,.22,1) infinite;transition:none}
-.case-actions .portfolio-contact .portfolio-contact-label,.case-actions .portfolio-contact svg{position:relative;z-index:1}
-.case-actions .portfolio-contact:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 #fff,0 9px 26px rgba(24,65,59,.17)}
-.case-actions .portfolio-contact:hover svg{transform:translate(2px,-2px)}
-.case-actions .portfolio-contact:active{transform:translateY(0) scale(.96)}
-@keyframes mdrGreenGlassSweep{0%,12%{transform:translateX(-115%) skewX(-8deg)}55%,100%{transform:translateX(115%) skewX(-8deg)}}
-@media(max-width:720px){.case-actions{gap:5px}}
-@media(prefers-reduced-motion:reduce){.case-actions .portfolio-contact::before{animation:none!important;transform:translateX(-115%)}}
-
-/* v151 — centered case tabs, dimensional language control, refined full-screen gallery */
-@media(min-width:721px){
- .case-nav{position:relative;justify-content:space-between}
- .case-links{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1}
- .case-brand,.case-actions{position:relative;z-index:2}
+.case-navigation>*{pointer-events:auto}
+.case-navigation .case-back{width:64px;height:64px;min-width:64px;min-height:64px;flex:0 0 64px;aspect-ratio:1;box-sizing:border-box;display:grid;place-items:center;padding:0;border-radius:50%;background:rgba(255,255,255,.58);border:1px solid rgba(255,255,255,.88);box-shadow:0 14px 45px rgba(25,55,55,.08),inset 0 1px 0 rgba(255,255,255,.7);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);color:#172322;cursor:pointer;transition:transform .35s cubic-bezier(.22,1,.36,1),background .3s}
+.case-navigation .case-back:hover{transform:translateX(-3px);background:rgba(255,255,255,.85)}
+.case-navigation .case-back svg{display:block;width:22px;height:22px;margin:auto}
+.case-navigation .case-nav{min-width:0;flex:1;min-height:64px;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 11px 9px 20px;border-radius:24px;background:rgba(255,255,255,.56);border:1px solid rgba(255,255,255,.8);box-shadow:0 14px 60px #20332c12,inset 0 1px 0 #fff8;backdrop-filter:blur(26px) saturate(170%);-webkit-backdrop-filter:blur(26px) saturate(170%);color:#172322}
+.case-navigation .case-brand{font-weight:800;font-size:13px;letter-spacing:-.04em;white-space:nowrap;color:#172322;text-decoration:none;flex-shrink:0}
+.case-navigation .case-brand span{color:#78958c}.case-navigation .case-brand small{font-weight:500;color:#67716f}
+.case-navigation .case-links{display:flex;align-items:center;gap:5px;flex-shrink:0}
+.case-navigation .case-links a{display:block;border:0;text-decoration:none;background:transparent;color:#172322;font-size:12px;font-weight:500;padding:12px 15px;border-radius:15px;white-space:nowrap;transition:background .3s,transform .4s cubic-bezier(.22,1,.36,1)}
+.case-navigation .case-links a:hover{background:#fff9}.case-navigation .case-links a.active{background:#1d4f49;color:#fff;box-shadow:0 5px 16px #1d4f4930}
+.case-navigation .case-lang{border:1px solid #fff9;background:#ffffff75;color:#172322;min-width:52px;border-radius:15px;font-size:12px;padding:12px 13px;cursor:pointer;transition:background .3s;flex-shrink:0}
+.case-navigation .case-lang:hover{background:#fff}
+.case-navigation .portfolio-contact{display:inline-flex!important;align-items:center;justify-content:center;gap:8px;flex:0 0 auto;white-space:nowrap;text-decoration:none!important;padding:12px 19px;border-radius:999px;color:#19332e!important;background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(227,242,237,.62));border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 5px 18px rgba(24,65,59,.1);font:600 13px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;position:relative;overflow:hidden;isolation:isolate;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,background .3s}
+.case-navigation .portfolio-contact::before{content:'';position:absolute;inset:-30%;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.8) 50%,transparent 65%);transform:translateX(-110%);transition:transform .85s;z-index:0;pointer-events:none;animation:none}
+.case-navigation .portfolio-contact:hover::before{transform:translateX(110%)}
+.case-navigation .portfolio-contact:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 #fff,0 9px 26px rgba(24,65,59,.17)}
+.case-navigation .portfolio-contact-label,.case-navigation .portfolio-contact svg{position:relative;z-index:1}
+.case-navigation .portfolio-contact svg{width:15px;height:15px;transition:transform .3s}.case-navigation .portfolio-contact:hover svg{transform:translate(2px,-2px)}
+.case-navigation :focus-visible{outline:3px solid #168f85;outline-offset:3px}
+@media(max-width:720px){
+ .case-navigation{top:10px;width:calc(100% - 20px);gap:8px}
+ .case-navigation .case-back{width:44px;height:44px;min-width:44px;min-height:44px;flex:0 0 44px}
+ .case-navigation .case-nav{min-height:54px;padding:7px;gap:5px}
+ .case-navigation .case-brand{font-size:13px;padding-left:5px}
+ .case-navigation .case-brand small{display:none}
+ .case-navigation .case-links{gap:0}
+ .case-navigation .case-links a{font-size:10px;padding:10px 7px}
+ .case-navigation .case-lang{min-width:36px;padding:10px 8px;font-size:10px}
+ .case-navigation .portfolio-contact{padding:11px 13px;font-size:12px;gap:5px;width:auto;height:auto}
+ .case-navigation .portfolio-contact svg{width:13px;height:13px}
+ .case-navigation .portfolio-contact-label{display:inline;visibility:visible}
 }
-/* v152 — match the Drive&Deal language switch exactly */
-.case-lang{
-  border:1px solid #fff9;
-  background:#ffffff75;
-  color:#172322;
-  min-width:52px;
-  border-radius:15px;
-  font-size:12px;
-  padding:12px 13px;
-  cursor:pointer;
-  box-shadow:none;
-  transform:none;
-  transition:background .3s;
+@media(max-width:390px){.case-navigation .case-brand{font-size:12px}.case-navigation .case-links a{padding:10px 5px}}
+@media(prefers-reduced-motion:reduce){.case-navigation *,.case-navigation *::before{transition:none!important}}
+
+/* v164: MDR-only perpetual green glass sweep; preserve navigation geometry. */
+.case-navigation .portfolio-contact::before{
+ background:linear-gradient(105deg,transparent 32%,rgba(44,180,101,.06) 40%,rgba(67,207,117,.38) 47%,rgba(135,247,171,.68) 50%,rgba(54,195,108,.32) 54%,transparent 66%);
+ animation:mdrGreenGlassSweep 3.4s cubic-bezier(.35,.05,.22,1) infinite;
+ transition:none;
 }
-.case-lang:hover{background:#fff;box-shadow:none;transform:none}
-.case-lang:active{transform:none;box-shadow:none}
-@media(max-width:720px){.case-lang{min-width:36px;padding:10px 8px;font-size:10px}}
-.mdr-lightbox-close{
- width:52px;height:52px;display:grid;place-items:center;padding:0;
- font-size:0;line-height:normal;cursor:pointer;
- background:rgba(255,255,255,.80);border:1px solid rgba(255,255,255,.94);
- box-shadow:0 14px 45px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.85);
- backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);
- transition:transform .35s cubic-bezier(.22,1,.36,1),background .3s,box-shadow .3s;
+.case-navigation .portfolio-contact:hover::before{transform:none}
+.case-navigation .portfolio-contact:hover{
+ box-shadow:inset 0 1px 0 #fff,0 9px 26px rgba(24,65,59,.17),0 0 17px rgba(67,207,117,.16);
 }
-.mdr-lightbox-close svg{display:block;width:19px;height:19px;margin:auto;flex:none}
-.mdr-lightbox-close:hover{transform:translateX(-3px);background:rgba(255,255,255,.96);box-shadow:0 17px 50px rgba(0,0,0,.22),inset 0 1px 0 #fff}
-.mdr-lightbox-close:active{transform:scale(.95)}
-.mdr-lightbox-close:focus-visible{outline:3px solid #ad8b58;outline-offset:3px}
-.open-visual{display:none!important}
-@media(max-width:720px){.mdr-lightbox-close{width:44px;height:44px;right:12px;top:12px}.mdr-lightbox-close svg{width:17px;height:17px}}
-@media(prefers-reduced-motion:reduce){.mdr-lightbox-close,.case-lang{transition:none!important}}
-</style></head><body><div class="travel-navigation case-navigation">
-<button class="travel-back case-back" type="button" aria-label="Back to projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></svg></button>
-<nav class="travel-nav case-nav" aria-label="Project navigation"><a class="travel-brand case-brand" href="index.html#work">RZ<span>.</span> <small class="brand-sub">/ design practice</small></a>
-<div class="travel-links case-links"><a class="travel-link active" href="#overview" data-ru="Обзор" data-en="Overview">Обзор</a><a class="travel-link" href="#process" data-ru="Процесс" data-en="Process">Процесс</a><a class="travel-link" href="#design" data-ru="Дизайн" data-en="Design">Дизайн</a></div>
-<div class="case-actions"><button class="travel-lang case-lang" type="button" aria-label="Switch language">RU</button>
+@keyframes mdrGreenGlassSweep{
+ 0%,12%{transform:translateX(-115%) skewX(-8deg)}
+ 55%,100%{transform:translateX(115%) skewX(-8deg)}
+}
+@media(prefers-reduced-motion:reduce){
+ .case-navigation .portfolio-contact::before{animation:none!important;transform:translateX(-115%) skewX(-8deg)}
+}
+
+/* v165: fixed 12px gap between language and contact, independent of space-between */
+.case-navigation .case-actions{display:flex;align-items:center;justify-content:flex-end;gap:12px;flex:0 0 auto;min-width:0}
+@media(max-width:720px){.case-navigation .case-actions{gap:12px}}
+</style></head><body><div class="case-navigation">
+<button class="case-back" type="button" aria-label="Back to projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></svg></button>
+<nav class="case-nav" aria-label="Project navigation"><a class="case-brand" href="index.html#work">RZ<span>.</span> <small class="brand-sub">/ design practice</small></a>
+<div class="case-links"><a class="active" href="#overview" data-ru="Обзор" data-en="Overview">Обзор</a><a class="case-link" href="#process" data-ru="Процесс" data-en="Process">Процесс</a><a class="case-link" href="#design" data-ru="Дизайн" data-en="Design">Дизайн</a></div>
+<div class="case-actions"><button class="case-lang" type="button" aria-label="Switch language">RU</button>
 <a class="portfolio-contact" href="mailto:rafakodirov@gmail.com?subject=MDR%20ULTRA%20LIGHT" aria-label="Связаться"><span class="portfolio-contact-label" data-ru="Связаться" data-en="Contact">Связаться</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10"/></svg></a></div></nav></div><main><section class="hero" id="overview"><div class="wrap hero-grid"><div><div class="eyebrow" data-ru="08 / WEB · PRODUCT EXPERIENCE" data-en="08 / WEB · PRODUCT EXPERIENCE">08 / WEB · PRODUCT EXPERIENCE</div><h1>MDR<br>ULTRA<br>LIGHT<span class="gold">.</span></h1><p data-ru="Технологичный продукт заслуживает точного визуального языка. Концепция лендинга, в котором дрон, его возможности и действие пользователя становятся главным." data-en="A technical product deserves a precise visual language. A landing-page concept built around the drone, its capabilities and a clear next action.">Технологичный продукт заслуживает точного визуального языка. Концепция лендинга, в котором дрон, его возможности и действие пользователя становятся главным.</p><a class="cta" href="#challenge"><span data-ru="Исследовать кейс" data-en="Explore the case">Исследовать кейс</span><span aria-hidden="true">↘</span></a></div><div><img class="hero-photo" src="assets/mdr/mdr_macbook_transparent.png" alt="MDR Ultra Light — лендинг в макете MacBook"></div></div></section>
 <section class="section" id="challenge"><div class="wrap"><div class="section-head reveal"><span class="idx">01 / CHALLENGE</span><h2 data-ru="Проблема<span class='gold'>.</span>" data-en="The problem<span class='gold'>.</span>">Проблема<span class="gold">.</span></h2></div><p class="lead reveal" data-ru="Как показать технически сложный продукт так, чтобы пользователь за несколько секунд понял его ценность — и захотел изучить детали?" data-en="How can a complex technical product communicate its value within seconds — and invite people to explore further?">Как показать технически сложный продукт так, чтобы пользователь за несколько секунд понял его ценность — и захотел изучить детали?</p><div class="cols"><article class="panel reveal"><span class="num">01</span><h3 data-ru="Сложные характеристики" data-en="Complex specifications">Сложные характеристики</h3><p data-ru="Вес, скорость, автономность и возможности камеры конкурируют за внимание." data-en="Weight, speed, battery life and camera capabilities compete for attention.">Вес, скорость, автономность и возможности камеры конкурируют за внимание.</p></article><article class="panel reveal"><span class="num">02</span><h3 data-ru="Недостаток контекста" data-en="Missing context">Недостаток контекста</h3><p data-ru="Цифры без сценариев использования не объясняют, почему продукт интересен." data-en="Numbers without use cases don't explain why the product matters.">Цифры без сценариев использования не объясняют, почему продукт интересен.</p></article><article class="panel reveal"><span class="num">03</span><h3 data-ru="Неочевидный следующий шаг" data-en="Unclear next step">Неочевидный следующий шаг</h3><p data-ru="После знакомства с преимуществами нужен понятный путь к предзаказу." data-en="After exploring the benefits, people need a clear path to preorder.">После знакомства с преимуществами нужен понятный путь к предзаказу.</p></article></div></div></section>
 <section class="section"><div class="wrap split"><div class="reveal"><div class="eyebrow">02 / OBJECTIVE</div><h2 style="margin:20px 0 25px" data-ru="Цель<span class='gold'>.</span>" data-en="The goal<span class='gold'>.</span>">Цель<span class="gold">.</span></h2><p class="lead" data-ru="Спроектировать имиджевый лендинг, который объединяет эмоциональную подачу дрона, конкретные преимущества и простой сценарий предзаказа." data-en="Design a premium landing page combining an emotional product presentation, concrete benefits and a straightforward preorder journey.">Спроектировать имиджевый лендинг, который объединяет эмоциональную подачу дрона, конкретные преимущества и простой сценарий предзаказа.</p></div><div class="image-card reveal"><img src="assets/mdr/mdr_preview.jpeg" alt="MDR Ultra Light — дизайн первого экрана без рамки ноутбука"></div></div></section>
