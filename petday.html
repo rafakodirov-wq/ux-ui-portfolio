@@ -1,12 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Яндекс Pet Day — UX/UI кейс · RZ.</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Яндекс Pet Day — UX/UI кейс · RZ.</title>
+<link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<style>
     :root{--ink:#191d29;--muted:#737984;--red:#D14A34;--line:#e6e7ea;--bg:#f8f9fb}
     *{box-sizing:border-box}html{scroll-behavior:smooth}
     body{margin:0;background:radial-gradient(ellipse at 80% 15%,#f4f0ed,transparent 40%),var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
@@ -143,234 +143,222 @@
     }
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
   </style>
-<link rel="stylesheet" href="assets/contact-widget.css"><script src="assets/site.js" defer></script></head>
+<link href="assets/contact-widget.css" rel="stylesheet"/><script defer="" src="assets/site.js"></script><style id="v191-footer-unification">
+/* Consistent MDR-style footer on case pages */
+.footer,.portfolio-top-end{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:16px!important;flex-wrap:nowrap!important;min-width:0!important}
+.footer .portfolio-top-btn,.portfolio-top-end .portfolio-top-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:12px!important;flex-shrink:0!important;border-radius:999px!important;padding:13px 23px!important;min-height:54px!important;background:linear-gradient(135deg,rgba(255,255,255,.89),rgba(255,255,255,.66))!important;border:1px solid rgba(255,255,255,.95)!important;box-shadow:0 12px 34px rgba(30,45,44,.10),inset 0 1px 1px white!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;color:#243a34!important;font-weight:650!important;cursor:pointer!important;transition:transform .32s cubic-bezier(.22,1,.36,1),box-shadow .32s ease,background .32s ease!important}
+.footer .portfolio-top-btn:hover,.portfolio-top-end .portfolio-top-btn:hover{transform:translateY(-4px)!important;box-shadow:0 19px 43px rgba(30,45,44,.16),inset 0 1px 1px white!important}
+.footer .portfolio-top-btn:active,.portfolio-top-end .portfolio-top-btn:active{transform:scale(.97)!important}
+.footer .portfolio-top-btn svg,.portfolio-top-end .portfolio-top-btn svg{width:19px!important;height:19px!important;flex-shrink:0!important;animation:v191Chevron 2.1s ease-in-out infinite!important}
+@keyframes v191Chevron{0%,100%{transform:translateY(2px)}50%{transform:translateY(-3px)}}
+@media(max-width:700px){.footer,.portfolio-top-end{flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;padding-left:18px!important;padding-right:18px!important}.footer .portfolio-top-btn,.portfolio-top-end .portfolio-top-btn{padding:11px 17px!important;min-height:48px!important;font-size:13px!important}.footer-brand,.footer-signature{min-width:0;font-size:12px!important}}
+@media(prefers-reduced-motion:reduce){.footer .portfolio-top-btn svg,.portfolio-top-end .portfolio-top-btn svg{animation:none!important}}
+</style><script id="v191-global-language-init">(function(){try{const stored=localStorage.getItem('portfolio-lang');const params=new URLSearchParams(location.search);if((stored==='ru'||stored==='en')&&params.get('lang')!==stored){params.set('lang',stored);history.replaceState(history.state,'',location.pathname+'?'+params.toString()+location.hash)}}catch(e){}})();</script></head>
 <body>
-
 <div class="case-navigation">
-  <button class="case-back" type="button" aria-label="Назад к проектам">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></svg>
-  </button>
-  <nav class="case-nav" aria-label="Навигация по проекту">
-    <a class="case-brand" href="index.html#work">RZ<span>.</span> <small>/ design practice</small></a>
-    <div class="case-links">
-      <a class="active" href="#overview" data-ru="Обзор" data-en="Overview">Обзор</a>
-      <a href="#process" data-ru="Процесс" data-en="Process">Процесс</a>
-      <a href="#design" data-ru="Дизайн" data-en="Design">Дизайн</a>
-    </div>
-    <div class="case-actions">
-      <button class="case-lang" type="button" aria-label="Переключить язык">RU</button>
-      <a class="portfolio-contact" href="mailto:rafakodirov@gmail.com?subject=Yandex%20Pet%20Day">
-        <span data-ru="Связаться" data-en="Contact">Связаться</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18 18 6M8 6h10v10"/></svg>
-      </a>
-    </div>
-  </nav>
+<button aria-label="Назад к проектам" class="case-back" type="button">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"></path></svg>
+</button>
+<nav aria-label="Навигация по проекту" class="case-nav">
+<a class="case-brand" href="index.html#work">RZ<span>.</span> <small>/ design practice</small></a>
+<div class="case-links">
+<a class="active" data-en="Overview" data-ru="Обзор" href="#overview">Обзор</a>
+<a data-en="Process" data-ru="Процесс" href="#process">Процесс</a>
+<a data-en="Design" data-ru="Дизайн" href="#design">Дизайн</a>
 </div>
-
+<div class="case-actions">
+<button aria-label="Переключить язык" class="case-lang" type="button">RU</button>
+<a class="portfolio-contact" href="mailto:rafakodirov@gmail.com?subject=Yandex%20Pet%20Day">
+<span data-en="Contact" data-ru="Связаться">Связаться</span>
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 18 18 6M8 6h10v10"></path></svg>
+</a>
+</div>
+</nav>
+</div>
 <main>
-  <!-- HERO -->
-  <div class="wrap">
-    <section class="hero" id="overview">
-      <div>
-        <div class="eyebrow">Web / Event landing / UI concept</div>
-        <h1 data-ru="Яндекс<br>Pet Day<em>.</em>" data-en="Yandex<br>Pet Day<em>.</em>">Яндекс<br>Pet Day<em>.</em></h1>
-        <p class="lead" data-ru="Концепция лендинга конференции о цифровых продуктах для владельцев питомцев. Яркая визуальная история, понятная программа и сценарий участия." data-en="A conference landing page concept about digital products for pet owners, with a clear program and registration journey.">Концепция лендинга конференции о цифровых продуктах для владельцев питомцев. Яркая визуальная история, понятная программа и сценарий участия.</p>
-        <div class="tags">
-          <span>UX/UI</span><span>Web design</span><span>Event landing</span><span>Concept · 2026</span>
-        </div>
-      </div>
-      <img class="hero-visual" src="assets/petday/petday_macbook_transparent.png" alt="Макет Яндекс Pet Day на ноутбуке">
-    </section>
-  </div>
-
-  <!-- 01 / ПРОБЛЕМА (теперь это Обзор) -->
-  <section class="content" id="overview">
-    <div class="wrap">
-      <div class="section-no">01 / CONTEXT</div>
-      <h2 data-ru="Проблема<span class='dot'>.</span>" data-en="Problem<span class='dot'>.</span>">Проблема<span class="dot">.</span></h2>
-      <p data-ru="На основе Desk Research (анализа 5 лендингов IT-конференций и чтения отзывов в Telegram-каналах) я выявил, что большинство сайтов событий перегружены списками спикеров и техническими терминами. Пользователь не понимает ценность мероприятия за первые 5 секунд и уходит.">На основе Desk Research (анализа 5 лендингов IT-конференций и чтения отзывов в Telegram-каналах) я выявил, что большинство сайтов событий перегружены списками спикеров и техническими терминами. Пользователь не понимает ценность мероприятия за первые 5 секунд и уходит.</p>
-      <p data-ru="Решение: создать эмоциональный первый экран с 3D-иллюстрацией, который продает идею «заботы о питомцах» через визуал, а не через сухой текст.">Решение: создать эмоциональный первый экран с 3D-иллюстрацией, который продает идею «заботы о питомцах» через визуал, а не через сухой текст.</p>
-      
-      <div class="two-col">
-        <div class="card">
-          <h4>Потребность пользователя</h4>
-          <p>За 5 секунд понять, о чем конференция, будет ли она полезна, и как быстро зарегистрироваться.</p>
-        </div>
-        <div class="card">
-          <h4>Дизайн-вызов</h4>
-          <p>Создать дружелюбный и технологичный образ, который продает эмоции через иллюстрации, не пряча при этом программу и спикеров.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 02 / ЦЕЛЬ -->
-  <section class="content">
-    <div class="wrap">
-      <div class="section-no">02 / OBJECTIVE</div>
-      <h2 data-ru="Цель<span class='dot'>.</span>" data-en="Goal<span class='dot'>.</span>">Цель<span class="dot">.</span></h2>
-      <p data-ru="Разработать концепт лендинга, который через дружелюбный визуальный язык (3D-иллюстрации, светлая палитра) снижает порог входа для аудитории и ведет к регистрации.">Разработать концепт лендинга, который через дружелюбный визуальный язык (3D-иллюстрации, светлая палитра) снижает порог входа для аудитории и ведет к регистрации.</p>
-      <div class="grid-3">
-        <div class="card"><h4>01 / Внимание</h4><p>Выразительный первый экран с 3D-иллюстрацией.</p></div>
-        <div class="card"><h4>02 / Ясность</h4><p>Четкая структура: программа, спикеры, место.</p></div>
-        <div class="card"><h4>03 / Действие</h4><p>Кнопка «Участвовать» повторяется в ключевых блоках.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 03 / МОЙ ВКЛАД -->
-  <section class="content">
-    <div class="wrap">
-      <div class="section-no">03 / ROLE</div>
-      <h2 data-ru="Мой вклад<span class='dot'>.</span>" data-en="My contribution<span class='dot'>.</span>">Мой вклад<span class="dot">.</span></h2>
-      <div class="two-col">
-        <div class="card">
-          <h4>UX Структура</h4>
-          <p>Проектирование блоков, сценарий знакомства с событием и расстановка CTA.</p>
-        </div>
-        <div class="card">
-          <h4>Визуальный дизайн</h4>
-          <p>Типографика, композиция, цветовая палитра, 3D-иллюстрации и карточки спикеров.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 04 / ПРОЦЕСС (теперь это process) -->
-  <section class="content" id="process">
-    <div class="wrap">
-      <div class="section-no">04 / PROCESS</div>
-      <h2 data-ru="Процесс<span class='dot'>.</span>" data-en="Process<span class='dot'>.</span>">Процесс<span class="dot">.</span></h2>
-      
-      <h3>Гипотезы и их проверка</h3>
-      <p><strong>Гипотеза 1:</strong> Если на первом экране показать крупную 3D-иллюстрацию и короткий заголовок, пользователь задержится на странице дольше. <em>Почему выбрали:</em> премиальные бренды продают эмоции через картинку. <em>Как проверяли:</em> Сравнили два варианта (фото vs 3D) на фокус-группе из 3 коллег. Выбрали 3D.</p>
-      <p><strong>Гипотеза 2:</strong> Если разбить программу на компактные блоки с временем, пользователь лучше поймет тайминг и захочет прийти. <em>Как проверяли:</em> через эвристическую оценку — длинные списки утомляют.</p>
-
-      <h3>CJM / Гипотетический путь</h3>
-      <div class="flow">
-        <span>Увидел рекламу</span><i>→</i>
-        <span>Попал на лендинг</span><i>→</i>
-        <span>Оценил программу</span><i>→</i>
-        <span>Решил участвовать</span>
-      </div>
-
-      <h3>Вайрфреймы (Структура страницы)</h3>
-      <div class="wireframe-grid">
-        <div class="wire">
-          <span>01 / HERO</span>
-          <div class="wire-top"></div>
-          <div class="wire-main"></div>
-          <div class="wire-lines"></div>
-          <div class="wire-lines short"></div>
-          <div class="wire-cta"></div>
-        </div>
-        <div class="wire">
-          <span>02 / PROGRAM</span>
-          <div class="wire-top"></div>
-          <div class="wire-lines"></div>
-          <div class="wire-lines"></div>
-          <div class="wire-lines short"></div>
-          <div class="wire-lines"></div>
-        </div>
-        <div class="wire">
-          <span>03 / SPEAKERS</span>
-          <div class="wire-top"></div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;">
-            <div style="height:50px; background:#eef0f3; border-radius:8px;"></div>
-            <div style="height:50px; background:#eef0f3; border-radius:8px;"></div>
-          </div>
-          <div class="wire-cta" style="width:100%; margin-top:15px;"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 05 / РЕЗУЛЬТАТЫ (теперь это design) -->
-  <section class="content" id="design">
-    <div class="wrap">
-      <div class="section-no">05 / RESULTS</div>
-      <h2 data-ru="Результаты<span class='dot'>.</span>" data-en="Results<span class='dot'>.</span>">Результаты<span class="dot">.</span></h2>
-      <p data-ru="Визуальная концепция лендинга с ярким акцентом, понятной программой и блоком спикеров. Результат — концепт, который демонстрирует современный подход к презентации IT-события.">Визуальная концепция лендинга с ярким акцентом, понятной программой и блоком спикеров. Результат — концепт, который демонстрирует современный подход к презентации IT-события.</p>
-      
-      <h3>Обратная связь и тестирование</h3>
-      <p>На этапе тестирования (эвристическая оценка и показ макета коллегам) я обнаружил несколько проблем.</p>
-      
-      <div class="feedback-box">
-        <p>«На первом макете кнопка "Участвовать" сливалась с фоном, и я не сразу понял, куда нажимать».</p>
-        <span class="feedback-author">— Фидбэк от тестирующего (коллега)</span>
-      </div>
-      <p style="margin-top: 20px;"><strong>Как исправил:</strong> Сделал кнопку контрастной (красной) и увеличил её размер.</p>
-
-      <!-- НОВЫЙ БЛОК: UI-KIT ВМЕСТО ПОЛНОГО МАКЕТА -->
-      <h3>Дизайн-система (UI-Kit)</h3>
-      <p>Визуальный язык проекта базируется на строгой сетке, контрастных акцентах и типографике без засечек.</p>
-      
-      <div class="uikit-grid">
-        <div class="uikit-card">
-          <div class="uikit-title">Палитра</div>
-          <div class="palette">
-            <div class="color-swatch" style="background:#D14A34;">#D14A34</div>
-            <div class="color-swatch" style="background:#191D29;">#191D29</div>
-            <div class="color-swatch" style="background:#F8F9FB; color:#191D29; border:1px solid #e6e7ea;">#F8F9FB</div>
-          </div>
-        </div>
-        
-        <div class="uikit-card">
-          <div class="uikit-title">Типографика</div>
-          <div class="typography-sample">
-            <h1>Aa Bb Cc</h1>
-            <p>SF Pro Display / 800 / -0.075em</p>
-          </div>
-        </div>
-        
-        <div class="uikit-card">
-          <div class="uikit-title">Компоненты</div>
-          <div class="btn-samples">
-            <div class="btn-sample btn-primary">Участвовать</div>
-            <div class="btn-sample btn-secondary">Программа</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 06 / ВЫВОДЫ -->
-  <section class="content">
-    <div class="wrap">
-      <div class="section-no">06 / REFLECTION</div>
-      <h2 data-ru="Выводы<span class='dot'>.</span>" data-en="Takeaways<span class='dot'>.</span>">Выводы<span class="dot">.</span></h2>
-      <p data-ru="Результат проекта — концепт, который демонстрирует премиальный подход к подаче события. Для оценки эффективности после запуска я бы замерил следующие метрики:">Результат проекта — концепт, который демонстрирует премиальный подход к подаче события. Для оценки эффективности после запуска я бы замерил следующие метрики:</p>
-      
-      <div class="grid-3">
-        <div class="card">
-          <h4>Engagement</h4>
-          <p>Среднее время изучения визуалов. Цель: > 2 минут.</p>
-        </div>
-        <div class="card">
-          <h4>Scroll Depth</h4>
-          <p>% пользователей, дошедших до блока программы. Цель: > 60%.</p>
-        </div>
-        <div class="card">
-          <h4>Conversion (CR)</h4>
-          <p>% кликов по кнопке «Участвовать». Цель: > 3–5%.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- HERO -->
+<div class="wrap">
+<section class="hero" id="overview">
+<div>
+<div class="eyebrow">Web / Event landing / UI concept</div>
+<h1 data-en="Yandex&lt;br&gt;Pet Day&lt;em&gt;.&lt;/em&gt;" data-ru="Яндекс&lt;br&gt;Pet Day&lt;em&gt;.&lt;/em&gt;">Яндекс<br/>Pet Day<em>.</em></h1>
+<p class="lead" data-en="A conference landing page concept about digital products for pet owners, with a clear program and registration journey." data-ru="Концепция лендинга конференции о цифровых продуктах для владельцев питомцев. Яркая визуальная история, понятная программа и сценарий участия.">Концепция лендинга конференции о цифровых продуктах для владельцев питомцев. Яркая визуальная история, понятная программа и сценарий участия.</p>
+<div class="tags">
+<span>UX/UI</span><span>Web design</span><span>Event landing</span><span>Concept · 2026</span>
+</div>
+</div>
+<img alt="Макет Яндекс Pet Day на ноутбуке" class="hero-visual" src="assets/petday/petday_macbook_transparent.png"/>
+</section>
+</div>
+<!-- 01 / ПРОБЛЕМА (теперь это Обзор) -->
+<section class="content" id="overview">
+<div class="wrap">
+<div class="section-no">01 / CONTEXT</div>
+<h2 data-en="Problem&lt;span class='dot'&gt;.&lt;/span&gt;" data-ru="Проблема&lt;span class='dot'&gt;.&lt;/span&gt;">Проблема<span class="dot">.</span></h2>
+<p data-en="Desk research covering five IT conference landing pages and feedback in Telegram channels revealed that many event websites overload visitors with speaker lists and technical jargon. Visitors cannot grasp the event’s value within the first five seconds and leave." data-ru="На основе Desk Research (анализа 5 лендингов IT-конференций и чтения отзывов в Telegram-каналах) я выявил, что большинство сайтов событий перегружены списками спикеров и техническими терминами. Пользователь не понимает ценность мероприятия за первые 5 секунд и уходит.">На основе Desk Research (анализа 5 лендингов IT-конференций и чтения отзывов в Telegram-каналах) я выявил, что большинство сайтов событий перегружены списками спикеров и техническими терминами. Пользователь не понимает ценность мероприятия за первые 5 секунд и уходит.</p>
+<p data-en="Solution: create an engaging hero with a 3D illustration that communicates care for pets visually rather than through dense text." data-ru="Решение: создать эмоциональный первый экран с 3D-иллюстрацией, который продает идею «заботы о питомцах» через визуал, а не через сухой текст.">Решение: создать эмоциональный первый экран с 3D-иллюстрацией, который продает идею «заботы о питомцах» через визуал, а не через сухой текст.</p>
+<div class="two-col">
+<div class="card">
+<h4 data-en="User need" data-ru="Потребность пользователя">Потребность пользователя</h4>
+<p data-en="Understand what the conference is about, whether it is relevant, and how to register within five seconds." data-ru="За 5 секунд понять, о чем конференция, будет ли она полезна, и как быстро зарегистрироваться.">За 5 секунд понять, о чем конференция, будет ли она полезна, и как быстро зарегистрироваться.</p>
+</div>
+<div class="card">
+<h4 data-en="Design challenge" data-ru="Дизайн-вызов">Дизайн-вызов</h4>
+<p data-en="Create a friendly, technology-forward visual identity that inspires interest without obscuring the program and speakers." data-ru="Создать дружелюбный и технологичный образ, который продает эмоции через иллюстрации, не пряча при этом программу и спикеров.">Создать дружелюбный и технологичный образ, который продает эмоции через иллюстрации, не пряча при этом программу и спикеров.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 02 / ЦЕЛЬ -->
+<section class="content">
+<div class="wrap">
+<div class="section-no">02 / OBJECTIVE</div>
+<h2 data-en="Goal&lt;span class='dot'&gt;.&lt;/span&gt;" data-ru="Цель&lt;span class='dot'&gt;.&lt;/span&gt;">Цель<span class="dot">.</span></h2>
+<p data-en="Design a landing page concept that uses friendly visuals, 3D illustrations, and a light palette to make the event approachable and guide visitors toward registration." data-ru="Разработать концепт лендинга, который через дружелюбный визуальный язык (3D-иллюстрации, светлая палитра) снижает порог входа для аудитории и ведет к регистрации.">Разработать концепт лендинга, который через дружелюбный визуальный язык (3D-иллюстрации, светлая палитра) снижает порог входа для аудитории и ведет к регистрации.</p>
+<div class="grid-3">
+<div class="card"><h4 data-en="01 / Attention" data-ru="01 / Внимание">01 / Внимание</h4><p data-en="An expressive hero with a 3D illustration." data-ru="Выразительный первый экран с 3D-иллюстрацией.">Выразительный первый экран с 3D-иллюстрацией.</p></div>
+<div class="card"><h4 data-en="02 / Clarity" data-ru="02 / Ясность">02 / Ясность</h4><p data-en="Clear structure: schedule, speakers, and venue." data-ru="Четкая структура: программа, спикеры, место.">Четкая структура: программа, спикеры, место.</p></div>
+<div class="card"><h4 data-en="03 / Action" data-ru="03 / Действие">03 / Действие</h4><p data-en="The “Participate” CTA is repeated in key sections." data-ru="Кнопка «Участвовать» повторяется в ключевых блоках.">Кнопка «Участвовать» повторяется в ключевых блоках.</p></div>
+</div>
+</div>
+</section>
+<!-- 03 / МОЙ ВКЛАД -->
+<section class="content">
+<div class="wrap">
+<div class="section-no">03 / ROLE</div>
+<h2 data-en="My contribution&lt;span class='dot'&gt;.&lt;/span&gt;" data-ru="Мой вклад&lt;span class='dot'&gt;.&lt;/span&gt;">Мой вклад<span class="dot">.</span></h2>
+<div class="two-col">
+<div class="card">
+<h4 data-en="UX structure" data-ru="UX Структура">UX Структура</h4>
+<p data-en="Page structure, event discovery journey, and CTA placement." data-ru="Проектирование блоков, сценарий знакомства с событием и расстановка CTA.">Проектирование блоков, сценарий знакомства с событием и расстановка CTA.</p>
+</div>
+<div class="card">
+<h4 data-en="Visual design" data-ru="Визуальный дизайн">Визуальный дизайн</h4>
+<p data-en="Typography, composition, color palette, 3D illustrations, and speaker cards." data-ru="Типографика, композиция, цветовая палитра, 3D-иллюстрации и карточки спикеров.">Типографика, композиция, цветовая палитра, 3D-иллюстрации и карточки спикеров.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 04 / ПРОЦЕСС (теперь это process) -->
+<section class="content" id="process">
+<div class="wrap">
+<div class="section-no">04 / PROCESS</div>
+<h2 data-en="Process&lt;span class='dot'&gt;.&lt;/span&gt;" data-ru="Процесс&lt;span class='dot'&gt;.&lt;/span&gt;">Процесс<span class="dot">.</span></h2>
+<h3 data-en="Hypotheses and validation" data-ru="Гипотезы и их проверка">Гипотезы и их проверка</h3>
+<p data-en="Hypothesis 1: A large 3D illustration and a concise headline in the hero will keep visitors engaged longer. Rationale: premium brands communicate emotions through imagery. Validation: compared a photo and a 3D version with three colleagues and selected the 3D concept." data-ru="&lt;strong&gt;Гипотеза 1:&lt;/strong&gt; Если на первом экране показать крупную 3D-иллюстрацию и короткий заголовок, пользователь задержится на странице дольше. &lt;em&gt;Почему выбрали:&lt;/em&gt; премиальные бренды продают эмоции через картинку. &lt;em&gt;Как проверяли:&lt;/em&gt; Сравнили два варианта (фото vs 3D) на фокус-группе из 3 коллег. Выбрали 3D."><strong>Гипотеза 1:</strong> Если на первом экране показать крупную 3D-иллюстрацию и короткий заголовок, пользователь задержится на странице дольше. <em>Почему выбрали:</em> премиальные бренды продают эмоции через картинку. <em>Как проверяли:</em> Сравнили два варианта (фото vs 3D) на фокус-группе из 3 коллег. Выбрали 3D.</p>
+<p data-en="Hypothesis 2: Compact schedule blocks with clear times will make the agenda easier to follow and encourage attendance. Validation: a heuristic review indicated that long lists are tiring." data-ru="&lt;strong&gt;Гипотеза 2:&lt;/strong&gt; Если разбить программу на компактные блоки с временем, пользователь лучше поймет тайминг и захочет прийти. &lt;em&gt;Как проверяли:&lt;/em&gt; через эвристическую оценку — длинные списки утомляют."><strong>Гипотеза 2:</strong> Если разбить программу на компактные блоки с временем, пользователь лучше поймет тайминг и захочет прийти. <em>Как проверяли:</em> через эвристическую оценку — длинные списки утомляют.</p>
+<h3 data-en="CJM / Hypothetical journey" data-ru="CJM / Гипотетический путь">CJM / Гипотетический путь</h3>
+<div class="flow">
+<span data-ru="Увидел рекламу" data-en="Saw an advertisement">Увидел рекламу</span><i>→</i>
+<span data-ru="Попал на лендинг" data-en="Opened the landing page">Попал на лендинг</span><i>→</i>
+<span data-ru="Оценил программу" data-en="Reviewed the agenda">Оценил программу</span><i>→</i>
+<span data-ru="Решил участвовать" data-en="Decided to attend">Решил участвовать</span>
+</div>
+<h3 data-en="Wireframes (page structure)" data-ru="Вайрфреймы (Структура страницы)">Вайрфреймы (Структура страницы)</h3>
+<div class="wireframe-grid">
+<div class="wire">
+<span>01 / HERO</span>
+<div class="wire-top"></div>
+<div class="wire-main"></div>
+<div class="wire-lines"></div>
+<div class="wire-lines short"></div>
+<div class="wire-cta"></div>
+</div>
+<div class="wire">
+<span>02 / PROGRAM</span>
+<div class="wire-top"></div>
+<div class="wire-lines"></div>
+<div class="wire-lines"></div>
+<div class="wire-lines short"></div>
+<div class="wire-lines"></div>
+</div>
+<div class="wire">
+<span>03 / SPEAKERS</span>
+<div class="wire-top"></div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;">
+<div style="height:50px; background:#eef0f3; border-radius:8px;"></div>
+<div style="height:50px; background:#eef0f3; border-radius:8px;"></div>
+</div>
+<div class="wire-cta" style="width:100%; margin-top:15px;"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- 05 / РЕЗУЛЬТАТЫ (теперь это design) -->
+<section class="content" id="design">
+<div class="wrap">
+<div class="section-no">05 / RESULTS</div>
+<h2 data-en="Results&lt;span class='dot'&gt;.&lt;/span&gt;" data-ru="Результаты&lt;span class='dot'&gt;.&lt;/span&gt;">Результаты<span class="dot">.</span></h2>
+<p data-en="A landing page visual concept with a bright accent, a clear agenda, and a speaker section. The result demonstrates a modern approach to presenting a technology event." data-ru="Визуальная концепция лендинга с ярким акцентом, понятной программой и блоком спикеров. Результат — концепт, который демонстрирует современный подход к презентации IT-события.">Визуальная концепция лендинга с ярким акцентом, понятной программой и блоком спикеров. Результат — концепт, который демонстрирует современный подход к презентации IT-события.</p>
+<h3 data-en="Feedback and testing" data-ru="Обратная связь и тестирование">Обратная связь и тестирование</h3>
+<p data-en="During heuristic review and colleague feedback sessions, I identified several issues." data-ru="На этапе тестирования (эвристическая оценка и показ макета коллегам) я обнаружил несколько проблем.">На этапе тестирования (эвристическая оценка и показ макета коллегам) я обнаружил несколько проблем.</p>
+<div class="feedback-box">
+<p data-en="“In the first version, the Participate button blended into the background, and I could not immediately see where to click.”" data-ru='«На первом макете кнопка "Участвовать" сливалась с фоном, и я не сразу понял, куда нажимать».'>«На первом макете кнопка "Участвовать" сливалась с фоном, и я не сразу понял, куда нажимать».</p>
+<span class="feedback-author" data-en="— Feedback from a colleague" data-ru="— Фидбэк от тестирующего (коллега)">— Фидбэк от тестирующего (коллега)</span>
+</div>
+<p data-en="Fix: I increased the button size and changed its color to a contrasting red." data-ru="&lt;strong&gt;Как исправил:&lt;/strong&gt; Сделал кнопку контрастной (красной) и увеличил её размер." style="margin-top: 20px;"><strong>Как исправил:</strong> Сделал кнопку контрастной (красной) и увеличил её размер.</p>
+<!-- НОВЫЙ БЛОК: UI-KIT ВМЕСТО ПОЛНОГО МАКЕТА -->
+<h3 data-en="Design system (UI kit)" data-ru="Дизайн-система (UI-Kit)">Дизайн-система (UI-Kit)</h3>
+<p data-en="The visual language uses a structured grid, contrasting accents, and sans-serif typography." data-ru="Визуальный язык проекта базируется на строгой сетке, контрастных акцентах и типографике без засечек.">Визуальный язык проекта базируется на строгой сетке, контрастных акцентах и типографике без засечек.</p>
+<div class="uikit-grid">
+<div class="uikit-card">
+<div class="uikit-title" data-en="Palette" data-ru="Палитра">Палитра</div>
+<div class="palette">
+<div class="color-swatch" style="background:#D14A34;">#D14A34</div>
+<div class="color-swatch" style="background:#191D29;">#191D29</div>
+<div class="color-swatch" style="background:#F8F9FB; color:#191D29; border:1px solid #e6e7ea;">#F8F9FB</div>
+</div>
+</div>
+<div class="uikit-card">
+<div class="uikit-title" data-en="Typography" data-ru="Типографика">Типографика</div>
+<div class="typography-sample">
+<h1>Aa Bb Cc</h1>
+<p>SF Pro Display / 800 / -0.075em</p>
+</div>
+</div>
+<div class="uikit-card">
+<div class="uikit-title" data-en="Components" data-ru="Компоненты">Компоненты</div>
+<div class="btn-samples">
+<div class="btn-sample btn-primary" data-en="Participate" data-ru="Участвовать">Участвовать</div>
+<div class="btn-sample btn-secondary" data-en="Program" data-ru="Программа">Программа</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 06 / ВЫВОДЫ -->
+<section class="content">
+<div class="wrap">
+<div class="section-no">06 / REFLECTION</div>
+<h2 data-en="Takeaways&lt;span class='dot'&gt;.&lt;/span&gt;" data-ru="Выводы&lt;span class='dot'&gt;.&lt;/span&gt;">Выводы<span class="dot">.</span></h2>
+<p data-en="The result is a concept demonstrating a premium approach to presenting the event. If launched, I would evaluate its effectiveness using the following metrics:" data-ru="Результат проекта — концепт, который демонстрирует премиальный подход к подаче события. Для оценки эффективности после запуска я бы замерил следующие метрики:">Результат проекта — концепт, который демонстрирует премиальный подход к подаче события. Для оценки эффективности после запуска я бы замерил следующие метрики:</p>
+<div class="grid-3">
+<div class="card">
+<h4>Engagement</h4>
+<p data-en="Average time spent exploring the visuals. Target: over 2 minutes." data-ru="Среднее время изучения визуалов. Цель: &gt; 2 минут.">Среднее время изучения визуалов. Цель: &gt; 2 минут.</p>
+</div>
+<div class="card">
+<h4>Scroll Depth</h4>
+<p data-en="Percentage of visitors who reach the program section. Target: over 60%." data-ru="% пользователей, дошедших до блока программы. Цель: &gt; 60%.">% пользователей, дошедших до блока программы. Цель: &gt; 60%.</p>
+</div>
+<div class="card">
+<h4>Conversion (CR)</h4>
+<p data-en="Percentage of visitors clicking “Participate”. Target: 3–5%." data-ru="% кликов по кнопке «Участвовать». Цель: &gt; 3–5%.">% кликов по кнопке «Участвовать». Цель: &gt; 3–5%.</p>
+</div>
+</div>
+</div>
+</section>
 </main>
-
 <!-- FOOTER -->
 <div class="wrap footer">
-  <div class="footer-brand">RZ<span>.</span> <small>/ design practice</small></div>
-  <button class="portfolio-top-btn" id="top-btn" type="button">
-    <span data-ru="Наверх" data-en="Back to top">Наверх</span>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="m6 14 6-6 6 6"/>
-    </svg>
-  </button>
+<div class="footer-brand">RZ<span>.</span> <small>/ design practice</small></div>
+<button class="portfolio-top-btn" id="top-btn" type="button">
+<span data-en="Back to top" data-ru="Наверх">Наверх</span>
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="m6 14 6-6 6 6"></path>
+</svg>
+</button>
 </div>
-
 <script>
   (() => {
     const root = document.querySelector('.case-navigation');
@@ -426,5 +414,5 @@
     apply();
   })();
 </script>
-</body>
+<script id="v191-global-language-sync">(()=>{const get=()=>document.querySelector('.case-lang,.travel-lang,.mdr-lang');const save=lang=>{if(lang!=='ru'&&lang!=='en')return;try{localStorage.setItem('portfolio-lang',lang)}catch(e){};if(window.parent!==window)window.parent.postMessage({type:'portfolio-language',lang},'*')};const toggle=get();if(toggle){toggle.addEventListener('click',()=>{const old=(toggle.textContent||'').trim().toLowerCase();save(old==='en'?'ru':'en')},true)}window.addEventListener('message',e=>{if(e.data?.type!=='portfolio-language')return;const lang=e.data.lang;if(lang!=='ru'&&lang!=='en')return;try{localStorage.setItem('portfolio-lang',lang)}catch(e){};const current=document.documentElement.lang;if(current!==lang){const params=new URLSearchParams(location.search);params.set('lang',lang);location.replace(location.pathname+'?'+params.toString()+location.hash)}});})();</script></body>
 </html>

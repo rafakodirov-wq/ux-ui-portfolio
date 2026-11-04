@@ -171,7 +171,25 @@ a{color:inherit}button{font:inherit}.wrap{max-width:1180px;margin:auto;padding:0
   .hero-img { animation: none !important; }
 }
 </style>
-<link rel="stylesheet" href="assets/contact-widget.css"><script src="assets/site.js" defer></script></head>
+<link rel="stylesheet" href="assets/contact-widget.css"><script src="assets/site.js" defer></script><style id="v189-whoosh-lightbox">
+#lightbox.lightbox[hidden]{display:none!important}
+#lightbox.lightbox{position:fixed!important;inset:0!important;z-index:99999!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:clamp(18px,4vw,56px)!important;background:rgba(10,20,24,.72)!important;backdrop-filter:blur(22px) saturate(125%)!important;-webkit-backdrop-filter:blur(22px) saturate(125%)!important;box-sizing:border-box!important}
+#lightbox .lightbox-scroll{position:relative;max-width:min(1100px,calc(100vw - 56px));max-height:calc(100dvh - 110px);overflow:auto;overscroll-behavior:contain;border-radius:22px;box-shadow:0 32px 100px rgba(0,0,0,.35);background:#0b211d;scrollbar-width:thin}
+#lightbox .lightbox-scroll img{display:block;width:100%;height:auto;max-width:none}
+#lightbox .close{position:fixed;top:clamp(18px,4vw,42px);right:clamp(18px,4vw,42px);z-index:2;display:grid;place-items:center;width:56px;height:56px;padding:0;border:1px solid rgba(255,255,255,.85);border-radius:50%;background:rgba(242,250,247,.75);color:#17332e;backdrop-filter:blur(22px) saturate(170%);-webkit-backdrop-filter:blur(22px) saturate(170%);box-shadow:0 12px 38px rgba(0,0,0,.16),inset 0 1px rgba(255,255,255,.9);font:300 27px/1 Arial,sans-serif;cursor:pointer;transition:transform .25s,background .25s}
+#lightbox .close:hover{transform:rotate(90deg) scale(1.06);background:rgba(255,255,255,.95)}
+@media(max-width:600px){#lightbox.lightbox{padding:14px!important}#lightbox .lightbox-scroll{max-width:calc(100vw - 28px);max-height:calc(100dvh - 105px)}#lightbox .close{width:46px;height:46px}}
+</style><style id="v191-footer-unification">
+/* Consistent MDR-style footer on case pages */
+.footer,.portfolio-top-end{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:16px!important;flex-wrap:nowrap!important;min-width:0!important}
+.footer .portfolio-top-btn,.portfolio-top-end .portfolio-top-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:12px!important;flex-shrink:0!important;border-radius:999px!important;padding:13px 23px!important;min-height:54px!important;background:linear-gradient(135deg,rgba(255,255,255,.89),rgba(255,255,255,.66))!important;border:1px solid rgba(255,255,255,.95)!important;box-shadow:0 12px 34px rgba(30,45,44,.10),inset 0 1px 1px white!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;color:#243a34!important;font-weight:650!important;cursor:pointer!important;transition:transform .32s cubic-bezier(.22,1,.36,1),box-shadow .32s ease,background .32s ease!important}
+.footer .portfolio-top-btn:hover,.portfolio-top-end .portfolio-top-btn:hover{transform:translateY(-4px)!important;box-shadow:0 19px 43px rgba(30,45,44,.16),inset 0 1px 1px white!important}
+.footer .portfolio-top-btn:active,.portfolio-top-end .portfolio-top-btn:active{transform:scale(.97)!important}
+.footer .portfolio-top-btn svg,.portfolio-top-end .portfolio-top-btn svg{width:19px!important;height:19px!important;flex-shrink:0!important;animation:v191Chevron 2.1s ease-in-out infinite!important}
+@keyframes v191Chevron{0%,100%{transform:translateY(2px)}50%{transform:translateY(-3px)}}
+@media(max-width:700px){.footer,.portfolio-top-end{flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;padding-left:18px!important;padding-right:18px!important}.footer .portfolio-top-btn,.portfolio-top-end .portfolio-top-btn{padding:11px 17px!important;min-height:48px!important;font-size:13px!important}.footer-brand,.footer-signature{min-width:0;font-size:12px!important}}
+@media(prefers-reduced-motion:reduce){.footer .portfolio-top-btn svg,.portfolio-top-end .portfolio-top-btn svg{animation:none!important}}
+</style><script id="v191-global-language-init">(function(){try{const stored=localStorage.getItem('portfolio-lang');const params=new URLSearchParams(location.search);if((stored==='ru'||stored==='en')&&params.get('lang')!==stored){params.set('lang',stored);history.replaceState(history.state,'',location.pathname+'?'+params.toString()+location.hash)}}catch(e){}})();</script></head>
 <body>
 
 <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
@@ -340,10 +358,10 @@ a{color:inherit}button{font:inherit}.wrap{max-width:1180px;margin:auto;padding:0
       <p class="lead" data-en="The result is a concept that demonstrates a premium approach to product presentation. To evaluate effectiveness after launch (if it were a real business), I would measure the following metrics:" data-ru="Результат проекта — концепт, который демонстрирует премиальный подход к подаче продукта. Для оценки эффективности после запуска (если бы это был реальный бизнес) я бы замерил следующие метрики:">Результат проекта — концепт, который демонстрирует премиальный подход к подаче продукта. Для оценки эффективности после запуска (если бы это был реальный бизнес) я бы замерил следующие метрики:</p>
       
       <div class="grid2" style="margin-top:30px">
-        <div class="card"><span class="label">ENGAGEMENT</span><h3>Время на странице</h3><p>Среднее время изучения визуалов. Цель: > 2 минут (пользователь вовлечён в историю продукта).</p></div>
-        <div class="card"><span class="label">SCROLL DEPTH</span><h3>Глубина прокрутки</h3><p>% пользователей, дошедших до блока «Характеристики» и финального CTA. Цель: > 60%.</p></div>
-        <div class="card"><span class="label">CONVERSION</span><h3>Конверсия (CR)</h3><p>% кликов по кнопке «Оформить заказ». Цель: > 3–5% (для премиум-сегмента).</p></div>
-        <div class="card"><span class="label">BOUNCE RATE</span><h3>Показатель отказов</h3><p>% пользователей, ушедших сразу. Цель: < 40% (если больше — значит, первый экран не заинтересовал).</p></div>
+        <div class="card"><span class="label">ENGAGEMENT</span><h3 data-ru="Время на странице" data-en="Time on page">Время на странице</h3><p data-ru="Среднее время изучения визуалов. Цель: &gt; 2 минут (пользователь вовлечён в историю продукта)." data-en="Average time spent exploring the visuals. Target: over 2 minutes (indicating engagement with the product story).">Среднее время изучения визуалов. Цель: > 2 минут (пользователь вовлечён в историю продукта).</p></div>
+        <div class="card"><span class="label">SCROLL DEPTH</span><h3 data-ru="Глубина прокрутки" data-en="Scroll depth">Глубина прокрутки</h3><p data-ru="% пользователей, дошедших до блока «Характеристики» и финального CTA. Цель: &gt; 60%." data-en="Percentage of visitors who reach the Specifications section and final CTA. Target: over 60%.">% пользователей, дошедших до блока «Характеристики» и финального CTA. Цель: > 60%.</p></div>
+        <div class="card"><span class="label">CONVERSION</span><h3 data-ru="Конверсия (CR)" data-en="Conversion (CR)">Конверсия (CR)</h3><p data-ru="% кликов по кнопке «Оформить заказ». Цель: &gt; 3–5% (для премиум-сегмента)." data-en="Percentage of visitors clicking “Order now”. Target: 3–5% for the premium segment.">% кликов по кнопке «Оформить заказ». Цель: > 3–5% (для премиум-сегмента).</p></div>
+        <div class="card"><span class="label">BOUNCE RATE</span><h3 data-ru="Показатель отказов" data-en="Bounce rate">Показатель отказов</h3><p data-ru="% пользователей, ушедших сразу. Цель: &lt; 40% (если больше — значит, первый экран не заинтересовал)." data-en="Percentage of visitors leaving immediately. Target: below 40%; a higher rate may indicate that the hero section is not engaging.">% пользователей, ушедших сразу. Цель: < 40% (если больше — значит, первый экран не заинтересовал).</p></div>
       </div>
     </div>
   </section>
@@ -351,8 +369,8 @@ a{color:inherit}button{font:inherit}.wrap{max-width:1180px;margin:auto;padding:0
 
 <!-- ФУТЕР -->
 <footer class="wrap footer">
-  <span>RZ. / design practice</span>
-  <div class="portfolio-top-end">
+  <span class="footer-signature">RZ. / design practice</span>
+  <div class="portfolio-top-end" style="padding:0;border:0;margin:0">
     <button class="portfolio-top-btn" id="top" type="button">
       <span data-ru="Наверх" data-en="Back to top">Наверх</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -413,6 +431,7 @@ a{color:inherit}button{font:inherit}.wrap{max-width:1180px;margin:auto;padding:0
   const modal = document.getElementById('lightbox');
   const open = e => {
     e.preventDefault();
+    modal.querySelector('.lightbox-scroll img').src = e.currentTarget.querySelector('img').getAttribute('src');
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
     document.getElementById('close').focus();
@@ -433,4 +452,4 @@ a{color:inherit}button{font:inherit}.wrap{max-width:1180px;margin:auto;padding:0
   });
 </script>
 
-</body></html>
+<script id="v191-global-language-sync">(()=>{const get=()=>document.querySelector('.case-lang,.travel-lang,.mdr-lang');const save=lang=>{if(lang!=='ru'&&lang!=='en')return;try{localStorage.setItem('portfolio-lang',lang)}catch(e){};if(window.parent!==window)window.parent.postMessage({type:'portfolio-language',lang},'*')};const toggle=get();if(toggle){toggle.addEventListener('click',()=>{const old=(toggle.textContent||'').trim().toLowerCase();save(old==='en'?'ru':'en')},true)}window.addEventListener('message',e=>{if(e.data?.type!=='portfolio-language')return;const lang=e.data.lang;if(lang!=='ru'&&lang!=='en')return;try{localStorage.setItem('portfolio-lang',lang)}catch(e){};const current=document.documentElement.lang;if(current!==lang){const params=new URLSearchParams(location.search);params.set('lang',lang);location.replace(location.pathname+'?'+params.toString()+location.hash)}});})();</script></body></html>
