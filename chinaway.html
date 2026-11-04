@@ -89,5 +89,25 @@ back?.addEventListener('click',()=>window.scrollTo({top:0,behavior:matchMedia('(
 new MutationObserver(update).observe(document.querySelector('.case-lang,.travel-lang,.lang')||document.body,{subtree:false,characterData:true,childList:true});update();
 })();</script>
 <script src="assets/site.js" defer></script>
-
+<style>
+@media(max-width:850px){
+  .navrow { top: 10px; width: calc(100% - 20px); gap: 6px; display: flex; align-items: center; }
+  .back { width: 44px; height: 44px; min-width: 44px; }
+  .nav { padding: 5px 8px; gap: 6px; flex: 1; display: flex; align-items: center; justify-content: space-between; min-height: 54px; }
+  
+  .brand { font-size: 13px; padding-left: 5px; flex-shrink: 0; }
+  .brand span { display: none; }
+  
+  .tabs { position: static; transform: none; flex: 1; display: flex; justify-content: center; gap: 2px; }
+  .tabs a { font-size: 11px; padding: 10px 8px; }
+  
+  .lang { font-size: 11px; padding: 9px 10px; min-width: auto; flex-shrink: 0; }
+  .portfolio-contact { padding: 10px 12px; font-size: 12px; gap: 5px; flex-shrink: 0; }
+}
+@media(max-width:450px){
+  .tabs a { font-size: 10px; padding: 8px 4px; }
+  .portfolio-contact span { display: none; }
+  .portfolio-contact svg { width: 16px; height: 16px; }
+}
+</style>
 </body></html>

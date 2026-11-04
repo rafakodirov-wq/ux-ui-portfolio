@@ -136,7 +136,6 @@
       .footer{flex-direction:column;align-items:flex-start;gap:20px}
     }
     @media(max-width:440px){
-      .case-brand{display:none}
       .case-nav{justify-content:space-between}
       .case-links a{padding:9px 5px}
       .case-actions{gap:12px}
@@ -150,7 +149,7 @@ body{background:radial-gradient(ellipse at 86% 18%,rgba(133,82,172,.22),transpar
 .hero{grid-template-columns:minmax(0,43%) minmax(0,57%);gap:0!important}
 .hero-visual{display:block;width:100%!important;max-width:100%!important;height:auto!important;object-fit:contain!important;transform:none!important;filter:drop-shadow(0 24px 30px rgba(36,23,62,.16))!important}
 @media(max-width:900px){.hero{grid-template-columns:1fr}.hero-visual{width:100%!important;max-width:100%!important}}
-</style></head><body><div class="case-navigation">
+</style><link rel="stylesheet" href="assets/contact-widget.css"><script src="assets/site.js" defer></script></head><body><div class="case-navigation">
   <button class="case-back" type="button" aria-label="Назад к проектам">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></svg>
   </button>
@@ -206,18 +205,41 @@ body{background:radial-gradient(ellipse at 86% 18%,rgba(133,82,172,.22),transpar
     });
 
     const links = [...root.querySelectorAll('.case-links a')];
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if(e.isIntersecting) {
-          links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
-        }
-      });
-    }, {rootMargin: '-20% 0px -60% 0px'});
+    const sectionIds = ['overview', 'process', 'design'];
+    const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
 
-    ['overview', 'process', 'design'].forEach(id => {
-      const el = document.getElementById(id);
-      if(el) observer.observe(el);
-    });
+    // Ручной Scroll Spy для полного контроля
+    function updateActiveLink() {
+      const scrollPos = window.scrollY + (window.innerHeight * 0.3);
+      let activeId = 'overview';
+      
+      // Если мы в самом верху страницы — всегда «Обзор»
+      if (window.scrollY < 50) {
+        activeId = 'overview';
+      } else {
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const section = sections[i];
+          if (section && section.offsetTop <= scrollPos) {
+            activeId = sectionIds[i];
+            break;
+          }
+        }
+      }
+
+      links.forEach(a => {
+        const isActive = a.getAttribute('href') === '#' + activeId;
+        a.classList.toggle('active', isActive);
+        if (isActive) a.setAttribute('aria-current', 'location');
+        else a.removeAttribute('aria-current');
+      });
+    }
+
+    // Слушаем скролл и ресайз
+    window.addEventListener('scroll', updateActiveLink, {passive: true});
+    window.addEventListener('resize', updateActiveLink);
+    
+    // Принудительно вызываем при загрузке
+    updateActiveLink();
 
     // Кнопка "Наверх"
     document.getElementById('top-btn').addEventListener('click', () => {
@@ -228,4 +250,4 @@ body{background:radial-gradient(ellipse at 86% 18%,rgba(133,82,172,.22),transpar
   })();
 </script>
 </body>
-</html>
+</html> 

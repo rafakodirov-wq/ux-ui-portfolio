@@ -136,7 +136,6 @@
       .footer{flex-direction:column;align-items:flex-start;gap:20px}
     }
     @media(max-width:440px){
-      .case-brand{display:none}
       .case-nav{justify-content:space-between}
       .case-links a{padding:9px 5px}
       .case-actions{gap:12px}
@@ -144,7 +143,7 @@
     }
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
   </style>
-</head>
+<link rel="stylesheet" href="assets/contact-widget.css"><script src="assets/site.js" defer></script></head>
 <body>
 
 <div class="case-navigation">
@@ -184,8 +183,8 @@
     </section>
   </div>
 
-  <!-- 01 / ПРОБЛЕМА -->
-  <section class="content" id="process">
+  <!-- 01 / ПРОБЛЕМА (теперь это Обзор) -->
+  <section class="content" id="overview">
     <div class="wrap">
       <div class="section-no">01 / CONTEXT</div>
       <h2 data-ru="Проблема<span class='dot'>.</span>" data-en="Problem<span class='dot'>.</span>">Проблема<span class="dot">.</span></h2>
@@ -237,8 +236,8 @@
     </div>
   </section>
 
-  <!-- 04 / ПРОЦЕСС -->
-  <section class="content">
+  <!-- 04 / ПРОЦЕСС (теперь это process) -->
+  <section class="content" id="process">
     <div class="wrap">
       <div class="section-no">04 / PROCESS</div>
       <h2 data-ru="Процесс<span class='dot'>.</span>" data-en="Process<span class='dot'>.</span>">Процесс<span class="dot">.</span></h2>
@@ -286,7 +285,7 @@
     </div>
   </section>
 
-  <!-- 05 / РЕЗУЛЬТАТЫ -->
+  <!-- 05 / РЕЗУЛЬТАТЫ (теперь это design) -->
   <section class="content" id="design">
     <div class="wrap">
       <div class="section-no">05 / RESULTS</div>
@@ -413,6 +412,7 @@
       });
     }, {rootMargin: '-20% 0px -60% 0px'});
 
+    // Наблюдаем за правильными секциями: overview, process, design
     ['overview', 'process', 'design'].forEach(id => {
       const el = document.getElementById(id);
       if(el) observer.observe(el);
