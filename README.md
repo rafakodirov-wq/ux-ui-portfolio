@@ -26,3 +26,5 @@ python3 -m http.server 8000
 - `develop` — рабочая ветка для изменений.
 
 Сначала вносите изменения в `develop`, после проверки переносите их в `main`.
+
+Version 186: restored stable v184 base; repaired Drive&Deal language message bridge.
