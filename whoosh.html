@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Whoosh — UX/UI кейс · RZ.</title><meta content="Whoosh — концепт продуктового лендинга профессионального фена." name="description"/><link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<html lang="ru"><head><script src="assets/language-init.js"></script><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Whoosh — UX/UI кейс · RZ.</title><meta content="Whoosh — концепт продуктового лендинга профессионального фена." name="description"/><link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
 
 <style>
 /* --- БАЗОВЫЕ СТИЛИ И СМЕШАННЫЙ ФОН --- */
@@ -171,7 +171,7 @@ a{color:inherit}button{font:inherit}.wrap{max-width:1180px;margin:auto;padding:0
   .hero-img { animation: none !important; }
 }
 </style>
-<link rel="stylesheet" href="assets/contact-widget.css"><script src="assets/site.js" defer></script><style id="v189-whoosh-lightbox">
+<link rel="stylesheet" href="assets/contact-widget.css"><link rel="stylesheet" href="assets/project-navigation.css?v=212"><script src="assets/project-navigation.js?v=195" defer></script><script src="assets/case-runtime.js?v=195" defer></script><style id="v189-whoosh-lightbox">
 #lightbox.lightbox[hidden]{display:none!important}
 #lightbox.lightbox{position:fixed!important;inset:0!important;z-index:99999!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:clamp(18px,4vw,56px)!important;background:rgba(10,20,24,.72)!important;backdrop-filter:blur(22px) saturate(125%)!important;-webkit-backdrop-filter:blur(22px) saturate(125%)!important;box-sizing:border-box!important}
 #lightbox .lightbox-scroll{position:relative;max-width:min(1100px,calc(100vw - 56px));max-height:calc(100dvh - 110px);overflow:auto;overscroll-behavior:contain;border-radius:22px;box-shadow:0 32px 100px rgba(0,0,0,.35);background:#0b211d;scrollbar-width:thin}
@@ -189,34 +189,18 @@ a{color:inherit}button{font:inherit}.wrap{max-width:1180px;margin:auto;padding:0
 @keyframes v191Chevron{0%,100%{transform:translateY(2px)}50%{transform:translateY(-3px)}}
 @media(max-width:700px){.footer,.portfolio-top-end{flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;padding-left:18px!important;padding-right:18px!important}.footer .portfolio-top-btn,.portfolio-top-end .portfolio-top-btn{padding:11px 17px!important;min-height:48px!important;font-size:13px!important}.footer-brand,.footer-signature{min-width:0;font-size:12px!important}}
 @media(prefers-reduced-motion:reduce){.footer .portfolio-top-btn svg,.portfolio-top-end .portfolio-top-btn svg{animation:none!important}}
-</style><script id="v191-global-language-init">(function(){try{const stored=localStorage.getItem('portfolio-lang');const params=new URLSearchParams(location.search);if((stored==='ru'||stored==='en')&&params.get('lang')!==stored){params.set('lang',stored);history.replaceState(history.state,'',location.pathname+'?'+params.toString()+location.hash)}}catch(e){}})();</script></head>
+</style><link rel="stylesheet" href="assets/site-footer.css?v=196.3"><script src="assets/site-footer.js?v=196.3" defer></script></head>
 <body>
 
 <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
-<div class="travel-navigation navrow">
-  <button aria-label="Назад" class="travel-back back" id="back">
-    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="m14.5 5.5-6.5 6.5 6.5 6.5"/>
-    </svg>
-  </button>
-  
-  <nav class="travel-nav nav">
-    <div class="travel-brand brand">RZ. <span class="brand-sub">/ design practice</span></div>
-    
-    <div class="travel-links tabs">
-      <a class="travel-link" data-en="Overview" data-ru="Обзор" href="#overview">Обзор</a>
-      <a class="travel-link" data-en="Process" data-ru="Процесс" href="#process">Процесс</a>
-      <a class="travel-link" data-en="Design" data-ru="Дизайн" href="#design">Дизайн</a>
-    </div>
-    
-    <div class="nav-actions">
-      <button class="travel-lang lang" id="lang">RU</button>
-      <a class="portfolio-contact" href="mailto:rafakodirov@gmail.com?subject=Portfolio%20%E2%80%94%20UX%2FUI%20project" aria-label="Связаться">
-        <span class="portfolio-contact-label">Связаться</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M6 18 18 6M8 6h10v10"/>
-        </svg>
-      </a>
+<div id="rz-case-header" class="travel-navigation navrow">
+  <button class="rz-back travel-back back" id="back" type="button" aria-label="Назад к проектам"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></svg></button>
+  <nav class="rz-nav travel-nav nav" aria-label="Навигация по проекту">
+    <div class="rz-brand travel-brand brand">RZ. <span class="brand-sub">/ design practice</span></div>
+    <div class="rz-links travel-links tabs"><a class="rz-link active travel-link" data-en="Overview" data-ru="Обзор" href="#overview">Обзор</a><a class="rz-link travel-link" data-en="Process" data-ru="Процесс" href="#process">Процесс</a><a class="rz-link travel-link" data-en="Design" data-ru="Дизайн" href="#design">Дизайн</a></div>
+    <div class="rz-actions nav-actions">
+      <button class="rz-lang travel-lang lang" id="lang" type="button" aria-label="Выбрать язык">RU</button>
+      <button class="rz-contact portfolio-contact" type="button" aria-label="Связаться"><span class="portfolio-contact-label">Связаться</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10"/></svg></button>
     </div>
   </nav>
 </div>
@@ -226,7 +210,7 @@ a{color:inherit}button{font:inherit}.wrap{max-width:1180px;margin:auto;padding:0
   <section class="hero" id="overview">
     <div class="wrap hero-grid">
       <div>
-        <div class="eyebrow">WEB / PRODUCT LANDING / UI CONCEPT</div>
+        <div class="eyebrow">08 / CASE STUDY · WEB · PRODUCT LANDING</div>
         <h1>Whoosh<span class="dot">.</span></h1>
         <p data-en="A professional hair dryer landing-page concept. A product story bringing form, technology and benefits into one visual experience." data-ru="Концепция лендинга профессионального фена. Продуктовая история, где форма, технологии и преимущества складываются в цельный визуальный опыт.">Концепция лендинга профессионального фена. Продуктовая история, где форма, технологии и преимущества складываются в цельный визуальный опыт.</p>
         <div class="tags"><span class="tag">UX/UI</span><span class="tag">Web design</span><span class="tag">Product storytelling</span><span class="tag">Concept · 2026</span></div>
@@ -368,16 +352,9 @@ a{color:inherit}button{font:inherit}.wrap{max-width:1180px;margin:auto;padding:0
 </main>
 
 <!-- ФУТЕР -->
-<footer class="wrap footer">
+<footer id="rz-site-footer" class="portfolio-top-end">
   <span class="footer-signature">RZ. / design practice</span>
-  <div class="portfolio-top-end" style="padding:0;border:0;margin:0">
-    <button class="portfolio-top-btn" id="top" type="button">
-      <span data-ru="Наверх" data-en="Back to top">Наверх</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="m6 14 6-6 6 6"/>
-      </svg>
-    </button>
-  </div>
+  <button class="portfolio-top-btn" type="button" id="top"><span data-ru="Наверх" data-en="Back to top">Наверх</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="m6 14 6-6 6 6"/></svg></button>
 </footer>
 
 <div aria-label="Whoosh full design" aria-modal="true" class="lightbox" hidden="" id="lightbox" role="dialog">
@@ -403,31 +380,6 @@ a{color:inherit}button{font:inherit}.wrap{max-width:1180px;margin:auto;padding:0
   document.getElementById('lang').onclick = () => setLang(language === 'ru' ? 'en' : 'ru');
   addEventListener('message', e => { if(e.data?.type === 'portfolio-language') setLang(e.data.lang); });
 
-  const caseTabs = [...document.querySelectorAll('.tabs a[href^="#"]')];
-  const caseSections = caseTabs.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-  let scrollSpyFrame = 0;
-  
-  function syncCaseNav(){
-    scrollSpyFrame = 0;
-    const threshold = Math.min(250, innerHeight * .38);
-    let current = caseSections[0];
-    for(const section of caseSections){
-      if(section.getBoundingClientRect().top <= threshold) current = section;
-    }
-    caseTabs.forEach(a => {
-      const selected = a.getAttribute('href') === '#' + current.id;
-      a.classList.toggle('active', selected);
-      if(selected) a.setAttribute('aria-current', 'location');
-      else a.removeAttribute('aria-current');
-    });
-  }
-  function requestNavSync(){ if(!scrollSpyFrame) scrollSpyFrame = requestAnimationFrame(syncCaseNav); }
-  
-  addEventListener('scroll', requestNavSync, {passive:true});
-  addEventListener('resize', requestNavSync, {passive:true});
-  caseTabs.forEach(a => a.addEventListener('click', () => setTimeout(syncCaseNav, 500)));
-  syncCaseNav();
-
   const modal = document.getElementById('lightbox');
   const open = e => {
     e.preventDefault();
@@ -452,4 +404,4 @@ a{color:inherit}button{font:inherit}.wrap{max-width:1180px;margin:auto;padding:0
   });
 </script>
 
-<script id="v191-global-language-sync">(()=>{const get=()=>document.querySelector('.case-lang,.travel-lang,.mdr-lang');const save=lang=>{if(lang!=='ru'&&lang!=='en')return;try{localStorage.setItem('portfolio-lang',lang)}catch(e){};if(window.parent!==window)window.parent.postMessage({type:'portfolio-language',lang},'*')};const toggle=get();if(toggle){toggle.addEventListener('click',()=>{const old=(toggle.textContent||'').trim().toLowerCase();save(old==='en'?'ru':'en')},true)}window.addEventListener('message',e=>{if(e.data?.type!=='portfolio-language')return;const lang=e.data.lang;if(lang!=='ru'&&lang!=='en')return;try{localStorage.setItem('portfolio-lang',lang)}catch(e){};const current=document.documentElement.lang;if(current!==lang){const params=new URLSearchParams(location.search);params.set('lang',lang);location.replace(location.pathname+'?'+params.toString()+location.hash)}});})();</script></body></html>
+</body></html>

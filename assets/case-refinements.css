@@ -1,0 +1,26 @@
+/* Keep the Perfume signature and back-to-top action on one line. */
+body .perfume-footer{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:16px!important;text-align:left!important}
+body .perfume-footer>strong{flex:0 1 auto!important;margin:0!important}
+body .perfume-footer>.portfolio-top-end{width:auto!important;flex:0 0 auto!important;padding:0!important;margin:0!important;clear:none!important}
+body .viewer{padding-top:100px!important;box-sizing:border-box}
+body .viewer.open{display:flex;flex-direction:column;align-items:center;justify-content:flex-start!important}
+body .viewer>img{margin:0 auto!important;flex:0 0 auto!important}
+/* Same glass foundation and interaction as the circular back buttons. */
+body .viewer .liquid-close,body .mdr-lightbox .liquid-close{
+ position:fixed!important;top:18px!important;right:24px!important;z-index:3!important;
+ width:52px!important;height:52px!important;min-width:52px!important;min-height:52px!important;
+ display:grid!important;place-items:center!important;padding:0!important;border-radius:50%!important;
+ border:1px solid rgba(255,255,255,.8)!important;background:rgba(255,255,255,.56)!important;
+ box-shadow:0 14px 60px #20332c12,inset 0 1px #fff!important;
+ backdrop-filter:blur(26px) saturate(170%)!important;-webkit-backdrop-filter:blur(26px) saturate(170%)!important;
+ color:#172322!important;cursor:pointer;overflow:hidden;
+ transition:transform .3s cubic-bezier(.22,1,.36,1),background .3s,box-shadow .3s!important;
+}
+body .liquid-close::before{content:'';position:absolute;inset:-50%;background:linear-gradient(110deg,transparent 35%,#ffffff94 50%,transparent 65%);transform:translateX(-110%);transition:transform .85s;pointer-events:none}
+body .liquid-close:hover::before{transform:translateX(110%)}
+body .viewer .liquid-close:hover,body .mdr-lightbox .liquid-close:hover{transform:translateY(-2px) scale(1.045)!important;background:rgba(255,255,255,.93)!important;box-shadow:0 13px 32px #194a5d29!important}
+body .viewer .liquid-close:active,body .mdr-lightbox .liquid-close:active{transform:scale(.94)!important}
+body .liquid-close svg{width:22px!important;height:22px!important;position:relative;z-index:1}
+body .liquid-close:focus-visible{outline:3px solid #168f85!important;outline-offset:3px}
+@media(max-width:700px){body .perfume-footer{gap:10px!important}body .perfume-footer>strong{font-size:12px!important}body .viewer .liquid-close,body .mdr-lightbox .liquid-close{right:18px!important}}
+@media(prefers-reduced-motion:reduce){body .liquid-close,body .liquid-close::before{transition:none!important}}

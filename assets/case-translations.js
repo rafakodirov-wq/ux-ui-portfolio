@@ -63,7 +63,7 @@
   const textNodes = [];
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
     acceptNode(node) {
-      return node.parentElement && !node.parentElement.closest('script,style') && node.nodeValue.trim()
+      return node.parentElement && !node.parentElement.closest('script,style,.portfolio-language-menu,.case-lang,.travel-lang,.lang,.portfolio-contact,.floating-contact,.contact-chooser') && node.nodeValue.trim()
         ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
     }
   });
@@ -77,9 +77,10 @@
       const original = originals.get(node);
       const trimmed = original.trim();
       const next = lang === 'en' ? dictionary[trimmed] : trimmed;
-      node.nodeValue = original.replace(trimmed, next || trimmed);
+      const translated = original.replace(trimmed, next || trimmed);
+      if (node.nodeValue !== translated) node.nodeValue = translated;
     });
-    document.documentElement.lang = lang;
+    if (document.documentElement.lang !== lang) document.documentElement.lang = lang;
     if (caseId === 'documents') document.title = lang === 'en' ? dictionary['Документы и договоры — UX/UI Case'] : 'Документы и договоры — UX/UI Case';
   }
 

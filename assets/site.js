@@ -31,6 +31,9 @@
     floatBtn.setAttribute('aria-label', isEn ? 'Contact options' : 'Способы связи');
     const heading = panel.querySelector('.contact-chooser-heading');
     if (heading) heading.textContent = isEn ? 'GET IN TOUCH' : 'СПОСОБЫ СВЯЗИ';
+    document.querySelectorAll('.portfolio-contact-label').forEach(el => {
+      el.textContent = isEn ? 'Contact' : 'Связаться';
+    });
   };
 
   floatBtn.innerHTML = `
@@ -78,34 +81,63 @@
 
   // === 4. ЛОГИКА ПЛАВАЮЩЕГО МЕНЮ ===
   let open = false;
+  let activeTrigger = floatBtn;
+  const topTrigger = document.querySelector('.portfolio-contact');
+  for (const trigger of [floatBtn, topTrigger].filter(Boolean)) {
+    trigger.setAttribute('aria-haspopup', 'dialog');
+    trigger.setAttribute('aria-controls', panel.id);
+    trigger.setAttribute('aria-expanded', 'false');
+  }
+  panel.setAttribute('aria-hidden', 'true');
+  panel.inert = true;
 
   const position = () => {
-    const rect = floatBtn.getBoundingClientRect();
-    const width = Math.min(316, window.innerWidth - 24);
+    const rect = activeTrigger.getBoundingClientRect();
+    const width = panel.getBoundingClientRect().width;
     const panelHeight = panel.offsetHeight;
     let left = rect.left + (rect.width / 2) - (width / 2);
     left = Math.max(12, left);
     left = Math.min(left, window.innerWidth - width - 12);
-    const top = Math.max(12, rect.top - panelHeight - 10);
+    const desiredTop = activeTrigger === floatBtn ? rect.top - panelHeight - 10 : rect.bottom + 10;
+    const top = Math.max(12, Math.min(desiredTop, window.innerHeight - panelHeight - 12));
     panel.style.left = `${left}px`;
     panel.style.top = `${top}px`;
   };
 
   const setOpen = (next, restoreFocus = false) => {
     open = next;
-    floatBtn.setAttribute('aria-expanded', String(next));
+    for (const trigger of [floatBtn, topTrigger].filter(Boolean)) {
+      trigger.setAttribute('aria-expanded', String(next && trigger === activeTrigger));
+    }
+    panel.setAttribute('aria-hidden', String(!next));
+    panel.inert = !next;
     panel.classList.toggle('is-open', next);
     if (next) {
       position();
       panel.querySelector('a')?.focus({ preventScroll: true });
     } else {
-      if (restoreFocus) floatBtn.focus({ preventScroll: true });
+      if (restoreFocus) activeTrigger.focus({ preventScroll: true });
     }
   };
 
   floatBtn.addEventListener('click', event => {
     event.preventDefault();
-    setOpen(!open, open);
+    const next = !open || activeTrigger !== floatBtn;
+    activeTrigger = floatBtn;
+    setOpen(next, !next);
+  });
+
+  // Intercept legacy mailto handlers before they launch the mail application.
+  window.addEventListener('click', event => {
+    if (!topTrigger || !topTrigger.contains(event.target)) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const next = !open || activeTrigger !== topTrigger;
+    activeTrigger = topTrigger;
+    setOpen(next, !next);
+  }, true);
+  topTrigger?.addEventListener('keydown', event => {
+    if (event.key === ' ') { event.preventDefault(); topTrigger.click(); }
   });
 
   // === 5. ЗАКРЫТИЕ ПРИ ЛЮБОМ ВЗАИМОДЕЙСТВИИ СО СТРАНИЦЕЙ ===
@@ -114,7 +146,7 @@
   // это предотвращает неожиданные скачки страницы во время прокрутки.
   const closeMenu = () => { if (open) setOpen(false); };
   const outsideInteraction = event => {
-    if (!open || panel.contains(event.target) || floatBtn.contains(event.target)) return;
+    if (!open || panel.contains(event.target) || floatBtn.contains(event.target) || topTrigger?.contains(event.target)) return;
     closeMenu();
   };
   document.addEventListener('pointerdown', outsideInteraction, true);
@@ -125,7 +157,7 @@
   window.addEventListener('touchmove', closeMenu, { passive: true, capture: true });
   window.addEventListener('keydown', event => {
     if (!open) return;
-    if (event.key === 'Escape') { setOpen(false, true); return; }
+    if (event.key === 'Escape') { event.stopImmediatePropagation(); setOpen(false, true); return; }
     if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(event.key)) closeMenu();
   }, true);
   window.addEventListener('blur', closeMenu);
@@ -133,10 +165,10 @@
   // All case pages share this widget. Dismiss on any genuine page interaction,
   // including scrollable nested containers, touch gestures, and iframe activity.
   document.addEventListener('touchstart', event => {
-    if (open && !panel.contains(event.target) && !floatBtn.contains(event.target)) closeMenu();
+    if (open && !panel.contains(event.target) && !floatBtn.contains(event.target) && !topTrigger?.contains(event.target)) closeMenu();
   }, { passive: true, capture: true });
   document.addEventListener('focusin', event => {
-    if (open && !panel.contains(event.target) && !floatBtn.contains(event.target)) closeMenu();
+    if (open && !panel.contains(event.target) && !floatBtn.contains(event.target) && !topTrigger?.contains(event.target)) closeMenu();
   }, true);
   window.addEventListener('resize', closeMenu, { passive: true });
   document.addEventListener('visibilitychange', () => {
@@ -191,7 +223,11 @@
 
   // === 7. SCROLL SPY ===
   const navigationLinks = [...document.querySelectorAll('.tabs a[href^="#"], .case-links a[href^="#"], .travel-link[href^="#"]')]
-    .map(link => ({ link, target: document.querySelector(link.getAttribute('href')) }))
+    .map(link => ({ link, get target() {
+      const selector = document.documentElement.lang === 'en' && link.dataset.targetEn
+        ? link.dataset.targetEn : link.getAttribute('href');
+      return document.querySelector(selector);
+    } }))
     .filter(item => item.target);
   if (navigationLinks.length) {
     let frame;
@@ -201,15 +237,16 @@
       let active = navigationLinks[0];
       if (window.scrollY > 4) {
         for (const item of navigationLinks) {
+          if (!item.target || !item.target.getClientRects().length) continue;
           if (item.target.getBoundingClientRect().top <= offset) active = item;
           else break;
         }
       }
       for (const item of navigationLinks) {
         const selected = item === active;
-        item.link.classList.toggle('active', selected);
-        if (selected) item.link.setAttribute('aria-current', 'location');
-        else item.link.removeAttribute('aria-current');
+        if (item.link.classList.contains('active') !== selected) item.link.classList.toggle('active', selected);
+        if (selected && item.link.getAttribute('aria-current') !== 'location') item.link.setAttribute('aria-current', 'location');
+        else if (!selected && item.link.hasAttribute('aria-current')) item.link.removeAttribute('aria-current');
       }
     };
     const requestNavigationUpdate = () => {
@@ -217,8 +254,108 @@
     };
     window.addEventListener('scroll', requestNavigationUpdate, { passive: true });
     window.addEventListener('resize', requestNavigationUpdate, { passive: true });
-    navigationLinks.forEach(item => item.link.addEventListener('click', () => setTimeout(updateNavigation, 500)));
+    window.addEventListener('load', requestNavigationUpdate);
+    window.addEventListener('pageshow', requestNavigationUpdate);
+    new MutationObserver(requestNavigationUpdate).observe(document.documentElement, {attributes:true,attributeFilter:['lang']});
     updateNavigation();
+  }
+})();
+
+// A shared language picker delegates translation to each page's existing engine.
+(() => {
+  if (window.__rzLanguagePickerLoaded) return;
+  window.__rzLanguagePickerLoaded = true;
+  const selector = '#language,.case-lang,.travel-lang,.mdr-lang';
+  const triggers = [...document.querySelectorAll(selector)];
+  if (!triggers.length) return;
+  const stylesheet = document.createElement('link');
+  stylesheet.rel = 'stylesheet';
+  stylesheet.href = 'assets/language-picker.css';
+  document.head.append(stylesheet);
+  const menu = document.createElement('div');
+  menu.className = 'portfolio-language-menu';
+  menu.id = 'portfolio-language-options';
+  menu.setAttribute('role', 'menu');
+  menu.hidden = true;
+  menu.innerHTML = '<button type="button" role="menuitemradio" data-language="ru"><span>RU</span> Русский <span class="language-check" aria-hidden="true">✓</span></button><button type="button" role="menuitemradio" data-language="en"><span>EN</span> English <span class="language-check" aria-hidden="true">✓</span></button>';
+  document.body.append(menu);
+  const current = () => document.documentElement.lang.startsWith('en') ? 'en' : 'ru';
+  let activeTrigger = triggers[0];
+  const sync = () => {
+    const lang = current();
+    for (const trigger of triggers) {
+      if (trigger.textContent !== lang.toUpperCase()) trigger.textContent = lang.toUpperCase();
+      trigger.setAttribute('aria-label', lang === 'en' ? 'Choose language' : 'Выбрать язык');
+      trigger.setAttribute('aria-haspopup', 'menu');
+      trigger.setAttribute('aria-controls', menu.id);
+      trigger.setAttribute('aria-expanded', String(!menu.hidden && trigger === activeTrigger));
+    }
+    menu.setAttribute('aria-label', lang === 'en' ? 'Language' : 'Язык');
+    menu.querySelectorAll('[data-language]').forEach(button => {
+      button.setAttribute('aria-checked', String(button.dataset.language === lang));
+    });
+  };
+  const close = (restore = false) => {
+    menu.hidden = true;
+    sync();
+    if (restore) activeTrigger.focus({preventScroll:true});
+  };
+  const open = trigger => {
+    activeTrigger = trigger;
+    menu.hidden = false;
+    const r = trigger.getBoundingClientRect();
+    menu.style.left = Math.max(12, Math.min(r.right - menu.offsetWidth, innerWidth - menu.offsetWidth - 12)) + 'px';
+    menu.style.top = Math.max(12, Math.min(r.bottom + 10, innerHeight - menu.offsetHeight - 12)) + 'px';
+    sync();
+    menu.querySelector('[aria-checked="true"]').focus({preventScroll:true});
+  };
+  window.addEventListener('click', event => {
+    const trigger = event.target.closest(selector);
+    if (!trigger) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    if (!menu.hidden && trigger === activeTrigger) close(true);
+    else open(trigger);
+  }, true);
+  menu.addEventListener('click', event => {
+    const option = event.target.closest('[data-language]');
+    if (!option) return;
+    const lang = option.dataset.language;
+    close(true);
+    try { localStorage.setItem('portfolio-lang', lang); } catch (_) {}
+    // Existing handlers translate content, update URL state and notify the host.
+    window.postMessage({type:'portfolio-language',lang}, '*');
+    if (window.parent !== window) window.parent.postMessage({type:'portfolio-language',lang}, '*');
+  });
+  document.addEventListener('pointerdown', event => {
+    if (!menu.hidden && !menu.contains(event.target) && !event.target.closest(selector)) close();
+  }, true);
+  window.addEventListener('keydown', event => {
+    if (menu.hidden) {
+      if (event.target.matches(selector) && ['ArrowDown','ArrowUp'].includes(event.key)) {
+        event.preventDefault(); event.stopImmediatePropagation(); open(event.target);
+      }
+      return;
+    }
+    if (event.key === 'Escape') {
+      event.preventDefault(); event.stopImmediatePropagation(); close(true);
+    } else if (['ArrowDown','ArrowUp','Home','End'].includes(event.key)) {
+      event.preventDefault(); event.stopImmediatePropagation();
+      const options = [...menu.querySelectorAll('button')];
+      const next = event.key === 'Home' ? 0 : event.key === 'End' ? options.length - 1 : (options.indexOf(document.activeElement) + (event.key === 'ArrowUp' ? -1 : 1) + options.length) % options.length;
+      options[next].focus();
+    } else if (event.key === 'Tab') close();
+  }, true);
+  window.addEventListener('scroll', () => close(), {passive:true,capture:true});
+  window.addEventListener('resize', () => close(), {passive:true});
+  new MutationObserver(sync).observe(document.documentElement, {attributes:true,attributeFilter:['lang']});
+  for (const trigger of triggers) new MutationObserver(sync).observe(trigger, {childList:true,characterData:true,subtree:true});
+  sync();
+  // The homepage's initial stored language must also render its translated content.
+  if (document.getElementById('language') && typeof updateLang === 'function') updateLang();
+  if (window.__portfolioInitialLanguage) {
+    // Deliver after all deferred case translators have registered their listeners.
+    window.postMessage({type:'portfolio-language',lang:window.__portfolioInitialLanguage}, '*');
   }
 })();
 

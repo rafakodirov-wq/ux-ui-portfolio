@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="ru">
-<head>
+<head><script src="assets/language-init.js"></script>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Яндекс Pet Day — UX/UI кейс · RZ.</title>
@@ -143,7 +143,7 @@
     }
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
   </style>
-<link href="assets/contact-widget.css" rel="stylesheet"/><script defer="" src="assets/site.js"></script><style id="v191-footer-unification">
+<link href="assets/contact-widget.css" rel="stylesheet"/><link rel="stylesheet" href="assets/project-navigation.css?v=212"><script src="assets/project-navigation.js?v=195" defer></script><script src="assets/case-runtime.js?v=195" defer></script><style id="v191-footer-unification">
 /* Consistent MDR-style footer on case pages */
 .footer,.portfolio-top-end{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:16px!important;flex-wrap:nowrap!important;min-width:0!important}
 .footer .portfolio-top-btn,.portfolio-top-end .portfolio-top-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:12px!important;flex-shrink:0!important;border-radius:999px!important;padding:13px 23px!important;min-height:54px!important;background:linear-gradient(135deg,rgba(255,255,255,.89),rgba(255,255,255,.66))!important;border:1px solid rgba(255,255,255,.95)!important;box-shadow:0 12px 34px rgba(30,45,44,.10),inset 0 1px 1px white!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;color:#243a34!important;font-weight:650!important;cursor:pointer!important;transition:transform .32s cubic-bezier(.22,1,.36,1),box-shadow .32s ease,background .32s ease!important}
@@ -153,34 +153,25 @@
 @keyframes v191Chevron{0%,100%{transform:translateY(2px)}50%{transform:translateY(-3px)}}
 @media(max-width:700px){.footer,.portfolio-top-end{flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;padding-left:18px!important;padding-right:18px!important}.footer .portfolio-top-btn,.portfolio-top-end .portfolio-top-btn{padding:11px 17px!important;min-height:48px!important;font-size:13px!important}.footer-brand,.footer-signature{min-width:0;font-size:12px!important}}
 @media(prefers-reduced-motion:reduce){.footer .portfolio-top-btn svg,.portfolio-top-end .portfolio-top-btn svg{animation:none!important}}
-</style><script id="v191-global-language-init">(function(){try{const stored=localStorage.getItem('portfolio-lang');const params=new URLSearchParams(location.search);if((stored==='ru'||stored==='en')&&params.get('lang')!==stored){params.set('lang',stored);history.replaceState(history.state,'',location.pathname+'?'+params.toString()+location.hash)}}catch(e){}})();</script></head>
+</style><link rel="stylesheet" href="assets/site-footer.css?v=196.3"><script src="assets/site-footer.js?v=196.3" defer></script></head>
 <body>
-<div class="case-navigation">
-<button aria-label="Назад к проектам" class="case-back" type="button">
-<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"></path></svg>
-</button>
-<nav aria-label="Навигация по проекту" class="case-nav">
-<a class="case-brand" href="index.html#work">RZ<span>.</span> <small>/ design practice</small></a>
-<div class="case-links">
-<a class="active" data-en="Overview" data-ru="Обзор" href="#overview">Обзор</a>
-<a data-en="Process" data-ru="Процесс" href="#process">Процесс</a>
-<a data-en="Design" data-ru="Дизайн" href="#design">Дизайн</a>
-</div>
-<div class="case-actions">
-<button aria-label="Переключить язык" class="case-lang" type="button">RU</button>
-<a class="portfolio-contact" href="mailto:rafakodirov@gmail.com?subject=Yandex%20Pet%20Day">
-<span data-en="Contact" data-ru="Связаться">Связаться</span>
-<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 18 18 6M8 6h10v10"></path></svg>
-</a>
-</div>
-</nav>
+<div id="rz-case-header" class="case-navigation">
+  <button class="rz-back case-back" type="button" aria-label="Назад к проектам"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></svg></button>
+  <nav class="rz-nav case-nav" aria-label="Навигация по проекту">
+    <div class="rz-brand case-brand">RZ. <span class="brand-sub">/ design practice</span></div>
+    <div class="rz-links case-links"><a class="rz-link active " data-en="Overview" data-ru="Обзор" href="#overview">Обзор</a><a data-en="Process" data-ru="Процесс" href="#process" class="rz-link ">Процесс</a><a data-en="Design" data-ru="Дизайн" href="#design" class="rz-link ">Дизайн</a></div>
+    <div class="rz-actions nav-actions">
+      <button class="rz-lang case-lang" type="button" aria-label="Выбрать язык">RU</button>
+      <button class="rz-contact portfolio-contact" type="button" aria-label="Связаться"><span class="portfolio-contact-label">Связаться</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10"/></svg></button>
+    </div>
+  </nav>
 </div>
 <main>
 <!-- HERO -->
 <div class="wrap">
 <section class="hero" id="overview">
 <div>
-<div class="eyebrow">Web / Event landing / UI concept</div>
+<div class="eyebrow">09 / CASE STUDY · WEB · EVENT LANDING</div>
 <h1 data-en="Yandex&lt;br&gt;Pet Day&lt;em&gt;.&lt;/em&gt;" data-ru="Яндекс&lt;br&gt;Pet Day&lt;em&gt;.&lt;/em&gt;">Яндекс<br/>Pet Day<em>.</em></h1>
 <p class="lead" data-en="A conference landing page concept about digital products for pet owners, with a clear program and registration journey." data-ru="Концепция лендинга конференции о цифровых продуктах для владельцев питомцев. Яркая визуальная история, понятная программа и сценарий участия.">Концепция лендинга конференции о цифровых продуктах для владельцев питомцев. Яркая визуальная история, понятная программа и сценарий участия.</p>
 <div class="tags">
@@ -191,7 +182,7 @@
 </section>
 </div>
 <!-- 01 / ПРОБЛЕМА (теперь это Обзор) -->
-<section class="content" id="overview">
+<section class="content" id="context">
 <div class="wrap">
 <div class="section-no">01 / CONTEXT</div>
 <h2 data-en="Problem&lt;span class='dot'&gt;.&lt;/span&gt;" data-ru="Проблема&lt;span class='dot'&gt;.&lt;/span&gt;">Проблема<span class="dot">.</span></h2>
@@ -350,15 +341,10 @@
 </section>
 </main>
 <!-- FOOTER -->
-<div class="wrap footer">
-<div class="footer-brand">RZ<span>.</span> <small>/ design practice</small></div>
-<button class="portfolio-top-btn" id="top-btn" type="button">
-<span data-en="Back to top" data-ru="Наверх">Наверх</span>
-<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
-<path d="m6 14 6-6 6 6"></path>
-</svg>
-</button>
-</div>
+<footer id="rz-site-footer" class="portfolio-top-end">
+  <span class="footer-signature">RZ. / design practice</span>
+  <button class="portfolio-top-btn" type="button" id="top-btn"><span data-ru="Наверх" data-en="Back to top">Наверх</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="m6 14 6-6 6 6"/></svg></button>
+</footer>
 <script>
   (() => {
     const root = document.querySelector('.case-navigation');
@@ -392,20 +378,6 @@
     });
 
     const links = [...root.querySelectorAll('.case-links a')];
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if(e.isIntersecting) {
-          links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
-        }
-      });
-    }, {rootMargin: '-20% 0px -60% 0px'});
-
-    // Наблюдаем за правильными секциями: overview, process, design
-    ['overview', 'process', 'design'].forEach(id => {
-      const el = document.getElementById(id);
-      if(el) observer.observe(el);
-    });
-
     // Кнопка "Наверх"
     document.getElementById('top-btn').addEventListener('click', () => {
       window.scrollTo({top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
@@ -414,5 +386,5 @@
     apply();
   })();
 </script>
-<script id="v191-global-language-sync">(()=>{const get=()=>document.querySelector('.case-lang,.travel-lang,.mdr-lang');const save=lang=>{if(lang!=='ru'&&lang!=='en')return;try{localStorage.setItem('portfolio-lang',lang)}catch(e){};if(window.parent!==window)window.parent.postMessage({type:'portfolio-language',lang},'*')};const toggle=get();if(toggle){toggle.addEventListener('click',()=>{const old=(toggle.textContent||'').trim().toLowerCase();save(old==='en'?'ru':'en')},true)}window.addEventListener('message',e=>{if(e.data?.type!=='portfolio-language')return;const lang=e.data.lang;if(lang!=='ru'&&lang!=='en')return;try{localStorage.setItem('portfolio-lang',lang)}catch(e){};const current=document.documentElement.lang;if(current!==lang){const params=new URLSearchParams(location.search);params.set('lang',lang);location.replace(location.pathname+'?'+params.toString()+location.hash)}});})();</script></body>
+</body>
 </html>
