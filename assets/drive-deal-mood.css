@@ -1,0 +1,70 @@
+/* Controls copied from lato.html. Shared .lato-dot refinements in site.css also apply. */
+.lato-carousel-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:25px}
+.lato-dots{display:flex;align-items:center;justify-content:center;gap:8px;max-width:min(78vw,700px);overflow-x:auto;scrollbar-width:none;padding:8px 4px}
+.lato-dots::-webkit-scrollbar{display:none}
+.lato-dot{border:0;flex:0 0 14px;width:14px;height:14px;border-radius:999px;background:#94A3B8;opacity:.48;transition:width .45s ease,background .4s,opacity .4s;cursor:pointer;padding:0}
+.lato-dot[aria-current=true]{width:68px;background:#3B82F6;opacity:1}
+.lato-circle{width:45px;height:45px;flex:0 0 45px;border-radius:50%;border:1px solid #d4deea;background:#fff;color:#162233;font-size:24px;cursor:pointer}
+.lato-circle:hover{background:#0A162A;color:white}
+.lato-circle{display:grid!important;place-items:center!important;padding:0!important;line-height:1!important;font-family:Arial,sans-serif!important;font-size:0!important}
+.lato-circle svg{width:22px;height:22px;display:block;stroke:currentColor;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.lato-dot:focus-visible,.lato-circle:focus-visible{outline:3px solid #3B82F6;outline-offset:4px}
+@media(max-width:650px){.lato-dot{width:10px;height:10px;flex-basis:10px}.lato-dot[aria-current=true]{width:38px}.lato-dots{gap:5px}.lato-circle{width:38px;height:38px;flex-basis:38px}}
+
+/* Accordion framing; image links still belong to the existing media gallery. */
+.dd-system-mood .dd-mood-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:16px;transition:grid-template-columns .95s cubic-bezier(.25,.8,.2,1)}
+.dd-system-mood .dd-mood-grid[data-mood-focus="1"]{grid-template-columns:1fr 1.8fr 1fr}
+.dd-system-mood .dd-mood-grid[data-mood-focus="2"]{grid-template-columns:1fr 1fr 1.8fr}
+.dd-system-mood .dd-mood-grid figure{grid-column:auto;min-width:0}
+.dd-system-mood .dd-mood-grid .dd-mood-image{width:100%;height:clamp(210px,26vw,320px);aspect-ratio:auto}
+.dd-system-mood .dd-mood-grid figure:first-child .dd-mood-image{aspect-ratio:auto}
+.dd-system-mood .dd-mood-grid img{transition:opacity .7s ease,transform .95s cubic-bezier(.25,.8,.2,1),filter .8s ease;transform:scale(.982);opacity:.72}
+.dd-system-mood .dd-mood-grid .is-current img{transform:scale(1);opacity:1}
+.dd-system-mood .dd-mood-grid figcaption{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+@media(max-width:650px){.dd-system-mood .dd-mood-grid{gap:8px}.dd-system-mood .dd-mood-grid .dd-mood-image{height:190px;border-radius:14px}.dd-system-mood .dd-mood-grid figcaption{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.dd-system-mood .dd-mood-grid,.dd-system-mood .dd-mood-grid img,.lato-dot{transition:none!important}}
+
+.dd-mood-gallery { position: relative; isolation: isolate; }
+.dd-mood-gallery:has(.is-entering) { overflow: clip; }
+.dd-system-mood .dd-mood-grid[hidden] { display: none; }
+.dd-system-mood .dd-mood-grid.is-leaving {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.dd-system-mood .dd-mood-grid.is-entering {
+  position: relative;
+  z-index: 1;
+}
+.dd-system-mood .lato-dot[aria-current=true] { flex-basis: 34px; width: 34px; }
+
+@media (max-width: 650px) {
+  .dd-system-mood .dd-mood-grid[data-mood-focus] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .dd-system-mood .dd-mood-grid[data-mood-focus] figure:not(.is-current) {
+    display: none;
+  }
+  .dd-system-mood .dd-mood-grid .is-current {
+    animation: dd-mood-enter .45s ease both;
+  }
+  .dd-system-mood .dd-mood-grid .dd-mood-image {
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+  .dd-system-mood .dd-mood-grid .dd-mood-image img {
+    object-fit: contain;
+    background: #152932;
+  }
+  .dd-system-mood .lato-carousel-controls { gap: 7px; }
+  .dd-system-mood .lato-dots { gap: 4px; }
+  .dd-system-mood .lato-dot { flex-basis: 8px; width: 8px; height: 8px; }
+  .dd-system-mood .lato-dot[aria-current=true] { flex-basis: 22px; width: 22px; }
+}
+@keyframes dd-mood-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dd-system-mood .dd-mood-grid .is-current { animation: none; }
+}

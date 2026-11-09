@@ -1,4 +1,4 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Travel App — UX/UI Case Study</title><style>
+<!doctype html><html lang="ru"><head><script src="assets/language-init.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Путешествие начинается здесь · UX/UI-кейс</title><style>
 :root{--ink:#132b39;--muted:#627b86;--blue:#1767ed;--bg:#f4f7f3;--line:#d6e4e7}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid #3b82f6;outline-offset:3px}.wrap{max-width:1250px;margin:auto;padding:0 6vw}.hero{min-height:84vh;display:flex;align-items:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 77% 37%,#b8dbf8 0,transparent 48%),radial-gradient(ellipse at 12% 17%,#c8e8e0 0,transparent 43%),#f4f7f3}.hero .wrap{width:100%;padding-top:145px;padding-bottom:90px}.eyebrow{font-size:12px;font-weight:750;letter-spacing:.2em;color:#337d86;text-transform:uppercase}.hero h1{font-size:clamp(65px,9.5vw,142px);letter-spacing:-.09em;line-height:.95;margin:28px 0 28px;max-width:1000px}.lead{font-size:clamp(19px,2.4vw,29px);line-height:1.43;color:#586a75;max-width:800px}.meta{display:flex;gap:45px;flex-wrap:wrap;margin-top:52px}.meta small{display:block;color:#788795;font-size:11px;letter-spacing:.1em;margin-bottom:9px}.meta b{font-size:14px}.cover{margin-top:65px;width:100%;display:block;object-fit:contain;max-height:590px;filter:drop-shadow(0 25px 38px #223e5930)}section{padding:110px 0}.section-no{font-size:12px;color:#367b7c;letter-spacing:.2em;font-weight:750}.section-title{font-size:clamp(43px,6vw,84px);letter-spacing:-.07em;line-height:1.02;margin:18px 0 25px}.copy{font-size:clamp(17px,1.7vw,22px);line-height:1.65;color:#64717c;max-width:810px}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:45px}.feature{padding:30px;border:1px solid #dfe6ea;border-radius:26px;background:#fff9}.feature span{font-size:12px;color:var(--blue);font-weight:700}.feature h3{font-size:22px;letter-spacing:-.04em;margin:18px 0 8px}.feature p{line-height:1.55;color:#64748b;margin:0}.gallery-section{background:linear-gradient(180deg,#f4f7f3 0%,#e8f2f3 16%,#e2f1f3 35%,#e8f1fa 64%,#e9f5ee 86%,#f4f7f3 100%)}.gallery-header{display:flex;align-items:end;justify-content:space-between;gap:25px;flex-wrap:wrap}.tabs{display:inline-flex;padding:6px;gap:4px;background:#dfeaf4aa;border:1px solid #ffffffdd;border-radius:25px;backdrop-filter:blur(20px) saturate(160%);box-shadow:inset 0 1px #fff,0 12px 35px #16355212;margin:34px 0}.tab{border:0;background:transparent;padding:14px 30px;border-radius:19px;color:#5b6d7d;font-weight:650;transition:background .3s,box-shadow .3s,color .3s}.tab.active{background:#ffffffd9;color:#172b45;box-shadow:0 4px 20px #27476a1c,inset 0 1px #fff}.gallery-frame{position:relative;border-radius:35px;background:linear-gradient(140deg,#c4e5e7,#d8eaf8 56%,#e5f2e9);border:1px solid #fff;overflow:hidden;min-height:550px;display:grid;place-items:center;padding:35px 65px}.gallery-image{display:block;width:auto;max-width:100%;height:min(70vh,760px);object-fit:contain;cursor:zoom-in;filter:drop-shadow(0 20px 30px #1d33442b);transition:opacity .42s,transform .65s cubic-bezier(.22,1,.36,1)}.gallery-image.changing{opacity:.15;transform:translateY(12px) scale(.985)}.gallery-controls{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-top:24px}.round{display:grid;place-items:center;flex:none;width:58px;height:58px;border-radius:50%;background:#fff;border:1px solid #d5e2ee;color:#1d344b;box-shadow:0 8px 22px #1635520d}.round svg{width:22px;height:22px;display:block}.dots{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}.dot{border:0;width:10px;height:10px;border-radius:50%;background:#bdcbd9;padding:0;transition:width .4s,background .4s}.dot.active{width:33px;border-radius:20px;background:#3b82f6}.caption{text-align:center;margin-top:12px;color:#64748b;font-size:14px}.overlay{position:fixed;inset:0;z-index:100;background:#071526b5;backdrop-filter:blur(25px) saturate(80%);-webkit-backdrop-filter:blur(25px) saturate(80%);display:none;align-items:center;justify-content:center;padding:65px 75px;opacity:0;transition:opacity .3s}.overlay.open{display:flex;opacity:1}.overlay img{max-width:100%;max-height:100%;object-fit:contain;user-select:none;touch-action:none;transition:transform .25s}.overlay .close{position:absolute;right:24px;top:20px}.overlay .prev{position:absolute;left:15px}.overlay .next{position:absolute;right:15px}.overlay .count{position:absolute;bottom:20px;color:#fff;font-size:13px}.foot{background:linear-gradient(120deg,#0d3142,#123b50 55%,#123d46);color:white;padding:95px 0}.foot h2{font-size:clamp(42px,6vw,78px);letter-spacing:-.07em;margin:0 0 15px}.foot p{color:#adbfce;line-height:1.7}@media(max-width:700px){.hero{min-height:auto}.hero .wrap{padding-top:60px}.meta{gap:20px}.features{grid-template-columns:1fr}.gallery-frame{min-height:390px;padding:22px}.gallery-image{height:460px}.overlay{padding:65px 30px}.overlay .prev{left:5px}.overlay .next{right:5px}.round{width:46px;height:46px}.tab{padding:12px 20px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
@@ -49,7 +49,7 @@ section[id],header[id],footer[id]{scroll-margin-top:105px}
 .portfolio-top-btn svg{animation:topChevronFloat 2.1s ease-in-out infinite;transform-origin:center}
 @keyframes topChevronFloat{0%,100%{transform:translateY(2px)}50%{transform:translateY(-3px)}}
 @media(prefers-reduced-motion:reduce){.portfolio-top-btn svg{animation:none}}
-.gallery-section{padding-bottom:20px!important}.foot{padding-top:105px!important;padding-bottom:36px!important;background:linear-gradient(180deg,#d4e7e4 0%,#accac9 14%,#81a9ad 30%,#467784 49%,#235263 68%,#123b50 100%)!important}.foot .portfolio-top-end{padding-top:8px!important;padding-bottom:8px!important}@media(max-width:700px){.foot{padding-top:78px!important}}
+.foot{padding-top:105px!important;padding-bottom:36px!important;background:linear-gradient(180deg,#d4e7e4 0%,#accac9 14%,#81a9ad 30%,#467784 49%,#235263 68%,#123b50 100%)!important}.foot .portfolio-top-end{padding-top:8px!important;padding-bottom:8px!important}@media(max-width:700px){.foot{padding-top:78px!important}}
 
 
 
@@ -75,33 +75,277 @@ section[id],header[id],footer[id]{scroll-margin-top:105px}
 .portfolio-top-end{width:100%!important;max-width:none!important;display:flex!important;justify-content:flex-end!important;align-items:center!important;padding:34px clamp(20px,5vw,80px) 30px!important;margin:0!important;background:transparent!important;clear:both!important;box-sizing:border-box!important}
 .portfolio-top-btn{position:relative;z-index:2}
 @media(max-width:650px){.portfolio-top-end{padding:26px 22px 28px!important}}
-</style><style id="v49-travel-seamless-background">
-/* Match the section above, then descend gradually into the final deep teal. */
-.gallery-section{background:linear-gradient(180deg,#f4f7f3 0%,#e8f2f3 15%,#e2f1f3 38%,#e8f1fa 67%,#d6e7e5 84%,#c7dcd9 100%)!important;padding-bottom:125px!important}
-.foot{background:linear-gradient(180deg,#c7dcd9 0%,#accac9 11%,#81a9ad 25%,#467784 43%,#235263 63%,#123b50 84%,#123b50 100%)!important;padding-top:230px!important;padding-bottom:45px!important}
-.foot .portfolio-top-btn{color:#fff!important;background:linear-gradient(130deg,rgba(255,255,255,.26),rgba(255,255,255,.09))!important;border-color:rgba(255,255,255,.45)!important;box-shadow:inset 0 1px rgba(255,255,255,.35),0 10px 30px rgba(4,24,35,.16)!important}
-@media(max-width:700px){.foot{padding-top:155px!important}.gallery-section{padding-bottom:80px!important}}
-</style><style id="v52-travel-footer-alignment">
-/* Compact final section; align glass back-to-top with the description line. */
-.foot{position:relative!important;padding-top:100px!important;padding-bottom:58px!important;min-height:0!important}
-.foot>.wrap{position:relative!important;padding-right:205px!important;box-sizing:border-box!important}
-.foot>.wrap p{margin-bottom:0!important;max-width:950px!important}
-.foot>.portfolio-top-end{position:absolute!important;right:max(28px,calc((100% - 1200px)/2))!important;bottom:51px!important;width:auto!important;padding:0!important;margin:0!important;display:flex!important;align-items:center!important}
-@media(max-width:850px){.foot{padding-top:85px!important;padding-bottom:42px!important}.foot>.wrap{padding-right:24px!important}.foot>.portfolio-top-end{position:relative!important;right:auto!important;bottom:auto!important;width:100%!important;justify-content:flex-end!important;padding:22px 24px 0!important}}
-</style><meta name="description" content="Portfolio case study by Ravshanbek Zoirov."><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/site.css"><script src="assets/site.js" defer></script><style>html,body{overflow-anchor:none}::selection{background:rgba(59,130,246,.22);color:inherit}</style><style>.footer-signature{font-size:13px;font-weight:650;letter-spacing:.015em;color:inherit;white-space:nowrap;margin-right:auto}.portfolio-top-end:has(.footer-signature){display:flex!important;justify-content:space-between!important;align-items:center!important;gap:20px!important;width:100%!important}.shared-signature-footer{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:36px max(24px,5vw);border-top:1px solid #ccd4d7}.shared-signature-footer button{border:1px solid #ccd4d7;background:white;border-radius:50px;padding:13px 22px;cursor:pointer}@media(max-width:650px){.portfolio-top-end:has(.footer-signature){flex-wrap:wrap}}</style><script id="v191-global-language-init">(function(){try{const stored=localStorage.getItem('portfolio-lang');const params=new URLSearchParams(location.search);if((stored==='ru'||stored==='en')&&params.get('lang')!==stored){params.set('lang',stored);history.replaceState(history.state,'',location.pathname+'?'+params.toString()+location.hash)}}catch(e){}})();</script></head><body><div class="travel-navigation"><button class="travel-back" id="travel-back" type="button" aria-label="Назад к проектам" title="Назад к проектам"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></svg></button><nav class="travel-nav" aria-label="Project navigation"><a class="travel-brand" href="index.html#work" target="_top">RZ<span>.</span> <small class="brand-sub">/ design practice</small></a><div class="travel-links"><a class="travel-link active" data-section="top" href="#top" data-ru="Обзор" data-en="Overview">Обзор</a><a class="travel-link" data-section="vision" href="#vision" data-ru="Концепция" data-en="Concept">Концепция</a><a class="travel-link" data-section="gallery" href="#gallery" data-ru="Экраны" data-en="Screens">Экраны</a></div><button class="travel-lang" type="button" id="travel-lang" aria-label="Change language">RU</button><a class="portfolio-contact" href="mailto:rafakodirov@gmail.com?subject=Portfolio%20%E2%80%94%20UX%2FUI%20project" aria-label="Связаться"><span class="portfolio-contact-label">Связаться</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10"/></svg></a></nav></div><header class="hero" id="top"><div class="wrap"><div class="eyebrow" data-ru="CASE STUDY / MOBILE / TRAVEL" data-en="CASE STUDY / MOBILE / TRAVEL">CASE STUDY / MOBILE / TRAVEL</div><h1 data-ru="Путешествие начинается здесь." data-en="Your journey starts here.">Путешествие начинается здесь.</h1><p class="lead" data-ru="Концепция мобильного приложения, объединяющего поиск направлений, билетов, отелей и планирование поездок." data-en="A mobile app concept bringing destinations, flights, hotels, and trip planning into one experience.">Концепция мобильного приложения, объединяющего поиск направлений, билетов, отелей и планирование поездок.</p><div class="meta"><div><small data-ru="ФОРМАТ" data-en="FORMAT">ФОРМАТ</small><b>iOS · UX/UI Concept</b></div><div><small data-ru="МОЯ РОЛЬ" data-en="MY ROLE">МОЯ РОЛЬ</small><b>Interface & Visual Design</b></div><div><small data-ru="РЕШЕНИЯ" data-en="DELIVERABLES">РЕШЕНИЯ</small><b>Light / Dark · 16 screens</b></div></div><img class="cover" src="assets/travel/travel_three_cutout.png" alt="Три экрана Travel App без фоновой подложки" /></div></header><section id="vision"><div class="wrap"><div class="section-no">01 / PRODUCT VISION</div><h2 class="section-title" data-ru="Одна поездка.<br>Один интерфейс." data-en="One trip.<br>One experience.">Одна поездка.<br>Один интерфейс.</h2><p class="copy" data-ru="Идея проекта — собрать ключевые сценарии путешественника в едином мобильном опыте: от вдохновения и поиска билетов до просмотра отеля и контроля предстоящей поездки. Интерфейс разработан в светлой и тёмной темах." data-en="The concept brings core travel scenarios together: from discovering destinations and searching for flights to exploring hotels and tracking an upcoming trip. The interface was designed in light and dark themes.">Идея проекта — собрать ключевые сценарии путешественника в едином мобильном опыте: от вдохновения и поиска билетов до просмотра отеля и контроля предстоящей поездки. Интерфейс разработан в светлой и тёмной темах.</p><div class="features"><div class="feature"><span>01 / DISCOVER</span><h3 data-ru="Поиск направлений" data-en="Discover destinations">Поиск направлений</h3><p data-ru="Билеты, популярные города и карточки направлений в одном сценарии." data-en="Flights, popular cities, and destination cards in one flow.">Билеты, популярные города и карточки направлений в одном сценарии.</p></div><div class="feature"><span>02 / EXPLORE</span><h3 data-ru="Отели и места" data-en="Hotels & places">Отели и места</h3><p data-ru="Обзоры направлений, информация об отелях и избранные места." data-en="Destination overviews, hotel information, and saved places.">Обзоры направлений, информация об отелях и избранные места.</p></div><div class="feature"><span>03 / ORGANIZE</span><h3 data-ru="Мои поездки" data-en="My trips">Мои поездки</h3><p data-ru="Единая карточка поездки с перелётом, проживанием и страховкой." data-en="One trip card for flights, accommodation, and insurance.">Единая карточка поездки с перелётом, проживанием и страховкой.</p></div></div></div></section><section class="gallery-section" id="gallery"><div class="wrap"><div class="section-no">02 / INTERFACE GALLERY</div><h2 class="section-title" data-ru="Экраны и состояния." data-en="Screens & states.">Экраны и состояния.</h2><p class="copy" data-ru="Исходные макеты из проекта: сравните светлую и тёмную темы и изучите детали интерфейса." data-en="Original project screens: compare light and dark themes and explore interface details.">Исходные макеты из проекта: сравните светлую и тёмную темы и изучите детали интерфейса.</p><div class="tabs" role="tablist" aria-label="Theme"><button class="tab active" role="tab" aria-selected="true" data-theme="light" data-ru="Светлая тема" data-en="Light theme">Светлая тема</button><button class="tab" role="tab" aria-selected="false" data-theme="dark" data-ru="Тёмная тема" data-en="Dark theme">Тёмная тема</button></div><div class="gallery-frame"><img id="gallery-image" class="gallery-image" src="assets/travel/screen_16.png" alt="Travel App screen" tabindex="0" aria-label="Open screen preview" /></div><div class="gallery-controls"><button class="round" id="prev" aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5-7 7 7 7"/></svg></button><div class="dots" id="dots"></div><button class="round" id="next" aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></button></div><div class="caption" id="caption"></div></div></section><footer class="foot"><div class="wrap"><div class="section-no">03 / DESIGN SYSTEM</div><h2 data-ru="Один продукт.<br>Два настроения." data-en="One product.<br>Two moods.">Один продукт.<br>Два настроения.</h2><p data-ru="Светлая и тёмная палитры, синий акцент, единая структура навигации и контента. Концептуальный UX/UI-проект." data-en="Light and dark palettes, blue accents, and a consistent navigation and content hierarchy. A conceptual UX/UI project.">Светлая и тёмная палитры, синий акцент, единая структура навигации и контента. Концептуальный UX/UI-проект.</p></div><div class="portfolio-top-end"><span class="footer-signature">RZ. / design practice</span><button class="portfolio-top-btn" type="button"><span>Наверх</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg></button></div></footer><div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Image preview"><button class="round close" id="close" aria-label="Close">✕</button><button class="round prev" id="modal-prev" aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m15 5-7 7 7 7"/></svg></button><img id="modal-img" alt="Enlarged Travel App screen"/><button class="round next" id="modal-next" aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m9 5 7 7-7 7"/></svg></button><div class="count" id="count"></div></div><script>
-const sets={light:[16,14,12,8,6,4,2,10],dark:[15,13,11,7,5,3,1,9]};const namesRu=['Главный экран','Поиск билетов','Стамбул — обзор','Отель','Мои поездки','Избранное','Другие экраны','Дополнительный экран'];const namesEn=['Welcome','Flight search','Istanbul overview','Hotel details','My trips','Favorites','Additional screens','Additional screen'];let theme='light',idx=0,lang=new URLSearchParams(location.search).get('lang')==='en'?'en':'ru',timer,modal=false,scale=1;const $=id=>document.getElementById(id),src=()=>`assets/travel/screen_${String(sets[theme][idx]).padStart(2,'0')}.png`;function render(animate=true){const el=$('gallery-image');if(animate)el.classList.add('changing');setTimeout(()=>{el.src=src();el.classList.remove('changing')},animate?190:0);$('caption').textContent=`${idx+1} / ${sets[theme].length} · ${(lang==='ru'?namesRu:namesEn)[idx]}`;$('dots').innerHTML=sets[theme].map((_,i)=>`<button class="dot ${i===idx?'active':''}" aria-label="Screen ${i+1}" data-i="${i}"></button>`).join('');$('dots').querySelectorAll('button').forEach(b=>b.onclick=()=>{idx=+b.dataset.i;render();restart()});if(modal){$('modal-img').src=src();$('count').textContent=`${idx+1} / ${sets[theme].length}`;scale=1;$('modal-img').style.transform='scale(1)'}}function go(d){idx=(idx+d+sets[theme].length)%sets[theme].length;render()}function restart(){clearInterval(timer);if(!modal&&!document.hidden&&!matchMedia('(prefers-reduced-motion:reduce)').matches)timer=setInterval(()=>go(1),3000)}$('prev').onclick=()=>{go(-1);restart()};$('next').onclick=()=>{go(1);restart()};document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{theme=t.dataset.theme;idx=0;document.querySelectorAll('.tab').forEach(b=>{b.classList.toggle('active',b===t);b.setAttribute('aria-selected',b===t?'true':'false')});render();restart()});function openModal(){modal=true;clearInterval(timer);$('modal-img').src=src();$('count').textContent=`${idx+1} / ${sets[theme].length}`;$('overlay').classList.add('open');$('close').focus({preventScroll:true})}function closeModal(){modal=false;$('overlay').classList.remove('open');$('gallery-image').focus({preventScroll:true});restart()}$('gallery-image').onclick=openModal;$('gallery-image').onkeydown=e=>{if(e.key==='Enter')openModal()};$('close').onclick=closeModal;$('overlay').onclick=e=>{if(e.target===$('overlay'))closeModal()};$('modal-prev').onclick=()=>go(-1);$('modal-next').onclick=()=>go(1);document.addEventListener('keydown',e=>{if(!modal)return;if(e.key==='Escape')closeModal();if(e.key==='ArrowLeft')go(-1);if(e.key==='ArrowRight')go(1)});let touch=null;$('modal-img').addEventListener('touchstart',e=>{if(e.touches.length===1)touch={x:e.touches[0].clientX,y:e.touches[0].clientY};else if(e.touches.length===2){touch={pinch:Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY),scale}}},{passive:true});$('modal-img').addEventListener('touchmove',e=>{if(e.touches.length===2&&touch?.pinch){e.preventDefault();let d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);scale=Math.min(4,Math.max(1,touch.scale*d/touch.pinch));$('modal-img').style.transform=`scale(${scale})`}}, {passive:false});$('modal-img').addEventListener('touchend',e=>{if(touch?.x!=null&&e.changedTouches.length&&scale===1){let dx=e.changedTouches[0].clientX-touch.x;if(Math.abs(dx)>70)go(dx<0?1:-1)}touch=null},{passive:true});$('modal-img').ondblclick=()=>{scale=scale>1?1:2.2;$('modal-img').style.transform=`scale(${scale})`};document.addEventListener('visibilitychange',restart);function localize(){document.documentElement.lang=lang;$("travel-lang").textContent=lang.toUpperCase();document.querySelectorAll('[data-ru]').forEach(e=>e.innerHTML=e.dataset[lang]);render(false)}window.addEventListener('message',e=>{if(e.data?.type==='portfolio-language'){lang=e.data.lang;localize()}});$('travel-lang').onclick=()=>{lang=lang==='ru'?'en':'ru';localize();try{parent.postMessage({type:'travel-language',lang},'*')}catch(e){}};
-document.getElementById('travel-back').addEventListener('click',()=>{if(window.parent!==window){window.parent.postMessage({type:'portfolio-case-back'},'*');return}window.location.href='index.html#work'});
-const travelNav=document.querySelector('.travel-nav');window.addEventListener('scroll',()=>travelNav.classList.toggle('scrolled',scrollY>35),{passive:true});
+</style><meta name="description" content="Концепция iOS-приложения для планирования самостоятельных путешествий. UX/UI-кейс."><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/project-navigation.css?v=212"><script src="assets/project-navigation.js?v=195" defer></script><script src="assets/case-runtime.js?v=195" defer></script><style>html,body{overflow-anchor:none}::selection{background:rgba(59,130,246,.22);color:inherit}</style><style>.footer-signature{font-size:13px;font-weight:650;letter-spacing:.015em;color:inherit;white-space:nowrap;margin-right:auto}.portfolio-top-end:has(.footer-signature){display:flex!important;justify-content:space-between!important;align-items:center!important;gap:20px!important;width:100%!important}.shared-signature-footer{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:36px max(24px,5vw);border-top:1px solid #ccd4d7}.shared-signature-footer button{border:1px solid #ccd4d7;background:white;border-radius:50px;padding:13px 22px;cursor:pointer}@media(max-width:650px){.portfolio-top-end:has(.footer-signature){flex-wrap:wrap}}</style><link rel="stylesheet" href="assets/site-footer.css?v=196.3"><script src="assets/site-footer.js?v=196.3" defer></script><link rel="stylesheet" href="assets/travel-case.css">
+</head><body><div id="rz-case-header" class="travel-navigation">
+  <button class="rz-back travel-back" id="travel-back" type="button" aria-label="Назад к проектам"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></svg></button>
+  <nav class="rz-nav travel-nav" aria-label="Навигация по проекту">
+    <div class="rz-brand travel-brand">RZ. <span class="brand-sub">/ design practice</span></div>
+    <div class="rz-links travel-links"><a class="rz-link active travel-link" data-section="top" href="#top" data-ru="Обзор" data-en="Overview">Обзор</a><a class="rz-link travel-link" data-section="vision" href="#vision" data-ru="Концепция" data-en="Concept">Концепция</a><a class="rz-link travel-link" data-section="gallery" href="#gallery" data-ru="Экраны" data-en="Screens">Экраны</a></div>
+    <div class="rz-actions nav-actions">
+      <button class="rz-lang travel-lang" id="travel-lang" type="button" aria-label="Выбрать язык">RU</button>
+      <button class="rz-contact portfolio-contact" type="button" aria-label="Связаться"><span class="portfolio-contact-label">Связаться</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10"/></svg></button>
+    </div>
+  </nav>
+</div><main class="travel-case">
+<header class="hero tc-hero" id="top">
+  <div class="wrap tc-hero-grid">
+    <div class="tc-hero-copy">
+      <p class="eyebrow" data-ru="03 / МОБИЛЬНОЕ ПРИЛОЖЕНИЕ · UX/UI" data-en="03 / MOBILE APP · UX/UI">03 / МОБИЛЬНОЕ ПРИЛОЖЕНИЕ · UX/UI</p>
+      <h1 data-ru="Путешествие начинается здесь." data-en="Your journey starts here.">Путешествие начинается здесь.</h1>
+      <p class="lead" data-ru="Концепция iOS-приложения для самостоятельных путешественников. Помогает выбрать направление, сравнить рейсы, изучить отели, а перед выездом найти всё важное в карточке поездки." data-en="An iOS app concept for independent travellers. It helps them choose a destination, compare flights, explore hotels and find the essentials in one trip card before departure.">Концепция iOS-приложения для самостоятельных путешественников. Помогает выбрать направление, сравнить рейсы, изучить отели, а перед выездом найти всё важное в карточке поездки.</p>
+      <dl class="tc-meta">
+        <div><dt data-ru="Формат" data-en="Format">Формат</dt><dd data-ru="Концепция для iOS" data-en="iOS concept">Концепция для iOS</dd></div>
+        <div><dt data-ru="Моя роль" data-en="My role">Моя роль</dt><dd data-ru="Сценарии, UX/UI, визуальная система" data-en="User flows, UX/UI, visual system">Сценарии, UX/UI, визуальная система</dd></div>
+        <div><dt data-ru="Результат" data-en="Outcome">Результат</dt><dd data-ru="8 экранов в двух темах" data-en="8 screens in two themes">8 экранов в двух темах</dd></div>
+      </dl>
+    </div>
+    <figure class="tc-hero-art">
+      <img src="assets/travel/travel_three_cutout.png" width="1536" height="986" fetchpriority="high" alt="Приветствие, поиск билетов и обзор Стамбула" data-alt-ru="Приветствие, поиск билетов и обзор Стамбула" data-alt-en="Welcome, flight search and Istanbul overview">
+    </figure>
+  </div>
+</header>
 
-localize();restart();
-</script><script id="portfolio-shared-v47">(function(){
+<section class="tc-section" id="vision">
+<div class="wrap">
+<header class="tc-section-head">
+<p class="section-no" data-ru="01 / Задача и роль" data-en="01 / Challenge and role">01 / Задача и роль</p>
+<h2 class="section-title" data-ru="У поездки два режима" data-en="A trip has two modes">У поездки два режима</h2>
+<p class="copy" data-ru="До бронирования человек изучает варианты и возвращается к ним несколько раз. Перед выездом ему нужны конкретные сведения: когда рейс, где отель и подтверждены ли услуги. Оба режима должны быть доступны из одного приложения." data-en="Before booking, travellers explore options and return to them more than once. Before departure, they need specifics: when the flight leaves, where the hotel is and what has been confirmed. Both modes should be available in one app.">До бронирования человек изучает варианты и возвращается к ним несколько раз. Перед выездом ему нужны конкретные сведения: когда рейс, где отель и подтверждены ли услуги. Оба режима должны быть доступны из одного приложения.</p>
+</header>
+<div class="tc-card-grid">
+<article class="tc-card">
+<span class="tc-index" aria-hidden="true">01</span>
+<h3 data-ru="Направление ещё не выбрано" data-en="The destination is open">Направление ещё не выбрано</h3>
+<p data-ru="Нужна отправная точка для выбора: идеи, ориентиры по цене и возможность отложить интересное." data-en="Travellers need a starting point: ideas, indicative prices and a way to save promising options.">Нужна отправная точка для выбора: идеи, ориентиры по цене и возможность отложить интересное.</p>
+</article>
+<article class="tc-card">
+<span class="tc-index" aria-hidden="true">02</span>
+<h3 data-ru="Маршрут уже известен" data-en="The route is known">Маршрут уже известен</h3>
+<p data-ru="Важно быстро указать даты и пассажиров, а затем сравнить время, длительность и цену рейсов." data-en="The priority is to set dates and travellers, then compare departure times, flight duration and prices.">Важно быстро указать даты и пассажиров, а затем сравнить время, длительность и цену рейсов.</p>
+</article>
+<article class="tc-card">
+<span class="tc-index" aria-hidden="true">03</span>
+<h3 data-ru="Поездка приближается" data-en="Departure is approaching">Поездка приближается</h3>
+<p data-ru="Перелёт, проживание и страховку удобно проверить в одном месте, особенно если человек открывает приложение на ходу." data-en="Flights, accommodation and insurance should be easy to check in one place, especially on the move.">Перелёт, проживание и страховку удобно проверить в одном месте, особенно если человек открывает приложение на ходу.</p>
+</article></div>
+<aside class="tc-note"><h3 data-ru="Объём работы" data-en="Scope of work">Объём работы</h3><p data-ru="Проработаны логика навигации, сценарии поиска и подготовки к поездке, экраны и их светлые и тёмные версии." data-en="The design covers navigation, search and trip preparation flows, and the corresponding screens in light and dark themes.">Проработаны логика навигации, сценарии поиска и подготовки к поездке, экраны и их светлые и тёмные версии.</p></aside>
+</div>
+</section>
+
+<section class="tc-section">
+<div class="wrap">
+<header class="tc-section-head">
+<p class="section-no" data-ru="02 / Путь пользователя" data-en="02 / User journey">02 / Путь пользователя</p>
+<h2 class="section-title" data-ru="От идеи до выезда" data-en="From idea to departure">От идеи до выезда</h2>
+<p class="copy" data-ru="Казань → Стамбул — пример на макетах. В нём одна и та же поездка проходит через поиск, сравнение и подготовку к выезду." data-en="Kazan → Istanbul is the example shown in the designs. It connects search, comparison and preparation for departure.">Казань → Стамбул — пример на макетах. В нём одна и та же поездка проходит через поиск, сравнение и подготовку к выезду.</p>
+</header>
+<ol class="tc-route">
+<li>
+<span class="tc-index" aria-hidden="true">01</span>
+<h3 data-ru="Найти отправную точку" data-en="Start exploring">Найти отправную точку</h3>
+<p data-ru="Выбрать город из подборки или задать свой маршрут." data-en="Pick a city from the suggestions or enter a route.">Выбрать город из подборки или задать свой маршрут.</p>
+</li>
+<li>
+<span class="tc-index" aria-hidden="true">02</span>
+<h3 data-ru="Сравнить рейсы" data-en="Compare flights">Сравнить рейсы</h3>
+<p data-ru="Оценить время вылета, длительность и цену при тех же параметрах поиска." data-en="Compare departure times, duration and fares with the same search criteria.">Оценить время вылета, длительность и цену при тех же параметрах поиска.</p>
+</li>
+<li>
+<span class="tc-index" aria-hidden="true">03</span>
+<h3 data-ru="Понять, где остановиться" data-en="Decide where to stay">Понять, где остановиться</h3>
+<p data-ru="Изучить город, открыть карточку отеля и сохранить вариант." data-en="Explore the city, open a hotel page and save an option.">Изучить город, открыть карточку отеля и сохранить вариант.</p>
+</li>
+<li>
+<span class="tc-index" aria-hidden="true">04</span>
+<h3 data-ru="Проверить поездку" data-en="Check the trip">Проверить поездку</h3>
+<p data-ru="Открыть даты и статусы перелёта, отеля и страховки." data-en="Open the trip to check dates and the status of flights, accommodation and insurance.">Открыть даты и статусы перелёта, отеля и страховки.</p>
+</li>
+</ol>
+<aside class="tc-note"><h3 data-ru="Зачем разделены «Избранное» и «Поездки»" data-en="Why Favourites and Trips are separate">Зачем разделены «Избранное» и «Поездки»</h3><p data-ru="В избранном остаются идеи, к которым ещё можно вернуться. В поездках собраны сведения о конкретном выезде. Поэтому сохранённый отель и подтверждённое проживание лежат в разных разделах." data-en="Favourites holds ideas worth revisiting. Trips holds details for a specific journey. A saved hotel and confirmed accommodation therefore belong in different places.">В избранном остаются идеи, к которым ещё можно вернуться. В поездках собраны сведения о конкретном выезде. Поэтому сохранённый отель и подтверждённое проживание лежат в разных разделах.</p></aside>
+</div>
+</section>
+
+<section class="tc-section">
+<div class="wrap">
+<header class="tc-section-head">
+<p class="section-no" data-ru="03 / Проектные решения" data-en="03 / Design decisions">03 / Проектные решения</p>
+<h2 class="section-title" data-ru="Что показывать в момент выбора" data-en="What to show when a decision is due">Что показывать в момент выбора</h2>
+<p class="copy" data-ru="Поиск, карточки и поездка требуют разной детализации. На экранах меняется объём информации, а маршрут и контекст остаются узнаваемыми." data-en="Search, detail pages and trips need different levels of detail. Each screen shows a different amount of information while keeping the route and its context recognisable.">Поиск, карточки и поездка требуют разной детализации. На экранах меняется объём информации, а маршрут и контекст остаются узнаваемыми.</p>
+</header>
+<article class="tc-story ">
+  <div class="tc-story-copy">
+    <span class="tc-index" aria-hidden="true">01</span>
+    <h3 data-ru="Условия поиска остаются под рукой" data-en="Search criteria stay in view">Условия поиска остаются под рукой</h3>
+    <p data-ru="На главном экране маршрут, даты и пассажиры собраны рядом с действием «Найти билеты». Подборки ниже дают точку входа тем, кто ещё не определился." data-en="Route, dates and travellers sit next to Find flights. Destination suggestions below give undecided travellers a way in.">На главном экране маршрут, даты и пассажиры собраны рядом с действием «Найти билеты». Подборки ниже дают точку входа тем, кто ещё не определился.</p>
+    <p class="tc-story-point" data-ru="В результатах видны выбранный маршрут и параметры. Время, длительность и цена занимают одинаковые позиции в каждой строке, чтобы рейсы было проще сопоставить." data-en="Results keep the route and criteria visible. Time, duration and price occupy consistent positions in each row so flights are easier to compare.">В результатах видны выбранный маршрут и параметры. Время, длительность и цена занимают одинаковые позиции в каждой строке, чтобы рейсы было проще сопоставить.</p>
+  </div>
+  <div class="tc-story-shots" data-preview-group>
+    <figure class="tc-shot">
+  <button type="button" class="tc-preview" data-travel-screen="14" aria-label="Увеличить: Поиск билетов">
+    <img src="assets/travel/screen_14.png" width="1059" height="2300" loading="lazy" alt="Поиск билетов">
+  </button>
+  <figcaption data-ru="Поиск билетов" data-en="Flight search">Поиск билетов</figcaption>
+</figure><figure class="tc-shot">
+  <button type="button" class="tc-preview" data-travel-screen="10" aria-label="Увеличить: Список рейсов">
+    <img src="assets/travel/screen_10.png" width="1056" height="1196" loading="lazy" alt="Список рейсов">
+  </button>
+  <figcaption data-ru="Список рейсов" data-en="Flight results">Список рейсов</figcaption>
+</figure>
+  </div>
+</article>
+<article class="tc-story tc-story-reverse">
+  <div class="tc-story-copy">
+    <span class="tc-index" aria-hidden="true">02</span>
+    <h3 data-ru="У города и отеля разные вопросы" data-en="Cities and hotels answer different questions">У города и отеля разные вопросы</h3>
+    <p data-ru="В обзоре города важны ориентиры: язык, валюта, местное время и места, ради которых стоит поехать." data-en="The city overview provides useful context: language, currency, local time and places worth visiting.">В обзоре города важны ориентиры: язык, валюта, местное время и места, ради которых стоит поехать.</p>
+    <p class="tc-story-point" data-ru="В карточке отеля на первый план выходят фотографии, расположение и оценка. Номера, удобства и отзывы разнесены по вкладкам." data-en="The hotel page leads with photos, location and rating. Rooms, amenities and reviews each have a tab.">В карточке отеля на первый план выходят фотографии, расположение и оценка. Номера, удобства и отзывы разнесены по вкладкам.</p>
+  </div>
+  <div class="tc-story-shots" data-preview-group>
+    <figure class="tc-shot">
+  <button type="button" class="tc-preview" data-travel-screen="12" aria-label="Увеличить: Обзор Стамбула">
+    <img src="assets/travel/screen_12.png" width="1059" height="2300" loading="lazy" alt="Обзор Стамбула">
+  </button>
+  <figcaption data-ru="Обзор Стамбула" data-en="Istanbul overview">Обзор Стамбула</figcaption>
+</figure><figure class="tc-shot">
+  <button type="button" class="tc-preview" data-travel-screen="8" aria-label="Увеличить: Карточка отеля">
+    <img src="assets/travel/screen_08.png" width="1056" height="1196" loading="lazy" alt="Карточка отеля">
+  </button>
+  <figcaption data-ru="Карточка отеля" data-en="Hotel details">Карточка отеля</figcaption>
+</figure>
+  </div>
+</article>
+<article class="tc-story ">
+  <div class="tc-story-copy">
+    <span class="tc-index" aria-hidden="true">03</span>
+    <h3 data-ru="От вариантов к плану поездки" data-en="From saved options to a trip plan">От вариантов к плану поездки</h3>
+    <p data-ru="Избранное разделено на места, отели и маршруты. Так можно вернуться к сохранённым вариантам даже после того, как поиск прерван." data-en="Favourites groups places, hotels and routes, so options can be revisited even after a search is interrupted.">Избранное разделено на места, отели и маршруты. Так можно вернуться к сохранённым вариантам даже после того, как поиск прерван.</p>
+    <p class="tc-story-point" data-ru="В «Моих поездках» предстоящие выезды отделены от прошлых. В карточке видны даты, время вылета и подтверждения по услугам." data-en="My trips separates upcoming journeys from past ones. Each trip card shows dates, departure time and confirmation for its services.">В «Моих поездках» предстоящие выезды отделены от прошлых. В карточке видны даты, время вылета и подтверждения по услугам.</p>
+  </div>
+  <div class="tc-story-shots" data-preview-group>
+    <figure class="tc-shot">
+  <button type="button" class="tc-preview" data-travel-screen="6" aria-label="Увеличить: Мои поездки">
+    <img src="assets/travel/screen_06.png" width="1059" height="2300" loading="lazy" alt="Мои поездки">
+  </button>
+  <figcaption data-ru="Мои поездки" data-en="My trips">Мои поездки</figcaption>
+</figure><figure class="tc-shot">
+  <button type="button" class="tc-preview" data-travel-screen="2" aria-label="Увеличить: Избранное">
+    <img src="assets/travel/screen_02.png" width="1056" height="1196" loading="lazy" alt="Избранное">
+  </button>
+  <figcaption data-ru="Избранное" data-en="Favourites">Избранное</figcaption>
+</figure>
+  </div>
+</article>
+</div>
+</section>
+
+<section class="tc-section gallery-section" id="gallery">
+  <div class="wrap">
+    <header class="tc-section-head">
+<p class="section-no" data-ru="04 / Экраны" data-en="04 / Screens">04 / Экраны</p>
+<h2 class="section-title" data-ru="Восемь экранов, две темы" data-en="Eight screens, two themes">Восемь экранов, две темы</h2>
+<p class="copy" data-ru="Переключайте тему, чтобы сравнить один и тот же экран. Нажмите на макет, чтобы рассмотреть его целиком." data-en="Switch themes to compare the same screen. Select a mockup to see it at full size.">Переключайте тему, чтобы сравнить один и тот же экран. Нажмите на макет, чтобы рассмотреть его целиком.</p>
+</header>
+    <div class="tc-gallery-head">
+      <div class="tabs" role="group" id="theme-label" aria-label="Тема интерфейса">
+        <button class="tab active" type="button" aria-pressed="true" data-theme="light" data-ru="Светлая тема" data-en="Light theme">Светлая тема</button>
+        <button class="tab" type="button" aria-pressed="false" data-theme="dark" data-ru="Тёмная тема" data-en="Dark theme">Тёмная тема</button>
+      </div>
+    </div>
+    <figure class="tc-gallery">
+      <div class="gallery-frame">
+        <button class="tc-preview tc-gallery-preview" id="gallery-preview" type="button" aria-label="Увеличить: Приветствие">
+          <img id="gallery-image" class="gallery-image" src="assets/travel/screen_16.png" width="1059" height="2300" loading="lazy" alt="Приветствие">
+        </button>
+        <div class="tc-gallery-layer" id="gallery-layer" aria-hidden="true" hidden>
+          <img id="gallery-outgoing" class="gallery-image" alt="">
+        </div>
+      </div>
+      <figcaption class="caption" id="caption">1 / 8 · Приветствие</figcaption>
+    </figure>
+    <div class="gallery-controls">
+      <button class="round" id="prev" type="button" aria-label="Предыдущий экран"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>
+      <div class="dots" id="dots"></div>
+      <button class="round" id="next" type="button" aria-label="Следующий экран"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<section class="tc-section">
+<div class="wrap">
+<header class="tc-section-head">
+<p class="section-no" data-ru="05 / Визуальная система" data-en="05 / Visual system">05 / Визуальная система</p>
+<h2 class="section-title" data-ru="Тема меняется. Навигация остаётся знакомой." data-en="The theme changes. Navigation stays familiar.">Тема меняется. Навигация остаётся знакомой.</h2>
+<p class="copy" data-ru="В обеих темах одинаково расположены вкладки, поля, ключевые действия и нижняя навигация. Меняются фон, поверхности и тон акцентов." data-en="Both themes keep tabs, fields, key actions and bottom navigation in the same positions. Backgrounds, surfaces and accent tones change.">В обеих темах одинаково расположены вкладки, поля, ключевые действия и нижняя навигация. Меняются фон, поверхности и тон акцентов.</p>
+</header>
+<div class="tc-design">
+      <div class="tc-design-copy">
+        <h3 data-ru="Фотографии для выбора, метки для действий" data-en="Photography for discovery, labels for actions">Фотографии для выбора, метки для действий</h3>
+        <p data-ru="Фотографии помогают понять характер места. Синим отмечены активные вкладки и действия, а подтверждение услуг выделено цветной меткой с текстом." data-en="Photography conveys a sense of place. Blue marks active tabs and actions, while service confirmations use a coloured badge with a written label.">Фотографии помогают понять характер места. Синим отмечены активные вкладки и действия, а подтверждение услуг выделено цветной меткой с текстом.</p>
+        <p class="tc-story-point" data-ru="Для тёмной темы отдельной проверки требуют второстепенные подписи, ссылки и текст на фотографиях: на части макетов они заметно теряют контраст." data-en="Secondary text, links and text over photography need a separate contrast check in dark mode: they visibly lose definition in some mockups.">Для тёмной темы отдельной проверки требуют второстепенные подписи, ссылки и текст на фотографиях: на части макетов они заметно теряют контраст.</p>
+      </div>
+      <div class="tc-theme-pair" data-preview-group>
+        <figure class="tc-shot">
+  <button type="button" class="tc-preview" data-travel-screen="14" aria-label="Увеличить: Поиск · светлая тема">
+    <img src="assets/travel/screen_14.png" width="1059" height="2300" loading="lazy" alt="Поиск · светлая тема">
+  </button>
+  <figcaption data-ru="Поиск · светлая тема" data-en="Search · light theme">Поиск · светлая тема</figcaption>
+</figure>
+        <figure class="tc-shot">
+  <button type="button" class="tc-preview" data-travel-screen="13" aria-label="Увеличить: Поиск · тёмная тема">
+    <img src="assets/travel/screen_13.png" width="1059" height="2300" loading="lazy" alt="Поиск · тёмная тема">
+  </button>
+  <figcaption data-ru="Поиск · тёмная тема" data-en="Search · dark theme">Поиск · тёмная тема</figcaption>
+</figure>
+      </div>
+    </div>
+</div>
+</section>
+
+<section class="tc-section">
+<div class="wrap">
+<header class="tc-section-head">
+<p class="section-no" data-ru="06 / План проверки" data-en="06 / Validation plan">06 / План проверки</p>
+<h2 class="section-title" data-ru="Можно ли пройти путь без подсказок?" data-en="Can people complete the journey unaided?">Можно ли пройти путь без подсказок?</h2>
+<p class="copy" data-ru="Для проверки стоит собрать кликабельный прототип и дать участникам задания с конкретными датами и условиями. В таблице предложены цели для тестирования." data-en="A clickable prototype would let participants complete tasks with specific dates and conditions. The table sets out proposed testing targets.">Для проверки стоит собрать кликабельный прототип и дать участникам задания с конкретными датами и условиями. В таблице предложены цели для тестирования.</p>
+</header>
+<div class="tc-table-wrap"><table class="tc-table"><thead><tr><th scope="col" data-ru="Задание" data-en="Task">Задание</th><th scope="col" data-ru="Целевой критерий" data-en="Proposed target">Целевой критерий</th></tr></thead><tbody><tr><th scope="row" data-ru="Найти рейс с заданными датами и бюджетом" data-en="Find a flight within given dates and budget">Найти рейс с заданными датами и бюджетом</th><td data-ru="Не менее 4 из 5 участников выбирают подходящий вариант без подсказки." data-en="At least 4 of 5 participants select a suitable option without help.">Не менее 4 из 5 участников выбирают подходящий вариант без подсказки.</td></tr><tr><th scope="row" data-ru="Сохранить отель и вернуться к нему" data-en="Save a hotel and return to it">Сохранить отель и вернуться к нему</th><td data-ru="До 30 секунд на повторный поиск в избранном после перехода в другой раздел." data-en="Within 30 seconds to retrieve it from Favourites after visiting another section.">До 30 секунд на повторный поиск в избранном после перехода в другой раздел.</td></tr><tr><th scope="row" data-ru="Найти время рейса и статус отеля перед выездом" data-en="Find the flight time and hotel status before departure">Найти время рейса и статус отеля перед выездом</th><td data-ru="До 20 секунд на поиск обоих сведений из главного экрана." data-en="Within 20 seconds to find both details from the home screen.">До 20 секунд на поиск обоих сведений из главного экрана.</td></tr></tbody></table></div><aside class="tc-note"><h3 data-ru="Что фиксировать" data-en="What to record">Что фиксировать</h3><p data-ru="Ошибки при сравнении рейсов, путаницу между «Избранным» и «Поездками», время поиска сведений и места, где участник просит помощи." data-en="Record flight comparison errors, confusion between Favourites and Trips, retrieval times and where participants ask for help.">Ошибки при сравнении рейсов, путаницу между «Избранным» и «Поездками», время поиска сведений и места, где участник просит помощи.</p></aside>
+</div>
+</section>
+
+<section class="tc-section tc-result">
+  <div class="wrap">
+    <header class="tc-section-head">
+<p class="section-no" data-ru="07 / Результат" data-en="07 / Outcome">07 / Результат</p>
+<h2 class="section-title" data-ru="Одна поездка вместо набора разрозненных экранов" data-en="One trip across the experience">Одна поездка вместо набора разрозненных экранов</h2>
+<p class="copy" data-ru="Концепция связывает подбор направления, сравнение и подготовку к выезду. Восемь экранов в двух темах показывают и этап выбора, и то, что человек видит в карточке собранной поездки." data-en="The concept connects discovery, comparison and preparation for departure. Eight screens in two themes show both how travellers choose and what they see once their trip is assembled.">Концепция связывает подбор направления, сравнение и подготовку к выезду. Восемь экранов в двух темах показывают и этап выбора, и то, что человек видит в карточке собранной поездки.</p>
+</header>
+    <div class="tc-result-divider">
+      <h3 data-ru="Что важно проверить дальше" data-en="What to validate next">Что важно проверить дальше</h3>
+      <p data-ru="В следующей итерации нужно связать выбор рейса и отеля с подтверждением бронирования и проверить сценарии изменения поездки. Для первой проверки полезнее всего понять, быстро ли человек отличает сохранённый вариант от уже подтверждённой услуги." data-en="A next iteration would connect flight and hotel selection to booking confirmation and cover changes to a trip. The first validation priority is whether people can quickly tell a saved option from a confirmed service.">В следующей итерации нужно связать выбор рейса и отеля с подтверждением бронирования и проверить сценарии изменения поездки. Для первой проверки полезнее всего понять, быстро ли человек отличает сохранённый вариант от уже подтверждённой услуги.</p>
+    </div>
+  </div>
+</section>
+</main>
+<footer id="rz-site-footer" class="portfolio-top-end">
+  <span class="footer-signature">RZ. / design practice</span>
+  <button class="portfolio-top-btn" type="button"><span data-ru="Наверх" data-en="Back to top">Наверх</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="m6 14 6-6 6 6"/></svg></button>
+</footer>
+<dialog class="overlay tc-viewer" id="overlay" aria-label="Просмотр макета">
+  <button class="round close" id="close" type="button" aria-label="Закрыть">×</button>
+  <button class="round prev" id="modal-prev" type="button" aria-label="Предыдущий экран"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>
+  <div class="tc-viewer-stage"><img id="modal-img" alt="" draggable="false"></div>
+  <button class="round next" id="modal-next" type="button" aria-label="Следующий экран"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+  <div class="tc-viewer-bottom"><p class="count" id="count"></p><button class="round" id="modal-zoom" type="button" aria-label="Увеличить">+</button></div>
+</dialog>
+<script src="assets/travel-case.js" defer></script>
+<script id="portfolio-shared-v47">(function(){
 const contact=document.querySelector('.portfolio-contact');const back=document.querySelector('.portfolio-top-btn');
 function lang(){const b=document.querySelector('.case-lang,.travel-lang,.lang');return b&&b.textContent.trim()==='EN'?'en':'ru'}
 function update(){const en=lang()==='en';if(contact)contact.querySelector('.portfolio-contact-label').textContent=en?'Contact':'Связаться';if(back)back.querySelector('span').textContent=en?'Back to top':'Наверх'}
 back?.addEventListener('click',()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}));
 new MutationObserver(update).observe(document.querySelector('.case-lang,.travel-lang,.lang')||document.body,{subtree:false,characterData:true,childList:true});update();
 })();</script>
-<script src="assets/site.js" defer></script>
+
 <style>
 @media(max-width:850px){
   .travel-navigation{ top: 10px; width: calc(100% - 20px); gap: 6px; display: flex; align-items: center; }
@@ -123,4 +367,4 @@ new MutationObserver(update).observe(document.querySelector('.case-lang,.travel-
   .travel-nav .portfolio-contact svg{ width: 16px; height: 16px; }
 }
 </style>
-<script id="v191-global-language-sync">(()=>{const get=()=>document.querySelector('.case-lang,.travel-lang,.mdr-lang');const save=lang=>{if(lang!=='ru'&&lang!=='en')return;try{localStorage.setItem('portfolio-lang',lang)}catch(e){};if(window.parent!==window)window.parent.postMessage({type:'portfolio-language',lang},'*')};const toggle=get();if(toggle){toggle.addEventListener('click',()=>{const old=(toggle.textContent||'').trim().toLowerCase();save(old==='en'?'ru':'en')},true)}window.addEventListener('message',e=>{if(e.data?.type!=='portfolio-language')return;const lang=e.data.lang;if(lang!=='ru'&&lang!=='en')return;try{localStorage.setItem('portfolio-lang',lang)}catch(e){};const current=document.documentElement.lang;if(current!==lang){const params=new URLSearchParams(location.search);params.set('lang',lang);location.replace(location.pathname+'?'+params.toString()+location.hash)}});})();</script></body></html>
+</body></html>
