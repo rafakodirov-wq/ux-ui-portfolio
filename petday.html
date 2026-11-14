@@ -1,390 +1,146 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="ru">
-<head><script src="assets/language-init.js"></script>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>Яндекс Pet Day — UX/UI кейс · RZ.</title>
-<link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
-<style>
-    :root{--ink:#191d29;--muted:#737984;--red:#D14A34;--line:#e6e7ea;--bg:#f8f9fb}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}
-    body{margin:0;background:radial-gradient(ellipse at 80% 15%,#f4f0ed,transparent 40%),var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
-    a{color:inherit}
+<head>
+  <script src="assets/language-init.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f6f2">
+  <meta name="description" content="Яндекс Pet Day — кейс о лендинге конференции и сценарии регистрации.">
+  <title>Яндекс Pet Day · Лендинг конференции</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/project-navigation.css?v=212">
+  <link rel="stylesheet" href="assets/case-refinements.css">
+  <link rel="stylesheet" href="assets/site-footer.css?v=196.3">
+  <link rel="stylesheet" href="assets/petday-case.css">
+  <script src="assets/project-navigation.js?v=195" defer></script>
+  <script src="assets/case-runtime.js?v=195" defer></script>
+  <script src="assets/site-footer.js?v=196.3" defer></script>
+  <script src="assets/petday-case.js" defer></script>
+</head>
+<body data-case="petday">
 
-    /* NAVIGATION */
-    .case-navigation{position:fixed;z-index:95;top:18px;left:50%;transform:translateX(-50%);width:min(1036px,calc(100% - 32px));display:flex;align-items:center;gap:12px;pointer-events:none}
-    .case-navigation>*{pointer-events:auto}
-    .case-back{width:64px;height:64px;min-width:64px;min-height:64px;flex:0 0 64px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;padding:0;background:rgba(255,255,255,.58);border:1px solid rgba(255,255,255,.88);box-shadow:0 14px 45px rgba(25,55,55,.08),inset 0 1px 0 rgba(255,255,255,.7);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);cursor:pointer;transition:transform .35s,background .3s}
-    .case-back:hover{transform:translateX(-3px);background:#fff}
-    .case-back svg{width:22px;height:22px}
-    .case-nav{min-width:0;flex:1;min-height:64px;display:flex;align-items:center;gap:12px;padding:9px 11px 9px 20px;border-radius:24px;background:rgba(255,255,255,.64);border:1px solid rgba(255,255,255,.8);box-shadow:0 14px 60px #20332c12,inset 0 1px 0 #fff8;backdrop-filter:blur(26px) saturate(170%);-webkit-backdrop-filter:blur(26px) saturate(170%);position:relative}
-    .case-brand{font-weight:800;font-size:13px;letter-spacing:-.04em;white-space:nowrap;text-decoration:none}
-    .case-brand span{color:var(--red)}
-    .case-brand small{font-weight:500;color:#67716f}
-    .case-links{display:flex;align-items:center;gap:5px;position:absolute;left:50%;transform:translateX(-50%)}
-    .case-links a{text-decoration:none;color:var(--ink);font-size:12px;font-weight:500;padding:12px 15px;border-radius:15px;white-space:nowrap;transition:background .3s}
-    .case-links a:hover{background:#fff9}
-    .case-links a.active{background:#202b45;color:white;box-shadow:0 5px 16px #202b4530}
-    .case-actions{margin-left:auto;display:flex;align-items:center;gap:12px;flex:0 0 auto}
-    .case-lang{border:1px solid #fff9;background:#ffffff75;color:#172322;min-width:52px;border-radius:15px;font-size:12px;padding:12px 13px;cursor:pointer}
-    .portfolio-contact{display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;text-decoration:none;padding:12px 19px;border-radius:999px;color:#19332e;background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(227,242,237,.62));border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 #fff,0 5px 18px #18413b1a;font-size:13px;font-weight:600;position:relative;overflow:hidden;isolation:isolate;transition:transform .3s,box-shadow .3s}
-    .portfolio-contact::before{content:'';position:absolute;inset:-30%;background:linear-gradient(105deg,transparent 32%,rgba(44,180,101,.06) 40%,rgba(67,207,117,.38) 47%,rgba(135,247,171,.68) 50%,rgba(54,195,108,.32) 54%,transparent 66%);animation:greenGlassSweep 3.4s cubic-bezier(.35,.05,.22,1) infinite;pointer-events:none;z-index:-1}
-    @keyframes greenGlassSweep{0%,12%{transform:translateX(-115%) skewX(-8deg)}55%,100%{transform:translateX(115%) skewX(-8deg)}}
-    .portfolio-contact:hover{transform:translateY(-2px);box-shadow:0 9px 26px #18413b2b,0 0 17px #43cf7529}
-    .portfolio-contact svg{width:15px;height:15px;transition:transform .3s}
-    .portfolio-contact:hover svg{transform:translate(2px,-2px)}
-    .case-navigation :focus-visible{outline:3px solid #168f85;outline-offset:3px}
-
-    /* MAIN CONTENT */
-    .wrap{width:min(1180px,calc(100% - 60px));margin:0 auto}
-    .hero{min-height:720px;padding:185px 0 110px;display:grid;grid-template-columns:43% 57%;align-items:center;gap:10px}
-    .eyebrow{font-size:11px;letter-spacing:.22em;color:#b27d67;font-weight:700;text-transform:uppercase}
-    .hero h1{font-size:clamp(64px,7.5vw,116px);letter-spacing:-.075em;line-height:.99;margin:28px 0 30px;font-weight:800}
-    .hero h1 em{font-style:normal;color:var(--red)}
-    .lead{font-size:clamp(17px,1.6vw,21px);line-height:1.65;color:var(--muted);max-width:460px}
-    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
-    .tags span{padding:10px 14px;border:1px solid #e4e5e8;border-radius:999px;font-size:12px;color:#727984}
-    .hero-visual{width:100%;display:block;object-fit:contain;filter:drop-shadow(0 22px 35px #161d2a12)}
-
-    section.content{padding:100px 0;border-top:1px solid var(--line)}
-    .section-no{font-size:12px;letter-spacing:.2em;color:#b27d67;font-weight:700}
-    .content h2{font-size:clamp(36px,5vw,64px);letter-spacing:-.055em;margin:20px 0 25px}
-    .content h3{font-size:24px;letter-spacing:-.035em;margin:40px 0 20px;color:var(--ink)}
-    .content p{font-size:18px;line-height:1.8;color:#6d7480;max-width:780px;margin-bottom:20px}
-    
-    /* КРАСНЫЕ ТОЧКИ В ЗАГОЛОВКАХ */
-    .dot { color: var(--red); }
-
-    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:60px}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
-    .card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:25px; transition: transform .3s, box-shadow .3s;}
-    .card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
-    .card h4{font-size:18px;margin:0 0 10px}
-    .card p{font-size:14px;line-height:1.5;margin:0}
-    
-    .flow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:30px 0}
-    .flow span{background:#f0f2f5;padding:12px 18px;border-radius:12px;font-size:14px}
-    .flow i{font-style:normal;color:var(--red)}
-
-    /* ВИЗУАЛЫ: ВАЙРФРЕЙМЫ */
-    .wireframe-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
-    .wire{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:15px;min-height:260px}
-    .wire span{font-size:11px;font-weight:700;color:#b27d67;letter-spacing:.1em;text-transform:uppercase}
-    .wire-top{height:12px;width:40%;border-radius:4px;background:#e4e5e8;margin-bottom:10px}
-    .wire-main{height:60px;width:100%;border-radius:8px;background:#eef0f3}
-    .wire-lines{height:8px;width:70%;border-radius:4px;background:#eef0f3}
-    .wire-lines.short{width:45%}
-    .wire-cta{height:36px;width:50%;border-radius:8px;background:var(--red);margin-top:auto; opacity:0.8}
-
-    /* ВИЗУАЛЫ: ФИДБЭК */
-    .feedback-box{background:#fff;border-left:4px solid var(--red);border-radius:0 16px 16px 0;padding:25px;margin-top:30px;box-shadow:0 10px 30px rgba(0,0,0,0.03)}
-    .feedback-box p{margin:0;font-size:16px;font-style:italic;color:#505662}
-    .feedback-author{display:block;margin-top:15px;font-size:13px;font-weight:600;color:var(--ink);font-style:normal}
-
-    /* НОВЫЙ БЛОК: UI-KIT */
-    .uikit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
-    .uikit-card { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 25px; }
-    .uikit-title { font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 15px; }
-    
-    .palette { display: flex; gap: 10px; }
-    .color-swatch { flex: 1; height: 60px; border-radius: 10px; display: flex; align-items: flex-end; padding: 8px; font-size: 10px; font-weight: 600; color: #fff; }
-    
-    .typography-sample h1 { margin: 0 0 10px; font-size: 28px; font-weight: 800; letter-spacing: -0.05em; }
-    .typography-sample p { margin: 0; font-size: 14px; color: var(--muted); }
-    
-    .btn-samples { display: flex; flex-direction: column; gap: 10px; }
-    .btn-sample { padding: 12px 20px; border-radius: 99px; font-size: 13px; font-weight: 600; text-align: center; }
-    .btn-primary { background: var(--red); color: #fff; }
-    .btn-secondary { background: #f0f2f5; color: var(--ink); }
-
-    /* FOOTER */
-    .footer{padding:40px 0 100px;display:flex;justify-content:space-between;align-items:center;color:#7d8189;font-size:13px}
-    .footer-brand { font-weight: 800; font-size: 14px; color: var(--ink); }
-    .footer-brand span { color: var(--red); }
-    .footer-brand small { font-weight: 500; color: var(--muted); }
-    
-    .portfolio-top-btn{display:inline-flex;align-items:center;gap:12px;min-height:50px;padding:12px 22px;border-radius:999px;border:1px solid rgba(255,255,255,.9);background:linear-gradient(135deg,rgba(255,255,255,.75),rgba(255,255,255,.32));backdrop-filter:blur(22px) saturate(160%);box-shadow:0 12px 38px rgba(24,45,48,.09),inset 0 1px 1px rgba(255,255,255,.95);color:#203934;font:600 14px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;cursor:pointer;transition:transform .3s,box-shadow .3s;}
-    .portfolio-top-btn:hover{transform:translateY(-3px);box-shadow:0 18px 42px rgba(24,45,48,.14),inset 0 1px 1px #fff}
-    .portfolio-top-btn:active{transform:scale(.97)}
-    .portfolio-top-btn svg{width:16px;height:16px;transition:transform .3s;animation:topChevronFloat 2.1s ease-in-out infinite;transform-origin:center}
-    .portfolio-top-btn:hover svg{animation-play-state:paused; transform:translateY(-2px)}
-    @keyframes topChevronFloat{0%,100%{transform:translateY(1px)}50%{transform:translateY(-3px)}}
-
-    @media(max-width:900px){
-      .case-brand small{display:none}
-      .case-links{position:static;transform:none;margin:auto}
-      .hero{grid-template-columns:1fr;padding-top:145px;gap:40px;min-height:auto}
-      .hero-visual{max-width:720px;margin:auto}
-      .two-col,.grid-3,.wireframe-grid, .uikit-grid{grid-template-columns:1fr;gap:15px}
-    }
-    @media(max-width:720px){
-      .case-navigation{top:10px;width:calc(100% - 20px);gap:8px}
-      .case-back{width:44px;height:44px;min-width:44px;min-height:44px;flex-basis:44px}
-      .case-nav{min-height:54px;padding:7px;gap:5px}
-      .case-brand{font-size:12px;padding-left:5px}
-      .case-links{gap:0}
-      .case-links a{font-size:10px;padding:10px 6px}
-      .case-lang{min-width:36px;padding:10px 8px;font-size:10px}
-      .portfolio-contact{padding:11px 10px;font-size:11px;gap:5px}
-      .portfolio-contact svg{width:13px;height:13px}
-      .case-actions{gap:12px}
-      .wrap{width:calc(100% - 36px)}
-      .hero{padding-top:140px;padding-bottom:65px}
-      .hero h1{font-size:clamp(56px,13vw,86px)}
-      section.content{padding:65px 0}
-      .footer{flex-direction:column;align-items:flex-start;gap:20px}
-    }
-    @media(max-width:440px){
-      .case-nav{justify-content:space-between}
-      .case-links a{padding:9px 5px}
-      .case-actions{gap:12px}
-      .portfolio-contact{padding:10px 8px}
-    }
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-  </style>
-<link href="assets/contact-widget.css" rel="stylesheet"/><link rel="stylesheet" href="assets/project-navigation.css?v=212"><script src="assets/project-navigation.js?v=195" defer></script><script src="assets/case-runtime.js?v=195" defer></script><style id="v191-footer-unification">
-/* Consistent MDR-style footer on case pages */
-.footer,.portfolio-top-end{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:16px!important;flex-wrap:nowrap!important;min-width:0!important}
-.footer .portfolio-top-btn,.portfolio-top-end .portfolio-top-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:12px!important;flex-shrink:0!important;border-radius:999px!important;padding:13px 23px!important;min-height:54px!important;background:linear-gradient(135deg,rgba(255,255,255,.89),rgba(255,255,255,.66))!important;border:1px solid rgba(255,255,255,.95)!important;box-shadow:0 12px 34px rgba(30,45,44,.10),inset 0 1px 1px white!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;color:#243a34!important;font-weight:650!important;cursor:pointer!important;transition:transform .32s cubic-bezier(.22,1,.36,1),box-shadow .32s ease,background .32s ease!important}
-.footer .portfolio-top-btn:hover,.portfolio-top-end .portfolio-top-btn:hover{transform:translateY(-4px)!important;box-shadow:0 19px 43px rgba(30,45,44,.16),inset 0 1px 1px white!important}
-.footer .portfolio-top-btn:active,.portfolio-top-end .portfolio-top-btn:active{transform:scale(.97)!important}
-.footer .portfolio-top-btn svg,.portfolio-top-end .portfolio-top-btn svg{width:19px!important;height:19px!important;flex-shrink:0!important;animation:v191Chevron 2.1s ease-in-out infinite!important}
-@keyframes v191Chevron{0%,100%{transform:translateY(2px)}50%{transform:translateY(-3px)}}
-@media(max-width:700px){.footer,.portfolio-top-end{flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;padding-left:18px!important;padding-right:18px!important}.footer .portfolio-top-btn,.portfolio-top-end .portfolio-top-btn{padding:11px 17px!important;min-height:48px!important;font-size:13px!important}.footer-brand,.footer-signature{min-width:0;font-size:12px!important}}
-@media(prefers-reduced-motion:reduce){.footer .portfolio-top-btn svg,.portfolio-top-end .portfolio-top-btn svg{animation:none!important}}
-</style><link rel="stylesheet" href="assets/site-footer.css?v=196.3"><script src="assets/site-footer.js?v=196.3" defer></script></head>
-<body>
-<div id="rz-case-header" class="case-navigation">
-  <button class="rz-back case-back" type="button" aria-label="Назад к проектам"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></svg></button>
-  <nav class="rz-nav case-nav" aria-label="Навигация по проекту">
-    <div class="rz-brand case-brand">RZ. <span class="brand-sub">/ design practice</span></div>
-    <div class="rz-links case-links"><a class="rz-link active " data-en="Overview" data-ru="Обзор" href="#overview">Обзор</a><a data-en="Process" data-ru="Процесс" href="#process" class="rz-link ">Процесс</a><a data-en="Design" data-ru="Дизайн" href="#design" class="rz-link ">Дизайн</a></div>
+<div id="rz-case-header" class="travel-navigation case-navigation">
+  <button class="rz-back travel-back case-back" type="button" aria-label="Назад к проектам"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></svg></button>
+  <nav class="rz-nav travel-nav case-nav" aria-label="Навигация по проекту">
+    <div class="rz-brand travel-brand case-brand">RZ. <span class="brand-sub">/ design practice</span></div>
+    <div class="rz-links travel-links case-links"><a class="rz-link active travel-link" href="#overview" data-ru="Обзор" data-en="Overview">Обзор</a><a class="rz-link travel-link" href="#process" data-ru="Процесс" data-en="Process">Процесс</a><a class="rz-link travel-link" href="#design" data-ru="Дизайн" data-en="Design">Дизайн</a></div>
     <div class="rz-actions nav-actions">
-      <button class="rz-lang case-lang" type="button" aria-label="Выбрать язык">RU</button>
+      <button class="rz-lang travel-lang case-lang" type="button" aria-label="Выбрать язык">RU</button>
       <button class="rz-contact portfolio-contact" type="button" aria-label="Связаться"><span class="portfolio-contact-label">Связаться</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10"/></svg></button>
     </div>
   </nav>
 </div>
-<main>
-<!-- HERO -->
-<div class="wrap">
-<section class="hero" id="overview">
-<div>
-<div class="eyebrow">09 / CASE STUDY · WEB · EVENT LANDING</div>
-<h1 data-en="Yandex&lt;br&gt;Pet Day&lt;em&gt;.&lt;/em&gt;" data-ru="Яндекс&lt;br&gt;Pet Day&lt;em&gt;.&lt;/em&gt;">Яндекс<br/>Pet Day<em>.</em></h1>
-<p class="lead" data-en="A conference landing page concept about digital products for pet owners, with a clear program and registration journey." data-ru="Концепция лендинга конференции о цифровых продуктах для владельцев питомцев. Яркая визуальная история, понятная программа и сценарий участия.">Концепция лендинга конференции о цифровых продуктах для владельцев питомцев. Яркая визуальная история, понятная программа и сценарий участия.</p>
-<div class="tags">
-<span>UX/UI</span><span>Web design</span><span>Event landing</span><span>Concept · 2026</span>
-</div>
-</div>
-<img alt="Макет Яндекс Pet Day на ноутбуке" class="hero-visual" src="assets/petday/petday_macbook_transparent.png"/>
+
+<main class="pd-case">
+<section class="pd-hero" id="overview">
+  <div class="pd-wrap">
+    <div class="pd-hero-grid">
+      <div class="pd-hero-heading">
+        <p class="pd-kicker" data-ru="09 / UX/UI · ЛЕНДИНГ СОБЫТИЯ" data-en="09 / UX/UI · EVENT LANDING PAGE">09 / UX/UI · ЛЕНДИНГ СОБЫТИЯ</p>
+        <h1><span data-ru="Яндекс" data-en="Yandex">Яндекс</span><br>Pet Day<span class="pd-dot">.</span></h1>
+      </div>
+      <div class="pd-hero-copy">
+        <p class="pd-intro" data-ru="Лендинг гибридной конференции о цифровых продуктах для питомцев и их владельцев. Дизайнеры, продуктовые команды и специалисты по технологиям могут оценить программу и выбрать, как участвовать." data-en="A landing page for a hybrid conference on digital products for pets and their owners. Designers, product teams and technology specialists can explore the agenda and choose how to attend.">Лендинг гибридной конференции о цифровых продуктах для питомцев и их владельцев. Дизайнеры, продуктовые команды и специалисты по технологиям могут оценить программу и выбрать, как участвовать.</p>
+        <dl class="pd-role">
+          <div><dt data-ru="Роль" data-en="Role">Роль</dt><dd data-ru="UX/UI-дизайн" data-en="UX/UI design">UX/UI-дизайн</dd></div>
+          <div><dt data-ru="Вклад" data-en="Scope">Вклад</dt><dd data-ru="Структура, визуальная концепция и сценарий регистрации" data-en="Information architecture, visual direction and registration flow">Структура, визуальная концепция и сценарий регистрации</dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="pd-cover">
+      <figure class="pd-figure"><a class="pd-shot" href="assets/petday/site-hero.png" data-gallery="screens" data-alt-ru="Первый экран лендинга Яндекс Pet Day" data-alt-en="Yandex Pet Day landing page hero"><img src="assets/petday/site-hero.png" width="5760" height="3300" loading="eager" decoding="async" alt="Первый экран лендинга Яндекс Pet Day"><span class="pd-enlarge" aria-hidden="true">↗</span></a></figure>
+      <div class="pd-cover-bar">
+        <p data-ru="Концепция · Десктопный макет" data-en="Concept · Desktop design">Концепция · Десктопный макет</p>
+        <a class="pd-button" href="assets/petday/site-full.png" data-gallery="full" data-alt-ru="Лендинг Яндекс Pet Day целиком" data-alt-en="Full Yandex Pet Day landing page"><span data-ru="Посмотреть весь макет" data-en="View full design">Посмотреть весь макет</span> <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </div>
 </section>
-</div>
-<!-- 01 / ПРОБЛЕМА (теперь это Обзор) -->
-<section class="content" id="context">
-<div class="wrap">
-<div class="section-no">01 / CONTEXT</div>
-<h2 data-en="Problem&lt;span class='dot'&gt;.&lt;/span&gt;" data-ru="Проблема&lt;span class='dot'&gt;.&lt;/span&gt;">Проблема<span class="dot">.</span></h2>
-<p data-en="Desk research covering five IT conference landing pages and feedback in Telegram channels revealed that many event websites overload visitors with speaker lists and technical jargon. Visitors cannot grasp the event’s value within the first five seconds and leave." data-ru="На основе Desk Research (анализа 5 лендингов IT-конференций и чтения отзывов в Telegram-каналах) я выявил, что большинство сайтов событий перегружены списками спикеров и техническими терминами. Пользователь не понимает ценность мероприятия за первые 5 секунд и уходит.">На основе Desk Research (анализа 5 лендингов IT-конференций и чтения отзывов в Telegram-каналах) я выявил, что большинство сайтов событий перегружены списками спикеров и техническими терминами. Пользователь не понимает ценность мероприятия за первые 5 секунд и уходит.</p>
-<p data-en="Solution: create an engaging hero with a 3D illustration that communicates care for pets visually rather than through dense text." data-ru="Решение: создать эмоциональный первый экран с 3D-иллюстрацией, который продает идею «заботы о питомцах» через визуал, а не через сухой текст.">Решение: создать эмоциональный первый экран с 3D-иллюстрацией, который продает идею «заботы о питомцах» через визуал, а не через сухой текст.</p>
-<div class="two-col">
-<div class="card">
-<h4 data-en="User need" data-ru="Потребность пользователя">Потребность пользователя</h4>
-<p data-en="Understand what the conference is about, whether it is relevant, and how to register within five seconds." data-ru="За 5 секунд понять, о чем конференция, будет ли она полезна, и как быстро зарегистрироваться.">За 5 секунд понять, о чем конференция, будет ли она полезна, и как быстро зарегистрироваться.</p>
-</div>
-<div class="card">
-<h4 data-en="Design challenge" data-ru="Дизайн-вызов">Дизайн-вызов</h4>
-<p data-en="Create a friendly, technology-forward visual identity that inspires interest without obscuring the program and speakers." data-ru="Создать дружелюбный и технологичный образ, который продает эмоции через иллюстрации, не пряча при этом программу и спикеров.">Создать дружелюбный и технологичный образ, который продает эмоции через иллюстрации, не пряча при этом программу и спикеров.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- 02 / ЦЕЛЬ -->
-<section class="content">
-<div class="wrap">
-<div class="section-no">02 / OBJECTIVE</div>
-<h2 data-en="Goal&lt;span class='dot'&gt;.&lt;/span&gt;" data-ru="Цель&lt;span class='dot'&gt;.&lt;/span&gt;">Цель<span class="dot">.</span></h2>
-<p data-en="Design a landing page concept that uses friendly visuals, 3D illustrations, and a light palette to make the event approachable and guide visitors toward registration." data-ru="Разработать концепт лендинга, который через дружелюбный визуальный язык (3D-иллюстрации, светлая палитра) снижает порог входа для аудитории и ведет к регистрации.">Разработать концепт лендинга, который через дружелюбный визуальный язык (3D-иллюстрации, светлая палитра) снижает порог входа для аудитории и ведет к регистрации.</p>
-<div class="grid-3">
-<div class="card"><h4 data-en="01 / Attention" data-ru="01 / Внимание">01 / Внимание</h4><p data-en="An expressive hero with a 3D illustration." data-ru="Выразительный первый экран с 3D-иллюстрацией.">Выразительный первый экран с 3D-иллюстрацией.</p></div>
-<div class="card"><h4 data-en="02 / Clarity" data-ru="02 / Ясность">02 / Ясность</h4><p data-en="Clear structure: schedule, speakers, and venue." data-ru="Четкая структура: программа, спикеры, место.">Четкая структура: программа, спикеры, место.</p></div>
-<div class="card"><h4 data-en="03 / Action" data-ru="03 / Действие">03 / Действие</h4><p data-en="The “Participate” CTA is repeated in key sections." data-ru="Кнопка «Участвовать» повторяется в ключевых блоках.">Кнопка «Участвовать» повторяется в ключевых блоках.</p></div>
-</div>
-</div>
-</section>
-<!-- 03 / МОЙ ВКЛАД -->
-<section class="content">
-<div class="wrap">
-<div class="section-no">03 / ROLE</div>
-<h2 data-en="My contribution&lt;span class='dot'&gt;.&lt;/span&gt;" data-ru="Мой вклад&lt;span class='dot'&gt;.&lt;/span&gt;">Мой вклад<span class="dot">.</span></h2>
-<div class="two-col">
-<div class="card">
-<h4 data-en="UX structure" data-ru="UX Структура">UX Структура</h4>
-<p data-en="Page structure, event discovery journey, and CTA placement." data-ru="Проектирование блоков, сценарий знакомства с событием и расстановка CTA.">Проектирование блоков, сценарий знакомства с событием и расстановка CTA.</p>
-</div>
-<div class="card">
-<h4 data-en="Visual design" data-ru="Визуальный дизайн">Визуальный дизайн</h4>
-<p data-en="Typography, composition, color palette, 3D illustrations, and speaker cards." data-ru="Типографика, композиция, цветовая палитра, 3D-иллюстрации и карточки спикеров.">Типографика, композиция, цветовая палитра, 3D-иллюстрации и карточки спикеров.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- 04 / ПРОЦЕСС (теперь это process) -->
-<section class="content" id="process">
-<div class="wrap">
-<div class="section-no">04 / PROCESS</div>
-<h2 data-en="Process&lt;span class='dot'&gt;.&lt;/span&gt;" data-ru="Процесс&lt;span class='dot'&gt;.&lt;/span&gt;">Процесс<span class="dot">.</span></h2>
-<h3 data-en="Hypotheses and validation" data-ru="Гипотезы и их проверка">Гипотезы и их проверка</h3>
-<p data-en="Hypothesis 1: A large 3D illustration and a concise headline in the hero will keep visitors engaged longer. Rationale: premium brands communicate emotions through imagery. Validation: compared a photo and a 3D version with three colleagues and selected the 3D concept." data-ru="&lt;strong&gt;Гипотеза 1:&lt;/strong&gt; Если на первом экране показать крупную 3D-иллюстрацию и короткий заголовок, пользователь задержится на странице дольше. &lt;em&gt;Почему выбрали:&lt;/em&gt; премиальные бренды продают эмоции через картинку. &lt;em&gt;Как проверяли:&lt;/em&gt; Сравнили два варианта (фото vs 3D) на фокус-группе из 3 коллег. Выбрали 3D."><strong>Гипотеза 1:</strong> Если на первом экране показать крупную 3D-иллюстрацию и короткий заголовок, пользователь задержится на странице дольше. <em>Почему выбрали:</em> премиальные бренды продают эмоции через картинку. <em>Как проверяли:</em> Сравнили два варианта (фото vs 3D) на фокус-группе из 3 коллег. Выбрали 3D.</p>
-<p data-en="Hypothesis 2: Compact schedule blocks with clear times will make the agenda easier to follow and encourage attendance. Validation: a heuristic review indicated that long lists are tiring." data-ru="&lt;strong&gt;Гипотеза 2:&lt;/strong&gt; Если разбить программу на компактные блоки с временем, пользователь лучше поймет тайминг и захочет прийти. &lt;em&gt;Как проверяли:&lt;/em&gt; через эвристическую оценку — длинные списки утомляют."><strong>Гипотеза 2:</strong> Если разбить программу на компактные блоки с временем, пользователь лучше поймет тайминг и захочет прийти. <em>Как проверяли:</em> через эвристическую оценку — длинные списки утомляют.</p>
-<h3 data-en="CJM / Hypothetical journey" data-ru="CJM / Гипотетический путь">CJM / Гипотетический путь</h3>
-<div class="flow">
-<span data-ru="Увидел рекламу" data-en="Saw an advertisement">Увидел рекламу</span><i>→</i>
-<span data-ru="Попал на лендинг" data-en="Opened the landing page">Попал на лендинг</span><i>→</i>
-<span data-ru="Оценил программу" data-en="Reviewed the agenda">Оценил программу</span><i>→</i>
-<span data-ru="Решил участвовать" data-en="Decided to attend">Решил участвовать</span>
-</div>
-<h3 data-en="Wireframes (page structure)" data-ru="Вайрфреймы (Структура страницы)">Вайрфреймы (Структура страницы)</h3>
-<div class="wireframe-grid">
-<div class="wire">
-<span>01 / HERO</span>
-<div class="wire-top"></div>
-<div class="wire-main"></div>
-<div class="wire-lines"></div>
-<div class="wire-lines short"></div>
-<div class="wire-cta"></div>
-</div>
-<div class="wire">
-<span>02 / PROGRAM</span>
-<div class="wire-top"></div>
-<div class="wire-lines"></div>
-<div class="wire-lines"></div>
-<div class="wire-lines short"></div>
-<div class="wire-lines"></div>
-</div>
-<div class="wire">
-<span>03 / SPEAKERS</span>
-<div class="wire-top"></div>
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;">
-<div style="height:50px; background:#eef0f3; border-radius:8px;"></div>
-<div style="height:50px; background:#eef0f3; border-radius:8px;"></div>
-</div>
-<div class="wire-cta" style="width:100%; margin-top:15px;"></div>
-</div>
-</div>
-</div>
-</section>
-<!-- 05 / РЕЗУЛЬТАТЫ (теперь это design) -->
-<section class="content" id="design">
-<div class="wrap">
-<div class="section-no">05 / RESULTS</div>
-<h2 data-en="Results&lt;span class='dot'&gt;.&lt;/span&gt;" data-ru="Результаты&lt;span class='dot'&gt;.&lt;/span&gt;">Результаты<span class="dot">.</span></h2>
-<p data-en="A landing page visual concept with a bright accent, a clear agenda, and a speaker section. The result demonstrates a modern approach to presenting a technology event." data-ru="Визуальная концепция лендинга с ярким акцентом, понятной программой и блоком спикеров. Результат — концепт, который демонстрирует современный подход к презентации IT-события.">Визуальная концепция лендинга с ярким акцентом, понятной программой и блоком спикеров. Результат — концепт, который демонстрирует современный подход к презентации IT-события.</p>
-<h3 data-en="Feedback and testing" data-ru="Обратная связь и тестирование">Обратная связь и тестирование</h3>
-<p data-en="During heuristic review and colleague feedback sessions, I identified several issues." data-ru="На этапе тестирования (эвристическая оценка и показ макета коллегам) я обнаружил несколько проблем.">На этапе тестирования (эвристическая оценка и показ макета коллегам) я обнаружил несколько проблем.</p>
-<div class="feedback-box">
-<p data-en="“In the first version, the Participate button blended into the background, and I could not immediately see where to click.”" data-ru='«На первом макете кнопка "Участвовать" сливалась с фоном, и я не сразу понял, куда нажимать».'>«На первом макете кнопка "Участвовать" сливалась с фоном, и я не сразу понял, куда нажимать».</p>
-<span class="feedback-author" data-en="— Feedback from a colleague" data-ru="— Фидбэк от тестирующего (коллега)">— Фидбэк от тестирующего (коллега)</span>
-</div>
-<p data-en="Fix: I increased the button size and changed its color to a contrasting red." data-ru="&lt;strong&gt;Как исправил:&lt;/strong&gt; Сделал кнопку контрастной (красной) и увеличил её размер." style="margin-top: 20px;"><strong>Как исправил:</strong> Сделал кнопку контрастной (красной) и увеличил её размер.</p>
-<!-- НОВЫЙ БЛОК: UI-KIT ВМЕСТО ПОЛНОГО МАКЕТА -->
-<h3 data-en="Design system (UI kit)" data-ru="Дизайн-система (UI-Kit)">Дизайн-система (UI-Kit)</h3>
-<p data-en="The visual language uses a structured grid, contrasting accents, and sans-serif typography." data-ru="Визуальный язык проекта базируется на строгой сетке, контрастных акцентах и типографике без засечек.">Визуальный язык проекта базируется на строгой сетке, контрастных акцентах и типографике без засечек.</p>
-<div class="uikit-grid">
-<div class="uikit-card">
-<div class="uikit-title" data-en="Palette" data-ru="Палитра">Палитра</div>
-<div class="palette">
-<div class="color-swatch" style="background:#D14A34;">#D14A34</div>
-<div class="color-swatch" style="background:#191D29;">#191D29</div>
-<div class="color-swatch" style="background:#F8F9FB; color:#191D29; border:1px solid #e6e7ea;">#F8F9FB</div>
-</div>
-</div>
-<div class="uikit-card">
-<div class="uikit-title" data-en="Typography" data-ru="Типографика">Типографика</div>
-<div class="typography-sample">
-<h1>Aa Bb Cc</h1>
-<p>SF Pro Display / 800 / -0.075em</p>
-</div>
-</div>
-<div class="uikit-card">
-<div class="uikit-title" data-en="Components" data-ru="Компоненты">Компоненты</div>
-<div class="btn-samples">
-<div class="btn-sample btn-primary" data-en="Participate" data-ru="Участвовать">Участвовать</div>
-<div class="btn-sample btn-secondary" data-en="Program" data-ru="Программа">Программа</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- 06 / ВЫВОДЫ -->
-<section class="content">
-<div class="wrap">
-<div class="section-no">06 / REFLECTION</div>
-<h2 data-en="Takeaways&lt;span class='dot'&gt;.&lt;/span&gt;" data-ru="Выводы&lt;span class='dot'&gt;.&lt;/span&gt;">Выводы<span class="dot">.</span></h2>
-<p data-en="The result is a concept demonstrating a premium approach to presenting the event. If launched, I would evaluate its effectiveness using the following metrics:" data-ru="Результат проекта — концепт, который демонстрирует премиальный подход к подаче события. Для оценки эффективности после запуска я бы замерил следующие метрики:">Результат проекта — концепт, который демонстрирует премиальный подход к подаче события. Для оценки эффективности после запуска я бы замерил следующие метрики:</p>
-<div class="grid-3">
-<div class="card">
-<h4>Engagement</h4>
-<p data-en="Average time spent exploring the visuals. Target: over 2 minutes." data-ru="Среднее время изучения визуалов. Цель: &gt; 2 минут.">Среднее время изучения визуалов. Цель: &gt; 2 минут.</p>
-</div>
-<div class="card">
-<h4>Scroll Depth</h4>
-<p data-en="Percentage of visitors who reach the program section. Target: over 60%." data-ru="% пользователей, дошедших до блока программы. Цель: &gt; 60%.">% пользователей, дошедших до блока программы. Цель: &gt; 60%.</p>
-</div>
-<div class="card">
-<h4>Conversion (CR)</h4>
-<p data-en="Percentage of visitors clicking “Participate”. Target: 3–5%." data-ru="% кликов по кнопке «Участвовать». Цель: &gt; 3–5%.">% кликов по кнопке «Участвовать». Цель: &gt; 3–5%.</p>
-</div>
-</div>
-</div>
-</section>
+
+<section class="pd-block" id="context"><div class="pd-wrap pd-brief">
+  <header class="pd-section-head"><p class="pd-kicker" data-ru="Задача" data-en="Brief">Задача</p><h2 data-ru="Помочь участнику решить, стоит ли идти." data-en="Help visitors decide whether to attend.">Помочь участнику решить, стоит ли идти.</h2><p data-ru="Первый визит начинается с трёх вопросов: подходит ли мне тема, какие выступления я смогу посетить и как зарегистрироваться. Ответы должны находиться в том порядке, в котором возникает решение об участии." data-en="On a first visit, people need to know whether the topic is relevant, which sessions they can attend and how to register. The page answers those questions in the order people make the decision.">Первый визит начинается с трёх вопросов: подходит ли мне тема, какие выступления я смогу посетить и как зарегистрироваться. Ответы должны находиться в том порядке, в котором возникает решение об участии.</p></header>
+  <aside class="pd-brief-note">
+    <p class="pd-kicker" data-ru="Программа даёт повод остаться" data-en="The agenda gives people a reason to stay">Программа даёт повод остаться</p>
+    <p data-ru="Тема считывается по первому экрану с 3D-персонажами. Конкретную пользу раскрывает программа: компьютерное зрение в ветеринарии, зооморфизм в интерфейсах и развитие продуктов для владельцев питомцев." data-en="The 3D characters introduce the theme at a glance. The agenda makes the value specific with sessions about computer vision in veterinary care, animal-inspired interfaces and products for pet owners.">Тема считывается по первому экрану с 3D-персонажами. Конкретную пользу раскрывает программа: компьютерное зрение в ветеринарии, зооморфизм в интерфейсах и развитие продуктов для владельцев питомцев.</p>
+  </aside>
+</div></section>
+
+<section class="pd-block pd-process" id="process"><div class="pd-wrap">
+  <header class="pd-section-head"><p class="pd-kicker" data-ru="Разбор сценария" data-en="Journey analysis">Разбор сценария</p><h2 data-ru="От первого интереса до участия." data-en="From first interest to attendance.">От первого интереса до участия.</h2><p data-ru="При разборе макета путь участника был разложен на четыре решения. Для каждого определён вопрос, на который должен ответить интерфейс." data-en="The design review broke the attendee journey into four decisions. Each decision gives the interface a question to answer.">При разборе макета путь участника был разложен на четыре решения. Для каждого определён вопрос, на который должен ответить интерфейс.</p></header>
+  <ol class="pd-route">
+    <li><span aria-hidden="true">01</span><div><h3 data-ru="Понять тему" data-en="Understand the theme">Понять тему</h3><p data-ru="О чём конференция?" data-en="What is the conference about?">О чём конференция?</p></div><p data-ru="Первый экран знакомит с темой, показывает ключевые сведения о событии и ведёт к регистрации." data-en="The hero introduces the theme, shows the essential event details and links to registration.">Первый экран знакомит с темой, показывает ключевые сведения о событии и ведёт к регистрации.</p></li>
+    <li><span aria-hidden="true">02</span><div><h3 data-ru="Выбрать выступления" data-en="Choose sessions">Выбрать выступления</h3><p data-ru="Что интересно и как спланировать день?" data-en="What is relevant and how can I plan my day?">Что интересно и как спланировать день?</p></div><p data-ru="В расписании выделены время и тема. Отдельные карточки спикеров раскрывают, кто выступает и какую роль занимает." data-en="The schedule makes times and topics easy to scan. Speaker cards show who is presenting and what their role is.">В расписании выделены время и тема. Отдельные карточки спикеров раскрывают, кто выступает и какую роль занимает.</p></li>
+    <li><span aria-hidden="true">03</span><div><h3 data-ru="Определить формат" data-en="Choose a format">Определить формат</h3><p data-ru="Буду на площадке или подключусь онлайн?" data-en="Will I attend in person or join online?">Буду на площадке или подключусь онлайн?</p></div><p data-ru="Форма принимает имя и email. Формат выбирается рядом с полями, а подсказка показывает, что будет дальше." data-en="The form asks for a name and email. The format selector sits beside the fields and a hint explains the next step.">Форма принимает имя и email. Формат выбирается рядом с полями, а подсказка показывает, что будет дальше.</p></li>
+    <li><span aria-hidden="true">04</span><div><h3 data-ru="Подготовиться" data-en="Prepare to attend">Подготовиться</h3><p data-ru="Где трансляция или как найти площадку?" data-en="Where is the stream or how do I reach the venue?">Где трансляция или как найти площадку?</p></div><p data-ru="Для онлайн-участника предусмотрена ссылка в письме. Для визита в макете выделены адрес, метро, парковка и карта. Остальные вопросы собраны в FAQ." data-en="Online attendees are directed to a link by email. The in-person design groups the address, metro, parking and map. Other questions are collected in the FAQ.">Для онлайн-участника предусмотрена ссылка в письме. Для визита в макете выделены адрес, метро, парковка и карта. Остальные вопросы собраны в FAQ.</p></li>
+  </ol>
+  <div class="pd-review">
+    <div><h3 data-ru="Главное действие в первом экране" data-en="Primary action in the hero">Главное действие в первом экране</h3><p data-ru="В разборе первой версии отмечалось, что кнопка «Участвовать» сливалась с фоном. В итоговом макете её увеличили и выделили красным. Этот цвет повторяется у отправки формы и выбранного формата." data-en="An early design review noted that the “Attend” button blended into the background. The final mockup makes it larger and red. That accent also appears on the submit button and selected format.">В разборе первой версии отмечалось, что кнопка «Участвовать» сливалась с фоном. В итоговом макете её увеличили и выделили красным. Этот цвет повторяется у отправки формы и выбранного формата.</p></div>
+    <div><h3 data-ru="Формат влияет на маршрут" data-en="The format changes the journey">Формат влияет на маршрут</h3><p data-ru="Кофе и знакомство в начале программы помечены как офлайн. Для трансляции важно отдельно показать доступные сессии, а для визита — как добраться. Эти сведения помогают выбрать формат до ввода контактов." data-en="The opening coffee and networking session is marked in-person only. Remote attendees need to know which sessions will be streamed, while venue attendees need directions. Those details help people choose before providing contact information.">Кофе и знакомство в начале программы помечены как офлайн. Для трансляции важно отдельно показать доступные сессии, а для визита — как добраться. Эти сведения помогают выбрать формат до ввода контактов.</p></div>
+  </div>
+</div></section>
+
+<section class="pd-block pd-design" id="design"><div class="pd-wrap">
+  <header class="pd-section-head"><p class="pd-kicker" data-ru="Итоговый дизайн" data-en="Final design">Итоговый дизайн</p><h2 data-ru="Расписание, лица и решение об участии." data-en="The agenda, the speakers and the decision to attend.">Расписание, лица и решение об участии.</h2><p data-ru="Макет ведёт от знакомства с конференцией к программе, спикерам и регистрации. Время и названия докладов удобно сравнить в расписании, а карточки спикеров дают контекст для выбора." data-en="The design goes from the conference introduction to the agenda, speakers and registration. The schedule makes session times and titles easy to compare, while speaker cards provide context for choosing what to attend.">Макет ведёт от знакомства с конференцией к программе, спикерам и регистрации. Время и названия докладов удобно сравнить в расписании, а карточки спикеров дают контекст для выбора.</p></header>
+  <div class="pd-editorial">
+    <figure class="pd-figure"><a class="pd-shot" href="assets/petday/site-program.png" data-gallery="screens" data-alt-ru="Расписание со временем, темами докладов и пометкой офлайн" data-alt-en="Schedule with times, topics and an in-person-only label"><img src="assets/petday/site-program.png" width="5760" height="4400" loading="lazy" decoding="async" alt="Расписание со временем, темами докладов и пометкой офлайн"><span class="pd-enlarge" aria-hidden="true">↗</span></a><figcaption data-ru="Расписание со временем, темами докладов и пометкой офлайн" data-en="Schedule with times, topics and an in-person-only label">Расписание со временем, темами докладов и пометкой офлайн</figcaption></figure>
+    <div>
+      <figure class="pd-figure"><a class="pd-shot" href="assets/petday/site-speakers.png" data-gallery="screens" data-alt-ru="Карточки спикеров с именами, ролями и организациями" data-alt-en="Speaker cards with names, roles and organisations"><img src="assets/petday/site-speakers.png" width="5760" height="2560" loading="lazy" decoding="async" alt="Карточки спикеров с именами, ролями и организациями"><span class="pd-enlarge" aria-hidden="true">↗</span></a><figcaption data-ru="Карточки спикеров с именами, ролями и организациями" data-en="Speaker cards with names, roles and organisations">Карточки спикеров с именами, ролями и организациями</figcaption></figure>
+      <div class="pd-palette">
+        <h3 data-ru="Акценты по назначению" data-en="Colour with a purpose">Акценты по назначению</h3>
+        <p data-ru="Красный выделяет действие и выбранный формат. Холодный голубой объединяет информационные элементы, а тёмный текст помогает быстро просмотреть программу." data-en="Red highlights actions and the selected format. Cool blue groups supporting information, while dark text keeps the agenda easy to scan.">Красный выделяет действие и выбранный формат. Холодный голубой объединяет информационные элементы, а тёмный текст помогает быстро просмотреть программу.</p>
+        <div class="pd-swatches" aria-hidden="true"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pd-registration">
+    <div class="pd-pass">
+      <p class="pd-kicker" data-ru="Регистрация" data-en="Registration">Регистрация</p>
+      <h3 class="pd-pass-title" data-ru="Одна форма, два способа участия." data-en="One form, two ways to attend.">Одна форма, два способа участия.</h3>
+      <fieldset class="pd-format">
+        <legend data-ru="Следующий шаг по формату" data-en="Next step by format">Следующий шаг по формату</legend>
+        <input type="radio" name="pd-format" id="pd-online" checked>
+        <input type="radio" name="pd-format" id="pd-venue">
+        <div class="pd-format-options"><label for="pd-online" data-ru="Онлайн" data-en="Online">Онлайн</label><label for="pd-venue" data-ru="На площадке" data-en="In person">На площадке</label></div>
+        <div class="pd-format-content pd-online"><p class="pd-kicker" data-ru="Трансляция" data-en="Livestream">Трансляция</p><h3 data-ru="Проверьте почту" data-en="Check your inbox">Проверьте почту</h3><p data-ru="В макете указано, что ссылка на трансляцию придёт за час до начала." data-en="The mockup says the livestream link is emailed an hour before the event.">В макете указано, что ссылка на трансляцию придёт за час до начала.</p><p class="pd-format-next" data-ru="Для этого сценария важно сразу сказать, какие выступления попадут в эфир." data-en="This route needs a clear list of sessions available on the stream.">Для этого сценария важно сразу сказать, какие выступления попадут в эфир.</p></div>
+        <div class="pd-format-content pd-venue"><p class="pd-kicker" data-ru="Визит на площадку" data-en="Venue visit">Визит на площадку</p><h3 data-ru="Спланируйте дорогу" data-en="Plan the journey">Спланируйте дорогу</h3><p data-ru="Раздел «Как добраться» собирает адрес, ближайшее метро, отметку о парковке и карту подхода." data-en="The venue section groups the address, nearest metro, parking information and a walking map.">Раздел «Как добраться» собирает адрес, ближайшее метро, отметку о парковке и карту подхода.</p><p class="pd-format-next" data-ru="При подтверждении участия эти сведения полезно продублировать в письме." data-en="The confirmation email can repeat those details for easy reference.">При подтверждении участия эти сведения полезно продублировать в письме.</p></div>
+      </fieldset>
+    </div>
+    <figure class="pd-figure"><a class="pd-shot" href="assets/petday/site-registration.png" data-gallery="screens" data-alt-ru="Форма с полями имени и email и переключателем формата" data-alt-en="Registration form with name, email and an attendance selector"><img src="assets/petday/site-registration.png" width="5760" height="1630" loading="lazy" decoding="async" alt="Форма с полями имени и email и переключателем формата"><span class="pd-enlarge" aria-hidden="true">↗</span></a><figcaption data-ru="Форма с полями имени и email и переключателем формата" data-en="Registration form with name, email and an attendance selector">Форма с полями имени и email и переключателем формата</figcaption></figure>
+  </div>
+  <div class="pd-support">
+    <figure class="pd-figure"><a class="pd-shot" href="assets/petday/site-venue.png" data-gallery="screens" data-alt-ru="Адрес площадки, метро, парковка и схема прохода" data-alt-en="Venue address, metro, parking and walking route"><img src="assets/petday/site-venue.png" width="5760" height="1625" loading="lazy" decoding="async" alt="Адрес площадки, метро, парковка и схема прохода"><span class="pd-enlarge" aria-hidden="true">↗</span></a><figcaption data-ru="Адрес площадки, метро, парковка и схема прохода" data-en="Venue address, metro, parking and walking route">Адрес площадки, метро, парковка и схема прохода</figcaption></figure>
+    <figure class="pd-figure"><a class="pd-shot" href="assets/petday/site-faq.png" data-gallery="screens" data-alt-ru="Вопросы об участии и форма связи" data-alt-en="Attendance FAQ and contact form"><img src="assets/petday/site-faq.png" width="5760" height="2645" loading="lazy" decoding="async" alt="Вопросы об участии и форма связи"><span class="pd-enlarge" aria-hidden="true">↗</span></a><figcaption data-ru="Вопросы об участии и форма связи" data-en="Attendance FAQ and contact form">Вопросы об участии и форма связи</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="pd-block pd-outcome" id="outcome"><div class="pd-wrap">
+  <header class="pd-section-head"><p class="pd-kicker" data-ru="Результат" data-en="Outcome">Результат</p><h2 data-ru="Возможность выбрать до регистрации." data-en="Enough information to choose before signing up.">Возможность выбрать до регистрации.</h2><p data-ru="В итоговом макете собран полный путь посетителя. Он может оценить актуальность программы, выбрать формат и узнать, где искать организационные детали после регистрации." data-en="The final design covers the complete attendee journey. Visitors can judge whether the agenda is relevant, choose a format and find practical details for after registration.">В итоговом макете собран полный путь посетителя. Он может оценить актуальность программы, выбрать формат и узнать, где искать организационные детали после регистрации.</p></header>
+  <div class="pd-review">
+    <div><h3 data-ru="Перед публикацией" data-en="Before publishing">Перед публикацией</h3><p data-ru="В предоставленном макете год в анонсе отличается от даты в карточке события. В карточке также указана только трансляция, хотя форма предлагает онлайн и офлайн. Перед публикацией нужно согласовать дату и показать оба формата уже на первом экране." data-en="In the supplied design, the year in the announcement differs from the date in the event details. Those details also show only the livestream, while the form offers both formats. The date and both attendance options need to be consistent on the first screen before publishing.">В предоставленном макете год в анонсе отличается от даты в карточке события. В карточке также указана только трансляция, хотя форма предлагает онлайн и офлайн. Перед публикацией нужно согласовать дату и показать оба формата уже на первом экране.</p></div>
+    <div><h3 data-ru="Проверка сценария" data-en="How to validate the flow">Проверка сценария</h3><p data-ru="В тесте прототипа стоит попросить участника найти подходящий доклад, выбрать формат и объяснить, что произойдёт после регистрации. После запуска можно отдельно измерять открытия формы и подтверждённые регистрации по каждому формату." data-en="A prototype test can ask someone to find a relevant session, choose a format and explain what happens after registration. After launch, form opens and confirmed registrations can be tracked separately for each format.">В тесте прототипа стоит попросить участника найти подходящий доклад, выбрать формат и объяснить, что произойдёт после регистрации. После запуска можно отдельно измерять открытия формы и подтверждённые регистрации по каждому формату.</p></div>
+  </div>
+</div></section>
 </main>
-<!-- FOOTER -->
 <footer id="rz-site-footer" class="portfolio-top-end">
   <span class="footer-signature">RZ. / design practice</span>
-  <button class="portfolio-top-btn" type="button" id="top-btn"><span data-ru="Наверх" data-en="Back to top">Наверх</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="m6 14 6-6 6 6"/></svg></button>
+  <button class="portfolio-top-btn" type="button"><span data-ru="Наверх" data-en="Back to top">Наверх</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="m6 14 6-6 6 6"/></svg></button>
 </footer>
-<script>
-  (() => {
-    const root = document.querySelector('.case-navigation');
-    const toggle = root.querySelector('.case-lang');
-    let lang = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'ru';
-
-    function apply() {
-      toggle.textContent = lang.toUpperCase();
-      document.documentElement.lang = lang;
-      document.querySelectorAll('[data-ru][data-en]').forEach(el => {
-        el.innerHTML = el.dataset[lang];
-      });
-    }
-
-    toggle.addEventListener('click', () => {
-      lang = lang === 'ru' ? 'en' : 'ru';
-      apply();
-      window.parent.postMessage({type: 'portfolio-language', lang}, '*');
-    });
-
-    window.addEventListener('message', e => {
-      if(e.data?.type === 'portfolio-language' && e.data.lang !== lang) {
-        lang = e.data.lang;
-        apply();
-      }
-    });
-
-    root.querySelector('.case-back').addEventListener('click', () => {
-      if(window.parent !== window) window.parent.postMessage({type: 'portfolio-case-back'}, '*');
-      else location.href = 'index.html#work';
-    });
-
-    const links = [...root.querySelectorAll('.case-links a')];
-    // Кнопка "Наверх"
-    document.getElementById('top-btn').addEventListener('click', () => {
-      window.scrollTo({top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
-    });
-
-    apply();
-  })();
-</script>
+<dialog id="petday-viewer" class="viewer pd-viewer" aria-label="Просмотр макетов">
+  <button type="button" class="liquid-close" aria-label="Закрыть" autofocus>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <div class="pd-viewer-stage">
+    <img alt="" hidden>
+    <div class="pd-viewer-full" role="group" hidden></div>
+  </div>
+  <div class="pd-viewer-tools">
+    <button type="button" data-viewer-previous aria-label="Предыдущий экран">‹</button>
+    <p class="pd-viewer-caption" aria-live="polite"></p>
+    <button type="button" data-viewer-next aria-label="Следующий экран">›</button>
+    <button type="button" data-viewer-zoom aria-label="Увеличить" aria-pressed="false">+</button>
+  </div>
+</dialog>
 </body>
 </html>

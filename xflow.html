@@ -1,147 +1,149 @@
-<!DOCTYPE html>
-
-<html lang="ru"><head><script src="assets/language-init.js"></script><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>X’FLOW GYM — UX/UI Redesign · RZ.</title><meta content="X’FLOW GYM — UX/UI редизайн фитнес-клуба: анализ, пользовательский сценарий и сравнение до и после." name="description"/><link href="assets/site.css" rel="stylesheet"/><style>
-:root{--ink:#1b2330;--muted:#6b7180;--bg:#f3f5f1;--purple:#6e4c92;--gold:#c7a367}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:#f3f5f1;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}button,a{font:inherit}a{color:inherit;text-decoration:none}button{cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #8765b7;outline-offset:4px}.wrap{width:min(1180px,calc(100% - 52px));margin:auto}.hero{padding:175px 0 110px;background:radial-gradient(ellipse at 85% 25%,#ead9ed 0%,transparent 55%),linear-gradient(180deg,#f3f5f1,#eeeaf0)}.eyebrow{font-size:12px;letter-spacing:.19em;font-weight:750;color:#8063a0;text-transform:uppercase}.hero h1{font-size:clamp(70px,11vw,150px);line-height:.91;letter-spacing:-.09em;margin:25px 0}.hero h1 em{font-style:normal;color:#8a659f}.lead{font-size:clamp(18px,2.1vw,26px);line-height:1.45;max-width:790px;color:#515866}.tags{display:flex;flex-wrap:wrap;gap:10px;margin:35px 0}.tags span{border:1px solid #d9d7df;background:#ffffff9c;border-radius:50px;padding:11px 16px;font-size:13px}.hero-shot{position:relative;border-radius:36px;overflow:hidden;background:#18191f;box-shadow:0 35px 80px #26223622;margin-top:52px}.hero-shot img{display:block;width:100%;height:auto}.hero-shot .shot-caption{position:absolute;left:22px;bottom:22px;padding:12px 18px;border-radius:30px;background:#ffffffd9;backdrop-filter:blur(18px);font-size:12px;font-weight:650}.section{padding:105px 0;background:linear-gradient(180deg,#eeeaf0,#f4f5f1)}.section:nth-of-type(even){background:linear-gradient(180deg,#f4f5f1,#f0f1ef)}.section-head{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:end;margin-bottom:45px}.section-head h2{font-size:clamp(43px,6vw,80px);line-height:1;letter-spacing:-.072em;margin:17px 0 0}.section-head p{font-size:17px;line-height:1.65;color:var(--muted)}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:#ffffffb8;border:1px solid #ffffffee;border-radius:27px;padding:30px;box-shadow:0 15px 35px #20233608}.card .n{font-size:11px;letter-spacing:.14em;font-weight:800;color:#8063a0}.card h3{font-size:25px;letter-spacing:-.04em;margin:25px 0 12px}.card p{font-size:15px;line-height:1.65;color:#626976}.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.flow .step{padding:24px 17px;border-radius:24px;background:#22212c;color:#fff;min-height:190px;position:relative}.step small{color:#d4b882;letter-spacing:.12em}.step h3{font-size:20px;margin:22px 0 8px}.step p{font-size:13px;line-height:1.5;color:#c8c6d2}.flow .step:not(:last-child):after{content:'→';position:absolute;right:-13px;top:50%;z-index:2;background:#f4f5f1;border-radius:100%;width:24px;height:24px;color:#27202e;display:grid;place-items:center}.compare{display:grid;grid-template-columns:1fr 1fr;gap:20px}.compare figure{margin:0;border-radius:30px;overflow:hidden;background:#dedee3;border:1px solid #ffffffea;box-shadow:0 25px 50px #1b1a2512}.compare img{width:100%;display:block;aspect-ratio:1.55;object-fit:cover;object-position:top}.compare figcaption{padding:22px 26px;display:flex;justify-content:space-between;align-items:center;font-weight:700}.compare figcaption small{font-weight:400;color:#777}.compare figure button{border:0;background:#ece7f1;border-radius:99px;padding:9px 14px;color:#49335e}.full-screen{border:1px solid #ffffffaa;background:#25252d;border-radius:32px;overflow:hidden;box-shadow:0 30px 70px #14132022}.full-screen img{display:block;width:100%;height:auto}.full-screen figcaption{background:#23242c;color:#d6d2df;padding:20px 28px;font-size:14px}.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}.end{background:radial-gradient(ellipse at 20% 0%,#e8d9ed,transparent 65%),linear-gradient(180deg,#f3f5f1,#f0f4f0);padding:105px 0 55px}.end h2{font-size:clamp(55px,8vw,108px);line-height:.98;letter-spacing:-.08em;margin:20px 0}.end-row{display:flex;align-items:end;justify-content:space-between;gap:30px}.end-row p{color:#626976;line-height:1.65;max-width:700px}.portfolio-top-btn{flex-shrink:0}.reveal{opacity:0;transform:translateY(25px);transition:opacity .8s,transform .8s}.reveal.visible{opacity:1;transform:none}.viewer{position:fixed;inset:0;z-index:200;background:#0c0b12e8;backdrop-filter:blur(25px);display:none;align-items:center;justify-content:center;padding:70px 20px 20px}.viewer.open{display:flex}.viewer img{max-width:100%;max-height:100%;object-fit:contain;border-radius:12px}.viewer button{position:absolute;right:25px;top:25px;width:44px;height:44px;border:1px solid #ffffff55;border-radius:50%;background:#ffffffdd;font-size:28px}@media(max-width:760px){.hero{padding-top:145px}.section{padding:75px 0}.section-head,.cards,.compare,.two{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.end-row{align-items:flex-start;flex-direction:column}.hero-shot{border-radius:20px}}@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
-
-/* X'FLOW case polish */
-:root{--xflow-purple:#8a659f;--xflow-ink:#182028}
-body{background:#f3f5f1}
-.hero{background:radial-gradient(ellipse at 83% 35%,#e8d6ed 0%,transparent 58%),radial-gradient(ellipse at 6% 100%,#e3eae8 0%,transparent 65%),#f3f5f1}
-.section,.section:nth-of-type(even){background:linear-gradient(180deg,#f3f5f1 0%,#f1edf3 40%,#f3f5f1 100%)}
-#screens{background:linear-gradient(180deg,#f3f5f1,#eee6f1 50%,#f3f5f1)}
-#design{background:radial-gradient(ellipse at 85% 60%,#e4d6ed,transparent 68%),linear-gradient(180deg,#f3f5f1,#f0eef2,#f3f5f1)}
-.end{background:radial-gradient(ellipse at 12% 25%,#e9dced,transparent 58%),radial-gradient(ellipse at 85% 80%,#e2eee9,transparent 65%),#f3f5f1;padding:75px 0 65px}
-.section-head h2,.end h2{color:#182028}
-.section-head h2::first-letter{color:inherit}
-.accent-dot{color:#8a659f}
-.hero-device{max-width:1040px;margin:48px auto 0;filter:drop-shadow(0 26px 38px #211b2a1b)}
-.hero-device img{display:block;width:100%;height:auto;object-fit:contain}
-.audit-board{border-radius:32px;padding:32px;background:linear-gradient(135deg,#23232e,#30263b);color:white;box-shadow:0 25px 65px #2c223523}
-.audit-label{color:#d4b882;letter-spacing:.2em;font-size:12px;font-weight:700;margin-bottom:25px}
-.audit-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.audit-columns article{padding:28px;border-radius:24px;background:#ffffff0d;border:1px solid #ffffff21;min-height:230px}
-.audit-columns article span{font-size:11px;color:#d9b573;letter-spacing:.15em}
-.audit-columns article h3{font-size:24px;letter-spacing:-.04em;line-height:1.2;margin:30px 0 12px}
-.audit-columns article p{color:#c9c6d2;line-height:1.6;font-size:14px}
-.visual-system{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center;background:#22222b;color:#fff;border-radius:34px;padding:48px}
-.visual-copy h3{font-size:clamp(40px,5vw,72px);line-height:1.04;letter-spacing:-.06em;margin:22px 0}
-.visual-copy p{color:#c9c6d2;line-height:1.7;max-width:430px}
-.visual-tokens{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.token{background:var(--swatch);border-radius:22px;min-height:160px;padding:20px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid #ffffff40;color:white}
-.token span{font-weight:750;font-size:20px}.token small{opacity:.8}.token b{opacity:.7;font-size:12px}
-.flow{gap:10px}.flow .step{background:linear-gradient(150deg,#282630,#35303d);border:1px solid #ffffff24;border-radius:22px;min-height:205px;transition:transform .3s,box-shadow .3s}
-.flow .step:hover{transform:translateY(-5px);box-shadow:0 16px 25px #221a3020}.flow .step:not(:last-child):after{box-shadow:0 2px 8px #16111c26;background:#f1edf3}
-
-/* --- НАВИГАЦИЯ ИЗ WHOOSH (100% FLEXBOX) --- */
-.navrow{position:fixed;z-index:100;top:18px;left:50%;transform:translateX(-50%);width:min(960px,calc(100% - 32px));display:flex;align-items:center;gap:12px}
-.back{width:55px;height:55px;flex:none;border-radius:50%;border:1px solid #fff;background:rgba(255,255,255,.65);backdrop-filter:blur(20px);font-size:32px;cursor:pointer;color:#111e40;display:grid;place-items:center;box-shadow:0 14px 60px #20332c12; transition: transform .35s cubic-bezier(.22,1,.36,1), background .3s}
-.back:hover{transform:translateX(-4px);background:rgba(255,255,255,.85)}
-
-.nav{flex:1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 11px 9px 20px;background:rgba(255,255,255,.60);backdrop-filter:blur(26px) saturate(170%);-webkit-backdrop-filter:blur(26px) saturate(170%);border:1px solid rgba(255,255,255,.86);border-radius:24px;box-shadow:0 14px 60px #20332c12,inset 0 1px 0 #fff8;position:relative}
-.brand{font-size:13px;font-weight:800;white-space:nowrap;letter-spacing:-.04em}.brand span{font-weight:400;color:#67716f}
-.tabs{display:flex;gap:3px;margin:0 auto}
-.tabs a{font-size:12px;padding:12px 15px;border-radius:15px;text-decoration:none;cursor:pointer;transition:background .3s,color .3s; color:var(--ink); white-space:nowrap;}
-.tabs a:hover{background:rgba(255,255,255,.85);color:#14213e}
-.tabs a.active{background:#202b45 !important;color:#fff !important;box-shadow:0 5px 17px rgba(17,30,64,.16) !important}
-
-.nav-actions{display:flex;align-items:center;gap:12px;flex:0 0 auto}
-.lang{border:1px solid #fff9;background:#ffffff75;border-radius:15px;padding:11px 14px;cursor:pointer;min-width:52px; transition:background .3s; flex-shrink:0;}
-.lang:hover{background:#fff}
-.portfolio-contact{display:inline-flex!important;align-items:center;justify-content:center;gap:8px;flex:0 0 auto;white-space:nowrap;text-decoration:none!important;padding:12px 19px;border-radius:999px;color:#19332e!important;background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(227,242,237,.62));border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 5px 18px rgba(24,65,59,.1);font:600 13px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;position:relative;overflow:hidden;isolation:isolate;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,background .3s;}
-.portfolio-contact::before{content:'';position:absolute;inset:-30%;background:linear-gradient(110deg,transparent 35%,rgba(44,180,101,.2) 45%,rgba(67,207,117,.8) 50%,rgba(44,180,101,.2) 55%,transparent 65%);transform:translateX(-110%);animation: greenSweep 3s cubic-bezier(.35,.05,.22,1) infinite;z-index:-1;}
-@keyframes greenSweep {0%, 15% { transform: translateX(-110%); } 55%, 100% { transform: translateX(110%); }}
-.portfolio-contact:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 #fff,0 9px 26px rgba(24,65,59,.17),0 0 17px rgba(67,207,117,.16)}
-.portfolio-contact svg{width:15px;height:15px;transition:transform .3s}
-.portfolio-contact:hover svg{transform:translate(2px,-2px)}
-
-/* --- АДАПТАЦИЯ (КАК В WHOOSH) --- */
-@media(max-width:850px){
-  .navrow{top:10px;width:calc(100% - 20px);gap:6px}
-  .back{width:44px;height:44px}
-  .nav{padding:5px 6px 5px 10px;gap:4px;border-radius:16px}
-  .brand{font-size:12px;padding-left:4px}
-  .brand span{display:none}
-  .tabs{margin:0 4px;flex:1;justify-content:center}
-  .tabs a{font-size:10px;padding:10px 7px}
-  .nav-actions{gap:5px}
-  .lang{font-size:11px;padding:9px;min-width:36px}
-  .portfolio-contact{padding:11px 13px;font-size:12px;gap:5px}
-  .portfolio-contact svg{width:13px;height:13px}
-}
-@media(max-width:600px){
-  .tabs a{font-size:9px; padding: 8px 4px;}
-  .portfolio-contact span { display: none; }
-  .portfolio-contact { padding: 10px; }
-}
-
-/* Consistent interactive case-study cards — refined hover, press and focus */
-@media (hover:hover) and (pointer:fine){
-  .cards .card,.two .card{transition:transform .38s cubic-bezier(.22,1,.36,1),box-shadow .38s cubic-bezier(.22,1,.36,1),border-color .32s,background-color .32s;will-change:transform}
-  .cards .card:hover,.two .card:hover{transform:translateY(-7px);border-color:rgba(138,101,159,.42);background:rgba(255,255,255,.92);box-shadow:0 22px 52px rgba(42,29,59,.13),inset 0 1px 0 rgba(255,255,255,.9)}
-  .cards .card:hover .n,.two .card:hover .n{color:#8A659F}
-}
-.cards .card,.two .card{transition:transform .38s cubic-bezier(.22,1,.36,1),box-shadow .38s cubic-bezier(.22,1,.36,1),border-color .32s,background-color .32s}
-.cards .card .n,.two .card .n{transition:color .3s}
-@media (prefers-reduced-motion:reduce){.cards .card,.two .card,.cards .card .n,.two .card .n{transition:none!important;transform:none!important}}
-</style>
-<style id="xflow-v190-mobile-footer">
-/* v190 — X'FLOW responsive design boards and unified case footer */
-.audit-board,.visual-system{min-width:0;max-width:100%;overflow:hidden}
-.audit-columns,.visual-tokens{min-width:0}
-.audit-columns article,.visual-copy,.visual-tokens .token{min-width:0;overflow-wrap:anywhere}
-.portfolio-top-end{display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:1100px;margin:0 auto;padding:36px 24px 56px;background:transparent;border-top:1px solid rgba(32,40,45,.09)}
-.portfolio-top-end .footer-signature{font-size:13px;font-weight:650;color:#26352f}
-.portfolio-top-end .portfolio-top-btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:12px 23px;border:1px solid rgba(255,255,255,.95);border-radius:999px;background:rgba(255,255,255,.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 12px 35px rgba(25,45,40,.08);color:#1c322c;font-weight:650;white-space:nowrap}
-.portfolio-top-end .portfolio-top-btn svg{width:17px;height:17px;flex:none}
-@media(max-width:700px){
- .audit-board{padding:20px 16px;border-radius:24px}
- .audit-label{font-size:10px;letter-spacing:.12em;line-height:1.5}
- .audit-columns{grid-template-columns:minmax(0,1fr)!important;gap:12px}
- .audit-columns article{min-height:0;padding:19px;border-radius:18px}
- .audit-columns article h3{font-size:clamp(19px,5.3vw,24px);margin:16px 0 10px}
- .audit-columns article p{font-size:13px;line-height:1.6}
- .visual-system{grid-template-columns:minmax(0,1fr)!important;padding:22px 17px;border-radius:24px;gap:24px}
- .visual-copy h3{font-size:clamp(30px,9vw,44px);overflow-wrap:normal}
- .visual-copy p{font-size:14px;line-height:1.65}
- .visual-tokens{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
- .visual-tokens .token{min-height:126px;padding:13px;border-radius:16px}
- .visual-tokens .token span{font-size:clamp(13px,3.8vw,18px)}
- .portfolio-top-end{padding:24px 18px 35px}
- .portfolio-top-end .portfolio-top-btn{min-height:48px;padding:10px 17px;font-size:13px}
-}
-@media(max-width:360px){.visual-tokens{grid-template-columns:minmax(0,1fr)}.visual-tokens .token{min-height:94px}}
-</style><style id="v191-footer-unification">
-/* Consistent MDR-style footer on case pages */
-.footer,.portfolio-top-end{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:16px!important;flex-wrap:nowrap!important;min-width:0!important}
-.footer .portfolio-top-btn,.portfolio-top-end .portfolio-top-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:12px!important;flex-shrink:0!important;border-radius:999px!important;padding:13px 23px!important;min-height:54px!important;background:linear-gradient(135deg,rgba(255,255,255,.89),rgba(255,255,255,.66))!important;border:1px solid rgba(255,255,255,.95)!important;box-shadow:0 12px 34px rgba(30,45,44,.10),inset 0 1px 1px white!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;color:#243a34!important;font-weight:650!important;cursor:pointer!important;transition:transform .32s cubic-bezier(.22,1,.36,1),box-shadow .32s ease,background .32s ease!important}
-.footer .portfolio-top-btn:hover,.portfolio-top-end .portfolio-top-btn:hover{transform:translateY(-4px)!important;box-shadow:0 19px 43px rgba(30,45,44,.16),inset 0 1px 1px white!important}
-.footer .portfolio-top-btn:active,.portfolio-top-end .portfolio-top-btn:active{transform:scale(.97)!important}
-.footer .portfolio-top-btn svg,.portfolio-top-end .portfolio-top-btn svg{width:19px!important;height:19px!important;flex-shrink:0!important;animation:v191Chevron 2.1s ease-in-out infinite!important}
-@keyframes v191Chevron{0%,100%{transform:translateY(2px)}50%{transform:translateY(-3px)}}
-@media(max-width:700px){.footer,.portfolio-top-end{flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;padding-left:18px!important;padding-right:18px!important}.footer .portfolio-top-btn,.portfolio-top-end .portfolio-top-btn{padding:11px 17px!important;min-height:48px!important;font-size:13px!important}.footer-brand,.footer-signature{min-width:0;font-size:12px!important}}
-@media(prefers-reduced-motion:reduce){.footer .portfolio-top-btn svg,.portfolio-top-end .portfolio-top-btn svg{animation:none!important}}
-</style><link rel="stylesheet" href="assets/site-footer.css?v=196.3"><script src="assets/site-footer.js?v=196.3" defer></script></head><body>
-<div id="rz-case-header" class="travel-navigation navrow">
-  <button class="rz-back travel-back back" id="back" type="button" aria-label="Назад к проектам"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></svg></button>
-  <nav class="rz-nav travel-nav nav" aria-label="Навигация по проекту">
-    <div class="rz-brand travel-brand brand">RZ. <span class="brand-sub">/ design practice</span></div>
-    <div class="rz-links travel-links tabs"><a class="rz-link active travel-link" data-en="Overview" data-ru="Обзор" href="#top">Обзор</a><a class="rz-link travel-link" data-en="Process" data-ru="Процесс" href="#research">Процесс</a><a class="rz-link travel-link" data-en="Design" data-ru="Дизайн" href="#design">Дизайн</a></div>
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <script src="assets/language-init.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="X’FLOW GYM — UX/UI-кейс о редизайне лендинга фитнес-клуба и пути к первой тренировке.">
+  <meta name="theme-color" content="#141318">
+  <title>X’FLOW GYM — UX/UI Redesign · RZ.</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/project-navigation.css?v=212">
+  <link rel="stylesheet" href="assets/case-refinements.css">
+  <link rel="stylesheet" href="assets/site-footer.css?v=196.3">
+  <link rel="stylesheet" href="assets/xflow-case.css">
+  <script src="assets/project-navigation.js?v=195" defer></script>
+  <script src="assets/case-runtime.js?v=195" defer></script>
+  <script src="assets/site-footer.js?v=196.3" defer></script>
+  <script src="assets/xflow-case.js" defer></script>
+</head>
+<body data-case="xflow">
+<div id="rz-case-header" class="travel-navigation case-navigation">
+  <button class="rz-back travel-back case-back" id="back" type="button" aria-label="Назад к проектам"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></svg></button>
+  <nav class="rz-nav travel-nav case-nav" aria-label="Навигация по проекту">
+    <div class="rz-brand travel-brand case-brand">RZ. <span class="brand-sub">/ design practice</span></div>
+    <div class="rz-links travel-links case-links"><a class="rz-link active travel-link" data-en="Overview" data-ru="Обзор" href="#top">Обзор</a><a class="rz-link travel-link" data-en="Process" data-ru="Процесс" href="#research">Процесс</a><a class="rz-link travel-link" data-en="Design" data-ru="Дизайн" href="#design">Дизайн</a></div>
     <div class="rz-actions nav-actions">
-      <button class="rz-lang travel-lang lang" id="lang" type="button" aria-label="Выбрать язык">RU</button>
+      <button class="rz-lang travel-lang case-lang" id="lang" type="button" aria-label="Выбрать язык">RU</button>
       <button class="rz-contact portfolio-contact" type="button" aria-label="Связаться"><span class="portfolio-contact-label">Связаться</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10"/></svg></button>
     </div>
   </nav>
 </div>
-<main id="top"><section class="hero"><div class="wrap"><div class="hero-copy"><div class="eyebrow" data-en="11 / WEB · FITNESS · UX/UI REDESIGN" data-ru="11 / WEB · FITNESS · UX/UI REDESIGN">11 / WEB · FITNESS · UX/UI REDESIGN</div><h1>X’FLOW<br/><em>GYM<span class="xflow-heading-dot">.</span></em></h1><p class="lead" data-en="From a striking first impression to clear training discovery and a confident first step." data-ru="От яркого первого впечатления — к понятному выбору тренировок и первому шагу в клуб.">От яркого первого впечатления — к понятному выбору тренировок и первому шагу в клуб.</p><div class="tags"><span>UX Audit</span><span>User Flow</span><span>Information Architecture</span><span>Web UI</span><span>Before / After</span></div></div><div class="hero-device reveal"><img alt="X’FLOW GYM — лендинг в макете MacBook" src="assets/xflow/macbook_transparent.png"/></div></div></section>
-<section class="section" id="overview"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">01 / CONTEXT &amp; CHALLENGE</div><h2 data-en="Striking isn't always clear." data-ru="Эффектно — не значит понятно.">Эффектно — не значит понятно<span class="xflow-heading-dot">.</span></h2></div><p data-en="The original hero conveyed the gym’s energy, but did not expose training options, coaches or the path to booking. The redesign aimed to preserve the brand character while improving clarity." data-ru="Исходный экран выразительно передавал атмосферу клуба, но не раскрывал ассортимент тренировок, тренеров и дальнейший путь к записи. Задача редизайна — сохранить характер бренда, повысив ясность интерфейса.">Исходный экран выразительно передавал атмосферу клуба, но не раскрывал ассортимент тренировок, тренеров и дальнейший путь к записи. Задача редизайна — сохранить характер бренда, повысив ясность интерфейса.</p></div><div class="cards"><article class="card reveal"><div class="n">01 / PROBLEM</div><h3 data-en="Hidden navigation" data-ru="Навигация за меню">Навигация за меню</h3><p data-en="Training categories are hidden behind a compact menu, so the breadth of options is not immediately visible." data-ru="На первом экране направления спрятаны в компактном меню. Пользователь не видит широту предложения до взаимодействия.">На первом экране направления спрятаны в компактном меню. Пользователь не видит широту предложения до взаимодействия.</p></article><article class="card reveal"><div class="n">02 / OBJECTIVE</div><h3 data-en="Simplify discovery" data-ru="Упростить выбор">Упростить выбор</h3><p data-en="Make classes, coaches, benefits and booking discoverable within one coherent journey." data-ru="Сделать направления, тренеров, преимущества и запись доступными в одном последовательном сценарии.">Сделать направления, тренеров, преимущества и запись доступными в одном последовательном сценарии.</p></article><article class="card reveal"><div class="n">03 / SCOPE</div><h3 data-en="Landing page redesign" data-ru="Редизайн лендинга">Редизайн лендинга</h3><p data-en="Restructuring and desktop UI design based on the original concept. No live launch or user testing is claimed." data-ru="Проектирование структуры и desktop-интерфейса по исходному концепту. Реальный запуск и пользовательские тесты не заявлены.">Проектирование структуры и desktop-интерфейса по исходному концепту. Реальный запуск и пользовательские тесты не заявлены.</p></article></div></div></section>
-<section class="section" id="research"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">02 / UX REASONING</div><h2 data-en="The path to a workout." data-ru="Путь к тренировке.">Путь к тренировке<span class="xflow-heading-dot">.</span></h2></div><p data-en="Design hypothesis: visitors need to quickly understand available classes, coach credibility and how to book. This flow is inferred from the two designs, not invented interviews." data-ru="Проектная гипотеза: человек должен быстро понять, какие тренировки доступны, кому доверить занятия и как записаться. Сценарий построен на анализе двух макетов, а не на вымышленных интервью.">Проектная гипотеза: человек должен быстро понять, какие тренировки доступны, кому доверить занятия и как записаться. Сценарий построен на анализе двух макетов, а не на вымышленных интервью.</p></div><div class="flow reveal"><div class="step"><small>01 / ARRIVE</small><h3 data-en="Landing" data-ru="Первый экран">Первый экран</h3><p data-en="Understand the offer" data-ru="Понять предложение клуба">Понять предложение клуба</p></div><div class="step"><small>02 / DISCOVER</small><h3 data-en="Classes" data-ru="Направления">Направления</h3><p data-en="Explore workout types" data-ru="Выбрать формат занятий">Выбрать формат занятий</p></div><div class="step"><small>03 / EVALUATE</small><h3 data-en="About the gym" data-ru="О клубе">О клубе</h3><p data-en="Evaluate facilities and benefits" data-ru="Оценить условия и преимущества">Оценить условия и преимущества</p></div><div class="step"><small>04 / TRUST</small><h3 data-en="Coaches &amp; reviews" data-ru="Тренеры и отзывы">Тренеры и отзывы</h3><p data-en="Build confidence" data-ru="Снизить неопределённость">Снизить неопределённость</p></div><div class="step"><small>05 / ACT</small><h3 data-en="Book" data-ru="Запись">Запись</h3><p data-en="Start a trial session" data-ru="Перейти к пробной тренировке">Перейти к пробной тренировке</p></div></div><div class="cards" style="margin-top:20px"><article class="card reveal"><div class="n">CJM / 01</div><h3 data-en="Interest" data-ru="Интерес">Интерес</h3><p data-en="Question: Is this gym for me? UI response: clear positioning and workout categories." data-ru="Вопрос: подходит ли мне клуб? Ответ интерфейса: понятное позиционирование и направления.">Вопрос: подходит ли мне клуб? Ответ интерфейса: понятное позиционирование и направления.</p></article><article class="card reveal"><div class="n">CJM / 02</div><h3 data-en="Evaluation" data-ru="Оценка">Оценка</h3><p data-en="Question: Who will coach me? Response: coach profiles, experience, reviews and facilities." data-ru="Вопрос: кто будет тренировать? Ответ: карточки тренеров, опыт, отзывы и информация о клубе.">Вопрос: кто будет тренировать? Ответ: карточки тренеров, опыт, отзывы и информация о клубе.</p></article><article class="card reveal"><div class="n">CJM / 03</div><h3 data-en="Decision" data-ru="Решение">Решение</h3><p data-en="Question: How do I start? Response: a consistent trial-session CTA at relevant decision points." data-ru="Вопрос: как начать? Ответ: повторяющийся CTA на пробную тренировку в логичных точках страницы.">Вопрос: как начать? Ответ: повторяющийся CTA на пробную тренировку в логичных точках страницы.</p></article></div></div></section>
-<section class="section" id="screens"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">03 / BEFORE &amp; AFTER</div><h2 data-en="Two approaches. One brand." data-ru="Два подхода. Один бренд.">Два подхода<span class="xflow-heading-dot">.</span> Один бренд<span class="xflow-heading-dot">.</span></h2></div><p data-en="Compare the original hero concept with the redesigned full page. Click an image to view it at full resolution." data-ru="Сравнение исходного hero-концепта с обновлённой страницей. Нажмите на изображение для просмотра в полном размере.">Сравнение исходного hero-концепта с обновлённой страницей. Нажмите на изображение для просмотра в полном размере.</p></div><div class="audit-board reveal"><div class="audit-label">BEFORE → AFTER / DESIGN DECISIONS</div><div class="audit-columns"><article><span>01 / NAVIGATION</span><h3 data-en="From hidden navigation to visible choices" data-ru="От скрытого меню — к видимому выбору">От скрытого меню — к видимому выбору</h3><p data-en="Sections and training categories are now accessible without extra searching." data-ru="Разделы и направления тренировок стали доступны без дополнительного поиска.">Разделы и направления тренировок стали доступны без дополнительного поиска.</p></article><article><span>02 / INFORMATION</span><h3 data-en="From first impressions to clear reasons" data-ru="От впечатления — к аргументам">От впечатления — к аргументам</h3><p data-en="After the hero, visitors can explore class formats, trainers, and the gym’s advantages." data-ru="После первого экрана пользователь видит форматы занятий, тренеров и преимущества клуба.">После первого экрана пользователь видит форматы занятий, тренеров и преимущества клуба.</p></article><article><span>03 / ACTION</span><h3 data-en="From interest to booking" data-ru="От интереса — к записи">От интереса — к записи</h3><p data-en="The primary journey ends with a clear action: booking a training session." data-ru="Ключевой сценарий заканчивается понятным действием — заявкой на тренировку.">Ключевой сценарий заканчивается понятным действием — заявкой на тренировку.</p></article></div></div><div class="cards" style="margin-top:22px"><article class="card reveal"><div class="n">NAVIGATION</div><h3 data-en="Visible sections" data-ru="Разделы на виду">Разделы на виду</h3><p data-en="Classes, coaches, pricing and gym information are accessible from the top navigation." data-ru="Направления, тренеры, цены и информация о клубе доступны из верхнего меню.">Направления, тренеры, цены и информация о клубе доступны из верхнего меню.</p></article><article class="card reveal"><div class="n">HIERARCHY</div><h3 data-en="A clear first step" data-ru="Ясный первый шаг">Ясный первый шаг</h3><p data-en="Headline, value proposition and CTA take precedence over decoration." data-ru="Заголовок, обещание ценности и CTA читаются до дополнительных декоративных элементов.">Заголовок, обещание ценности и CTA читаются до дополнительных декоративных элементов.</p></article><article class="card reveal"><div class="n">CONTENT</div><h3 data-en="More reasons to choose" data-ru="Больше оснований выбрать">Больше оснований выбрать</h3><p data-en="Training categories, coach profiles, reviews and gym information are surfaced." data-ru="Появились карточки направлений, тренеров, отзывы и блок о клубе.">Появились карточки направлений, тренеров, отзывы и блок о клубе.</p></article></div></div></section>
-<section class="section" id="design"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">04 / VISUAL DESIGN</div><h2 data-en="Energy.&lt;br&gt;With structure." data-ru="Энергия.&lt;br&gt;В структуре.">Энергия<span class="xflow-heading-dot">.</span><br/>В структуре<span class="xflow-heading-dot">.</span></h2></div><p data-en="Graphite surfaces provide a calm base, photography carries emotion, and gold highlights key actions. These are visual decisions in the design, not a production component library." data-ru="Графитовые поверхности создают спокойную основу, фотографии добавляют эмоциональность, золотой акцент выделяет ключевое действие. Это визуальные решения в макете, а не готовая библиотека компонентов.">Графитовые поверхности создают спокойную основу, фотографии добавляют эмоциональность, золотой акцент выделяет ключевое действие. Это визуальные решения в макете, а не готовая библиотека компонентов.</p></div><div class="visual-system reveal"><div class="visual-copy"><span class="eyebrow">VISUAL LANGUAGE / X’FLOW</span><h3 data-en='Contrast, rhythm&lt;br&gt;and action&lt;span class="accent-dot"&gt;.&lt;/span&gt;' data-ru='Контраст, ритм&lt;br&gt;и действие&lt;span class="accent-dot"&gt;.&lt;/span&gt;'>Контраст, ритм<br/>и действие<span class="accent-dot"><span class="xflow-heading-dot">.</span></span></h3><p data-en="The dark foundation keeps attention on the content. Colorful photography creates an emotional identity, while warm gold highlights primary calls to action." data-ru="Тёмная основа концентрирует внимание на контенте. Цветные фотографии формируют эмоциональный образ клуба, а тёплый золотой тон выделяет основные CTA.">Тёмная основа концентрирует внимание на контенте. Цветные фотографии формируют эмоциональный образ клуба, а тёплый золотой тон выделяет основные CTA.</p></div><div class="visual-tokens"><div class="token" style="--swatch:#101116"><b>01</b><span>Graphite</span><small>#101116</small></div><div class="token" style="--swatch:#384c9a"><b>02</b><span>Electric blue</span><small>#384C9A</small></div><div class="token" style="--swatch:#8a659f"><b>03</b><span>Violet</span><small>#8A659F</small></div><div class="token" style="--swatch:#d9b573"><b>04</b><span>Warm gold</span><small>#D9B573</small></div></div></div></div></section>
-<section class="section" id="results"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">05 / OUTCOME &amp; NEXT STEPS</div><h2 data-en="The outcome: clarity." data-ru="Результат — ясность.">Результат — ясность<span class="xflow-heading-dot">.</span></h2></div><p data-en="The deliverable is a redesigned desktop landing page with a complete content structure. No conversion uplift or usability-test results are claimed: this is not presented as a launched product." data-ru="Создан обновлённый desktop-макет с полноценной структурой лендинга. Измеримого роста конверсии и результатов юзабилити-тестов нет: проект не заявлен как запущенный продукт.">Создан обновлённый desktop-макет с полноценной структурой лендинга. Измеримого роста конверсии и результатов юзабилити-тестов нет: проект не заявлен как запущенный продукт.</p></div><div class="two"><article class="card reveal"><div class="n">DESIGN OUTCOME</div><h3 data-en="A visible journey" data-ru="Путь стал видимым">Путь стал видимым</h3><p data-en="Visitors now have a clear sequence: understand the gym → explore classes → evaluate coaches → book." data-ru="Посетитель получает последовательность: понять клуб → изучить направления → оценить тренеров → записаться.">Посетитель получает последовательность: понять клуб → изучить направления → оценить тренеров → записаться.</p></article><article class="card reveal"><div class="n">VALIDATION PLAN</div><h3 data-en="A scalable foundation" data-ru="Решение с потенциалом роста">Решение с потенциалом роста</h3><p data-en="A consistent visual language connects the hero, class discovery, trust-building sections and booking. The concept establishes a foundation for future product development." data-ru="Единая визуальная логика связывает первый экран, каталог направлений, доверительные блоки и запись. Концепт задаёт основу для дальнейшего развития продукта.">Следующий этап — мобильная адаптация, интерактивная форма записи и тестирование сценария на real users.</p></article></div></div></section>
-<section class="end" id="reflection"><div class="wrap"><div class="eyebrow">END OF CASE STUDY</div><h2 data-en="Less friction.&lt;br&gt;More movement." data-ru="Меньше препятствий.&lt;br&gt;Больше движения.">Меньше препятствий<span class="xflow-heading-dot">.</span><br/>Больше движения<span class="xflow-heading-dot">.</span></h2><div class="end-row"><p data-en="Key takeaway: strong visuals attract attention, but clear information architecture helps people take action. The redesign brings both together." data-ru="Главный вывод: сильный визуальный образ привлекает внимание, но понятная архитектура помогает человеку двигаться к действию. Здесь редизайн объединяет оба подхода.">Главный вывод: сильный визуальный образ привлекает внимание, но понятная архитектура помогает человеку двигаться к действию. Здесь редизайн объединяет оба подхода.</p></div></div></section></main><footer id="rz-site-footer" class="portfolio-top-end">
+
+<main class="xf-case">
+  <section class="xf-hero" id="top">
+    <div class="xf-wrap xf-hero-grid">
+      <div class="xf-hero-copy">
+        <p class="xf-label" data-ru="11 / ВЕБ · ФИТНЕС · UX/UI-РЕДИЗАЙН" data-en="11 / WEB · FITNESS · UX/UI REDESIGN">11 / ВЕБ · ФИТНЕС · UX/UI-РЕДИЗАЙН</p>
+        <h1>X’FLOW<br><em>GYM<span>.</span></em></h1>
+        <p class="xf-lead" data-ru="Редизайн лендинга фитнес-клуба для тех, кто выбирает, где и с кем заниматься. От знакомства с клубом до решения записаться на первую тренировку." data-en="A fitness club landing page redesign for people deciding where and with whom to train. From discovering the club to deciding to book a first session.">Редизайн лендинга фитнес-клуба для тех, кто выбирает, где и с кем заниматься. От знакомства с клубом до решения записаться на первую тренировку.</p>
+        <dl class="xf-role">
+          <div><dt data-ru="Моя роль" data-en="My role">Моя роль</dt><dd data-ru="UX-аудит, структура и веб-дизайн" data-en="UX audit, information architecture and web design">UX-аудит, структура и веб-дизайн</dd></div>
+          <div><dt data-ru="Материалы" data-en="Deliverables">Материалы</dt><dd data-ru="Сценарий записи и макет для десктопа" data-en="Booking journey and desktop design">Сценарий записи и макет для десктопа</dd></div>
+        </dl>
+        <a class="xf-primary" href="#research"><span data-ru="Разобрать путь к записи" data-en="Explore the booking journey">Разобрать путь к записи</span> <span aria-hidden="true">↘</span></a>
+      </div>
+      <figure class="xf-cover">
+        <a class="xf-shot" href="assets/xflow/layout.png" data-gallery="full" data-alt-ru="Полный макет лендинга X’FLOW GYM" data-alt-en="Full X’FLOW GYM landing page"><img src="assets/xflow/cover-preview.png" alt="Полный макет лендинга X’FLOW GYM" decoding="async" loading="eager"><span class="xf-enlarge" aria-hidden="true">↗</span></a>
+        <figcaption><span data-ru="Финальный дизайн лендинга" data-en="Final landing page design">Финальный дизайн лендинга</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="xf-section xf-context" id="overview">
+    <div class="xf-wrap xf-context-grid">
+      <header><p class="xf-label" data-ru="01 / Задача" data-en="01 / The challenge">01 / Задача</p><h2 data-ru="От эффектного входа к выбору тренировки" data-en="From a bold entrance to choosing a workout">От эффектного входа к выбору тренировки</h2></header>
+      <div class="xf-prose">
+        <p data-ru="Исходный экран передавал характер клуба через яркое фото, крупный логотип и предложение бесплатной тренировки. Кнопка «Записаться» уже была на виду. При этом направления были обозначены одним компактным пунктом, а тренеры и условия первого визита на экране не раскрывались." data-en="The original screen used a striking photo, oversized branding and a free trial offer to convey the club’s character. The booking button was already visible. Training options had a single compact entry point, and the screen gave little detail about the coaches or the first visit.">Исходный экран передавал характер клуба через яркое фото, крупный логотип и предложение бесплатной тренировки. Кнопка «Записаться» уже была на виду. При этом направления были обозначены одним компактным пунктом, а тренеры и условия первого визита на экране не раскрывались.</p>
+        <p data-ru="Цель редизайна — дать человеку достаточно оснований выбрать занятие и при этом оставить короткий путь для тех, кто уже готов записаться." data-en="The redesign gives visitors enough information to choose a class while keeping booking direct for anyone ready to start.">Цель редизайна — дать человеку достаточно оснований выбрать занятие и при этом оставить короткий путь для тех, кто уже готов записаться.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="xf-section xf-process" id="research">
+    <div class="xf-wrap">
+      <header class="xf-heading"><p class="xf-label" data-ru="02 / Сценарий" data-en="02 / User journey">02 / Сценарий</p><h2 data-ru="Четыре решения до первого визита" data-en="Four decisions before the first visit">Четыре решения до первого визита</h2>
+        <p data-ru="UX-аудит исходного экрана показал, какие вопросы остаются после знакомства с клубом. В структуре лендинга каждому вопросу отведено своё место." data-en="The UX audit identified questions visitors could still have after seeing the original screen. The landing page gives each question a place.">UX-аудит исходного экрана показал, какие вопросы остаются после знакомства с клубом. В структуре лендинга каждому вопросу отведено своё место.</p>
+      </header>
+      <ol class="xf-route">
+        <li><span aria-hidden="true">01</span><div><h3 data-ru="Что предлагает клуб?" data-en="What does the club offer?">Что предлагает клуб?</h3><p data-ru="Первый экран сразу показывает предложение бесплатной тренировки. Из верхней навигации можно перейти к разделам клуба." data-en="The first screen introduces the free trial session. The main club sections are accessible from the navigation.">Первый экран сразу показывает предложение бесплатной тренировки. Из верхней навигации можно перейти к разделам клуба.</p></div></li>
+        <li><span aria-hidden="true">02</span><div><h3 data-ru="Какое занятие мне подходит?" data-en="Which class suits me?">Какое занятие мне подходит?</h3><p data-ru="Силовые тренировки, CrossFit, йога и бокс показаны в карточках с фото и кратким описанием формата." data-en="Strength training, CrossFit, yoga and boxing each have a photo and a short description.">Силовые тренировки, CrossFit, йога и бокс показаны в карточках с фото и кратким описанием формата.</p></div></li>
+        <li><span aria-hidden="true">03</span><div><h3 data-ru="Кто и где будет тренировать?" data-en="Who will coach me, and where?">Кто и где будет тренировать?</h3><p data-ru="Карточки тренеров показывают специализацию и опыт, превью зала даёт представление о пространстве, а отзывы дополняют картину." data-en="Coach cards show specialties and experience, the gym preview shows the space, and the reviews add another point of view.">Карточки тренеров показывают специализацию и опыт, превью зала даёт представление о пространстве, а отзывы дополняют картину.</p></div></li>
+        <li><span aria-hidden="true">04</span><div><h3 data-ru="Как начать?" data-en="How do I start?">Как начать?</h3><p data-ru="Запись доступна с первого экрана и в конце страницы, когда человек уже изучил направления, зал и тренеров." data-en="Booking is available from the first screen and again after visitors have explored classes, the gym and the coaches.">Запись доступна с первого экрана и в конце страницы, когда человек уже изучил направления, зал и тренеров.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="xf-section xf-comparison" id="screens">
+    <div class="xf-wrap">
+      <header class="xf-heading"><p class="xf-label" data-ru="03 / До и после" data-en="03 / Before and after">03 / До и после</p><h2 data-ru="Одна фотография, две иерархии" data-en="One photo, two visual hierarchies">Одна фотография, две иерархии</h2>
+        <p data-ru="Фотография осталась центром композиции. Название предложения и действие вынесены в отдельную колонку, пункты меню раскрыты, а основные кнопки получили общий цвет." data-en="The photo remains at the center of the composition. The offer and action move into their own column, the main navigation is visible, and primary buttons share one color.">Фотография осталась центром композиции. Название предложения и действие вынесены в отдельную колонку, пункты меню раскрыты, а основные кнопки получили общий цвет.</p>
+      </header>
+      <div class="xf-compare-grid">
+        <figure>
+          <h3 data-ru="Исходный первый экран" data-en="Original first screen">Исходный первый экран</h3>
+          <a class="xf-shot" href="assets/xflow/before.jpeg" data-gallery="comparison" data-alt-ru="Исходный первый экран X’FLOW GYM" data-alt-en="Original X’FLOW GYM first screen"><img src="assets/xflow/before.jpeg" alt="Исходный первый экран X’FLOW GYM" decoding="async" loading="lazy"><span class="xf-enlarge" aria-hidden="true">↗</span></a>
+          <figcaption><p data-ru="Мозаика вокруг фото. Запись, видео и показатели клуба распределены между отдельными плитками." data-en="A mosaic around the photo, with booking, video and club statistics placed in separate tiles.">Мозаика вокруг фото. Запись, видео и показатели клуба распределены между отдельными плитками.</p></figcaption>
+        </figure>
+        <figure>
+          <h3 data-ru="Первый экран после редизайна" data-en="Redesigned first screen">Первый экран после редизайна</h3>
+          <a class="xf-shot" href="assets/xflow/hero-detail.png" data-gallery="comparison" data-alt-ru="Первый экран X’FLOW GYM после редизайна" data-alt-en="Redesigned X’FLOW GYM first screen"><img src="assets/xflow/hero-detail-preview.png" alt="Первый экран X’FLOW GYM после редизайна" decoding="async" loading="lazy"><span class="xf-enlarge" aria-hidden="true">↗</span></a>
+          <figcaption><p data-ru="Предложение и кнопка собраны слева, фотография и показатели клуба — справа." data-en="The offer and button sit on the left. The photo and club statistics sit on the right.">Предложение и кнопка собраны слева, фотография и показатели клуба — справа.</p></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="xf-section xf-design" id="design">
+    <div class="xf-wrap">
+      <header class="xf-heading"><p class="xf-label" data-ru="04 / Визуальная система" data-en="04 / Visual system">04 / Визуальная система</p><h2 data-ru="Энергия в кадре, порядок в интерфейсе" data-en="Energy in the photography, order in the interface">Энергия в кадре, порядок в интерфейсе</h2>
+        <p data-ru="Неоновый свет создаёт атмосферу клуба, графитовые панели отделяют разделы, а золотые кнопки выделяют запись среди остальных действий. Фотографии направлений помогают различать занятия ещё до чтения описаний." data-en="Neon lighting sets the mood, graphite panels give sections their boundaries, and gold buttons make booking easy to spot. Class photos make the formats recognizable before visitors read the descriptions.">Неоновый свет создаёт атмосферу клуба, графитовые панели отделяют разделы, а золотые кнопки выделяют запись среди остальных действий. Фотографии направлений помогают различать занятия ещё до чтения описаний.</p>
+      </header>
+      <div class="xf-gallery">
+        <figure><a class="xf-shot" href="assets/xflow/classes-detail.png" data-gallery="design" data-alt-ru="Направления" data-alt-en="Classes"><img src="assets/xflow/classes-detail-preview.png" alt="Направления" decoding="async" loading="lazy"><span class="xf-enlarge" aria-hidden="true">↗</span></a><figcaption><h3 data-ru="Направления" data-en="Classes">Направления</h3><p data-ru="Одинаковый формат карточек помогает быстро сравнить разные виды нагрузки." data-en="Consistent cards make very different types of workouts quick to compare.">Одинаковый формат карточек помогает быстро сравнить разные виды нагрузки.</p></figcaption></figure>
+        <figure><a class="xf-shot" href="assets/xflow/club-detail.png" data-gallery="design" data-alt-ru="Пространство клуба" data-alt-en="The club space"><img src="assets/xflow/club-detail-preview.png" alt="Пространство клуба" decoding="async" loading="lazy"><span class="xf-enlarge" aria-hidden="true">↗</span></a><figcaption><h3 data-ru="Пространство клуба" data-en="The club space">Пространство клуба</h3><p data-ru="Фотография зала показывает оборудование и характер пространства, в которое предстоит прийти." data-en="The gym photo shows the equipment and gives visitors a sense of the space.">Фотография зала показывает оборудование и характер пространства, в которое предстоит прийти.</p></figcaption></figure>
+        <figure><a class="xf-shot" href="assets/xflow/coaches-detail.png" data-gallery="design" data-alt-ru="Карточки тренеров" data-alt-en="Coach cards"><img src="assets/xflow/coaches-detail-preview.png" alt="Карточки тренеров" decoding="async" loading="lazy"><span class="xf-enlarge" aria-hidden="true">↗</span></a><figcaption><h3 data-ru="Карточки тренеров" data-en="Coach cards">Карточки тренеров</h3><p data-ru="Имя, специализация и опыт собраны в одном месте, чтобы сопоставить тренера с выбранным занятием." data-en="Name, specialty and experience sit together so visitors can match a coach to their chosen class.">Имя, специализация и опыт собраны в одном месте, чтобы сопоставить тренера с выбранным занятием.</p></figcaption></figure>
+        <figure><a class="xf-shot" href="assets/xflow/booking-detail.png" data-gallery="design" data-alt-ru="Приглашение на первую тренировку" data-alt-en="Invitation to the first session"><img src="assets/xflow/booking-detail-preview.png" alt="Приглашение на первую тренировку" decoding="async" loading="lazy"><span class="xf-enlarge" aria-hidden="true">↗</span></a><figcaption><h3 data-ru="Приглашение на первую тренировку" data-en="Invitation to the first session">Приглашение на первую тренировку</h3><p data-ru="В конце страницы повторено условие пробного визита рядом с кнопкой записи." data-en="The closing section puts the free trial offer next to the booking button.">В конце страницы повторено условие пробного визита рядом с кнопкой записи.</p></figcaption></figure>
+      </div>
+      <a class="xf-primary" href="assets/xflow/layout.png" data-gallery="full" data-alt-ru="Полный макет лендинга X’FLOW GYM" data-alt-en="Full X’FLOW GYM landing page"><span data-ru="Посмотреть макет целиком" data-en="View the full landing page">Посмотреть макет целиком</span> <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+
+  <section class="xf-section xf-results" id="results">
+    <div class="xf-wrap xf-context-grid">
+      <header><p class="xf-label" data-ru="05 / Результат" data-en="05 / Outcome">05 / Результат</p><h2 data-ru="Страница ведёт к решению записаться" data-en="A page that guides visitors toward booking">Страница ведёт к решению записаться</h2></header>
+      <div class="xf-prose">
+        <p data-ru="В итоговом макет для десктопае появились самостоятельные блоки направлений, клуба, тренеров и отзывов. Запись видна уже в начале и повторяется после знакомства с клубом." data-en="The final desktop design adds dedicated sections for classes, the club, coaches and reviews. Booking is visible at the start and offered again after visitors have explored the club.">В итоговом макет для десктопае появились самостоятельные блоки направлений, клуба, тренеров и отзывов. Запись видна уже в начале и повторяется после знакомства с клубом.</p>
+        <h3><span data-ru="Что проверить дальше" data-en="What to validate next">Что проверить дальше</span></h3>
+        <ul>
+          <li><span data-ru="Находит ли новый посетитель подходящее направление и может ли объяснить, что входит в бесплатную тренировку." data-en="Can a new visitor find a suitable class and explain what the free session includes?">Находит ли новый посетитель подходящее направление и может ли объяснить, что входит в бесплатную тренировку.</span></li>
+          <li><span data-ru="Куда ведёт пункт «Цены». В макете он есть в меню, поэтому для рабочего сайта нужен раздел или отдельная страница с условиями." data-en="Where does Prices lead? The design includes the item in navigation, so the live site needs a section or page explaining the offer.">Куда ведёт пункт «Цены». В макете он есть в меню, поэтому для рабочего сайта нужен раздел или отдельная страница с условиями.</span></li>
+          <li><span data-ru="Удобно ли пройти запись на телефоне и понятно ли после отправки, когда ждать подтверждение." data-en="Can a visitor book comfortably on mobile, and do they know when to expect confirmation after submitting?">Удобно ли пройти запись на телефоне и понятно ли после отправки, когда ждать подтверждение.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="xf-reflection" id="reflection">
+    <div class="xf-wrap"><h2 data-ru="Что помогает решиться на первый визит" data-en="What helps visitors commit to a first visit">Что помогает решиться на первый визит</h2><p data-ru="Кнопка записи работает в контексте выбора. К моменту нажатия человек уже может знать, какой формат ему подходит, кто ведёт занятие и чего ожидать от клуба." data-en="The booking action sits in the context of a decision. By the time visitors select it, they can know which class suits them, who teaches it and what to expect from the club.">Кнопка записи работает в контексте выбора. К моменту нажатия человек уже может знать, какой формат ему подходит, кто ведёт занятие и чего ожидать от клуба.</p></div>
+  </section>
+</main>
+<footer id="rz-site-footer" class="portfolio-top-end">
   <span class="footer-signature">RZ. / design practice</span>
   <button class="portfolio-top-btn xflow-top" type="button"><span data-ru="Наверх" data-en="Back to top">Наверх</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="m6 14 6-6 6 6"/></svg></button>
-</footer><div aria-label="Просмотр макета" aria-modal="true" class="viewer" role="dialog"><button aria-label="Закрыть" type="button">×</button><img alt="Макет X’FLOW GYM"/></div><script>
-(()=>{const nav=document.querySelector('.travel-navigation'),toggle=nav.querySelector('.travel-lang');let lang=new URLSearchParams(location.search).get('lang')==='en'?'en':'ru';const links=[...nav.querySelectorAll('.tabs a')];function apply(){document.documentElement.lang=lang;toggle.textContent=lang.toUpperCase();document.querySelectorAll('[data-ru][data-en]').forEach(el=>{el.innerHTML=el.dataset[lang]});document.querySelector('.portfolio-contact-label').textContent=lang==='ru'?'Связаться':'Contact';document.querySelector('.portfolio-top-btn span').textContent=lang==='ru'?'Наверх':'Back to top';document.querySelectorAll('h1,h2,h3').forEach(h=>{const walker=document.createTreeWalker(h,NodeFilter.SHOW_TEXT);const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(n=>{if(!n.nodeValue.includes('.')||n.parentElement?.classList.contains('xflow-heading-dot'))return;const f=document.createDocumentFragment();n.nodeValue.split(/(\.)/).forEach(v=>{if(v==='.') {const sp=document.createElement('span');sp.className='xflow-heading-dot';sp.textContent='.';f.append(sp)}else f.append(document.createTextNode(v))});n.replaceWith(f)})})}toggle.addEventListener('click',()=>{lang=lang==='ru'?'en':'ru';apply();window.parent.postMessage({type:'portfolio-language',lang},'*')});window.addEventListener('message',e=>{if(e.data?.type==='portfolio-language'&&e.data.lang!==lang){lang=e.data.lang;apply()}});nav.querySelector('.travel-back').addEventListener('click',()=>{if(window.parent!==window)window.parent.postMessage({type:'portfolio-case-back'},'*');else location.href='index.html#work'});links.forEach((a,i)=>{a.dataset.ru=['Обзор','Процесс','Дизайн'][i];a.dataset.en=['Overview','Process','Design'][i];a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'})})});toggle.addEventListener('click',()=>links.forEach(a=>a.textContent=a.dataset[lang]));links.forEach(a=>a.textContent=a.dataset[lang]);document.querySelector('.portfolio-top-btn').addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));const viewer=document.querySelector('.viewer');document.querySelectorAll('.zoom').forEach(b=>b.addEventListener('click',()=>{viewer.querySelector('img').src=b.dataset.img;viewer.classList.add('open');document.body.style.overflow='hidden'}));function close(){viewer.classList.remove('open');document.body.style.overflow=''}viewer.querySelector('button').addEventListener('click',close);viewer.addEventListener('click',e=>{if(e.target===viewer)close()});document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});apply()})();
-</script><link rel="stylesheet" href="assets/project-navigation.css?v=212"><script src="assets/project-navigation.js?v=195" defer></script><script src="assets/case-runtime.js?v=195" defer></script>
-</body></html>
+</footer>
+<dialog id="xflow-viewer" class="viewer xf-viewer" aria-label="Просмотр макетов">
+  <button type="button" class="liquid-close" aria-label="Закрыть" autofocus><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <div class="xf-viewer-stage" tabindex="0" aria-label="Область просмотра">
+    <img class="xf-viewer-image" alt="" hidden>
+    <div class="xf-viewer-full" role="img" hidden></div>
+  </div>
+  <div class="xf-viewer-tools">
+    <button type="button" data-viewer-previous aria-label="Предыдущее изображение">‹</button>
+    <p class="xf-viewer-caption" aria-live="polite"></p>
+    <button type="button" data-viewer-next aria-label="Следующее изображение">›</button>
+    <button type="button" data-viewer-zoom aria-label="Увеличить" aria-pressed="false">+</button>
+  </div>
+</dialog>
+</body>
+</html>

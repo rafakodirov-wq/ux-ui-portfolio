@@ -1,54 +1,221 @@
-(()=>{
- const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
- const modal=document.querySelector('.lato-viewer'),viewImg=modal.querySelector('.lato-viewer-image'),area=modal.querySelector('.lato-viewer-image-area'),caption=modal.querySelector('.lato-viewer-caption');
- let active=null,open=false,zoom=1,panX=0,panY=0,lastFocus=null,closeTimer=null;
- const instances=[];
- function resetZoom(){zoom=1;panX=panY=0;modal.classList.remove('is-zoomed');viewImg.style.transform='';modal.querySelector('.lato-viewer-zoom').textContent='＋'}
- function applyZoom(){modal.classList.toggle('is-zoomed',zoom>1);viewImg.style.transform=`translate(${panX}px,${panY}px) scale(${zoom})`;modal.querySelector('.lato-viewer-zoom').textContent=zoom>1?'−':'＋'}
- function showModal(){if(!active)return;const slide=active.slides[active.modalIndex],img=slide.querySelector('img');resetZoom();viewImg.src=img.src;viewImg.alt=img.alt;const title=slide.querySelector('figcaption')?.textContent.replace(/\s+/g,' ').trim()||img.alt;caption.textContent=`${active.modalIndex+1}/${active.slides.length} · ${title}`}
- function openModal(inst){lastFocus=document.activeElement;active=inst;inst.modalIndex=inst.index;open=true;clearTimeout(closeTimer);instances.forEach(x=>x.pause());showModal();modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';modal.querySelector('.lato-viewer-close').focus({preventScroll:true})}
- function closeModal(){if(!open)return;open=false;modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';resetZoom();closeTimer=setTimeout(()=>{if(!open)viewImg.removeAttribute('src')},400);lastFocus?.focus?.({preventScroll:true});instances.forEach(x=>x.play())}
- function shift(n){if(!active)return;active.modalIndex=(active.modalIndex+n+active.slides.length)%active.slides.length;showModal()}
- for(const root of document.querySelectorAll('.lato-carousel')){
-  const track=root.querySelector('.lato-track'),allSlides=[...root.querySelectorAll('.lato-slide')],allDots=[...root.querySelectorAll('.lato-dot')],viewport=root.querySelector('.lato-viewport'),tabs=root.previousElementSibling;
-  let slides=[],dots=[],index=0,timer,dragStart=null,dragX=0,group='admin',generation=0;
-  const pause=()=>clearInterval(timer);
-  function go(n){
-   if(!slides.length)return;
-   const next=(n+slides.length)%slides.length;
-   const wraps=Math.abs(n-index)===1&&(n<0||n>=slides.length);
-   if(wraps){viewport.classList.add('is-looping');track.style.transition='none';track.style.transform=`translate3d(${-next*100}%,0,0)`;void track.offsetWidth;requestAnimationFrame(()=>{track.style.transition='';viewport.classList.remove('is-looping');});}
-   else track.style.transform=`translate3d(${-next*100}%,0,0)`;
-   index=next;
-   slides.forEach((slide,i)=>slide.classList.toggle('is-current',i===index));
-   dots.forEach((d,i)=>d.setAttribute('aria-current',String(i===index)));
+(() => {
+  const gallery = document.querySelector('.lato-carousel');
+  const viewport = gallery.querySelector('.lato-viewport');
+  const track = gallery.querySelector('.lato-track');
+  const slides = [...track.querySelectorAll('.lato-slide')];
+  const dots = [...gallery.querySelectorAll('.lato-dot')];
+  const playButton = gallery.querySelector('.dr-gallery-play');
+  const viewer = document.getElementById('dreams-viewer');
+  const area = viewer.querySelector('.lato-viewer-image-area');
+  const image = area.querySelector('img');
+  const caption = viewer.querySelector('.lato-viewer-caption');
+  const close = viewer.querySelector('.lato-viewer-close');
+  const zoomButton = viewer.querySelector('.lato-viewer-zoom');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  let index = 0;
+  let viewed = 0;
+  let opener;
+  let timer;
+  let visible = false;
+  let playing = !reduce.matches;
+  let start = null;
+  let zoom = 1;
+  let panX = 0;
+  let panY = 0;
+  let lastTap = 0;
+  const pointers = new Map();
+  let gesture;
+  const en = () => document.documentElement.lang === 'en';
+  const wrap = i => (i + slides.length) % slides.length;
+  const slideTitle = slide => slide.querySelector('figcaption strong').dataset[en() ? 'en' : 'ru'];
+
+  function updatePlay() {
+    clearInterval(timer);
+    playButton.setAttribute('aria-pressed', String(!playing));
+    playButton.setAttribute('aria-label', playing
+      ? (en() ? 'Pause slideshow' : 'Приостановить автопрокрутку')
+      : (en() ? 'Play slideshow' : 'Запустить автопрокрутку'));
+    playButton.firstElementChild.textContent = playing ? 'Ⅱ' : '▶';
+    if (playing && visible && !document.hidden && !viewer.open) {
+      timer = setInterval(() => {
+        if (!track.contains(document.activeElement)) go(index + 1);
+      }, 3000);
+    }
   }
-  const play=()=>{pause();if(!reduce&&!document.hidden&&!open&&true)timer=setInterval(()=>go(index+1),3000)};
-  const inst={get slides(){return slides},get index(){return index},modalIndex:0,go,pause,play};instances.push(inst);
-  function selectGroup(value){group=value;pause();track.style.transition='none';allSlides.forEach(x=>x.hidden=x.dataset.group!==group);allDots.forEach(x=>x.hidden=x.dataset.group!==group);slides=allSlides.filter(x=>!x.hidden);dots=allDots.filter(x=>!x.hidden);index=0;slides.forEach((slide,i)=>slide.classList.toggle('is-current',i===0));dots.forEach((dot,i)=>dot.setAttribute('aria-current',String(i===0)));track.style.transform='translate3d(0,0,0)';void track.offsetWidth;requestAnimationFrame(()=>{track.style.transition='';play()});tabs?.querySelectorAll('.lato-tab').forEach(x=>x.setAttribute('aria-selected',String(x.dataset.group===group)));}
-  tabs?.querySelectorAll('.lato-tab').forEach(b=>b.addEventListener('click',()=>selectGroup(b.dataset.group)));
-  root.querySelector('.lato-prev').addEventListener('click',()=>{go(index-1);play()});root.querySelector('.lato-next').addEventListener('click',()=>{go(index+1);play()});
-  allDots.forEach(d=>d.addEventListener('click',()=>{go(dots.indexOf(d));play()}));
-  allSlides.forEach(s=>s.querySelector('button').addEventListener('click',()=>openModal(inst)));
-  viewport.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;dragStart=e.clientX;dragX=0});
-  viewport.addEventListener('pointermove',e=>{if(dragStart!==null)dragX=e.clientX-dragStart});
-  viewport.addEventListener('pointerup',()=>{if(Math.abs(dragX)>45){go(index+(dragX<0?1:-1));play()}dragStart=null;dragX=0});
-  viewport.addEventListener('pointercancel',()=>{dragStart=null});
-  // Intentionally no horizontal wheel listener: Safari/macOS back gesture remains native.
-  /* Hover and focus do not interrupt autoplay; only the image viewer and hidden tab pause it. */
-  document.addEventListener('visibilitychange',()=>document.hidden?pause():play());
-  selectGroup('admin');
- }
- modal.querySelector('.lato-viewer-close').addEventListener('click',closeModal);
- modal.querySelector('.lato-viewer-prev').addEventListener('click',()=>shift(-1));modal.querySelector('.lato-viewer-next').addEventListener('click',()=>shift(1));
- modal.querySelector('.lato-viewer-zoom').addEventListener('click',()=>{zoom=zoom>1?1:2.3;panX=panY=0;applyZoom()});
- modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
- document.addEventListener('keydown',e=>{if(!open)return;if(e.key==='Escape'){closeModal();e.preventDefault()}if(e.key==='ArrowLeft'){shift(-1);e.preventDefault()}if(e.key==='ArrowRight'){shift(1);e.preventDefault()}if(e.key==='Tab'){const buttons=[...modal.querySelectorAll('button')];if(e.shiftKey&&document.activeElement===buttons[0]){buttons.at(-1).focus();e.preventDefault()}else if(!e.shiftKey&&document.activeElement===buttons.at(-1)){buttons[0].focus();e.preventDefault()}}});
- let pointers=new Map(),touchStart=null,lastTap=0;
- area.addEventListener('pointerdown',e=>{pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});area.setPointerCapture(e.pointerId);if(pointers.size===1)touchStart={x:e.clientX,y:e.clientY,panX,panY};if(pointers.size===2){const p=[...pointers.values()];area._pinch={distance:Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y),zoom}}});
- area.addEventListener('pointermove',e=>{if(!pointers.has(e.pointerId))return;pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size===2&&area._pinch){const p=[...pointers.values()];zoom=Math.max(1,Math.min(5,area._pinch.zoom*Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y)/Math.max(1,area._pinch.distance)));if(zoom===1)panX=panY=0;applyZoom()}else if(zoom>1&&touchStart){panX=touchStart.panX+e.clientX-touchStart.x;panY=touchStart.panY+e.clientY-touchStart.y;applyZoom()}});
- area.addEventListener('pointerup',e=>{const start=touchStart,moved=start?e.clientX-start.x:0;pointers.delete(e.pointerId);area._pinch=null;if(pointers.size===0){if(zoom===1&&Math.abs(moved)>55)shift(moved<0?1:-1);else if(Math.abs(moved)<18){const now=Date.now();if(now-lastTap<330){zoom=zoom>1?1:2.3;panX=panY=0;applyZoom();lastTap=0}else lastTap=now}}touchStart=null});
- area.addEventListener('pointercancel',e=>{pointers.delete(e.pointerId);touchStart=null;area._pinch=null});
- // Pinch/ctrl-wheel zoom only; no horizontal wheel interception on Mac.
- area.addEventListener('wheel',e=>{if(e.ctrlKey||e.metaKey){e.preventDefault();zoom=Math.max(1,Math.min(5,zoom*(e.deltaY<0?1.12:.89)));if(zoom===1)panX=panY=0;applyZoom()}},{passive:false});
+
+  function go(target) {
+    const looping = target < 0 || target >= slides.length;
+    index = wrap(target);
+    viewport.classList.toggle('is-looping', looping);
+    track.style.transform = `translate3d(${-100 * index}%,0,0)`;
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('is-current', i === index);
+      slide.inert = i !== index;
+      slide.setAttribute('aria-hidden', String(i !== index));
+      dots[i].setAttribute('aria-current', String(i === index));
+    });
+    if (looping) {
+      void track.offsetWidth;
+      viewport.classList.remove('is-looping');
+    }
+  }
+
+  const move = target => { go(target); updatePlay(); };
+  gallery.querySelector('.lato-prev').addEventListener('click', () => move(index - 1));
+  gallery.querySelector('.lato-next').addEventListener('click', () => move(index + 1));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => move(i)));
+  playButton.addEventListener('click', () => { playing = !playing; updatePlay(); });
+  reduce.addEventListener('change', event => { playing = !event.matches; updatePlay(); });
+  document.addEventListener('visibilitychange', updatePlay);
+  new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    updatePlay();
+  }).observe(gallery);
+
+  viewport.addEventListener('pointerdown', event => {
+    if (event.isPrimary) start = {x: event.clientX, y: event.clientY};
+  });
+  let suppressClick = false;
+  viewport.addEventListener('pointerup', event => {
+    if (!start || !event.isPrimary) return;
+    const dx = event.clientX - start.x;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(event.clientY - start.y)) {
+      suppressClick = true;
+      move(index + (dx < 0 ? 1 : -1));
+      setTimeout(() => { suppressClick = false; }, 0);
+    }
+    start = null;
+  });
+  viewport.addEventListener('pointercancel', () => { start = null; });
+  viewport.addEventListener('click', event => {
+    if (suppressClick) event.stopImmediatePropagation();
+  }, true);
+
+  function describe() {
+    image.alt = slideTitle(slides[viewed]);
+    caption.textContent = `${viewed + 1} / ${slides.length} · ${image.alt}`;
+  }
+
+  function updateZoom(scale) {
+    zoom = Math.max(1, Math.min(5, scale));
+    const limitX = image.offsetWidth * (zoom - 1) / 2;
+    const limitY = image.offsetHeight * (zoom - 1) / 2;
+    panX = Math.max(-limitX, Math.min(limitX, panX));
+    panY = Math.max(-limitY, Math.min(limitY, panY));
+    viewer.classList.toggle('is-zoomed', zoom > 1);
+    image.style.transform = `translate(${panX}px,${panY}px) scale(${zoom})`;
+    zoomButton.textContent = zoom > 1 ? '−' : '+';
+    zoomButton.setAttribute('aria-pressed', String(zoom > 1));
+    zoomButton.setAttribute('aria-label', zoom > 1
+      ? (en() ? 'Zoom out' : 'Уменьшить')
+      : (en() ? 'Zoom in' : 'Увеличить'));
+  }
+
+  function show(target) {
+    viewed = wrap(target);
+    const button = slides[viewed].querySelector('button');
+    panX = panY = 0;
+    updateZoom(1);
+    image.src = button.dataset.original;
+    describe();
+  }
+
+  slides.forEach((slide, i) => {
+    const button = slide.querySelector('button');
+    button.addEventListener('click', () => {
+      opener = button;
+      show(i);
+      viewer.showModal();
+      close.focus({preventScroll: true});
+      updatePlay();
+    });
+  });
+
+  close.addEventListener('click', () => viewer.close());
+  viewer.querySelector('.lato-viewer-prev').addEventListener('click', () => show(viewed - 1));
+  viewer.querySelector('.lato-viewer-next').addEventListener('click', () => show(viewed + 1));
+  const toggleZoom = () => { panX = panY = 0; updateZoom(zoom > 1 ? 1 : 2.3); };
+  zoomButton.addEventListener('click', toggleZoom);
+  viewer.addEventListener('click', event => { if (event.target === viewer) viewer.close(); });
+  viewer.addEventListener('close', () => {
+    pointers.clear();
+    gesture = null;
+    lastTap = 0;
+    image.removeAttribute('src');
+    opener?.focus({preventScroll: true});
+    updatePlay();
+  });
+  viewer.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      show(viewed + (event.key === 'ArrowRight' ? 1 : -1));
+      event.preventDefault();
+    }
+  });
+
+  const point = event => ({x: event.clientX, y: event.clientY});
+  function distance() {
+    const [a, b] = pointers.values();
+    return Math.hypot(a.x - b.x, a.y - b.y);
+  }
+  area.addEventListener('pointerdown', event => {
+    if (event.button !== 0 || pointers.size === 2) return;
+    area.setPointerCapture(event.pointerId);
+    pointers.set(event.pointerId, point(event));
+    gesture = pointers.size === 2
+      ? {distance: distance(), zoom}
+      : {start: point(event), panX, panY};
+  });
+  area.addEventListener('pointermove', event => {
+    if (!pointers.has(event.pointerId)) return;
+    pointers.set(event.pointerId, point(event));
+    if (pointers.size === 2) {
+      updateZoom(gesture.zoom * distance() / Math.max(1, gesture.distance));
+    } else if (gesture?.start && zoom > 1) {
+      panX = gesture.panX + event.clientX - gesture.start.x;
+      panY = gesture.panY + event.clientY - gesture.start.y;
+      updateZoom(zoom);
+    }
+  });
+  function finishPointer(event) {
+    if (!pointers.delete(event.pointerId)) return;
+    const start = gesture?.start;
+    if (!pointers.size && start && event.type === 'pointerup') {
+      const dx = event.clientX - start.x;
+      const dy = event.clientY - start.y;
+      if (zoom === 1 && Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)) show(viewed + (dx < 0 ? 1 : -1));
+      if (Math.hypot(dx, dy) < 18) {
+        const now = Date.now();
+        if (now - lastTap < 330) { toggleZoom(); lastTap = 0; }
+        else lastTap = now;
+      }
+    }
+    gesture = null;
+  }
+  area.addEventListener('pointerup', finishPointer);
+  area.addEventListener('pointercancel', finishPointer);
+  area.addEventListener('wheel', event => {
+    if (!event.ctrlKey && !event.metaKey) return;
+    event.preventDefault();
+    updateZoom(zoom * (event.deltaY < 0 ? 1.12 : .89));
+  }, {passive: false});
+
+  function localize() {
+    const language = en() ? 'en' : 'ru';
+    document.querySelectorAll('[data-label-ru][data-label-en]').forEach(element => {
+      element.setAttribute('aria-label', element.dataset[language === 'en' ? 'labelEn' : 'labelRu']);
+    });
+    slides.forEach(slide => {
+      const button = slide.querySelector('button');
+      const title = slideTitle(slide);
+      button.setAttribute('aria-label', language === 'en' ? `Enlarge ${title}` : `Увеличить «${title}»`);
+      button.querySelector('img').alt = title;
+    });
+    if (viewer.open) describe();
+    updateZoom(zoom);
+    updatePlay();
+  }
+
+  go(0);
+  new MutationObserver(localize).observe(document.documentElement, {attributes: true, attributeFilter: ['lang']});
+  localize();
 })();
