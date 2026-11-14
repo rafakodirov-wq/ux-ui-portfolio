@@ -1,220 +1,191 @@
 <!doctype html>
 <html lang="ru">
-<head><script src="assets/language-init.js"></script>
+<head>
+  <script src="assets/language-init.js"></script>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Архив потерянных снов — UX/UI кейс · RZ.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111821">
+  <meta name="description" content="Авторская концепция сайта, где сны можно искать по образам, настроениям и темам.">
+  <title>Архив потерянных снов · UX/UI</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  
-  <style>
-    :root{--ink:#1c1b2a;--muted:#737984;--red:#9d7baf;--line:#e6e7ea;--bg:#f4f2f6}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}
-    body{margin:0;background:radial-gradient(ellipse at 80% 12%,rgba(128,91,157,.15),transparent 43%),radial-gradient(ellipse at 9% 62%,rgba(178,139,88,.11),transparent 47%),linear-gradient(145deg,#f6f5f8,#f0eef4 56%,#f7f4f1);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
-    a{color:inherit}
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/project-navigation.css?v=212">
+  <link rel="stylesheet" href="assets/case-refinements.css">
+  <link rel="stylesheet" href="assets/site-footer.css?v=196.3">
+  <link rel="stylesheet" href="assets/dreams-carousel.css?v=224">
+  <link rel="stylesheet" href="assets/dreams-case.css">
+  <script src="assets/project-navigation.js?v=195" defer></script>
+  <script src="assets/case-runtime.js?v=195" defer></script>
+  <script src="assets/site-footer.js?v=196.3" defer></script>
+  <script src="assets/dreams-carousel.js" defer></script>
+  <script src="assets/dreams-case.js" defer></script>
+</head>
+<body data-case="dreams">
 
-    /* NAVIGATION */
-    .case-navigation{position:fixed;z-index:95;top:18px;left:50%;transform:translateX(-50%);width:min(1036px,calc(100% - 32px));display:flex;align-items:center;gap:12px;pointer-events:none}
-    .case-navigation>*{pointer-events:auto}
-    .case-back{width:64px;height:64px;min-width:64px;min-height:64px;flex:0 0 64px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;padding:0;background:rgba(255,255,255,.58);border:1px solid rgba(255,255,255,.88);box-shadow:0 14px 45px rgba(25,55,55,.08),inset 0 1px 0 rgba(255,255,255,.7);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);cursor:pointer;transition:transform .35s,background .3s}
-    .case-back:hover{transform:translateX(-3px);background:#fff}
-    .case-back svg{width:22px;height:22px}
-    .case-nav{min-width:0;flex:1;min-height:64px;display:flex;align-items:center;gap:12px;padding:9px 11px 9px 20px;border-radius:24px;background:rgba(255,255,255,.64);border:1px solid rgba(255,255,255,.8);box-shadow:0 14px 60px #20332c12,inset 0 1px 0 #fff8;backdrop-filter:blur(26px) saturate(170%);-webkit-backdrop-filter:blur(26px) saturate(170%);position:relative}
-    .case-brand{font-weight:800;font-size:13px;letter-spacing:-.04em;white-space:nowrap;text-decoration:none}
-    .case-brand span{color:var(--red)}
-    .case-brand small{font-weight:500;color:#67716f}
-    .case-links{display:flex;align-items:center;gap:5px;position:absolute;left:50%;transform:translateX(-50%)}
-    .case-links a{text-decoration:none;color:var(--ink);font-size:12px;font-weight:500;padding:12px 15px;border-radius:15px;white-space:nowrap;transition:background .3s}
-    .case-links a:hover{background:#fff9}
-    .case-links a.active{background:#202b45;color:white;box-shadow:0 5px 16px #202b4530}
-    .case-actions{margin-left:auto;display:flex;align-items:center;gap:12px;flex:0 0 auto}
-    .case-lang{border:1px solid #fff9;background:#ffffff75;color:#172322;min-width:52px;border-radius:15px;font-size:12px;padding:12px 13px;cursor:pointer}
-    .portfolio-contact{display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;text-decoration:none;padding:12px 19px;border-radius:999px;color:#19332e;background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(227,242,237,.62));border:1px solid rgba(255,255,255,.9);box-shadow:inset 0 1px 0 #fff,0 5px 18px #18413b1a;font-size:13px;font-weight:600;position:relative;overflow:hidden;isolation:isolate;transition:transform .3s,box-shadow .3s}
-    .portfolio-contact::before{content:'';position:absolute;inset:-30%;background:linear-gradient(105deg,transparent 32%,rgba(44,180,101,.06) 40%,rgba(173,139,88,.38) 47%,rgba(218,185,130,.68) 50%,rgba(54,195,108,.32) 54%,transparent 66%);animation:greenGlassSweep 3.4s cubic-bezier(.35,.05,.22,1) infinite;pointer-events:none;z-index:-1}
-    @keyframes greenGlassSweep{0%,12%{transform:translateX(-115%) skewX(-8deg)}55%,100%{transform:translateX(115%) skewX(-8deg)}}
-    .portfolio-contact:hover{transform:translateY(-2px);box-shadow:0 9px 26px #18413b2b,0 0 17px #43cf7529}
-    .portfolio-contact svg{width:15px;height:15px;transition:transform .3s}
-    .portfolio-contact:hover svg{transform:translate(2px,-2px)}
-    .case-navigation :focus-visible{outline:3px solid #168f85;outline-offset:3px}
-
-    /* MAIN CONTENT */
-    .wrap{width:min(1180px,calc(100% - 60px));margin:0 auto}
-    .hero{min-height:720px;padding:185px 0 110px;display:grid;grid-template-columns:43% 57%;align-items:center;gap:10px}
-    .eyebrow{font-size:11px;letter-spacing:.22em;color:#b27d67;font-weight:700;text-transform:uppercase}
-    .hero h1{font-size:clamp(64px,7.5vw,116px);letter-spacing:-.075em;line-height:.99;margin:28px 0 30px;font-weight:800}
-    .hero h1 em{font-style:normal;color:var(--red)}
-    .lead{font-size:clamp(17px,1.6vw,21px);line-height:1.65;color:var(--muted);max-width:460px}
-    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
-    .tags span{padding:10px 14px;border:1px solid #e4e5e8;border-radius:999px;font-size:12px;color:#727984}
-    .hero-visual{width:100%;display:block;object-fit:contain;filter:drop-shadow(0 22px 35px #161d2a12)}
-
-    section.content{padding:100px 0;border-top:1px solid var(--line)}
-    .section-no{font-size:12px;letter-spacing:.2em;color:#b27d67;font-weight:700}
-    .content h2{font-size:clamp(36px,5vw,64px);letter-spacing:-.055em;margin:20px 0 25px}
-    .content h3{font-size:24px;letter-spacing:-.035em;margin:40px 0 20px;color:var(--ink)}
-    .content p{font-size:18px;line-height:1.8;color:#6d7480;max-width:780px;margin-bottom:20px}
-    
-    /* КРАСНЫЕ ТОЧКИ В ЗАГОЛОВКАХ */
-    .dot { color: var(--red); }
-
-    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:60px}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
-    .card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:25px; transition: transform .3s, box-shadow .3s;}
-    .card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
-    .card h4{font-size:18px;margin:0 0 10px}
-    .card p{font-size:14px;line-height:1.5;margin:0}
-    
-    .flow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:30px 0}
-    .flow span{background:#f0f2f5;padding:12px 18px;border-radius:12px;font-size:14px}
-    .flow i{font-style:normal;color:var(--red)}
-
-    /* ВИЗУАЛЫ: ВАЙРФРЕЙМЫ */
-    .wireframe-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
-    .wire{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:15px;min-height:260px}
-    .wire span{font-size:11px;font-weight:700;color:#b27d67;letter-spacing:.1em;text-transform:uppercase}
-    .wire-top{height:12px;width:40%;border-radius:4px;background:#e4e5e8;margin-bottom:10px}
-    .wire-main{height:60px;width:100%;border-radius:8px;background:#eef0f3}
-    .wire-lines{height:8px;width:70%;border-radius:4px;background:#eef0f3}
-    .wire-lines.short{width:45%}
-    .wire-cta{height:36px;width:50%;border-radius:8px;background:var(--red);margin-top:auto; opacity:0.8}
-
-    /* ВИЗУАЛЫ: ФИДБЭК */
-    .feedback-box{background:#fff;border-left:4px solid var(--red);border-radius:0 16px 16px 0;padding:25px;margin-top:30px;box-shadow:0 10px 30px rgba(0,0,0,0.03)}
-    .feedback-box p{margin:0;font-size:16px;font-style:italic;color:#505662}
-    .feedback-author{display:block;margin-top:15px;font-size:13px;font-weight:600;color:var(--ink);font-style:normal}
-
-    /* НОВЫЙ БЛОК: UI-KIT */
-    .uikit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
-    .uikit-card { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 25px; }
-    .uikit-title { font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 15px; }
-    
-    .palette { display: flex; gap: 10px; }
-    .color-swatch { flex: 1; height: 60px; border-radius: 10px; display: flex; align-items: flex-end; padding: 8px; font-size: 10px; font-weight: 600; color: #fff; }
-    
-    .typography-sample h1 { margin: 0 0 10px; font-size: 28px; font-weight: 800; letter-spacing: -0.05em; }
-    .typography-sample p { margin: 0; font-size: 14px; color: var(--muted); }
-    
-    .btn-samples { display: flex; flex-direction: column; gap: 10px; }
-    .btn-sample { padding: 12px 20px; border-radius: 99px; font-size: 13px; font-weight: 600; text-align: center; }
-    .btn-primary { background: var(--red); color: #fff; }
-    .btn-secondary { background: #f0f2f5; color: var(--ink); }
-
-    /* FOOTER */
-    .footer{padding:40px 0 100px;display:flex;justify-content:space-between;align-items:center;color:#7d8189;font-size:13px}
-    .footer-brand { font-weight: 800; font-size: 14px; color: var(--ink); }
-    .footer-brand span { color: var(--red); }
-    .footer-brand small { font-weight: 500; color: var(--muted); }
-    
-    .portfolio-top-btn{display:inline-flex;align-items:center;gap:12px;min-height:50px;padding:12px 22px;border-radius:999px;border:1px solid rgba(255,255,255,.9);background:linear-gradient(135deg,rgba(255,255,255,.75),rgba(255,255,255,.32));backdrop-filter:blur(22px) saturate(160%);box-shadow:0 12px 38px rgba(24,45,48,.09),inset 0 1px 1px rgba(255,255,255,.95);color:#203934;font:600 14px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;cursor:pointer;transition:transform .3s,box-shadow .3s;}
-    .portfolio-top-btn:hover{transform:translateY(-3px);box-shadow:0 18px 42px rgba(24,45,48,.14),inset 0 1px 1px #fff}
-    .portfolio-top-btn:active{transform:scale(.97)}
-    .portfolio-top-btn svg{width:16px;height:16px;transition:transform .3s;animation:topChevronFloat 2.1s ease-in-out infinite;transform-origin:center}
-    .portfolio-top-btn:hover svg{animation-play-state:paused; transform:translateY(-2px)}
-    @keyframes topChevronFloat{0%,100%{transform:translateY(1px)}50%{transform:translateY(-3px)}}
-
-    @media(max-width:900px){
-      .case-brand small{display:none}
-      .case-links{position:static;transform:none;margin:auto}
-      .hero{grid-template-columns:1fr;padding-top:145px;gap:40px;min-height:auto}
-      .hero-visual{max-width:720px;margin:auto}
-      .two-col,.grid-3,.wireframe-grid, .uikit-grid{grid-template-columns:1fr;gap:15px}
-    }
-    @media(max-width:720px){
-      .case-navigation{top:10px;width:calc(100% - 20px);gap:8px}
-      .case-back{width:44px;height:44px;min-width:44px;min-height:44px;flex-basis:44px}
-      .case-nav{min-height:54px;padding:7px;gap:5px}
-      .case-brand{font-size:12px;padding-left:5px}
-      .case-links{gap:0}
-      .case-links a{font-size:10px;padding:10px 6px}
-      .case-lang{min-width:36px;padding:10px 8px;font-size:10px}
-      .portfolio-contact{padding:11px 10px;font-size:11px;gap:5px}
-      .portfolio-contact svg{width:13px;height:13px}
-      .case-actions{gap:12px}
-      .wrap{width:calc(100% - 36px)}
-      .hero{padding-top:140px;padding-bottom:65px}
-      .hero h1{font-size:clamp(56px,13vw,86px)}
-      section.content{padding:65px 0}
-      .footer{flex-direction:column;align-items:flex-start;gap:20px}
-    }
-    @media(max-width:440px){
-      .case-nav{justify-content:space-between}
-      .case-links a{padding:9px 5px}
-      .case-actions{gap:12px}
-      .portfolio-contact{padding:10px 8px}
-    }
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-  </style>
-<style id="dream-case-styles">.hero{grid-template-columns:43% 57%;}.hero h1{font-size:clamp(54px,6.6vw,105px)}.hero-visual{width:112%;max-width:none;transform:translateX(-2%);filter:drop-shadow(0 24px 30px #1c19301b)}.dream-gallery{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px}.dream-gallery figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden}.dream-gallery img{display:block;width:100%;height:auto}.dream-gallery figcaption{padding:15px 20px;color:var(--muted);font-size:13px}.dream-gallery figure:first-child{grid-column:1/-1}.dream-gallery figure:first-child img{max-height:700px;object-fit:contain;background:#0b1018}.dream-footer{display:flex;align-items:center;justify-content:space-between;padding:35px 0 70px;border-top:1px solid var(--line)}.dream-footer button{border:1px solid #ddd;border-radius:30px;padding:12px 20px;background:#fff;cursor:pointer}@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-visual{width:100%;transform:none}.dream-gallery{grid-template-columns:1fr}.dream-gallery figure:first-child{grid-column:auto}}@media(max-width:440px){.hero h1{font-size:clamp(47px,12vw,68px)}} </style><style id="dreams-v173-hero-finish">.hero-visual{width:108%;max-width:none;transform:translateX(-1%);filter:drop-shadow(0 22px 35px rgba(42,30,67,.12))}@media(max-width:900px){.hero-visual{width:100%;transform:none}}</style><style id="dreams-v174-finish">
-/* Softly blend the original pale case background with the archive's violet, midnight blue and warm-gold identity. */
-body{background:radial-gradient(ellipse at 86% 18%,rgba(133,82,172,.22),transparent 43%),radial-gradient(ellipse at 12% 67%,rgba(198,147,87,.14),transparent 44%),radial-gradient(ellipse at 64% 82%,rgba(44,61,112,.09),transparent 50%),linear-gradient(145deg,#f7f6f9 0%,#f0edf5 53%,#f7f3ee 100%)!important}
-.hero{grid-template-columns:minmax(0,43%) minmax(0,57%);gap:0!important}
-.hero-visual{display:block;width:100%!important;max-width:100%!important;height:auto!important;object-fit:contain!important;transform:none!important;filter:drop-shadow(0 24px 30px rgba(36,23,62,.16))!important}
-@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-visual{width:100%!important;max-width:100%!important}}
-</style><link rel="stylesheet" href="assets/contact-widget.css"><link rel="stylesheet" href="assets/project-navigation.css?v=212"><script src="assets/project-navigation.js?v=195" defer></script><script src="assets/case-runtime.js?v=195" defer></script><style id="v191-footer-unification">
-/* Consistent MDR-style footer on case pages */
-.footer,.portfolio-top-end{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:16px!important;flex-wrap:nowrap!important;min-width:0!important}
-.footer .portfolio-top-btn,.portfolio-top-end .portfolio-top-btn{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:12px!important;flex-shrink:0!important;border-radius:999px!important;padding:13px 23px!important;min-height:54px!important;background:linear-gradient(135deg,rgba(255,255,255,.89),rgba(255,255,255,.66))!important;border:1px solid rgba(255,255,255,.95)!important;box-shadow:0 12px 34px rgba(30,45,44,.10),inset 0 1px 1px white!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;color:#243a34!important;font-weight:650!important;cursor:pointer!important;transition:transform .32s cubic-bezier(.22,1,.36,1),box-shadow .32s ease,background .32s ease!important}
-.footer .portfolio-top-btn:hover,.portfolio-top-end .portfolio-top-btn:hover{transform:translateY(-4px)!important;box-shadow:0 19px 43px rgba(30,45,44,.16),inset 0 1px 1px white!important}
-.footer .portfolio-top-btn:active,.portfolio-top-end .portfolio-top-btn:active{transform:scale(.97)!important}
-.footer .portfolio-top-btn svg,.portfolio-top-end .portfolio-top-btn svg{width:19px!important;height:19px!important;flex-shrink:0!important;animation:v191Chevron 2.1s ease-in-out infinite!important}
-@keyframes v191Chevron{0%,100%{transform:translateY(2px)}50%{transform:translateY(-3px)}}
-@media(max-width:700px){.footer,.portfolio-top-end{flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;padding-left:18px!important;padding-right:18px!important}.footer .portfolio-top-btn,.portfolio-top-end .portfolio-top-btn{padding:11px 17px!important;min-height:48px!important;font-size:13px!important}.footer-brand,.footer-signature{min-width:0;font-size:12px!important}}
-@media(prefers-reduced-motion:reduce){.footer .portfolio-top-btn svg,.portfolio-top-end .portfolio-top-btn svg{animation:none!important}}
-</style><link rel="stylesheet" href="assets/dreams-carousel.css"><script src="assets/dreams-carousel.js" defer></script><link rel="stylesheet" href="assets/site-footer.css?v=196.3"><script src="assets/site-footer.js?v=196.3" defer></script></head><body><div id="rz-case-header" class="case-navigation">
-  <button class="rz-back case-back" type="button" aria-label="Назад к проектам"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></svg></button>
-  <nav class="rz-nav case-nav" aria-label="Навигация по проекту">
-    <div class="rz-brand case-brand">RZ. <span class="brand-sub">/ design practice</span></div>
-    <div class="rz-links case-links"><a class="rz-link active " href="#overview" data-ru="Обзор" data-en="Overview">Обзор</a><a href="#process" data-ru="Процесс" data-en="Process" class="rz-link ">Процесс</a><a href="#design" data-ru="Дизайн" data-en="Design" class="rz-link ">Дизайн</a></div>
+<div id="rz-case-header" class="travel-navigation case-navigation">
+  <button class="rz-back travel-back case-back" type="button" aria-label="Назад к проектам"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 5.5-6.5 6.5 6.5 6.5"/></svg></button>
+  <nav class="rz-nav travel-nav case-nav" aria-label="Навигация по проекту">
+    <div class="rz-brand travel-brand case-brand">RZ. <span class="brand-sub">/ design practice</span></div>
+    <div class="rz-links travel-links case-links"><a class="rz-link active travel-link" href="#overview" data-ru="Обзор" data-en="Overview">Обзор</a><a class="rz-link travel-link" href="#process" data-ru="Процесс" data-en="Process">Процесс</a><a class="rz-link travel-link" href="#design" data-ru="Дизайн" data-en="Design">Дизайн</a></div>
     <div class="rz-actions nav-actions">
-      <button class="rz-lang case-lang" type="button" aria-label="Выбрать язык">RU</button>
+      <button class="rz-lang travel-lang case-lang" type="button" aria-label="Выбрать язык">RU</button>
       <button class="rz-contact portfolio-contact" type="button" aria-label="Связаться"><span class="portfolio-contact-label">Связаться</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10"/></svg></button>
     </div>
   </nav>
 </div>
 
-<main><div class="wrap"><section class="hero" id="overview"><div><div class="eyebrow">10 / CASE STUDY · WEB · IMMERSIVE LANDING</div><h1 data-ru="Архив<br>потерянных<br>снов<em>.</em>" data-en="Archive of<br>Lost Dreams<em>.</em>">Архив<br>потерянных<br>снов<em>.</em></h1><p class="lead" data-ru="Концепция атмосферного цифрового архива, в котором можно сохранять, исследовать и находить сны. Визуальная история на пересечении мистики и интерактивного веб-дизайна." data-en="An atmospheric digital archive to save, explore and discover dreams — an immersive web concept blending mystery and interaction.">Концепция атмосферного цифрового архива, в котором можно сохранять, исследовать и находить сны. Визуальная история на пересечении мистики и интерактивного веб-дизайна.</p><div class="tags"><span>UX/UI</span><span>Web design</span><span>Immersive experience</span><span>Concept · 2026</span></div></div><img class="hero-visual" src="assets/dreams/dream_macbook_framed.png" alt="Архив потерянных снов — макет на MacBook без фоновой подложки"></section></div>
-<section class="content" id="process"><div class="wrap"><div class="section-no">01 / CONCEPT</div><h2 data-ru="Идея<span class='dot'>.</span>" data-en="Concept<span class='dot'>.</span>">Идея<span class="dot">.</span></h2><p data-ru="«Архив потерянных снов» — концепция сайта, который превращает воспоминания о снах в коллекцию историй. Первый экран знакомит с миром архива, а блоки ниже объясняют, как сохранить, классифицировать и найти сон." data-en="The Archive of Lost Dreams turns dream memories into a collection of stories. The landing page introduces the world and explains how to capture, classify and discover a dream.">«Архив потерянных снов» — концепция сайта, который превращает воспоминания о снах в коллекцию историй. Первый экран знакомит с миром архива, а блоки ниже объясняют, как сохранить, классифицировать и найти сон.</p><div class="grid-3"><div class="card"><h4 data-ru="01 / Захват сна" data-en="01 / Capture">01 / Захват сна</h4><p data-ru="Сохранить воспоминание сразу после пробуждения." data-en="Save the memory immediately after waking.">Сохранить воспоминание сразу после пробуждения.</p></div><div class="card"><h4 data-ru="02 / Классификация" data-en="02 / Classification">02 / Классификация</h4><p data-ru="Отметить настроение, тему и символы сна." data-en="Tag the dream’s mood, themes and symbols.">Отметить настроение, тему и символы сна.</p></div><div class="card"><h4 data-ru="03 / Поиск" data-en="03 / Discovery">03 / Поиск</h4><p data-ru="Исследовать собственные и чужие истории." data-en="Explore personal and shared dream stories.">Исследовать собственные и чужие истории.</p></div></div></div></section>
-<section class="content" id="design"><div class="wrap"><div class="section-no">02 / VISUAL EXPLORATION</div><h2 data-ru="Визуальные направления<span class='dot'>.</span>" data-en="Visual directions<span class='dot'>.</span>">Визуальные направления<span class="dot">.</span></h2><p data-ru="Четыре варианта одного интерфейса: от фиолетового звёздного портала до холодного лунного света. Композиция и пользовательский сценарий сохраняются, меняется эмоциональный характер пространства." data-en="Four visual directions for one interface — from a violet star portal to cool moonlight. The layout stays consistent while the atmosphere changes.">Четыре варианта одного интерфейса: от фиолетового звёздного портала до холодного лунного света. Композиция и пользовательский сценарий сохраняются, меняется эмоциональный характер пространства.</p><div class="lato-carousel"><div class="lato-viewport" aria-label="Визуальные направления"><div class="lato-track"><figure class="lato-slide" data-group="admin"><button type="button" aria-label="Открыть изображение 1"><img loading="lazy" src="assets/dreams/dream_scene_1.jpeg" alt="Архив потерянных снов — Портал в фиолетовом небе"></button><figcaption data-ru="Портал в фиолетовом небе" data-en="Portal in a violet sky">Портал в фиолетовом небе</figcaption></figure><figure class="lato-slide" data-group="admin"><button type="button" aria-label="Открыть изображение 2"><img loading="lazy" src="assets/dreams/dream_scene_2.jpeg" alt="Архив потерянных снов — Лунный портал"></button><figcaption data-ru="Лунный портал" data-en="Moonlit portal">Лунный портал</figcaption></figure><figure class="lato-slide" data-group="admin"><button type="button" aria-label="Открыть изображение 3"><img loading="lazy" src="assets/dreams/dream_scene_3.jpeg" alt="Архив потерянных снов — Ночной город и полная луна"></button><figcaption data-ru="Ночной город и полная луна" data-en="Night city and full moon">Ночной город и полная луна</figcaption></figure><figure class="lato-slide" data-group="admin"><button type="button" aria-label="Открыть изображение 4"><img loading="lazy" src="assets/dreams/dream_scene_4.jpeg" alt="Архив потерянных снов — Портал среди облаков"></button><figcaption data-ru="Портал среди облаков" data-en="Portal among the clouds">Портал среди облаков</figcaption></figure></div></div><div class="lato-carousel-controls"><button class="lato-circle lato-prev" type="button" aria-label="Предыдущий слайд"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5 8 12l7 7"/></svg></button><div class="lato-dots" role="group" aria-label="Выбрать слайд"><button type="button" class="lato-dot" data-group="admin" aria-label="1 / 4" aria-current="true"></button><button type="button" class="lato-dot" data-group="admin" aria-label="2 / 4" aria-current="false"></button><button type="button" class="lato-dot" data-group="admin" aria-label="3 / 4" aria-current="false"></button><button type="button" class="lato-dot" data-group="admin" aria-label="4 / 4" aria-current="false"></button></div><button class="lato-circle lato-next" type="button" aria-label="Следующий слайд"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></button></div></div></div></section></main><footer id="rz-site-footer" class="portfolio-top-end">
+
+<main class="dr-case">
+  <section class="dr-hero" id="overview">
+    <div class="dr-wrap dr-hero-grid">
+      <div class="dr-hero-copy">
+        <p class="dr-label" data-ru="10 / UX/UI · ВЕБ-КОНЦЕПЦИЯ" data-en="10 / UX/UI · WEB CONCEPT">10 / UX/UI · ВЕБ-КОНЦЕПЦИЯ</p>
+        <h1><span data-ru="Архив" data-en="Archive of">Архив</span><br><span class="dr-accent" data-ru="потерянных" data-en="Lost Dreams">потерянных</span><br class="dr-ru-line-break"><span class="dr-ru-line" lang="ru">снов</span></h1>
+        <p class="dr-lead" data-ru="Воображаемый цифровой архив для тех, кто просыпается с обрывком сна или хочет заглянуть в чужие истории. В коллекцию можно войти через знакомый образ, настроение или тему." data-en="An imagined digital archive for anyone who wakes with a fragment of a dream, or wants to explore someone else’s. Browse by a familiar image, mood or theme.">Воображаемый цифровой архив для тех, кто просыпается с обрывком сна или хочет заглянуть в чужие истории. В коллекцию можно войти через знакомый образ, настроение или тему.</p>
+        <a class="dr-link dr-link-primary" href="#catalog"><span data-ru="Войти в коллекцию" data-en="Enter the collection">Войти в коллекцию</span> <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="dr-portal" aria-hidden="true">
+        <div class="dr-portal-ring"></div>
+        <img src="assets/dreams/threshold.png" width="1790" height="1330" fetchpriority="high" alt="">
+      </div>
+      <dl class="dr-role">
+        <div><dt data-ru="Формат" data-en="Format">Формат</dt><dd data-ru="Иммерсивный лендинг" data-en="Immersive landing page">Иммерсивный лендинг</dd></div>
+        <div><dt data-ru="Роль" data-en="Role">Роль</dt><dd data-ru="UX/UI и визуальная концепция" data-en="UX/UI and visual direction">UX/UI и визуальная концепция</dd></div>
+        <div><dt data-ru="Вклад" data-en="Scope">Вклад</dt><dd data-ru="Сценарий, структура коллекции, четыре версии макета" data-en="Journey, collection structure and four visual directions">Сценарий, структура коллекции, четыре версии макета</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="process" class="dr-process dr-section"><div class="dr-wrap dr-spread">
+    <header>
+      <p class="dr-label" data-ru="Идея и сценарий" data-en="Concept and journey">Идея и сценарий</p>
+      <h2 data-ru="Что остаётся после пробуждения" data-en="What stays with us after waking">Что остаётся после пробуждения</h2>
+      <p class="dr-lead" data-ru="Сон легко вспомнить по лестнице, свету или ощущению покоя. Полный сюжет может ускользнуть. Поэтому у архива два входа: искать по тому, что осталось в памяти, или открыть коллекцию и начать с любой истории." data-en="A staircase, a light or a sense of calm can bring back a dream. The full story may be harder to recall. The archive offers two ways in: search with whatever you remember, or browse the collection and start with any story.">Сон легко вспомнить по лестнице, свету или ощущению покоя. Полный сюжет может ускользнуть. Поэтому у архива два входа: искать по тому, что осталось в памяти, или открыть коллекцию и начать с любой истории.</p>
+    </header>
+    <ol class="dr-route">
+      <li><span class="dr-step" aria-hidden="true">01</span><div><h3 data-ru="Удержать образ" data-en="Capture an image">Удержать образ</h3><p data-ru="На первом экране действие «Найти свой сон» сразу ведёт к форме. Она начинается со свободного описания, где достаточно детали или ощущения." data-en="The hero’s “Find your dream” action leads straight to the form. It starts with a free-text field, where a single detail or feeling is enough.">На первом экране действие «Найти свой сон» сразу ведёт к форме. Она начинается со свободного описания, где достаточно детали или ощущения.</p></div></li>
+      <li><span class="dr-step" aria-hidden="true">02</span><div><h3 data-ru="Связать с темой" data-en="Connect it to a theme">Связать с темой</h3><p data-ru="В концепции записи получают метки настроения, темы и символов. Человек может сузить поиск по настроению и выбрать несколько категорий." data-en="In the concept, entries are tagged by mood, theme and symbol. Visitors can narrow their search by mood and choose several categories.">В концепции записи получают метки настроения, темы и символов. Человек может сузить поиск по настроению и выбрать несколько категорий.</p></div></li>
+      <li><span class="dr-step" aria-hidden="true">03</span><div><h3 data-ru="Открыть историю" data-en="Open a story">Открыть историю</h3><p data-ru="Изображение помогает узнать мотив. Название и короткий текст дают контекст, а номер и строка «Последний раз» поддерживают образ архивной описи." data-en="The image helps visitors recognise a motif. A title and short description add context, while the record number and “Last seen” date give each entry the feel of an archive record.">Изображение помогает узнать мотив. Название и короткий текст дают контекст, а номер и строка «Последний раз» поддерживают образ архивной описи.</p></div></li>
+    </ol>
+  </div></section>
+
+  <section id="catalog" class="dr-index dr-section"><div class="dr-wrap">
+    <header class="dr-index-head">
+      <div><p class="dr-label" data-ru="Интерактивный фрагмент" data-en="Interactive excerpt">Интерактивный фрагмент</p><h2 data-ru="Опись снов" data-en="The dream catalogue">Опись снов</h2></div>
+      <p class="dr-lead" data-ru="Выберите настроение или мотив. Метки свяжут записи с похожим ощущением: покой встречается и в лестнице над водой, и в свете фонаря." data-en="Choose a mood or motif. Tags connect entries with a shared feeling: calm can appear both in a staircase descending into water and in the glow of a lantern.">Выберите настроение или мотив. Метки свяжут записи с похожим ощущением: покой встречается и в лестнице над водой, и в свете фонаря.</p>
+    </header>
+    <form class="dr-filters">
+      <label><span data-ru="Настроение" data-en="Mood">Настроение</span><select name="mood" autocomplete="off">
+        <option value="" data-ru="Любое" data-en="Any mood">Любое</option><option value="freedom" data-ru="Свобода" data-en="Freedom">Свобода</option><option value="calm" data-ru="Покой" data-en="Calm">Покой</option><option value="lost" data-ru="Потерянность" data-en="Feeling lost">Потерянность</option>
+      </select></label>
+      <label><span data-ru="Мотив" data-en="Motif">Мотив</span><select name="theme" autocomplete="off">
+        <option value="" data-ru="Любой" data-en="Any motif">Любой</option><option value="architecture" data-ru="Архитектура" data-en="Architecture">Архитектура</option><option value="journey" data-ru="Путешествие" data-en="Journey">Путешествие</option><option value="light" data-ru="Свет" data-en="Light">Свет</option>
+      </select></label>
+      <button type="reset" data-ru="Сбросить" data-en="Reset">Сбросить</button>
+      <p id="dr-count" role="status">4 / 4</p>
+    </form>
+    <div class="dr-records">
+      <article class="dr-record" data-mood="freedom" data-theme="architecture">
+        <img src="assets/dreams/cloud-city.png" alt="" width="794" height="398" loading="lazy" decoding="async">
+        <div class="dr-record-body">
+          <span class="dr-record-id">№ A-248-19</span>
+          <h3 data-ru="Город в облаках" data-en="City in the Clouds">Город в облаках</h3>
+          <p data-ru="Город парит среди облаков. Улицы теряются в небе." data-en="A city floats among the clouds. Its streets disappear into the sky.">Город парит среди облаков. Улицы теряются в небе.</p>
+          <p class="dr-tags" data-ru="Свобода · Архитектура · Лёгкость" data-en="Freedom · Architecture · Lightness">Свобода · Архитектура · Лёгкость</p>
+        </div>
+      </article>
+      <article class="dr-record" data-mood="calm" data-theme="journey">
+        <img src="assets/dreams/sea-stairs.png" alt="" width="790" height="398" loading="lazy" decoding="async">
+        <div class="dr-record-body">
+          <span class="dr-record-id">№ B-117-07</span>
+          <h3 data-ru="Лестница в море" data-en="Stairway into the Sea">Лестница в море</h3>
+          <p data-ru="Лестница уходит в глубину. Вода спокойна, но манит." data-en="A staircase descends into the depths. The water is calm and inviting.">Лестница уходит в глубину. Вода спокойна, но манит.</p>
+          <p class="dr-tags" data-ru="Покой · Тайна · Путешествие" data-en="Calm · Mystery · Journey">Покой · Тайна · Путешествие</p>
+        </div>
+      </article>
+      <article class="dr-record" data-mood="calm" data-theme="light">
+        <img src="assets/dreams/lantern.png" alt="" width="791" height="398" loading="lazy" decoding="async">
+        <div class="dr-record-body">
+          <span class="dr-record-id">№ C-032-14</span>
+          <h3 data-ru="Говорящий фонарь" data-en="The Talking Lantern">Говорящий фонарь</h3>
+          <p data-ru="Фонарь рассказывает истории тем, кто задержался по пути домой." data-en="A lantern tells stories to anyone who pauses on the way home.">Фонарь рассказывает истории тем, кто задержался по пути домой.</p>
+          <p class="dr-tags" data-ru="Покой · Свет · Ностальгия" data-en="Calm · Light · Nostalgia">Покой · Свет · Ностальгия</p>
+        </div>
+      </article>
+      <article class="dr-record" data-mood="lost" data-theme="architecture">
+        <img src="assets/dreams/doorless-room.png" alt="" width="791" height="398" loading="lazy" decoding="async">
+        <div class="dr-record-body">
+          <span class="dr-record-id">№ D-201-05</span>
+          <h3 data-ru="Комната без дверей" data-en="The Room Without Doors">Комната без дверей</h3>
+          <p data-ru="Из комнаты нет выхода, но в ней всегда светло." data-en="There is no way out of the room, yet it is always light.">Из комнаты нет выхода, но в ней всегда светло.</p>
+          <p class="dr-tags" data-ru="Потерянность · Архитектура · Пустота" data-en="Feeling lost · Architecture · Emptiness">Потерянность · Архитектура · Пустота</p>
+        </div>
+      </article>
+    </div>
+    <p id="dr-empty" hidden data-ru="Таких сочетаний в этой подборке пока нет. Попробуйте оставить один фильтр." data-en="This selection has no entries with that combination. Try using one filter at a time.">Таких сочетаний в этой подборке пока нет. Попробуйте оставить один фильтр.</p>
+  </div></section>
+
+  <section id="design" class="dr-design dr-section"><div class="dr-wrap">
+    <header class="dr-spread">
+      <div><p class="dr-label" data-ru="Визуальное исследование" data-en="Visual exploration">Визуальное исследование</p><h2 data-ru="Четыре облика архива" data-en="Four views of the archive">Четыре облика архива</h2></div>
+      <div><p class="dr-lead" data-ru="Четыре варианта сохраняют один маршрут, от арки на первом экране до коллекции и формы поиска. Меняются глубина, свет и степень контраста. Так можно сравнить, где атмосферу поддерживает сам фон и где тексту нужна более плотная подложка." data-en="All four directions keep the same route, from the arch on the first screen to the collection and search form. Depth, light and contrast change, making it possible to compare where the setting carries the mood and where text needs a stronger surface.">Четыре варианта сохраняют один маршрут, от арки на первом экране до коллекции и формы поиска. Меняются глубина, свет и степень контраста. Так можно сравнить, где атмосферу поддерживает сам фон и где тексту нужна более плотная подложка.</p></div>
+    </header>
+    <div class="lato-carousel">
+      <div class="lato-viewport" aria-label="Визуальные направления" data-label-ru="Визуальные направления" data-label-en="Visual directions">
+        <div class="lato-track">
+          <figure class="lato-slide is-current">
+            <button type="button" data-original="assets/dreams/layout-1.png" aria-label="Увеличить: Город за аркой"><img src="assets/dreams/preview-1.jpg" width="1500" height="1066" loading="lazy" decoding="async" alt="Город за аркой"></button>
+            <figcaption><div><strong data-ru="Город за аркой" data-en="The City Beyond the Arch">Город за аркой</strong><p data-ru="Тёплый свет за аркой отделяет город от тёмного неба. На этом контрасте держится первый взгляд." data-en="Warm light beyond the arch separates the city from the dark sky and draws the eye in.">Тёплый свет за аркой отделяет город от тёмного неба. На этом контрасте держится первый взгляд.</p></div><span>01 / 04</span></figcaption>
+          </figure>
+          <figure class="lato-slide">
+            <button type="button" data-original="assets/dreams/layout-2.png" aria-label="Увеличить: Фиолетовый портал"><img src="assets/dreams/preview-2.jpg" width="1500" height="1066" loading="lazy" decoding="async" alt="Фиолетовый портал"></button>
+            <figcaption><div><strong data-ru="Фиолетовый портал" data-en="The Violet Portal">Фиолетовый портал</strong><p data-ru="Золотая арка ярко выделяется на фиолетовом небе и становится главным акцентом композиции." data-en="The golden arch stands out against the violet sky and becomes the centre of the composition.">Золотая арка ярко выделяется на фиолетовом небе и становится главным акцентом композиции.</p></div><span>02 / 04</span></figcaption>
+          </figure>
+          <figure class="lato-slide">
+            <button type="button" data-original="assets/dreams/layout-3.png" aria-label="Увеличить: Город под полной луной"><img src="assets/dreams/preview-3.jpg" width="1500" height="1066" loading="lazy" decoding="async" alt="Город под полной луной"></button>
+            <figcaption><div><strong data-ru="Город под полной луной" data-en="City Under a Full Moon">Город под полной луной</strong><p data-ru="Светлая луна уравновешивает тёмный портал. Карточки и форма остаются на тех же местах." data-en="The bright moon balances the dark gateway. Cards and search stay in the same positions.">Светлая луна уравновешивает тёмный портал. Карточки и форма остаются на тех же местах.</p></div><span>03 / 04</span></figcaption>
+          </figure>
+          <figure class="lato-slide">
+            <button type="button" data-original="assets/dreams/layout-4.png" aria-label="Увеличить: Портал среди облаков"><img src="assets/dreams/preview-4.jpg" width="1500" height="1066" loading="lazy" decoding="async" alt="Портал среди облаков"></button>
+            <figcaption><div><strong data-ru="Портал среди облаков" data-en="The Portal Among the Clouds">Портал среди облаков</strong><p data-ru="Лунный свет и облака придают сцене глубину. Тёплая арка сохраняет фокус на входе." data-en="Moonlight and clouds give the scene depth. The warm arch keeps the focus on the entrance.">Лунный свет и облака придают сцене глубину. Тёплая арка сохраняет фокус на входе.</p></div><span>04 / 04</span></figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="lato-carousel-controls">
+        <button class="lato-circle lato-prev" type="button" aria-label="Предыдущий слайд" data-label-ru="Предыдущий слайд" data-label-en="Previous slide"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5 8 12l7 7"/></svg></button>
+        <div class="lato-dots" role="group" aria-label="Выбрать слайд" data-label-ru="Выбрать слайд" data-label-en="Choose a slide"><button type="button" class="lato-dot" aria-label="Город за аркой" data-label-ru="Город за аркой" data-label-en="The City Beyond the Arch" aria-current="true"></button><button type="button" class="lato-dot" aria-label="Фиолетовый портал" data-label-ru="Фиолетовый портал" data-label-en="The Violet Portal" aria-current="false"></button><button type="button" class="lato-dot" aria-label="Город под полной луной" data-label-ru="Город под полной луной" data-label-en="City Under a Full Moon" aria-current="false"></button><button type="button" class="lato-dot" aria-label="Портал среди облаков" data-label-ru="Портал среди облаков" data-label-en="The Portal Among the Clouds" aria-current="false"></button></div>
+        <button class="lato-circle lato-next" type="button" aria-label="Следующий слайд" data-label-ru="Следующий слайд" data-label-en="Next slide"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></button>
+        <button class="dr-gallery-play" type="button" aria-label="Приостановить автопрокрутку" aria-pressed="false"><span aria-hidden="true">Ⅱ</span></button>
+      </div>
+    </div>
+    <dl class="dr-art-notes">
+      <div><dt data-ru="Свет" data-en="Light">Свет</dt><dd data-ru="Тёплый акцент выделяет вход и основную кнопку. Холодные слои задают глубину сцены." data-en="Warm accents highlight the entrance and primary action. Cooler layers give the scene depth.">Тёплый акцент выделяет вход и основную кнопку. Холодные слои задают глубину сцены.</dd></div>
+      <div><dt data-ru="Типографика" data-en="Typography">Типографика</dt><dd data-ru="Крупные антиквенные заголовки напоминают обложку книги. У карточек и формы свой ритм, чтобы их было легче просматривать." data-en="Large serif headings recall a book cover. Cards and form fields follow a consistent rhythm so they are easier to scan.">Крупные антиквенные заголовки напоминают обложку книги. У карточек и формы свой ритм, чтобы их было легче просматривать.</dd></div>
+      <div><dt data-ru="Материал" data-en="Surfaces">Материал</dt><dd data-ru="Полупрозрачные панели сохраняют непрерывность пейзажа. На ярких участках фона особенно важен контраст мелких подписей." data-en="Translucent panels let the landscape continue behind the interface. Small labels need particular care over brighter parts of the scene.">Полупрозрачные панели сохраняют непрерывность пейзажа. На ярких участках фона особенно важен контраст мелких подписей.</dd></div>
+    </dl>
+  </div></section>
+
+  <section class="dr-section dr-outcome" id="outcome"><div class="dr-wrap dr-spread">
+    <header><p class="dr-label" data-ru="Результат" data-en="Outcome">Результат</p><h2 data-ru="Архив, в который можно войти по одному образу" data-en="An archive you can enter with a single image">Архив, в который можно войти по одному образу</h2></header>
+    <div>
+      <p class="dr-lead" data-ru="В четырёх полноразмерных макетах собрана единая структура: знакомство с миром архива, правила его работы, опись и поиск. Интерактивный фрагмент кейса показывает, как метки помогают обнаружить сходство между историями." data-en="Four full-size mockups share one structure: an introduction to the archive, an explanation of how it works, the catalogue and search. The interactive excerpt shows how tags help people discover connections between stories.">В четырёх полноразмерных макетах собрана единая структура: знакомство с миром архива, правила его работы, опись и поиск. Интерактивный фрагмент кейса показывает, как метки помогают обнаружить сходство между историями.</p>
+      <p data-ru="Следующая проверка для прототипа: дать человеку один образ и предложить найти похожую запись. В сценарии сохранения сна важно проверить, понятно ли, кто увидит запись, и можно ли оставить её личной." data-en="A next prototype test could give someone a single image and ask them to find a similar entry. For saving dreams, a separate task can check whether people understand who can see an entry and how to keep it private.">Следующая проверка для прототипа: дать человеку один образ и предложить найти похожую запись. В сценарии сохранения сна важно проверить, понятно ли, кто увидит запись, и можно ли оставить её личной.</p>
+    </div>
+  </div></section>
+</main>
+<footer id="rz-site-footer" class="portfolio-top-end">
   <span class="footer-signature">RZ. / design practice</span>
-  <button class="portfolio-top-btn" type="button" id="top-btn"><span data-ru="Наверх" data-en="Back to top">Наверх</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="m6 14 6-6 6 6"/></svg></button>
-</footer><script>
-  (() => {
-    const root = document.querySelector('.case-navigation');
-    const toggle = root.querySelector('.case-lang');
-    let lang = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'ru';
-
-    function apply() {
-      toggle.textContent = lang.toUpperCase();
-      document.documentElement.lang = lang;
-      document.querySelectorAll('[data-ru][data-en]').forEach(el => {
-        el.innerHTML = el.dataset[lang];
-      });
-    }
-
-    toggle.addEventListener('click', () => {
-      lang = lang === 'ru' ? 'en' : 'ru';
-      apply();
-      window.parent.postMessage({type: 'portfolio-language', lang}, '*');
-    });
-
-    window.addEventListener('message', e => {
-      if(e.data?.type === 'portfolio-language' && e.data.lang !== lang) {
-        lang = e.data.lang;
-        apply();
-      }
-    });
-
-    root.querySelector('.case-back').addEventListener('click', () => {
-      if(window.parent !== window) window.parent.postMessage({type: 'portfolio-case-back'}, '*');
-      else location.href = 'index.html#work';
-    });
-
-    // Кнопка "Наверх"
-    document.getElementById('top-btn').addEventListener('click', () => {
-      window.scrollTo({top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
-    });
-
-    apply();
-  })();
-</script>
-<div aria-hidden="true" aria-label="Просмотр изображения" aria-modal="true" class="lato-viewer" role="dialog"><button aria-label="Закрыть" class="lato-viewer-btn lato-viewer-close" type="button">×</button><button aria-label="Предыдущее" class="lato-viewer-btn lato-viewer-prev" type="button">‹</button><button aria-label="Следующее" class="lato-viewer-btn lato-viewer-next" type="button">›</button><button aria-label="Масштаб" class="lato-viewer-btn lato-viewer-zoom" type="button">＋</button><div class="lato-viewer-image-area"><img alt="" class="lato-viewer-image" draggable="false"/></div><div class="lato-viewer-caption"></div></div></body>
-</html> 
+  <button class="portfolio-top-btn" type="button"><span data-ru="Наверх" data-en="Back to top">Наверх</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path d="m6 14 6-6 6 6"/></svg></button>
+</footer>
+<dialog id="dreams-viewer" class="lato-viewer viewer" aria-label="Просмотр макетов" data-label-ru="Просмотр макетов" data-label-en="Design preview">
+  <button class="liquid-close lato-viewer-close" type="button" aria-label="Закрыть" data-label-ru="Закрыть" data-label-en="Close" autofocus><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <div class="lato-viewer-image-area"><img class="lato-viewer-image" alt=""></div>
+  <div class="dr-viewer-tools">
+    <button class="lato-viewer-prev" type="button" aria-label="Предыдущий макет" data-label-ru="Предыдущий макет" data-label-en="Previous design">‹</button>
+    <p class="lato-viewer-caption" aria-live="polite"></p>
+    <button class="lato-viewer-next" type="button" aria-label="Следующий макет" data-label-ru="Следующий макет" data-label-en="Next design">›</button>
+    <button class="lato-viewer-zoom" type="button" aria-label="Увеличить" aria-pressed="false">+</button>
+  </div>
+</dialog>
+</body>
+</html>
