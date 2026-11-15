@@ -74,6 +74,37 @@ body[data-case="xflow"] { margin: 0; background: #f4f1ec; color: #222025; }
 .xf-cover .xf-shot { box-shadow: 0 24px 66px #0c0b1294; }
 .xf-cover img { aspect-ratio: 2600 / 1670; object-fit: cover; }
 .xf-cover figcaption { color: #e7d1e1; font-size: 13px; margin-top: 13px; }
+.xf-hero { position: relative; isolation: isolate; overflow: hidden; }
+.xf-hero::before {
+  position: absolute; inset: -38% -22%; z-index: 0;
+  background:
+    radial-gradient(ellipse 32% 44% at 76% 56%, #ed55c76b 0%, #a73bc53b 37%, transparent 74%),
+    radial-gradient(ellipse 27% 39% at 84% 43%, #67dce75c 0%, transparent 72%),
+    radial-gradient(ellipse 35% 49% at 66% 66%, #9142b950 0%, transparent 76%);
+  filter: blur(31px); content: ""; pointer-events: none;
+  animation: xf-hero-mist 14s cubic-bezier(.45,0,.24,1) infinite alternate;
+}
+.xf-hero-grid { position: relative; z-index: 1; }
+.xf-hero h1 em { animation: xf-gym-neon 3.8s ease-in-out infinite alternate; }
+.xf-hero h1 span { animation: xf-dot-neon 2.7s ease-in-out infinite alternate; }
+@keyframes xf-hero-mist {
+  0% { opacity: .43; transform: translate3d(-17%,15%,0) scale(.86) rotate(-6deg); }
+  38% { opacity: .94; transform: translate3d(12%,-13%,0) scale(1.17) rotate(5deg); }
+  73% { opacity: .68; transform: translate3d(-27%,-18%,0) scale(1.03) rotate(-3deg); }
+  100% { opacity: 1; transform: translate3d(22%,9%,0) scale(1.22) rotate(8deg); }
+}
+@keyframes xf-gym-neon {
+  0% { color: #d995bf; text-shadow: 0 0 0 transparent; }
+  48% { color: #f0aed7; text-shadow: 0 0 7px #ee8cccba, 0 0 19px #d13eaf8a; }
+  100% { color: #e49dca; text-shadow: 0 0 11px #f261bddd, 0 0 34px #ba329f9c; }
+}
+@keyframes xf-dot-neon {
+  0% { color: #e7bf70; text-shadow: 0 0 0 transparent; }
+  50% { color: #ffdb8a; text-shadow: 0 0 7px #ffd577c7, 0 0 20px #edab4a94; }
+  100% { color: #f1c970; text-shadow: 0 0 10px #ffe199e0, 0 0 29px #e4a534a8; }
+}
+@media (max-width: 560px) { .xf-hero::before { filter: blur(23px); } }
+@media (prefers-reduced-motion: reduce) { .xf-hero::before, .xf-hero h1 em, .xf-hero h1 span { animation: none; } }
 .xf-section { padding: clamp(52px, 7.4vw, 103px) 0; }
 .xf-context-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 8vw, 118px); align-items: start; }
 .xf-case h2 { margin-top: 10px; font-size: clamp(32px, 4.4vw, 66px); line-height: .99; letter-spacing: -.061em; font-weight: 790; }

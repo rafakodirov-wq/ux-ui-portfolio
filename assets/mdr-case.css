@@ -73,6 +73,46 @@ body[data-case="mdr"] {
 .md-outcome { background: linear-gradient(155deg,#29271f,#1b211e); }
 .md-case a:focus-visible, .md-case input:focus-visible, .md-viewer button:focus-visible { outline: 3px solid #efbb64; outline-offset: 3px; }
 body[data-case="mdr"] #rz-site-footer .footer-signature { color: #f6f2e8; }
+.md-hero { position: relative; isolation: isolate; overflow: hidden; }
+.md-hero::before {
+  position: absolute; inset: -40% -23%; z-index: 0;
+  background:
+    radial-gradient(ellipse 33% 46% at 73% 54%, #e6bf7552 0%, #8d75404a 37%, transparent 75%),
+    radial-gradient(ellipse 29% 39% at 82% 42%, #98b8af3f 0%, transparent 74%),
+    radial-gradient(ellipse 36% 48% at 62% 65%, #c9994e36 0%, transparent 78%);
+  filter: blur(35px); content: ""; pointer-events: none;
+  animation: md-hero-aura 15s cubic-bezier(.45,0,.24,1) infinite alternate;
+}
+.md-hero-grid { position: relative; z-index: 1; }
+.md-kicker, .md-case h1 em, .md-facts dt, .md-scenario-panel dt {
+  animation: md-gold-neon 4.5s ease-in-out infinite alternate;
+}
+.md-facts, .md-section, .md-card, .md-demo, .md-options label,
+.md-scenario-panels, .md-note, .md-shot, body[data-case="mdr"] #rz-site-footer {
+  animation: md-line-aura 5.8s ease-in-out infinite alternate;
+}
+@keyframes md-hero-aura {
+  0% { opacity: .37; transform: translate3d(-18%,16%,0) scale(.86) rotate(-7deg); }
+  38% { opacity: .91; transform: translate3d(12%,-12%,0) scale(1.17) rotate(5deg); }
+  72% { opacity: .66; transform: translate3d(-27%,-17%,0) scale(1.04) rotate(-4deg); }
+  100% { opacity: .97; transform: translate3d(23%,9%,0) scale(1.22) rotate(8deg); }
+}
+@keyframes md-gold-neon {
+  0% { text-shadow: 0 0 0 transparent; }
+  48% { text-shadow: 0 0 5px #e7c78790, 0 0 14px #c28e4d66; }
+  100% { text-shadow: 0 0 8px #f1d59ebd, 0 0 25px #c7975b7d; }
+}
+@keyframes md-line-aura {
+  0% { border-color: #5f5a514f; box-shadow: 0 0 0 transparent; }
+  50% { border-color: #c49f636e; box-shadow: 0 0 8px #ddbd8626; }
+  100% { border-color: #8d75545f; box-shadow: 0 0 13px #ddbd8633; }
+}
+@media (max-width: 620px) { .md-hero::before { filter: blur(24px); } }
+@media (prefers-reduced-motion: reduce) {
+  .md-hero::before, .md-kicker, .md-case h1 em, .md-facts dt, .md-scenario-panel dt,
+  .md-facts, .md-section, .md-card, .md-demo, .md-options label,
+  .md-scenario-panels, .md-note, .md-shot, body[data-case="mdr"] #rz-site-footer { animation: none; }
+}
 
 html:has(.md-viewer[open]) { overflow: hidden; }
 body .md-viewer { position: fixed; inset: 0; width: 100%; height: 100vh; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0 !important; border: 0; overflow: hidden; background: #151716e8; backdrop-filter: blur(18px); color: #f6f2e8; }
