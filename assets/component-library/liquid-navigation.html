@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<title>Liquid Glass — 4 кнопки • v7 — Calm State</title>
+<style>
+*,:before,:after{box-sizing:border-box}
+html,body{min-height:100%}
+body{margin:0;background:#fff;color:#18202b;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+main{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:34px 14px;gap:24px;background:#fff}
+.track{position:relative;isolation:isolate;width:min(860px,100%);height:148px;border-radius:92px;border:1px solid transparent;background:#ffffff;box-shadow:none;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab;-webkit-tap-highlight-color:transparent}
+.track.pressed{cursor:grabbing}
+.icon-sprite{position:absolute;width:0;height:0;pointer-events:none;overflow:hidden}
+/* В покое выделение — матовая светло-серая капсула, как на референсе. */
+.rest-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:visible;opacity:1;transition:opacity .22s ease}
+.rest-pill{fill:#ededee}
+/* Стеклянная оптика активна только во время взаимодействия или движения. */
+.glass{position:absolute;inset:0;width:100%;height:100%;z-index:4;pointer-events:none;overflow:visible;opacity:0;transition:opacity .18s ease}
+.track.pressed .glass,.track.in-motion .glass{opacity:1}
+.track.pressed .rest-svg,.track.in-motion .rest-svg{opacity:0}
+@media(prefers-reduced-motion:reduce){.rest-svg,.glass{transition:none}}
+.tab{position:absolute;top:0;height:100%;width:25%;padding:12px 0 10px;background:transparent;border:none;z-index:2;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;cursor:inherit;color:#30353d;white-space:nowrap;font:600 clamp(12px,1.7vw,19px)/1.1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;transition:color .16s ease}
+.tab[data-index="0"]{left:0}.tab[data-index="1"]{left:25%}.tab[data-index="2"]{left:50%}.tab[data-index="3"]{left:75%}
+.tab.is-active{color:#30353d}
+.tab:focus-visible{outline:3px solid #7aaef1;outline-offset:-8px;border-radius:80px}
+.icon-box{width:54px;height:54px;position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tab-icon{display:block;width:49px;height:49px;overflow:visible;color:inherit;fill:currentColor}
+.tab-label{position:relative;display:block;z-index:0;letter-spacing:-.025em}
+.notice{position:absolute;top:-13px;right:-45px;min-width:47px;height:32px;padding:0 9px;border-radius:22px;background:linear-gradient(145deg,#ff514a 0%,#ff3e3c 42%,#e92830 100%);display:flex;align-items:center;justify-content:center;color:#fff;font:600 21px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.04em;box-shadow:0 2px 4px #ff34351f,1px -1px 4px #ff6f712b;z-index:2;pointer-events:none;transform:translateZ(0)}
+.color-overlay{position:absolute;inset:0;z-index:3;pointer-events:none;clip-path:url(#v5-clipping);-webkit-clip-path:url(#v5-clipping);overflow:hidden}.color-overlay .tab,.color-overlay .tab.is-active{color:#078bfa!important;transition:none!important}.color-overlay .tab-icon{color:inherit!important}.hint{font-size:14px;color:#87919c;text-align:center;margin:0}
+@media(max-width:600px){main{padding:26px 9px;gap:20px}.track{height:108px}.tab{gap:5px;padding:10px 0 8px;font-size:clamp(10px,2.8vw,15px)}.icon-box{width:37px;height:37px}.tab-icon{width:35px;height:35px}.notice{top:-8px;right:-26px;height:23px;min-width:33px;font-size:14px;padding:0 6px}.color-overlay{position:absolute;inset:0;z-index:3;pointer-events:none;clip-path:url(#v5-clipping);-webkit-clip-path:url(#v5-clipping);overflow:hidden}.color-overlay .tab,.color-overlay .tab.is-active{color:#078bfa!important;transition:none!important}.color-overlay .tab-icon{color:inherit!important}.hint{font-size:12px;line-height:1.45}}
+@media(prefers-reduced-motion:reduce){.tab,.tab-icon{transition:none}}
+.hint{display:none}main{padding:10px}.track{height:clamp(76px,21vw,116px)}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<main>
+  <div class="track" id="glass-track" role="radiogroup" aria-label="Жидкая навигация — четыре кнопки">
+    <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+<symbol id="icon-profile" viewBox="0 0 96 96"><path fill="currentColor" fill-rule="evenodd" d="M 41 9 L 40 10 L 37 10 L 36 11 L 34 11 L 33 12 L 26 15 L 24 17 L 23 17 L 17 23 L 17 24 L 13 29 L 13 30 L 12 31 L 12 33 L 11 34 L 11 36 L 10 37 L 10 40 L 9 41 L 9 54 L 10 55 L 10 58 L 11 59 L 11 61 L 12 62 L 15 69 L 17 71 L 17 72 L 23 78 L 24 78 L 29 82 L 30 82 L 31 83 L 33 83 L 34 84 L 36 84 L 37 85 L 40 85 L 41 86 L 54 86 L 55 85 L 58 85 L 59 84 L 61 84 L 62 83 L 69 80 L 71 78 L 72 78 L 78 72 L 78 71 L 82 66 L 82 65 L 83 64 L 83 62 L 84 61 L 84 59 L 85 58 L 85 55 L 86 54 L 86 41 L 85 40 L 85 37 L 84 36 L 84 34 L 83 33 L 80 26 L 78 24 L 78 23 L 72 17 L 71 17 L 66 13 L 65 13 L 64 12 L 62 12 L 61 11 L 59 11 L 58 10 L 55 10 L 54 9 Z M 27 73 L 34 66 L 35 66 L 40 63 L 43 63 L 44 62 L 51 62 L 52 63 L 55 63 L 56 64 L 61 66 L 68 73 L 65 76 L 64 76 L 59 79 L 57 79 L 56 80 L 53 80 L 52 81 L 43 81 L 42 80 L 39 80 L 38 79 L 36 79 L 35 78 L 30 76 Z M 45 32 L 50 32 L 51 33 L 54 34 L 59 39 L 59 41 L 60 42 L 60 47 L 59 48 L 58 51 L 53 56 L 51 56 L 50 57 L 45 57 L 44 56 L 41 55 L 36 50 L 36 48 L 35 47 L 35 42 L 36 41 L 37 38 L 42 33 L 44 33 Z"/></symbol>
+<symbol id="icon-phone" viewBox="0 0 96 96"><path fill="currentColor" fill-rule="evenodd" d="M 18 14 L 18 15 L 15 18 L 15 19 L 13 22 L 13 24 L 12 25 L 12 38 L 13 39 L 13 42 L 14 43 L 14 46 L 16 49 L 16 51 L 17 52 L 19 57 L 23 62 L 23 63 L 32 72 L 33 72 L 38 76 L 39 76 L 46 80 L 48 80 L 49 81 L 52 81 L 53 82 L 57 82 L 58 83 L 70 83 L 71 82 L 73 82 L 74 81 L 77 80 L 84 73 L 84 72 L 85 71 L 85 69 L 86 68 L 86 62 L 83 59 L 82 59 L 79 57 L 77 57 L 76 56 L 75 56 L 70 53 L 68 53 L 65 51 L 61 51 L 60 52 L 59 52 L 50 60 L 46 57 L 45 57 L 38 50 L 38 49 L 35 45 L 44 35 L 44 30 L 43 29 L 43 28 L 42 27 L 42 25 L 37 16 L 37 14 L 36 13 L 36 12 L 33 9 L 27 9 L 26 10 L 21 12 L 19 14 Z"/></symbol>
+<symbol id="icon-chats" viewBox="0 0 96 96"><path fill="currentColor" fill-rule="evenodd" d="M 12 20 L 12 21 L 10 23 L 10 24 L 7 29 L 7 32 L 6 33 L 6 44 L 7 45 L 7 48 L 9 51 L 9 52 L 8 53 L 8 56 L 7 57 L 7 59 L 6 60 L 6 65 L 9 68 L 14 68 L 15 67 L 18 67 L 19 66 L 21 66 L 22 65 L 23 65 L 26 67 L 29 67 L 30 68 L 32 68 L 33 69 L 35 74 L 42 81 L 43 81 L 50 85 L 53 85 L 54 86 L 65 86 L 66 85 L 69 85 L 72 83 L 73 83 L 74 84 L 77 84 L 78 85 L 80 85 L 81 86 L 86 86 L 89 83 L 89 78 L 88 77 L 88 74 L 87 73 L 87 71 L 86 70 L 86 69 L 88 66 L 88 63 L 89 62 L 89 51 L 88 50 L 88 47 L 87 46 L 84 39 L 77 32 L 76 32 L 69 28 L 66 28 L 65 27 L 63 27 L 62 26 L 60 21 L 53 14 L 52 14 L 45 10 L 42 10 L 41 9 L 30 9 L 29 10 L 26 10 L 25 11 L 20 13 L 18 15 L 17 15 Z M 11 62 L 12 61 L 13 62 L 12 63 Z M 49 18 L 56 25 L 56 26 L 59 31 L 59 34 L 60 35 L 60 42 L 59 43 L 59 46 L 58 47 L 56 52 L 49 59 L 48 59 L 43 62 L 40 62 L 39 63 L 32 63 L 31 62 L 28 62 L 25 60 L 20 60 L 19 61 L 17 61 L 16 62 L 13 62 L 12 61 L 12 58 L 13 57 L 13 55 L 14 54 L 14 49 L 12 46 L 12 43 L 11 42 L 11 35 L 12 34 L 12 31 L 13 30 L 15 25 L 22 18 L 23 18 L 28 15 L 31 15 L 32 14 L 39 14 L 40 15 L 43 15 L 44 16 Z"/></symbol>
+<symbol id="icon-settings" viewBox="0 0 96 96"><path fill="currentColor" fill-rule="evenodd" d="M 32 10 L 31 11 L 28 12 L 26 14 L 26 20 L 25 21 L 25 24 L 24 25 L 20 25 L 19 26 L 14 26 L 12 28 L 12 29 L 10 32 L 10 34 L 9 35 L 9 40 L 13 44 L 13 45 L 15 47 L 15 48 L 13 50 L 13 51 L 9 55 L 9 60 L 10 61 L 10 63 L 11 64 L 12 67 L 14 69 L 20 69 L 21 70 L 24 70 L 25 71 L 25 75 L 26 76 L 26 81 L 28 83 L 29 83 L 32 85 L 34 85 L 35 86 L 40 86 L 44 82 L 45 82 L 47 80 L 48 80 L 50 82 L 51 82 L 55 86 L 60 86 L 61 85 L 63 85 L 64 84 L 67 83 L 69 81 L 69 75 L 70 74 L 70 71 L 71 70 L 75 70 L 76 69 L 81 69 L 83 67 L 83 66 L 85 63 L 85 61 L 86 60 L 86 55 L 82 51 L 82 50 L 80 48 L 80 47 L 82 45 L 82 44 L 86 40 L 86 35 L 85 34 L 85 32 L 84 31 L 83 28 L 81 26 L 75 26 L 74 25 L 71 25 L 70 24 L 70 20 L 69 19 L 69 14 L 67 12 L 66 12 L 63 10 L 61 10 L 60 9 L 55 9 L 51 13 L 50 13 L 48 15 L 47 15 L 45 13 L 44 13 L 40 9 L 35 9 L 34 10 Z M 45 35 L 50 35 L 51 36 L 54 37 L 59 42 L 59 44 L 60 45 L 60 50 L 59 51 L 58 54 L 53 59 L 51 59 L 50 60 L 45 60 L 44 59 L 41 58 L 36 53 L 36 51 L 35 50 L 35 45 L 36 44 L 37 41 L 42 36 L 44 36 Z"/></symbol>
+    </defs></svg>
+    <!-- Фоновая пилюля: никогда не перекрывает иконки и надписи. -->
+    <svg class="rest-svg" id="rest-svg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <path id="rest-pill-path" class="rest-pill"/>
+    </svg>
+    <svg class="glass" id="glass-svg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="v5-body" x1="0" y1="0" x2=".85" y2="1"><stop stop-color="#fff" stop-opacity=".35"/><stop offset=".5" stop-color="#fff" stop-opacity=".06"/><stop offset="1" stop-color="#f8fcff" stop-opacity=".26"/></linearGradient>
+        <linearGradient id="v5-rim" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".96"/><stop offset=".2" stop-color="#a3bbc9" stop-opacity=".65"/><stop offset=".44" stop-color="#fff" stop-opacity=".85"/><stop offset=".68" stop-color="#aec3d1" stop-opacity=".82"/><stop offset="1" stop-color="#fff" stop-opacity=".94"/></linearGradient>
+        <linearGradient id="v5-press" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#708493" stop-opacity=".36"/><stop offset=".11" stop-color="#9facb8" stop-opacity=".17"/><stop offset=".36" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+        <linearGradient id="v5-topglint" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#ffe27c" stop-opacity="0"/><stop offset=".32" stop-color="#ffe070" stop-opacity=".7"/><stop offset=".58" stop-color="#fe416d" stop-opacity=".9"/><stop offset=".8" stop-color="#f75bcb" stop-opacity=".9"/><stop offset="1" stop-color="#ffb8ed" stop-opacity="0"/></linearGradient>
+        <radialGradient id="v5-redbleed"><stop stop-color="#f53546" stop-opacity=".39"/><stop offset=".55" stop-color="#ff5578" stop-opacity=".18"/><stop offset="1" stop-color="#ff5578" stop-opacity="0"/></radialGradient>
+        <filter id="v5-shadow" x="-22%" y="-45%" width="144%" height="190%"><feDropShadow dx="0" dy="4" stdDeviation="4.5" flood-color="#304e63" flood-opacity=".22"/></filter>
+        <filter id="v5-softblur" x="-50%" y="-80%" width="200%" height="260%"><feGaussianBlur stdDeviation="3"/></filter>
+        <clipPath id="v5-clipping"><path id="v5-clip-path"/></clipPath>
+        <mask id="v6-chromatic-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1100" height="250">
+          <rect width="1100" height="250" fill="black"/>
+          <path id="v6-edge-mask" d="" fill="none" stroke="white" stroke-width="14" opacity=".94"/>
+        </mask>
+        <filter id="v6-color-ghost" x="-14%" y="-22%" width="128%" height="144%"><feGaussianBlur stdDeviation="1.3"/></filter>
+        <filter id="v6-refract" x="-15%" y="-30%" width="130%" height="160%">
+          <feTurbulence type="fractalNoise" baseFrequency=".008 .016" numOctaves="1" seed="5" result="warp"/>
+          <feDisplacementMap in="SourceGraphic" in2="warp" scale="2.6" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+      <path class="glass-shape" fill="url(#v5-body)" filter="url(#v5-shadow)"/>
+      <!-- Точная подсветка обрезается контуром самой жидкой линзы. -->
+      <g clip-path="url(#v5-clipping)">
+        <!-- Цветовые призраки видны только возле краёв, как хроматическая аберрация -->
+        <g mask="url(#v6-chromatic-mask)">
+          <g id="v6-magenta" fill="#ef40cf" opacity=".88" filter="url(#v6-color-ghost)" transform="translate(3 1.3)"></g>
+          <g id="v6-cyan" fill="#00d7ff" opacity=".92" filter="url(#v6-color-ghost)" transform="translate(-3 -1.3)"></g>
+        </g>
+        <g id="v6-blue" fill="#088efa" opacity="0" filter="url(#v6-refract)"></g>
+      </g>
+      <g clip-path="url(#v5-clipping)">
+        <ellipse id="v5-red-refraction" cx="0" cy="0" rx="70" ry="57" fill="url(#v5-redbleed)" opacity="0"/>
+        <path class="glass-shape" id="v5-press-shadow" fill="url(#v5-press)" opacity=".10"/>
+      </g>
+      <path class="glass-shape" fill="none" stroke="url(#v5-rim)" stroke-width="2.2"/>
+      <path class="glass-shape" fill="none" stroke="white" stroke-opacity=".21" stroke-width=".8"/>
+      <path id="v5-colored-edge" fill="none" stroke="url(#v5-topglint)" stroke-width="3.5" stroke-linecap="round" filter="url(#v5-softblur)" opacity="0"/>
+    </svg>
+<button type="button" class="tab is-active" data-index="0" role="radio" aria-checked="true" tabindex="0" aria-label="Профиль, Кнопка 1">
+      <span class="icon-box"><svg class="tab-icon" viewBox="0 0 96 96" aria-hidden="true"><use href="#icon-profile"/></svg></span>
+      <span class="tab-label">Профиль</span>
+    </button>
+<button type="button" class="tab" data-index="1" role="radio" aria-checked="false" tabindex="-1" aria-label="Звонки, Кнопка 2">
+      <span class="icon-box"><svg class="tab-icon" viewBox="0 0 96 96" aria-hidden="true"><use href="#icon-phone"/></svg></span>
+      <span class="tab-label">Звонки</span>
+    </button>
+<button type="button" class="tab" data-index="2" role="radio" aria-checked="false" tabindex="-1" aria-label="Чаты, Кнопка 3">
+      <span class="icon-box"><svg class="tab-icon" viewBox="0 0 96 96" aria-hidden="true"><use href="#icon-chats"/></svg><span class="notice" aria-label="24 сообщения">24</span></span>
+      <span class="tab-label">Чаты</span>
+    </button>
+<button type="button" class="tab" data-index="3" role="radio" aria-checked="false" tabindex="-1" aria-label="Настройки, Кнопка 4">
+      <span class="icon-box"><svg class="tab-icon" viewBox="0 0 96 96" aria-hidden="true"><use href="#icon-settings"/></svg></span>
+      <span class="tab-label">Настройки</span>
+    </button>
+  </div>
+  <p class="hint">В покое — серая пилюля; зажми и потяни, чтобы увидеть жидкое стекло</p>
+</main>
+<script>
+(()=>{
+  const track=document.getElementById('glass-track'),svg=document.getElementById('glass-svg');
+  const paths=[...svg.querySelectorAll('.glass-shape')],clipPath=document.getElementById('v5-clip-path');
+  const restSvg=document.getElementById('rest-svg'),restPill=document.getElementById('rest-pill-path');
+  const innerShadow=document.getElementById('v5-press-shadow'),redGlow=document.getElementById('v5-red-refraction'),chromatic=document.getElementById('v5-colored-edge');
+  const blueArt=document.getElementById('v6-blue'),magentaArt=document.getElementById('v6-magenta'),cyanArt=document.getElementById('v6-cyan'),edgeMask=document.getElementById('v6-edge-mask');
+  const buttons=[...track.querySelectorAll('.tab')],badge=track.querySelector('.notice');
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)');
+  const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
+  const COUNT=4;
+  let W=860,H=148,pad=9,slot=215,pillWidth=197,limit=645;
+  let a=0,b=0,va=0,vb=0,aim=0,selected=0,visible=0,pressed=false,moved=false,pointerId=null;
+  let startX=0,startAim=0,pointerX=0,pointerTime=0,pointerV=0,raf=0,last=0;
+  let badgeX=0,badgeY=0,badgeLeft=0,badgeRight=0;
+  function paint(){
+    const avg=(a+b)/2,center=pad+pillWidth/2+avg,v=(va+vb)/2,diff=a-b;
+    const stretch=clamp(Math.abs(diff)*.92+Math.abs(v)*.010,0,Math.min(38,slot*.25));
+    const L=clamp(center-pillWidth/2-stretch/2,pad,W-pad-pillWidth*.57);
+    const R=clamp(center+pillWidth/2+stretch/2,L+pillWidth*.57,W-pad);
+    const T=pad,B=H-pad,M=H/2,rad=Math.min((B-T)/2,(R-L)*.42);
+    const activity=clamp(Math.abs(v)/750+Math.abs(diff)/80,0,1),sway=clamp(diff/28,-1,1);
+    const bl=clamp(L+(v<0?-activity*6:-activity*2),pad,R-35);
+    const br=clamp(R+(v>0?activity*6:activity*2),L+35,W-pad);
+    const leftTop=clamp(-sway*2,-3.5,3.5),rightTop=clamp(sway*2,-3.5,3.5);
+    const topBend=clamp(-activity*3.1+sway*.8,-4,4),bottomBend=clamp(activity*3.2+sway*.8,-4,4);
+    const d=[
+      `M ${L+rad} ${T+leftTop}`,
+      `C ${L+rad*.42} ${T+leftTop} ${bl} ${T+rad*.35} ${bl} ${M}`,
+      `C ${bl} ${B-rad*.35} ${L+rad*.42} ${B-leftTop} ${L+rad} ${B-leftTop}`,
+      `C ${L+(R-L)*.35} ${B+bottomBend} ${R-(R-L)*.35} ${B+bottomBend} ${R-rad} ${B-rightTop}`,
+      `C ${R-rad*.42} ${B-rightTop} ${br} ${B-rad*.35} ${br} ${M}`,
+      `C ${br} ${T+rad*.35} ${R-rad*.42} ${T+rightTop} ${R-rad} ${T+rightTop}`,
+      `C ${R-(R-L)*.35} ${T+topBend} ${L+(R-L)*.35} ${T+topBend} ${L+rad} ${T+leftTop} Z`
+    ].join(' ');
+    for(const p of paths)p.setAttribute('d',d);
+    restPill.setAttribute('d',d);
+    clipPath.setAttribute('d',d);
+    edgeMask.setAttribute('d',d);
+    innerShadow.setAttribute('opacity',pressed ? '.85' : '.12');
+    // Цветовая дисперсия проявляется там, где прозрачная линза встречает красный бейдж.
+    const intersection=clamp((Math.min(R,badgeRight)-Math.max(L,badgeLeft))/Math.max(1,badgeRight-badgeLeft),0,1);
+    redGlow.setAttribute('opacity',(intersection*(pressed?.85:.58)).toFixed(3));
+    chromatic.setAttribute('opacity',(intersection*(pressed?.9:.65)).toFixed(3));
+    const glintX=clamp(badgeX,L+rad,R-rad);
+    chromatic.setAttribute('d',`M ${Math.max(L+rad,glintX-44)} ${T+topBend+2} Q ${glintX} ${T+topBend-2} ${Math.min(R-rad,glintX+44)} ${T+rightTop+2}`);
+    const nearest=clamp(Math.round(avg/slot),0,COUNT-1);
+    if(nearest!==visible){visible=nearest;buttons.forEach((el,i)=>el.classList.toggle('is-active',i===nearest));}
+  }
+  // Иконки и подписи в SVG точно повторяют позиции HTML-кнопок.
+  // HTML остаётся тёмно-серым; голубая SVG-копия видна ТОЛЬКО внутри clipPath капли.
+  // Поэтому при движении между двумя кнопками подсветка идёт непрерывно по пикселям,
+  // а не переключается целиком в момент пересечения середины.
+  function rebuildColoredArtwork(){
+    const NS='http://www.w3.org/2000/svg';
+    const tr=track.getBoundingClientRect();
+    const pieces=[];
+    for(let i=0;i<COUNT;i++){
+      const tab=buttons[i],icon=tab.querySelector('.tab-icon'),label=tab.querySelector('.tab-label');
+      const ir=icon.getBoundingClientRect(),lr=label.getBoundingClientRect();
+      const pict=document.createElementNS(NS,'g');
+      pict.setAttribute('transform',`translate(${(ir.left-tr.left).toFixed(3)} ${(ir.top-tr.top).toFixed(3)}) scale(${(ir.width/96).toFixed(6)} ${(ir.height/96).toFixed(6)})`);
+      const iconPath=document.querySelector(`#${['icon-profile','icon-phone','icon-chats','icon-settings'][i]} path`).cloneNode(true);
+      iconPath.removeAttribute('fill'); // color inherits from each overlay: blue, magenta, cyan
+      pict.append(iconPath);
+      const txt=document.createElementNS(NS,'text');
+      const cs=getComputedStyle(label);
+      txt.setAttribute('x',(lr.left+lr.width/2-tr.left).toFixed(3));
+      txt.setAttribute('y',(lr.top-tr.top+lr.height*.70).toFixed(3));
+      txt.setAttribute('text-anchor','middle');
+      txt.setAttribute('font-family','-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif');
+      txt.setAttribute('font-weight','600');
+      txt.setAttribute('font-size',cs.fontSize);
+      txt.setAttribute('letter-spacing','-.025em');
+      txt.textContent=label.textContent;
+      pieces.push(pict,txt);
+    }
+    // Дубли для цветовой дисперсии у края линзы. Без переключения активного tab.
+    for(const el of [blueArt,magentaArt,cyanArt]){
+      el.replaceChildren(...pieces.map(node=>node.cloneNode(true)));
+    }
+  }
+  function resize(){
+    const old=slot||1;
+    W=track.clientWidth;H=track.clientHeight;pad=H<120?7:10;slot=W/COUNT;pillWidth=slot-2*pad;limit=(COUNT-1)*slot;
+    const ratio=slot/old;a=clamp(a*ratio,0,limit);b=clamp(b*ratio,0,limit);aim=clamp(aim*ratio,0,limit);va*=ratio;vb*=ratio;
+    if(!raf&&!pressed){a=b=aim=selected*slot;va=vb=0;}
+    const tr=track.getBoundingClientRect(),r=badge.getBoundingClientRect();
+    badgeX=r.left-tr.left+r.width*.5;badgeY=r.top-tr.top+r.height*.5;
+    badgeLeft=r.left-tr.left;badgeRight=r.right-tr.left;
+    redGlow.setAttribute('cx',badgeX-7);redGlow.setAttribute('cy',badgeY-8);
+    redGlow.setAttribute('rx',Math.max(38,slot*.35));redGlow.setAttribute('ry',Math.max(29,H*.39));
+    svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+    restSvg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+    rebuildColoredArtwork();
+    const grad=document.getElementById('v5-topglint');grad.setAttribute('x1',badgeX-55);grad.setAttribute('x2',badgeX+55);
+    grad.setAttribute('gradientUnits','userSpaceOnUse');
+    paint();
+  }
+  function tick(time){
+    const dt=last?Math.min((time-last)/1000,.032):1/60;last=time;
+    const sign=Math.sign(aim-(a+b)/2||va+vb)||1;
+    const kF=pressed?950:370,kB=pressed?450:200,dF=pressed?49:26,dB=pressed?33:18;
+    for(let j=0;j<3;j++){
+      const h=dt/3,kA=sign>=0?kF:kB,kB2=sign>=0?kB:kF,dA=sign>=0?dF:dB,dB2=sign>=0?dB:dF;
+      va+=((aim-a)*kA-va*dA)*h;vb+=((aim-b)*kB2-vb*dB2)*h;
+      a=clamp(a+va*h,0,limit);b=clamp(b+vb*h,0,limit);
+      if((a===0&&va<0)||(a===limit&&va>0))va=0;
+      if((b===0&&vb<0)||(b===limit&&vb>0))vb=0;
+    }
+    paint();
+    if(!pressed&&Math.abs(a-aim)<.045&&Math.abs(b-aim)<.045&&Math.abs(va)<.65&&Math.abs(vb)<.65){a=b=aim;va=vb=0;last=raf=0;paint();track.classList.remove('in-motion')}
+    else raf=requestAnimationFrame(tick);
+  }
+  function run(){track.classList.add('in-motion');if(!raf){last=0;raf=requestAnimationFrame(tick);}}
+  function choose(i){
+    selected=clamp(i,0,COUNT-1);aim=selected*slot;
+    buttons.forEach((button,j)=>{button.setAttribute('aria-checked',String(j===selected));button.tabIndex=j===selected?0:-1;});
+    if(reduce.matches){cancelAnimationFrame(raf);raf=last=0;a=b=aim;va=vb=0;paint();track.classList.remove('in-motion');}
+    else run();
+  }
+  track.addEventListener('pointerdown',e=>{
+    if(!e.isPrimary||(e.pointerType==='mouse'&&e.button!==0))return;
+    pointerId=e.pointerId;pressed=true;moved=false;
+    startX=pointerX=e.clientX;startAim=aim=clamp((a+b)/2,0,limit);
+    pointerV=0;pointerTime=e.timeStamp;track.classList.add('pressed');
+    track.setPointerCapture(pointerId);paint();run();
+  });
+  track.addEventListener('pointermove',e=>{
+    if(!pressed||e.pointerId!==pointerId)return;
+    const dx=e.clientX-startX;if(Math.abs(dx)>3)moved=true;
+    if(!moved)return;
+    aim=clamp(startAim+dx,0,limit);
+    const elapsed=Math.max(1,e.timeStamp-pointerTime);
+    pointerV=pointerV*.5+((e.clientX-pointerX)/elapsed*1000)*.5;
+    pointerX=e.clientX;pointerTime=e.timeStamp;run();
+  });
+  function end(e,cancel=false){
+    if(!pressed||e.pointerId!==pointerId)return;
+    pressed=false;track.classList.remove('pressed');
+    if(track.hasPointerCapture(pointerId))track.releasePointerCapture(pointerId);
+    pointerId=null;
+    let index;
+    if(cancel)index=Math.round(aim/slot);
+    else if(!moved){const r=track.getBoundingClientRect();index=Math.floor(clamp((e.clientX-r.left)/r.width,0,.9999)*COUNT);}
+    else{const fling=e.timeStamp-pointerTime<110?clamp(pointerV*.15,-slot*.65,slot*.65):0;index=Math.round((aim+fling)/slot);}
+    choose(index);paint();
+  }
+  track.addEventListener('pointerup',e=>end(e));
+  track.addEventListener('pointercancel',e=>end(e,true));
+  buttons.forEach((button,i)=>{
+    button.addEventListener('click',e=>{if(e.detail===0)choose(i)});
+    button.addEventListener('keydown',e=>{
+      let next;if(e.key==='ArrowRight'||e.key==='ArrowDown')next=clamp(selected+1,0,3);
+      else if(e.key==='ArrowLeft'||e.key==='ArrowUp')next=clamp(selected-1,0,3);
+      else if(e.key==='Home')next=0;else if(e.key==='End')next=3;else return;
+      e.preventDefault();choose(next);buttons[next].focus();
+    });
+  });
+  // DOM duplicates guarantee exact icon/text alignment in blue.
+  // The animated clipPath reveals only the portions currently under the liquid lens.
+  const colorOverlay=document.createElement('div');
+  colorOverlay.className='color-overlay';
+  colorOverlay.setAttribute('aria-hidden','true');
+  colorOverlay.inert=true;
+  for(const button of buttons){
+    const clone=button.cloneNode(true);
+    clone.removeAttribute('role');clone.removeAttribute('aria-checked');clone.removeAttribute('tabindex');clone.removeAttribute('aria-label');
+    clone.querySelector('.notice')?.remove();
+    colorOverlay.append(clone);
+  }
+  track.insertBefore(colorOverlay,svg);
+  new ResizeObserver(resize).observe(track);resize();
+})();
+</script>
+<script>
+if (new URLSearchParams(location.search).get('lang') === 'en') {
+  document.documentElement.lang = 'en';
+  document.querySelector('.track').setAttribute('aria-label','Tab selection');
+  document.querySelectorAll('.tab').forEach((tab,index) => {
+    const label = ['Profile','Calls','Chats','Settings'][index % 4];
+    tab.setAttribute('aria-label', label);
+    tab.querySelector('.tab-label').textContent = label;
+  });
+}
+</script></body></html>

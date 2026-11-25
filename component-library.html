@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <script src="assets/language-init.js">
+</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e5f9bd">
+  <meta name="description" content="Кейс RZ. / design.components. Поиск интерактивных примеров, настройка поведения и экспорт кода.">
+  <title>Библиотека компонентов · RZ.</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/project-navigation.css?v=212">
+<link rel="stylesheet" href="assets/site-footer.css?v=196.3">
+<link rel="stylesheet" href="assets/component-library.css">
+  <script src="assets/project-navigation.js?v=195" defer>
+</script>
+<script src="assets/case-runtime.js?v=195" defer>
+</script>
+<script src="assets/site-footer.js?v=196.3" defer>
+</script>
+<script src="assets/component-library.js" defer>
+</script>
+</head>
+<body data-case="component-library">
+  <div id="rz-case-header" class="travel-navigation case-navigation">
+    <button class="rz-back travel-back case-back" type="button" aria-label="Назад к проектам">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="m14.5 5.5-6.5 6.5 6.5 6.5"/>
+</svg>
+</button>
+    <nav class="rz-nav travel-nav case-nav" aria-label="Навигация по проекту">
+<div class="rz-brand travel-brand case-brand">RZ. <span class="brand-sub">/ design practice</span>
+</div>
+<div class="rz-links travel-links case-links">
+<a class="rz-link active travel-link" href="#overview" data-ru="Обзор" data-en="Overview">Обзор</a>
+<a class="rz-link travel-link" href="#flow" data-ru="Сценарий" data-en="Flow">Сценарий</a>
+<a class="rz-link travel-link" href="#references" data-ru="Референсы" data-en="References">Референсы</a>
+<a class="rz-link travel-link" href="#build" data-ru="Разработка" data-en="Build">Разработка</a></div>
+<div class="rz-actions nav-actions">
+<button class="rz-lang travel-lang case-lang" type="button" aria-label="Выбрать язык">RU</button>
+<button class="rz-contact portfolio-contact" type="button" aria-label="Связаться">
+<span class="portfolio-contact-label">Связаться</span>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M6 18 18 6M8 6h10v10"/>
+</svg>
+</button>
+</div>
+</nav>
+  </div>
+
+<main><section class="cover" id="overview"><div class="wrap"><p class="imprint">RZ. / design.components</p>
+<h1  data-ru="Библиотека компонентов" data-en="Component Library">Библиотека компонентов</h1>
+<div class="intro">
+<p  data-ru="Библиотека для тех, кто проектирует и собирает интерфейсы. Дизайнер подбирает компонент для макета, проверяет жест в браузере и передаёт разработчику ссылку или готовый код. Если собираешь продукт сам, тот же пример можно сразу попробовать в своём проекте." data-en="A library for people who design and build interfaces. Pick a component for a mockup, test its gestures in the browser, then share a link or the code with a developer. If you build your own products, you can try the example directly in your project.">Библиотека для тех, кто проектирует и собирает интерфейсы. Дизайнер подбирает компонент для макета, проверяет жест в браузере и передаёт разработчику ссылку или готовый код. Если собираешь продукт сам, тот же пример можно сразу попробовать в своём проекте.</p>
+<a class="visit" href="https://develop--rz-design-components.netlify.app/" target="_blank" rel="noopener" data-ru="Открыть библиотеку ↗" data-en="Open the library ↗">Открыть библиотеку ↗</a>
+</div><figure>
+<img src="assets/component-library/catalog.jpg" width="1360" height="900" alt="RZ. / design.components" >
+</figure></div></section><section class="wrap chapter" id="flow">
+<p class="imprint" data-ru="Задача и сценарий" data-en="Design challenge and flow">Задача и сценарий</p>
+<h2  data-ru="От идеи в макете до рабочего жеста" data-en="From a mockup to a working gesture">От идеи в макете до рабочего жеста</h2>
+<p  data-ru="Поиск начинается с того, что хочется увидеть на экране. Запрос «след курсора» ведёт к Velocity Line Cursor: за указателем тянется тонкая линия. У карточки есть название, подсказка и теги. Подходящие варианты можно отложить в избранное и вернуться к ним во время работы над макетом." data-en="Search starts with what you want to see on screen. The phrase “cursor trail” leads to Velocity Line Cursor, a thin line that follows the pointer. Each card has a name, a prompt and tags. Favourites keep alternatives together while you work on a design.">Поиск начинается с того, что хочется увидеть на экране. Запрос «след курсора» ведёт к Velocity Line Cursor: за указателем тянется тонкая линия. У карточки есть название, подсказка и теги. Подходящие варианты можно отложить в избранное и вернуться к ним во время работы над макетом.</p>
+<h3  data-ru="Одна панель, два жеста" data-en="One bar, two gestures">Одна панель, два жеста</h3>
+<p  data-ru="В макете выделен «Профиль». Как панель перейдёт к «Чатам»? В живом примере нажмите на вкладку, затем зажмите линзу и медленно потяните обратно. Эти два движения разработчик может проверить по той же ссылке, которую получит вместе с макетом." data-en="Profile is selected in the mockup. How does the bar move to Chats? Tap a tab in the live example, then hold the lens and slowly drag it back. The developer can test both gestures using the link that accompanies the design.">В макете выделен «Профиль». Как панель перейдёт к «Чатам»? В живом примере нажмите на вкладку, затем зажмите линзу и медленно потяните обратно. Эти два движения разработчик может проверить по той же ссылке, которую получит вместе с макетом.</p>
+<div class="comparison"><figure>
+<figcaption  data-ru="Макет · выбран «Профиль»" data-en="Mockup · Profile selected">Макет · выбран «Профиль»</figcaption>
+<svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+<symbol id="icon-profile" viewBox="0 0 96 96"><path fill="currentColor" fill-rule="evenodd" d="M 41 9 L 40 10 L 37 10 L 36 11 L 34 11 L 33 12 L 26 15 L 24 17 L 23 17 L 17 23 L 17 24 L 13 29 L 13 30 L 12 31 L 12 33 L 11 34 L 11 36 L 10 37 L 10 40 L 9 41 L 9 54 L 10 55 L 10 58 L 11 59 L 11 61 L 12 62 L 15 69 L 17 71 L 17 72 L 23 78 L 24 78 L 29 82 L 30 82 L 31 83 L 33 83 L 34 84 L 36 84 L 37 85 L 40 85 L 41 86 L 54 86 L 55 85 L 58 85 L 59 84 L 61 84 L 62 83 L 69 80 L 71 78 L 72 78 L 78 72 L 78 71 L 82 66 L 82 65 L 83 64 L 83 62 L 84 61 L 84 59 L 85 58 L 85 55 L 86 54 L 86 41 L 85 40 L 85 37 L 84 36 L 84 34 L 83 33 L 80 26 L 78 24 L 78 23 L 72 17 L 71 17 L 66 13 L 65 13 L 64 12 L 62 12 L 61 11 L 59 11 L 58 10 L 55 10 L 54 9 Z M 27 73 L 34 66 L 35 66 L 40 63 L 43 63 L 44 62 L 51 62 L 52 63 L 55 63 L 56 64 L 61 66 L 68 73 L 65 76 L 64 76 L 59 79 L 57 79 L 56 80 L 53 80 L 52 81 L 43 81 L 42 80 L 39 80 L 38 79 L 36 79 L 35 78 L 30 76 Z M 45 32 L 50 32 L 51 33 L 54 34 L 59 39 L 59 41 L 60 42 L 60 47 L 59 48 L 58 51 L 53 56 L 51 56 L 50 57 L 45 57 L 44 56 L 41 55 L 36 50 L 36 48 L 35 47 L 35 42 L 36 41 L 37 38 L 42 33 L 44 33 Z"/></symbol>
+<symbol id="icon-phone" viewBox="0 0 96 96"><path fill="currentColor" fill-rule="evenodd" d="M 18 14 L 18 15 L 15 18 L 15 19 L 13 22 L 13 24 L 12 25 L 12 38 L 13 39 L 13 42 L 14 43 L 14 46 L 16 49 L 16 51 L 17 52 L 19 57 L 23 62 L 23 63 L 32 72 L 33 72 L 38 76 L 39 76 L 46 80 L 48 80 L 49 81 L 52 81 L 53 82 L 57 82 L 58 83 L 70 83 L 71 82 L 73 82 L 74 81 L 77 80 L 84 73 L 84 72 L 85 71 L 85 69 L 86 68 L 86 62 L 83 59 L 82 59 L 79 57 L 77 57 L 76 56 L 75 56 L 70 53 L 68 53 L 65 51 L 61 51 L 60 52 L 59 52 L 50 60 L 46 57 L 45 57 L 38 50 L 38 49 L 35 45 L 44 35 L 44 30 L 43 29 L 43 28 L 42 27 L 42 25 L 37 16 L 37 14 L 36 13 L 36 12 L 33 9 L 27 9 L 26 10 L 21 12 L 19 14 Z"/></symbol>
+<symbol id="icon-chats" viewBox="0 0 96 96"><path fill="currentColor" fill-rule="evenodd" d="M 12 20 L 12 21 L 10 23 L 10 24 L 7 29 L 7 32 L 6 33 L 6 44 L 7 45 L 7 48 L 9 51 L 9 52 L 8 53 L 8 56 L 7 57 L 7 59 L 6 60 L 6 65 L 9 68 L 14 68 L 15 67 L 18 67 L 19 66 L 21 66 L 22 65 L 23 65 L 26 67 L 29 67 L 30 68 L 32 68 L 33 69 L 35 74 L 42 81 L 43 81 L 50 85 L 53 85 L 54 86 L 65 86 L 66 85 L 69 85 L 72 83 L 73 83 L 74 84 L 77 84 L 78 85 L 80 85 L 81 86 L 86 86 L 89 83 L 89 78 L 88 77 L 88 74 L 87 73 L 87 71 L 86 70 L 86 69 L 88 66 L 88 63 L 89 62 L 89 51 L 88 50 L 88 47 L 87 46 L 84 39 L 77 32 L 76 32 L 69 28 L 66 28 L 65 27 L 63 27 L 62 26 L 60 21 L 53 14 L 52 14 L 45 10 L 42 10 L 41 9 L 30 9 L 29 10 L 26 10 L 25 11 L 20 13 L 18 15 L 17 15 Z M 11 62 L 12 61 L 13 62 L 12 63 Z M 49 18 L 56 25 L 56 26 L 59 31 L 59 34 L 60 35 L 60 42 L 59 43 L 59 46 L 58 47 L 56 52 L 49 59 L 48 59 L 43 62 L 40 62 L 39 63 L 32 63 L 31 62 L 28 62 L 25 60 L 20 60 L 19 61 L 17 61 L 16 62 L 13 62 L 12 61 L 12 58 L 13 57 L 13 55 L 14 54 L 14 49 L 12 46 L 12 43 L 11 42 L 11 35 L 12 34 L 12 31 L 13 30 L 15 25 L 22 18 L 23 18 L 28 15 L 31 15 L 32 14 L 39 14 L 40 15 L 43 15 L 44 16 Z"/></symbol>
+<symbol id="icon-settings" viewBox="0 0 96 96"><path fill="currentColor" fill-rule="evenodd" d="M 32 10 L 31 11 L 28 12 L 26 14 L 26 20 L 25 21 L 25 24 L 24 25 L 20 25 L 19 26 L 14 26 L 12 28 L 12 29 L 10 32 L 10 34 L 9 35 L 9 40 L 13 44 L 13 45 L 15 47 L 15 48 L 13 50 L 13 51 L 9 55 L 9 60 L 10 61 L 10 63 L 11 64 L 12 67 L 14 69 L 20 69 L 21 70 L 24 70 L 25 71 L 25 75 L 26 76 L 26 81 L 28 83 L 29 83 L 32 85 L 34 85 L 35 86 L 40 86 L 44 82 L 45 82 L 47 80 L 48 80 L 50 82 L 51 82 L 55 86 L 60 86 L 61 85 L 63 85 L 64 84 L 67 83 L 69 81 L 69 75 L 70 74 L 70 71 L 71 70 L 75 70 L 76 69 L 81 69 L 83 67 L 83 66 L 85 63 L 85 61 L 86 60 L 86 55 L 82 51 L 82 50 L 80 48 L 80 47 L 82 45 L 82 44 L 86 40 L 86 35 L 85 34 L 85 32 L 84 31 L 83 28 L 81 26 L 75 26 L 74 25 L 71 25 L 70 24 L 70 20 L 69 19 L 69 14 L 67 12 L 66 12 L 63 10 L 61 10 L 60 9 L 55 9 L 51 13 L 50 13 L 48 15 L 47 15 L 45 13 L 44 13 L 40 9 L 35 9 L 34 10 Z M 45 35 L 50 35 L 51 36 L 54 37 L 59 42 L 59 44 L 60 45 L 60 50 L 59 51 L 58 54 L 53 59 L 51 59 L 50 60 L 45 60 L 44 59 L 41 58 L 36 53 L 36 51 L 35 50 L 35 45 L 36 44 L 37 41 L 42 36 L 44 36 Z"/></symbol>
+    </defs></svg><div class="still-tabs"><div><svg aria-hidden="true" viewBox="0 0 96 96"><use href="#icon-profile"/></svg><span  data-ru="Профиль" data-en="Profile">Профиль</span></div><div><svg aria-hidden="true" viewBox="0 0 96 96"><use href="#icon-phone"/></svg><span  data-ru="Звонки" data-en="Calls">Звонки</span></div><div><svg aria-hidden="true" viewBox="0 0 96 96"><use href="#icon-chats"/></svg><span  data-ru="Чаты" data-en="Chats">Чаты</span></div><div><svg aria-hidden="true" viewBox="0 0 96 96"><use href="#icon-settings"/></svg><span  data-ru="Настройки" data-en="Settings">Настройки</span></div></div>
+</figure><figure>
+<figcaption  data-ru="Компонент · попробуйте переключить" data-en="Live component · try switching tabs">Компонент · попробуйте переключить</figcaption>
+<iframe id="gesture-demo" title="Liquid Navigation" src="assets/component-library/liquid-navigation.html" loading="lazy"></iframe></figure></div><div class="editor"><div>
+<h3  data-ru="Один компонент крупным планом" data-en="One component up close">Один компонент крупным планом</h3>
+<p  data-ru="В Liquid Navigation стеклянную линзу можно перетащить между вкладками или сразу нажать на нужный сегмент. В редакторе рядом с примером меняются акцент и подпись. Переключение ширины позволяет проверить тот же жест в мобильной компоновке." data-en="In Liquid Navigation, drag the glass lens between tabs or tap a segment directly. Adjust the accent and label beside the preview, then switch to the mobile width to check the same gesture in a compact layout.">В Liquid Navigation стеклянную линзу можно перетащить между вкладками или сразу нажать на нужный сегмент. В редакторе рядом с примером меняются акцент и подпись. Переключение ширины позволяет проверить тот же жест в мобильной компоновке.</p>
+<a class="visit" href="https://develop--rz-design-components.netlify.app/#effect/glass-nav" target="_blank" rel="noopener" data-ru="Попробовать Liquid Navigation ↗" data-en="Try Liquid Navigation ↗">Попробовать Liquid Navigation ↗</a>
+</div>
+<img src="assets/component-library/editor.jpg" width="1360" height="900" alt="Liquid Navigation" loading="lazy" >
+</div>
+<h3  data-ru="Передача в разработку" data-en="Design handoff">Передача в разработку</h3>
+<p  data-ru="Выбранное состояние можно сохранить как пресет или передать ссылкой с настройками. Разработчик открывает тот же вариант и может скачать HTML для проверки в своём окружении." data-en="Save the chosen state as a preset or share a link containing the settings. A developer can open that same variation and download its HTML to test it in their own environment.">Выбранное состояние можно сохранить как пресет или передать ссылкой с настройками. Разработчик открывает тот же вариант и может скачать HTML для проверки в своём окружении.</p>
+</section><section class="refs" id="references"><div class="wrap">
+<p class="imprint" data-ru="Референсы" data-en="References">Референсы</p>
+<h2  data-ru="Компонент в контексте" data-en="Components in context">Компонент в контексте</h2>
+<p  data-ru="Рядом с лабораторией эффектов собраны экраны реальных продуктов. В подборке Fossify Calendar можно изучить представления календаря, а в Apache Superset — компоновку дашбордов и мобильных фильтров. Так у отдельного приёма появляется контекст применения." data-en="The reference collection brings real product screens alongside the interaction lab. Fossify Calendar shows calendar views, while Apache Superset illustrates dashboard layouts and mobile filters. These examples place individual interface patterns in context.">Рядом с лабораторией эффектов собраны экраны реальных продуктов. В подборке Fossify Calendar можно изучить представления календаря, а в Apache Superset — компоновку дашбордов и мобильных фильтров. Так у отдельного приёма появляется контекст применения.</p>
+<h3 data-ru="Инструменты для работы над проектом" data-en="Tools for project work">Инструменты для работы над проектом</h3>
+<dl class="resource-directions">
+<div>
+<dt data-ru="Веб и no-code" data-en="Web and no-code">Веб и no-code</dt>
+<dd data-ru="Выбрать конструктор для лендинга, CMS для блога или сервис для автоматизации работы с сайтом." data-en="Choose a landing page builder, a CMS for a blog or a tool to automate website tasks.">Выбрать конструктор для лендинга, CMS для блога или сервис для автоматизации работы с сайтом.</dd>
+</div>
+<div>
+<dt data-ru="Дизайн" data-en="Design">Дизайн</dt>
+<dd data-ru="Подобрать шрифт и палитру для макета, найти иконки, мокапы и примеры дизайн-систем." data-en="Find typefaces, colour palettes, icons, mockups and design systems for a mockup.">Подобрать шрифт и палитру для макета, найти иконки, мокапы и примеры дизайн-систем.</dd>
+</div>
+<div>
+<dt data-ru="ИИ" data-en="AI">ИИ</dt>
+<dd data-ru="Найти ассистента для работы с кодом или инструмент для конкретного материала — текста, изображения, видео или озвучки." data-en="Find a coding assistant or a tool for writing, image generation, video or voice.">Найти ассистента для работы с кодом или инструмент для конкретного материала — текста, изображения, видео или озвучки.</dd>
+</div>
+<div>
+<dt data-ru="Навыки агентов" data-en="Agent skills">Навыки агентов</dt>
+<dd data-ru="Подобрать навык под задачу: проверить интерфейс, собрать прототип, настроить анимацию или поработать с макетом в Figma." data-en="Choose an agent skill for an interface review, a prototype, motion design or work in Figma.">Подобрать навык под задачу: проверить интерфейс, собрать прототип, настроить анимацию или поработать с макетом в Figma.</dd>
+</div>
+<div>
+<dt data-ru="Разработка" data-en="Development">Разработка</dt>
+<dd data-ru="Сравнить редакторы кода и фреймворки, подобрать бэкенд и площадку для публикации проекта." data-en="Compare code editors and frameworks, choose a backend and find a host for the project.">Сравнить редакторы кода и фреймворки, подобрать бэкенд и площадку для публикации проекта.</dd>
+</div>
+<div>
+<dt data-ru="Маркетинг и рост" data-en="Marketing and growth">Маркетинг и рост</dt>
+<dd data-ru="Подобрать сервисы для поискового продвижения, рассылок и аналитики, чтобы после запуска понимать, откуда приходят посетители." data-en="Explore SEO, email and analytics tools to understand where visitors come from after launch.">Подобрать сервисы для поискового продвижения, рассылок и аналитики, чтобы после запуска понимать, откуда приходят посетители.</dd>
+</div>
+<div>
+<dt data-ru="Продуктивность" data-en="Productivity">Продуктивность</dt>
+<dd data-ru="Организовать работу команды с помощью заметок, календарей, досок задач, форм и диаграмм." data-en="Organise team work with notes, calendars, project planning tools, forms and diagrams.">Организовать работу команды с помощью заметок, календарей, досок задач, форм и диаграмм.</dd>
+</div>
+<div>
+<dt data-ru="Бизнес" data-en="Business">Бизнес</dt>
+<dd data-ru="Найти решения для интернет-магазина и приёма платежей, а также ресурсы для найма и работы на фрилансе." data-en="Find tools for online shops and payments, alongside resources for hiring and freelancing.">Найти решения для интернет-магазина и приёма платежей, а также ресурсы для найма и работы на фрилансе.</dd>
+</div>
+<div>
+<dt data-ru="Контент и медиа" data-en="Content and media">Контент и медиа</dt>
+<dd data-ru="Подобрать фотографии, видео и музыку, найти инструмент, чтобы записать демонстрацию интерфейса и смонтировать ролик." data-en="Source photography, video and music, then find tools to record and edit a product walkthrough.">Подобрать фотографии, видео и музыку, найти инструмент, чтобы записать демонстрацию интерфейса и смонтировать ролик.</dd>
+</div>
+<div>
+<dt data-ru="Обучение и сообщества" data-en="Learning and communities">Обучение и сообщества</dt>
+<dd data-ru="Найти материалы для самостоятельной практики, подкасты и сообщества, где можно обсудить работу с коллегами." data-en="Find learning materials, podcasts and communities where practitioners discuss their work.">Найти материалы для самостоятельной практики, подкасты и сообщества, где можно обсудить работу с коллегами.</dd>
+</div>
+<div>
+<dt data-ru="Платформы" data-en="Platforms">Платформы</dt>
+<dd data-ru="Посмотреть подборки приложений для Mac и Windows или выбрать расширение для Chrome." data-en="Browse Mac and Windows apps or find a Chrome extension.">Посмотреть подборки приложений для Mac и Windows или выбрать расширение для Chrome.</dd>
+</div>
+</dl>
+<a class="visit" href="https://develop--rz-design-components.netlify.app/#references" target="_blank" rel="noopener" data-ru="Посмотреть референсы ↗" data-en="Explore references ↗">Посмотреть референсы ↗</a>
+</div></section><section class="build" id="build"><div class="wrap"><p class="imprint" data-ru="Процесс создания" data-en="Making the library">Процесс создания</p>
+<h2  data-ru="Как собрана библиотека" data-en="How the library is built">Как собрана библиотека</h2>
+<div class="build-grid"><article>
+<h3  data-ru="Каталог из записей" data-en="A catalogue built from records">Каталог из записей</h3>
+<p  data-ru="Компоненты описаны в TypeScript. Из одной записи React берёт название, категорию и подсказку для карточки и связывает её с нужным демо. Референсы вынесены в отдельный раздел: там единицей коллекции становится приложение или сайт с подборкой экранов." data-en="Components are described in TypeScript. React takes the title, category and prompt from each record and links the card to its demo. References use a different unit: an app or website with a collection of screens.">Компоненты описаны в TypeScript. Из одной записи React берёт название, категорию и подсказку для карточки и связывает её с нужным демо. Референсы вынесены в отдельный раздел: там единицей коллекции становится приложение или сайт с подборкой экранов.</p>
+</article><article>
+<h3  data-ru="Редактор и превью" data-en="Editor and preview">Редактор и превью</h3>
+<p  data-ru="Пример открывается в отдельном iframe, поэтому его стили остаются внутри демо. Редактор передаёт настройки через postMessage: можно менять акцент и сразу пробовать жест. Ссылка с пресетом сохраняет выбранный вариант для передачи коллеге." data-en="Each example runs in its own iframe, keeping demo styles inside the preview. The editor sends settings via postMessage so you can adjust an accent and try the gesture immediately. A preset link carries that configuration to a teammate.">Пример открывается в отдельном iframe, поэтому его стили остаются внутри демо. Редактор передаёт настройки через postMessage: можно менять акцент и сразу пробовать жест. Ссылка с пресетом сохраняет выбранный вариант для передачи коллеге.</p>
+</article><article>
+<h3  data-ru="Сборка и публикация" data-en="Build and delivery">Сборка и публикация</h3>
+<p  data-ru="Скрипты Node.js подготавливают интерактивные демо и анимации. Затем Next.js экспортирует статические страницы для Netlify. После загрузки поиск и редактор работают в браузере." data-en="Node.js scripts prepare the interactive demos and animations. Next.js then exports static pages for Netlify. Once loaded, search and editing run in the browser.">Скрипты Node.js подготавливают интерактивные демо и анимации. Затем Next.js экспортирует статические страницы для Netlify. После загрузки поиск и редактор работают в браузере.</p>
+</article></div>
+<h3  data-ru="Цвет и материал" data-en="Colour and material">Цвет и материал</h3>
+<p  data-ru="Тёмные поверхности обрамляют разноцветные превью. Светлый текст выделяет названия, приглушённый — подсказки и теги. Лайм отмечает фокус клавиатуры. У навигации и поиска полупрозрачная подложка с размытием: при прокрутке сквозь неё видны цвета карточек." data-en="Dark surfaces frame the colourful previews. Light text marks titles, muted text carries prompts and tags, and lime signals keyboard focus. The navigation and search surfaces blur the colours of the cards scrolling behind them.">Тёмные поверхности обрамляют разноцветные превью. Светлый текст выделяет названия, приглушённый — подсказки и теги. Лайм отмечает фокус клавиатуры. У навигации и поиска полупрозрачная подложка с размытием: при прокрутке сквозь неё видны цвета карточек.</p>
+<div class="palette"><div><i style="background:#111311"></i><span  data-ru="Фон" data-en="Background">Фон</span><code>#111311</code></div><div><i style="background:#1A1D1A"></i><span  data-ru="Поверхность" data-en="Surface">Поверхность</span><code>#1A1D1A</code></div><div><i style="background:#F0F2ED"></i><span  data-ru="Текст" data-en="Text">Текст</span><code>#F0F2ED</code></div><div><i style="background:#A8AFA5"></i><span  data-ru="Подписи" data-en="Captions">Подписи</span><code>#A8AFA5</code></div><div><i style="background:#D1FA49"></i><span  data-ru="Акцент" data-en="Accent">Акцент</span><code>#D1FA49</code></div></div></div></section></main>
+  <footer id="rz-site-footer" class="portfolio-top-end">
+<span class="footer-signature">RZ. / design practice</span>
+<button class="portfolio-top-btn" type="button">
+<span data-ru="Наверх" data-en="Back to top">Наверх</span>
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<path d="m6 14 6-6 6 6"/>
+</svg>
+</button>
+</footer>
+</body>
+</html>
